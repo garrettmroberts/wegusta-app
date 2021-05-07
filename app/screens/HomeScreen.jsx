@@ -7,7 +7,8 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      <Text>{ state.text }</Text>
+      {/* <Text>{ state.text }</Text> */}
+      <Text>Hello</Text>
     </View>
   );
 };
