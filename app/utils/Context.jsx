@@ -1,13 +1,10 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
-const initialState = [
-  {
-    text: 'Hello Native'
-  },
-  function() {}
-];
+const initialState = {
+  text: 'Foodie.io'
+};
 
-const StoreContext = createContext(initialState);
+const StoreContext = createContext([initialState, function() {}]);
 const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
@@ -19,7 +16,7 @@ const reducer = (state, action) => {
 };
 
 const Context = ({...props}) => {
-  const [state, dispatch] = useReducer(reducer);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
