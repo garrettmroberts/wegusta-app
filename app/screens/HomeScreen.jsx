@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useStoreContext } from '../utils/Context';
 
-export default function HomeScreen() {
+const HomeScreen = () => {
   const [state, dispatch] = useStoreContext();
 
   return (
-      <View style={styles.container} >
-        <Text>{ state.text }</Text>
-      </View>
+    <View style={styles.container} >
+      <Text>{ state.text }</Text>
+    </View>
   );
 }
 
@@ -19,3 +19,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
+
+export default HomeScreen;

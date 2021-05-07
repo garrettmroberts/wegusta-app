@@ -5,9 +5,9 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type){
-    default:
-      console.log('STATE in reducer: ', state);
-      return state;
+  default:
+    console.log('STATE in reducer: ', state);
+    return state;
   }
 };
 

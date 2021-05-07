@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { Context } from './app/utils/Context';
-import HomeScreen from './app/screens/HomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import Navigator from './app/navigation/AppNavigator';
 
-export default function App() {
+const App = () => {
   return (
     <Context>
-      <HomeScreen />
+      <NavigationContainer>
+        <Navigator />
+      </NavigationContainer>
     </Context>
   );
-}
+};
+
+export default App;
