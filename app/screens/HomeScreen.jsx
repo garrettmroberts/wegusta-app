@@ -10,7 +10,7 @@ const HomeScreen = () => {
       <Text>{ state.text }</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

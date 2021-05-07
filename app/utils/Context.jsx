@@ -15,7 +15,7 @@ const Context = ({...props}) => {
   const [state, dispatch] = useReducer(reducer , {
     text: 'Hello context!'
   });
-  return <Provider value={[state, dispatch]} {...props} />
+  return <Provider value={[state, dispatch]} {...props} />;
 };
 
 const useStoreContext = () => useContext(StoreContext);
