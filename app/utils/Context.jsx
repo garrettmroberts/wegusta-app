@@ -13,7 +13,7 @@ const reducer = (state, action) => {
 
 const Context = ({...props}) => {
   const [state, dispatch] = useReducer(reducer , {
-    text: 'Hello context!',
+    text: 'Hello context!'
   });
   return <Provider value={[state, dispatch]} {...props} />
 };

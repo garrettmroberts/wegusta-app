@@ -20,11 +20,14 @@
         "react-native"
     ],
     "rules": {
+        "comma-dangle": ["error", "never"],
+        "eol-last": 2,
+        "no-multiple-empty-lines": [2, { "max": 1 }],
+        "quotes": [2, "single", { "avoidEscape": true }],
         "react-native/no-unused-styles": 2,
         "react-native/split-platform-components": 2,
         "react-native/no-inline-styles": 2,
         "react-native/no-color-literals": 2,
-        "react-native/no-raw-text": 2,
-        "quotes": [2, "single", { "avoidEscape": true }]
+        "react-native/no-raw-text": 2
     }
 }
