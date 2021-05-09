@@ -14,4 +14,4 @@ const constants = {
   baseImageStyle: { flex: 1, width: undefined, height: undefined }
 };
 
-export default constants;
+export { constants };
