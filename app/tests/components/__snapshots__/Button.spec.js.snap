@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "opacity": 1,
+      },
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#6546F9",
+        "borderRadius": 12,
+        "height": 48,
+        "justifyContent": "center",
+        "width": 702,
+      },
+    ]
+  }
+  text="Balyhoo"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#6546F9",
+        "borderRadius": 12,
+        "height": 48,
+        "justifyContent": "center",
+        "width": 702,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#ffffff",
+          "fontFamily": "Avenir",
+          "fontSize": 14,
+          "fontStyle": "normal",
+          "fontWeight": "900",
+          "letterSpacing": 0,
+          "lineHeight": 24,
+          "textAlign": "center",
+        }
+      }
+    >
+      Balyhoo
+    </Text>
+  </View>
+</View>
+`;
