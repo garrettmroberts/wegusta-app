@@ -1,4 +1,4 @@
-import colors from './colors';
+import { colors } from './colors';
 
 const fonts = {
   h1: {
@@ -91,4 +91,4 @@ const fonts = {
   }
 };
 
-export default fonts;
+export { fonts };

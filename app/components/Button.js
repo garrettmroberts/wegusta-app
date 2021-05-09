@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-import styleConstants from '../config/index';
+import { colors, fonts, constants } from '../config';
 
 const Button = props => {
   return (
@@ -15,7 +15,7 @@ const Button = props => {
       ]}
     >
       <View style={ styles.buttonStyle }>
-        <Text style={ styleConstants.fonts.button }>{ props.text }</Text>
+        <Text style={ fonts.button }>{ props.text }</Text>
       </View>
     </Pressable>
   );
@@ -29,9 +29,9 @@ Button.propTypes = {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    backgroundColor: styleConstants.colors.primary,
+    backgroundColor: colors.primary,
     height: 48,
-    width: styleConstants.constants.screenWidth - 48,
+    width: constants.screenWidth - 48,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 12

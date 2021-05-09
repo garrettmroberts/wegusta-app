@@ -11,4 +11,4 @@ const colors = {
   yellow: '#f9c933'
 };
 
-export default colors;
+export { colors };

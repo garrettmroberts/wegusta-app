@@ -1,11 +1,3 @@
-import colors from './colors';
-import constants from './constants';
-import fonts from './textStyles';
-
-const styleConstants = {
-  colors,
-  constants,
-  fonts
-};
-
-export default styleConstants;
+export * from './colors';
+export * from './constants';
+export * from './textStyles';
