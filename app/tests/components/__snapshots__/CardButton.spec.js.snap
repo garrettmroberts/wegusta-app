@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "opacity": 1,
+      },
+      Object {
+        "alignItems": "center",
+        "borderRadius": 40,
+        "elevation": 4,
+        "height": 80,
+        "justifyContent": "center",
+        "margin": 16,
+        "shadowColor": "#1C262D",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.23,
+        "shadowRadius": 2.62,
+        "width": 80,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "borderRadius": 40,
+        "elevation": 4,
+        "height": 80,
+        "justifyContent": "center",
+        "margin": 16,
+        "shadowColor": "#1C262D",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.23,
+        "shadowRadius": 2.62,
+        "width": 80,
+      }
+    }
+  />
+</View>
+`;
