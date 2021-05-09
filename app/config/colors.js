@@ -1,5 +1,14 @@
-export default {
-    primary: '#0A0A0A',
-    seconary: '#FF004D',
-    black: '#000'
-}
+const colors = {
+  primary: '#6546F9',
+  secondary: '#FF004D',
+  black: '#1C262D',
+  white: '#ffffff',
+  greyLight: '#EEF0F4',
+  grey: '#949DA6',
+
+  green: '#14cc40',
+  red: '#ec4445',
+  yellow: '#f9c933'
+};
+
+export default colors;
