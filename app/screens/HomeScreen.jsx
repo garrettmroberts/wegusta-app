@@ -4,7 +4,6 @@ import { useStoreContext } from '../utils/Context';
 import {colors } from '../config';
 
 import Button from '../components/Button';
-import CardButton from '../components/CardButton';
 
 const HomeScreen = () => {
   const [ state, dispatch ] = useStoreContext();
@@ -12,8 +11,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container} >
       <Text>{ state.text }</Text>
-      <Button text="Ballyhoo" />
-      <CardButton />
+      <Button text="Ballyhoo" type="icon" />
     </View>
   );
 };
