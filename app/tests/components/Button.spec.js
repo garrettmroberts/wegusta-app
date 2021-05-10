@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { shallow,mount } from 'enzyme';
-import { Text, Pressable } from 'react-native';
+import { shallow } from 'enzyme';
+import { Text, Pressable, View } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 import Button from '../../components/Button';
 
 describe('Button Component', () => {
@@ -23,11 +24,39 @@ describe('Button Component', () => {
     });
   });
 
-  // describe('CARD', () => {
-  //   it('renders display correctly when type === card', () => {
-  //     const button = mount(<Button type="card" />);
-  //     console.log(button.props().style());
-  //   });
-  // });
+  describe('CARD', () => {
+    it('renders display correctly when type === card', () => {
+      const button = shallow(<Button type="card" />);
+      const style = button.find(View).get(0).props.style[1];
+      expect(style.elevation).toEqual(4);
+      expect(style.height).toEqual(80);
+    });
+
+    it('displays Feather Icon', () => {
+      const button = shallow(<Button type="card" />);
+      const feather = button.find(Feather).get(0);
+      expect(feather).toBeDefined();
+    });
+  });
+
+  describe('ICON', () => {
+    it('renders display correctly when type === icon', () => {
+      const button = shallow(<Button type="icon" text="Balyhoo" />);
+      const style = button.find(View).get(0).props.style[2];
+      expect(style.backgroundColor).toEqual('#1C262D');
+      expect(style.height).toEqual(32);
+    });
+
+    it('displays Feather Icon', () => {
+      const button = shallow(<Button type="card" />);
+      const feather = button.find(Feather).get(0);
+      expect(feather).toBeDefined();
+    });
+
+    it('renders text passed as a prop', () => {
+      const button = shallow(<Button text="Ballyhoo" type="icon" />);
+      expect(button.contains(<Text>Ballyhoo</Text>));
+    });
+  });
  
 });
