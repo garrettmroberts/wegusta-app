@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useStoreContext } from '../utils/Context';
-import {colors } from '../config';
+import { colors } from '../config';
 
-import Button from '../components/Button';
+import { Button, ImageBlock } from '../components';
 
 const HomeScreen = () => {
   const [ state, dispatch ] = useStoreContext();
 
   return (
     <View style={styles.container} >
-      <Text>{ state.text }</Text>
-      <Button text="Ballyhoo" type="icon" />
+      <Button text={ state.text } type="default" />
+      <ImageBlock />
     </View>
   );
 };
