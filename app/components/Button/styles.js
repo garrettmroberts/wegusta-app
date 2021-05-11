@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, constants, fonts } from '../../config';
+import { colors } from '../../config';
 
 const styles = StyleSheet.create({
   button: {
@@ -42,7 +42,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32
   },
   text: {
-    marginHorizontal: 10
+    marginHorizontal: 10,
+    fontWeight: '800',
+    fontSize: 16,
+    lineHeight: 24,
+    fontFamily: 'Avenir'
   },
   darkText: {
     color: colors.black

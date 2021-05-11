@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { colors, constants, fonts } from '../../config';
+import { colors, constants } from '../../config';
 
 const styles = StyleSheet.create({
   socialButton: {
     borderRadius: 12,
     height: 48,
-    width: 343,
+    width: constants.screenWidth - 48,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
