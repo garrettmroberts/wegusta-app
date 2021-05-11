@@ -19,7 +19,9 @@ const renderedIcon = icon => {
 
 const SocialButton = ({ icon, handlePress }) => {
   return (
-    <Pressable onPress={handlePress} style={styles.socialButton} >
+    <Pressable onPress={handlePress} style={ ({ pressed }) => [styles.socialButton, {
+      opacity: pressed ? 0.8 : 1
+    }]} >
       <View style={styles.clickWrapper} >
         {renderedIcon(icon)}
         <Text style={styles.text} >Continue with { icon.slice(0,1).toUpperCase() + icon.slice(1) }</Text>

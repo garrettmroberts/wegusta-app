@@ -18,7 +18,7 @@ const getTextStyle = (type) => {
 const Button = ({ type, size, text, iconBefore, iconAfter, handlePress }) => {
 
   return (
-    <Pressable style={[ styles.button, styles[type], styles[size] ]} onPress={ handlePress } >
+    <Pressable style={({ pressed }) => [ styles.button, styles[type], styles[size], { opacity: pressed ? 0.8 : 1} ]} onPress={ handlePress } >
       { iconBefore }
       <Text style={ getTextStyle(type) }>{ text }</Text>
       { iconAfter }
