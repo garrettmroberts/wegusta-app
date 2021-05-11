@@ -4,7 +4,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
 import { Feather } from '@expo/vector-icons';
 
-import { Button, ButtonOld, ImageBlock } from '../components';
+import { Button, ButtonOld, ImageBlock, SocialButton } from '../components';
 
 const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
@@ -16,12 +16,11 @@ const HomeScreen = () => {
     <View style={styles.container} >
       {/* <ButtonOld text={ state.text } type="default" />
       <ImageBlock /> */}
-      <Button type="primary" size="fullWidth" text="Codename LLC" handlePress={handlePress} />
-      <Button type="secondary" size="large" text="Codename LLC" />
-      <Button type="tertiary" size="medium" text="Codename LLC" iconBefore={icon} iconAfter={icon} />
-      <Button type="disabled" size="small" text="Codename LLC" />
-      <Button type="destructive" size="small" text="Codename LLC" />
-
+      <Button type="primary" size="fullWidth" text="Codename LLC" handlePress={handlePress} iconBefore={icon} />
+      <SocialButton icon="facebook" handlePress={handlePress} />
+      <SocialButton icon="google" />
+      <SocialButton icon="apple" />
+      <SocialButton icon="email" />
     </View>
   );
 };

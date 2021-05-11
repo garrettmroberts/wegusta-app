@@ -13,7 +13,9 @@ const colors = {
 
   buttonPrimary: '#0A0A0A',
   buttonSecondary: '#F0F2F9',
-  buttonDestructive: '#FF004D'
+  buttonDestructive: '#FF004D',
+
+  facebookBlue: '#0B7FFB'
 };
 
 export { colors };
