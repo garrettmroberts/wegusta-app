@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
   primary: {
     backgroundColor: colors.buttonPrimary
@@ -39,6 +40,9 @@ const styles = StyleSheet.create({
   small: {
     height: 32,
     paddingHorizontal: 32
+  },
+  text: {
+    marginHorizontal: 10
   },
   darkText: {
     color: colors.black

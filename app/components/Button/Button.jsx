@@ -7,19 +7,21 @@ import { fonts } from '../../config';
 
 const getTextStyle = (type) => {
   if (type === 'primary' || type === 'destructive') {
-    return fonts.button;
+    return [fonts.button, styles.text];
   } else if (type === 'secondary' || type === 'tertiary') {
-    return [fonts.button, styles.darkText];
+    return [fonts.button, styles.darkText, styles.text];
   } else {
-    return [fonts.button, styles.grayText];
+    return [fonts.button, styles.grayText, styles.text];
   }
 };
 
-const Button = ({ type, size, text, children, iconBefore, iconAfter }) => {
+const Button = ({ type, size, text, iconBefore, iconAfter, handlePress }) => {
 
   return (
-    <Pressable style={[ styles.button, styles[type], styles[size] ]} >
+    <Pressable style={[ styles.button, styles[type], styles[size] ]} onPress={ handlePress } >
+      { iconBefore }
       <Text style={ getTextStyle(type) }>{ text }</Text>
+      { iconAfter }
     </Pressable>
   );
 };
@@ -28,9 +30,9 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   size: PropTypes.string.isRequired,
   text: PropTypes.string,
-  children: PropTypes.element,
   iconBefore: PropTypes.element,
-  iconAfter: PropTypes.element
+  iconAfter: PropTypes.element,
+  handlePress: PropTypes.func
 
 };
 
