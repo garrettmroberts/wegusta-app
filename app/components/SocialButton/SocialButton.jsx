@@ -1,19 +1,18 @@
 import React from 'react';
 
 import { Pressable, Text, Image, View } from 'react-native';
-import { FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
 const renderedIcon = icon => {
   if (icon === 'facebook') {
-    return <FontAwesome5 name="facebook-f" size={15} style={styles.facebookIcon} />;
+    return <Image source={ require('../../assets/facebook-icon.png') } style={ styles.icon } />;
   } else if (icon === 'google') {
-    return <Image source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png'}} style={styles.googleIcon} />;
+    return <Image source={ require('../../assets/google-icon.png') } style={ styles.icon } />;
   } else if (icon === 'apple') {
-    return <FontAwesome5 name="apple" size={15} />;
+    return <Image source={ require('../../assets/apple-icon.png') } style={ styles.icon } />;
   } else if (icon === 'email') {
-    return <MaterialIcons name="email" size={15} />;
+    return <Image source={ require('../../assets/mail-icon.png') } style={ styles.icon } />;
   };
 };
 

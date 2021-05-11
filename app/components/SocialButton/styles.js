@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     fontFamily: 'Avenir'
   },
+  icon: {
+    height: 15,
+    width: 15,
+    resizeMode: 'contain'
+  },
   googleIcon: {
     height: 15,
     width: 15
