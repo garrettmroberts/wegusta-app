@@ -2,16 +2,23 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
+import { Feather } from '@expo/vector-icons';
 
-import { Button, ImageBlock } from '../components';
+import { Button, SocialButton, CircleButton } from '../components';
 
+const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
   const [ state, dispatch ] = useStoreContext();
 
+  const icon = <Feather name="feather" height={30} />;
+
   return (
     <View style={styles.container} >
-      <Button text={ state.text } type="default" />
-      <ImageBlock />
+      {/* <ButtonOld text={ state.text } type="default" />
+      <ImageBlock /> */}
+      <Button type="primary" size="fullWidth" text="Codename LLC" handlePress={handlePress} iconBefore={icon} />
+      <SocialButton icon="facebook" handlePress={handlePress} />
+      <CircleButton size="large" color="primary" handlePress={handlePress} />
     </View>
   );
 };
@@ -21,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.greyLight
+    backgroundColor: colors.primary
   }
 });
 
