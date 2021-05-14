@@ -4,7 +4,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
 import { Feather } from '@expo/vector-icons';
 
-import { Button, SocialButton, CircleButton, DecisionButton } from '../components';
+import { Button, SocialButton, CircleButton, DecisionButton, OverlayButton } from '../components';
 
 const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
@@ -18,7 +18,9 @@ const HomeScreen = () => {
       <SocialButton icon="facebook" handlePress={handlePress} />
       <CircleButton size="large" color="primary" handlePress={handlePress} />
       <DecisionButton decision="like" />
-      <DecisionButton decision="dislike" />
+      <OverlayButton dark={true} overlay="more" />
+      <OverlayButton dark={false} overlay="search" />
+      <OverlayButton dark={true} overlay="close" />
     </View>
   );
 };
