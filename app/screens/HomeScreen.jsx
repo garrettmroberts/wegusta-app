@@ -14,13 +14,22 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      <Button type="primary" size="fullWidth" text="Codename LLC" handlePress={handlePress} iconBefore={icon} />
-      <SocialButton icon="facebook" handlePress={handlePress} />
+      <Button type="secondary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="secondary" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="secondary" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      
+      {/* <Button type="secondary" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="tertiary" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="danger" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="destructive" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} /> */}
+
+      {/* <SocialButton icon="facebook" handlePress={handlePress} />
       <CircleButton size="large" color="primary" handlePress={handlePress} />
       <DecisionButton decision="like" />
       <OverlayButton dark={true} overlay="more" />
       <OverlayButton dark={false} overlay="search" />
-      <OverlayButton dark={true} overlay="close" />
+      <OverlayButton dark={true} overlay="close" /> */}
     </View>
   );
 };

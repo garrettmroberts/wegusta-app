@@ -3,11 +3,21 @@ import { colors, fonts } from '../../config';
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 12,
-    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row'
+  },
+  contentWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+    flexDirection: 'row'
+  },
+  buttonSmall: {
+    borderRadius: 12
+  },
+  buttonReg: {
+    borderRadius: 8
   },
   primary: {
     backgroundColor: colors.buttonPrimary
@@ -45,8 +55,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontWeight: fonts.button.fontWeight,
     fontSize: fonts.button.fontSize,
-    lineHeight: fonts.button.lineHeight,
-    fontFamily: 'Avenir'
+    lineHeight: fonts.button.lineHeight
   },
   darkText: {
     color: colors.black
