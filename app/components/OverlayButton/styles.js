@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   dark: {
-    backgroundColor: colors.black   
+    backgroundColor: colors.darkButton   
   },
   light: {
     backgroundColor: colors.white
