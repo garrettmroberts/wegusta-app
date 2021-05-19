@@ -2,10 +2,14 @@ import { StyleSheet } from 'react-native';
 import { colors, fonts } from '../../config';
 
 const styles = StyleSheet.create({
-  button: {
+  centered: {
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'stretch'
+  },
+  stretch: {
+    flex: 1
   },
   contentWrapper: {
     justifyContent: 'center',
@@ -55,7 +59,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontWeight: fonts.button.fontWeight,
     fontSize: fonts.button.fontSize,
-    lineHeight: fonts.button.lineHeight
+    lineHeight: fonts.button.lineHeight,
+    alignSelf: 'center'
   },
   darkText: {
     color: colors.black

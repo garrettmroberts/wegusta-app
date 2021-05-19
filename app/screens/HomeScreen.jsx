@@ -4,7 +4,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
 import { Feather } from '@expo/vector-icons';
 
-import { Button, SocialButton, CircleButton, DecisionButton, OverlayButton } from '../components';
+import { Button, SocialButton, CircleButton, DecisionButton, OverlayButton, ButtonOld } from '../components';
 
 const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
@@ -14,10 +14,12 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      <Button type="secondary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="secondary" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="secondary" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
+
+      {/* <ButtonOld text="nice" handlePress={handlePress} /> */}
       
       {/* <Button type="secondary" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="tertiary" size="fullWidth" text="Codename LLC" handlePress={handlePress} icon={icon} />
