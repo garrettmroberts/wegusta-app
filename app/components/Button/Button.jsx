@@ -106,7 +106,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       }
     ]}>
       <Pressable 
-        style={[styles.centered, styles.stretch]} 
+        style={styles.centered} 
         onPress={ handlePress } 
         onPressIn={() => expand(size)}
         onPressOut={() => compact(size)}

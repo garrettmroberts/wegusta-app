@@ -8,9 +8,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'stretch'
   },
-  stretch: {
-    flex: 1
-  },
   contentWrapper: {
     justifyContent: 'center',
     alignItems: 'center',

@@ -24,7 +24,11 @@ const OverlayButton = ({ dark, overlay, handlePress }) => {
   };
   
   return (
-    <Pressable style={[ styles[buttonStyle(dark)], styles.icon ]} onPress={handlePress} >
+    <Pressable style={ ({ pressed }) => [
+      styles[buttonStyle(dark)],
+      styles.icon,
+      { opacity: pressed ? 0.8 : 1 }
+    ]} onPress={handlePress} >
       { icon(dark, overlay) }
     </Pressable>
   );

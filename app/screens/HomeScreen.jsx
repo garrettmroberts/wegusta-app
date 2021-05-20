@@ -15,10 +15,10 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      {/* <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} /> */}
+      <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
 
       <SocialButton icon="facebook" handlePress={handlePress} />
       <IconButton size="large" color="primary" icon={addPersonIcon} handlePress={handlePress} />

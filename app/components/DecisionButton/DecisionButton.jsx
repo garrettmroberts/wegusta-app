@@ -14,7 +14,7 @@ const DecisionButton = ({ decision, handlePress }) => {
   };
   
   return(
-    <Pressable style={ styles.button } onPress={ handlePress } >
+    <Pressable style={ ({ pressed }) => [styles.button, { opacity: pressed ? 0.8 : 1 } ]} onPress={ handlePress } >
       { icon(decision) }
     </Pressable>
   );
