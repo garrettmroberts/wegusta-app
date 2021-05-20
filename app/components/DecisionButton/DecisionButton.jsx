@@ -21,7 +21,7 @@ const DecisionButton = ({ decision, handlePress }) => {
 };
 
 DecisionButton.propTypes = {
-  decision: PropTypes.string.isRequired,
+  decision: PropTypes.string.isRequired, // like, dislike
   handlePress: PropTypes.func
 };
 
