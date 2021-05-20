@@ -4,7 +4,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, ButtonOld } from '../components';
+import { Button, SocialButton, IconButton, DecisionButton, OverlayButton } from '../components';
 
 const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
