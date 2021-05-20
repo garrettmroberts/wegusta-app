@@ -4,19 +4,19 @@ import { Pressable, Text, Image, View } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const renderedIcon = icon => {
-  if (icon === 'facebook') {
-    return <Image source={ require('../../assets/facebook-icon.png') } style={ styles.icon } />;
-  } else if (icon === 'google') {
-    return <Image source={ require('../../assets/google-icon.png') } style={ styles.icon } />;
-  } else if (icon === 'apple') {
-    return <Image source={ require('../../assets/apple-icon.png') } style={ styles.icon } />;
-  } else if (icon === 'email') {
-    return <Image source={ require('../../assets/mail-icon.png') } style={ styles.icon } />;
-  };
-};
-
 const SocialButton = ({ icon, handlePress }) => {
+  const renderedIcon = icon => {
+    if (icon === 'facebook') {
+      return <Image source={ require('../../assets/facebook-icon.png') } style={ styles.icon } />;
+    } else if (icon === 'google') {
+      return <Image source={ require('../../assets/google-icon.png') } style={ styles.icon } />;
+    } else if (icon === 'apple') {
+      return <Image source={ require('../../assets/apple-icon.png') } style={ styles.icon } />;
+    } else if (icon === 'email') {
+      return <Image source={ require('../../assets/mail-icon.png') } style={ styles.icon } />;
+    };
+  };
+  
   return (
     <Pressable onPress={handlePress} style={ ({ pressed }) => [styles.socialButton, {
       opacity: pressed ? 0.8 : 1

@@ -4,25 +4,25 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-let buttonStyle = dark => dark === true ? 'dark' : 'light';
-
-const icon = (dark, overlay) => {
-  if (overlay === 'more' && dark) {
-    return <Image source={require('../../assets/ellipsis.png')} style={styles.overlay} />;
-  } else if (overlay === 'more' && !dark) {
-    return <Image source={require('../../assets/ellipsis-dark.png')} style={styles.overlay} />;
-  } else if (overlay === 'search' && dark) {
-    return <Image source={require('../../assets/search-white.png')} style={styles.overlaySmall} />;
-  } else if (overlay === 'search' && !dark) {
-    return <Image source={require('../../assets/search.png')} style={styles.overlaySmall} />;
-  } else if (overlay === 'close' && dark) {
-    return <Image source={require('../../assets/x-white.png')} style={styles.overlaySmall} />;
-  } else {
-    return <Image source={require('../../assets/x-icon.png')} style={styles.overlaySmall} />;
-  }
-};
-
 const OverlayButton = ({ dark, overlay, handlePress }) => {
+  let buttonStyle = dark => dark === true ? 'dark' : 'light';
+
+  const icon = (dark, overlay) => {
+    if (overlay === 'more' && dark) {
+      return <Image source={require('../../assets/ellipsis.png')} style={styles.overlay} />;
+    } else if (overlay === 'more' && !dark) {
+      return <Image source={require('../../assets/ellipsis-dark.png')} style={styles.overlay} />;
+    } else if (overlay === 'search' && dark) {
+      return <Image source={require('../../assets/search-white.png')} style={styles.overlaySmall} />;
+    } else if (overlay === 'search' && !dark) {
+      return <Image source={require('../../assets/search.png')} style={styles.overlaySmall} />;
+    } else if (overlay === 'close' && dark) {
+      return <Image source={require('../../assets/x-white.png')} style={styles.overlaySmall} />;
+    } else {
+      return <Image source={require('../../assets/x-icon.png')} style={styles.overlaySmall} />;
+    }
+  };
+  
   return (
     <Pressable style={[ styles[buttonStyle(dark)], styles.icon ]} onPress={handlePress} >
       { icon(dark, overlay) }
