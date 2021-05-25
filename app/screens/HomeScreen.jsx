@@ -4,7 +4,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { Button, SocialButton, IconButton, DecisionButton, OverlayButton } from '../components';
+import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput } from '../components';
 
 const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
@@ -15,7 +15,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
+      {/* <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
@@ -26,7 +26,10 @@ const HomeScreen = () => {
       <DecisionButton decision="dislike" />
       <OverlayButton dark={true} overlay="more" />
       <OverlayButton dark={false} overlay="search" />
-      <OverlayButton dark={true} overlay="close" />
+      <OverlayButton dark={true} overlay="close" /> */}
+      <SearchInput placeholder='Search' />
+      <SearchInput placeholder='Search' disabled={true} />
+
     </View>
   );
 };
