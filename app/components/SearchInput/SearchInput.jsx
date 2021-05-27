@@ -43,7 +43,7 @@ const SearchInput = ({ placeholder, disabled }) => {
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  disabled: PropTypes.boolean
+  disabled: PropTypes.bool
 };
 
 export { SearchInput };
