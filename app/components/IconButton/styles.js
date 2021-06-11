@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     width: 24
   },
   primary: {
-    backgroundColor: colors.buttonPrimary
+    backgroundColor: colors.primary
   },
-  secondary: {
-    backgroundColor: colors.buttonSecondary
+  error: {
+    backgroundColor: colors.greyLight
   }
 });
 

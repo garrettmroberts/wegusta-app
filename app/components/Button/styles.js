@@ -21,19 +21,19 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   primary: {
-    backgroundColor: colors.buttonPrimary
+    backgroundColor: colors.primary
   },
-  secondary: {
-    backgroundColor: colors.buttonSecondary
+  error: {
+    backgroundColor: colors.greyLight
   },
   tertiary: {
     backgroundColor: colors.white
   },
   disabled: {
-    backgroundColor: colors.buttonSecondary
+    backgroundColor: colors.greyLight
   },
   destructive: {
-    backgroundColor: colors.buttonDestructive
+    backgroundColor: colors.error
   },
   fullWidth: {
     height: 48,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     color: colors.black
   },
   grayText: {
-    color: colors.disabledGray
+    color: colors.grey
   }
 });
 

@@ -41,7 +41,7 @@ const fonts = {
     color: colors.white
   },
 
-  buttonSecondary: {
+  greyLight: {
     fontFamily: 'Avenir',
     fontSize: 14,
     fontWeight: '900',

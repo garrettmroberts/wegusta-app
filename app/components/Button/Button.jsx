@@ -20,7 +20,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   const getTextStyle = (type) => {
     if (type === 'primary' || type === 'destructive') {
       return [fonts.button, styles.text];
-    } else if (type === 'secondary' || type === 'tertiary') {
+    } else if (type === 'error' || type === 'tertiary') {
       return [fonts.button, styles.darkText, styles.text];
     } else {
       return [fonts.button, styles.grayText, styles.text];
@@ -118,7 +118,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
 };
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired, // primary, secondary, tertiary, disabled, destructive
+  type: PropTypes.string.isRequired, // primary, error, tertiary, disabled, destructive
   size: PropTypes.string.isRequired, // fullWidth, large, medium, small
   icon: PropTypes.element, // icon element.  Preferably sized around 30
   iconPlacement: PropTypes.string, // left, right, both, none

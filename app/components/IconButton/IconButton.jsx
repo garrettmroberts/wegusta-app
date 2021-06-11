@@ -21,7 +21,7 @@ const iconColor = (color) => {
   if (color === 'primary') {
     return colors.white;
   } else {
-    return colors.darkButton;
+    return colors.primary;
   }
 };
 
@@ -41,7 +41,7 @@ const IconButton = ({ color, size, icon, handlePress }) => {
 };
 
 IconButton.propTypes = {
-  color: PropTypes.string.isRequired, // primary, secondary
+  color: PropTypes.string.isRequired, // primary, error
   size: PropTypes.string.isRequired, // large, medium, small, xsmall
   handlePress: PropTypes.func,
   icon: PropTypes.string.isRequired

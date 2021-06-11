@@ -15,10 +15,10 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container} >
-      {/* <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
-  <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} /> */}
+      <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
+      <Button type="error" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
+      <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
+      <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
 
       <SocialButton icon="facebook" handlePress={handlePress} />
       {/* <DecisionButton decision="like" />
@@ -30,18 +30,19 @@ const HomeScreen = () => {
       <SearchInput placeholder='Search' disabled={true} />
       <IconButton size="large" color="primary" icon="person-add" handlePress={handlePress} />
       <IconButton size="medium" color="primary" icon="person-add" handlePress={handlePress} />
-      <IconButton size="small" color="secondary" icon="person-add" handlePress={handlePress} />
-      <IconButton size="xsmall" color="secondary" icon="person-add" handlePress={handlePress} />
+      <IconButton size="small" color="error" icon="person-add" handlePress={handlePress} />
+      <IconButton size="xsmall" color="error" icon="person-add" handlePress={handlePress} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  // eslint-disable-next-line react-native/no-color-literals
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.primary
+    backgroundColor: '#6546F9'
   }
 });
 
