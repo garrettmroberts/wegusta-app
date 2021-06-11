@@ -29,26 +29,6 @@ const styles = StyleSheet.create({
   },
   secondary: {
     backgroundColor: colors.buttonSecondary
-  },
-  iconLarge: {
-    height: 22.5,
-    width: '100%',
-    resizeMode: 'contain'
-  },
-  iconMedium: {
-    height: 15,
-    width: '100%',
-    resizeMode: 'contain'
-  },
-  iconSmall: {
-    height: 11.25,
-    width: '100%',
-    resizeMode: 'contain'
-  },
-  iconXsmall: {
-    height: 11.25,
-    width: '100%',
-    resizeMode: 'contain'
   }
 });
 

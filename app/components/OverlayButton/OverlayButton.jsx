@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Image, Text } from 'react-native';
+import { Pressable, Image, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -17,9 +17,9 @@ const OverlayButton = ({ dark, overlay, handlePress }) => {
     } else if (overlay === 'search' && !dark) {
       return <Image source={require('../../assets/search.png')} style={styles.overlaySmall} />;
     } else if (overlay === 'close' && dark) {
-      return <Image source={require('../../assets/x-white.png')} style={styles.overlaySmall} />;
+      return <Image source={require('../../assets/x-white.png')} style={[styles.overlaySmall, styles.shiftLeft]} />;
     } else {
-      return <Image source={require('../../assets/x-icon.png')} style={styles.overlaySmall} />;
+      return <Image source={require('../../assets/x-icon.png')} style={[styles.overlaySmall, styles.shiftLeft]} />;
     }
   };
   
@@ -29,7 +29,9 @@ const OverlayButton = ({ dark, overlay, handlePress }) => {
       styles.icon,
       { opacity: pressed ? 0.8 : 1 }
     ]} onPress={handlePress} >
-      { icon(dark, overlay) }
+      <View>
+        { icon(dark, overlay) }
+      </View>
     </Pressable>
   );
 };

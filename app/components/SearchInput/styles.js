@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   input: {
-    fontSize: 18
+    fontSize: 18,
+    flex: 2
   },
   icon:{
     marginLeft: 22,

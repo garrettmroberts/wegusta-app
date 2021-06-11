@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-color-literals */
 import { StyleSheet } from 'react-native';
 import { colors } from '../../config';
 
@@ -11,10 +12,10 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   dark: {
-    backgroundColor: colors.darkButton
+    backgroundColor: 'rgba(10, 10, 10, 0.7)'
   },
   light: {
-    backgroundColor: colors.white
+    backgroundColor: 'rgba(255, 255, 255, 0.7)'
   },
   overlay: {
     height: 20,
@@ -25,6 +26,9 @@ const styles = StyleSheet.create({
     height: 15,
     width: 15,
     resizeMode: 'contain'
+  },
+  shiftLeft: {
+    right: 1
   }
 });
 

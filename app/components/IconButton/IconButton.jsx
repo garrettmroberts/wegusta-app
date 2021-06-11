@@ -20,8 +20,8 @@ const IconButton = ({ color, size, icon, handlePress }) => {
 };
 
 IconButton.propTypes = {
-  color: PropTypes.string.isRequired,
-  size: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired, // primary, secondary
+  size: PropTypes.string.isRequired, // large, medium, small, xsmall
   handlePress: PropTypes.func,
   icon: PropTypes.element.isRequired
 };

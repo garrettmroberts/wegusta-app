@@ -12,24 +12,27 @@ const HomeScreen = () => {
 
   const icon = <Feather name="feather" height={30} />;
   const addPersonIcon = <Ionicons name="person-add" size={24} color="white" />;
+  const addPersonIconSmall = <Ionicons name="person-add" size={11} color="white" />;
 
   return (
     <View style={styles.container} >
       {/* <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon={icon} />
       <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={icon} />
-      <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} />
+  <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={icon} /> */}
 
       <SocialButton icon="facebook" handlePress={handlePress} />
-      <IconButton size="large" color="primary" icon={addPersonIcon} handlePress={handlePress} />
-      <DecisionButton decision="like" />
-      <DecisionButton decision="dislike" />
+      {/* <DecisionButton decision="like" />
+      <DecisionButton decision="dislike" />  */}
       <OverlayButton dark={true} overlay="more" />
       <OverlayButton dark={false} overlay="search" />
-      <OverlayButton dark={true} overlay="close" /> */}
+      <OverlayButton dark={true} overlay="close" />
       <SearchInput placeholder='Search' />
       <SearchInput placeholder='Search' disabled={true} />
-
+      <IconButton size="large" color="primary" icon={addPersonIcon} handlePress={handlePress} />
+      <IconButton size="medium" color="primary" icon={addPersonIcon} handlePress={handlePress} />
+      <IconButton size="small" color="primary" icon={addPersonIconSmall} handlePress={handlePress} />
+      <IconButton size="xsmall" color="primary" icon={addPersonIconSmall} handlePress={handlePress} />
     </View>
   );
 };
