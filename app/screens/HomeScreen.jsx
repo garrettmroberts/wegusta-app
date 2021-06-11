@@ -10,7 +10,6 @@ const handlePress = () => {console.log('pressed');};
 const HomeScreen = () => {
   const [ state, dispatch ] = useStoreContext();
 
-  const icon = <Feather name="feather" height={30} />;
   const addPersonIcon = <Ionicons name="person-add" size={24} color="white" />;
   const addPersonIconSmall = <Ionicons name="person-add" size={11} color="white" />;
 
@@ -29,10 +28,10 @@ const HomeScreen = () => {
       <OverlayButton dark={true} overlay="close" />
       <SearchInput placeholder='Search' />
       <SearchInput placeholder='Search' disabled={true} />
-      <IconButton size="large" color="primary" icon={addPersonIcon} handlePress={handlePress} />
-      <IconButton size="medium" color="primary" icon={addPersonIcon} handlePress={handlePress} />
-      <IconButton size="small" color="primary" icon={addPersonIconSmall} handlePress={handlePress} />
-      <IconButton size="xsmall" color="primary" icon={addPersonIconSmall} handlePress={handlePress} />
+      <IconButton size="large" color="primary" icon="person-add" handlePress={handlePress} />
+      <IconButton size="medium" color="primary" icon="person-add" handlePress={handlePress} />
+      <IconButton size="small" color="secondary" icon="person-add" handlePress={handlePress} />
+      <IconButton size="xsmall" color="secondary" icon="person-add" handlePress={handlePress} />
     </View>
   );
 };
