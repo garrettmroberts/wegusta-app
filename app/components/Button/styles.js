@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, fonts } from '../../config';
+import { colors, constants, fonts } from '../../config';
 
 const styles = StyleSheet.create({
   centered: {
@@ -37,20 +37,17 @@ const styles = StyleSheet.create({
   },
   fullWidth: {
     height: 48,
-    width: '100%',
+    width: constants.screenWidth,
     paddingHorizontal: 24
   },
   large: {
-    height: 48,
-    paddingHorizontal: 32
+    height: 48
   },
   medium: {
-    height: 40,
-    paddingHorizontal: 32
+    height: 40
   },
   small: {
-    height: 32,
-    paddingHorizontal: 32
+    height: 32
   },
   text: {
     marginHorizontal: 10,

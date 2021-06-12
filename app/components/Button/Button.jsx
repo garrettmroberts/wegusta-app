@@ -108,25 +108,25 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   };
 
   return (
-    <Animated.View style={[
-      styles.centered,
-      styles[type],
-      styles[size],
-      size === 'small' ? styles.buttonSmall : styles.buttonReg,
-      {
-        height: heightAnim,
-        paddingHorizontal: paddingHorizAnim
-      }
-    ]}>
-      <Pressable 
-        style={styles.centered}
-        onPress={ handlePress }
-        onPressIn={() => compact(size)}
-        onPressOut={() => expand(size)}
-      >
+    <Pressable
+      onPress={ handlePress }
+      onPressIn={() => compact(size)}
+      onPressOut={() => expand(size)}
+      style={[styles.centered]}
+    >
+      <Animated.View style={[
+        styles.centered,
+        styles[type],
+        styles[size],
+        size === 'small' ? styles.buttonSmall : styles.buttonReg,
+        {
+          height: heightAnim,
+          paddingHorizontal: paddingHorizAnim
+        }
+      ]}>
         { formatContent(icon, iconPlacement, text, type )}
-      </Pressable>
-    </Animated.View>
+      </Animated.View>
+    </Pressable>
   );
 };
 
