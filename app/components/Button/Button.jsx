@@ -107,27 +107,39 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
     }
   };
 
-  return (
-    <Pressable
-      onPress={ handlePress }
-      onPressIn={() => compact(size)}
-      onPressOut={() => expand(size)}
-      style={[styles.centered]}
-    >
-      <Animated.View style={[
-        styles.centered,
-        styles[type],
-        styles[size],
-        size === 'small' ? styles.buttonSmall : styles.buttonReg,
-        {
-          height: heightAnim,
-          paddingHorizontal: paddingHorizAnim
-        }
-      ]}>
-        { formatContent(icon, iconPlacement, text, type )}
-      </Animated.View>
-    </Pressable>
+  const buttonMain = (
+    <Animated.View style={[
+      styles.centered,
+      styles[type],
+      styles[size],
+      size === 'small' ? styles.buttonSmall : styles.buttonReg,
+      {
+        height: heightAnim,
+        paddingHorizontal: paddingHorizAnim
+      }
+    ]}>
+      { formatContent(icon, iconPlacement, text, type )}
+    </Animated.View>
   );
+
+  const wrappedButton = (type) => {
+    if (type === 'disabled') {
+      return buttonMain;
+    } else {
+      return (
+        <Pressable
+          onPress={ handlePress }
+          onPressIn={() => compact(size)}
+          onPressOut={() => expand(size)}
+          style={[styles.centered]}
+        >
+          { buttonMain }
+        </Pressable>
+      );
+    }
+  };
+
+  return wrappedButton(type);
 };
 
 Button.propTypes = {
