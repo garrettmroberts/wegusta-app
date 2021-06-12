@@ -34,13 +34,13 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { icon }
-            <Text style={ getTextStyle(type) }>{ text }</Text>
+            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
           </View>
         );
       case 'right':
         return (
           <View style={styles.contentWrapper}>
-            <Text style={ getTextStyle(type) }>{ text }</Text>
+            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
             { icon }
           </View>
         );
@@ -48,12 +48,12 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { icon }
-            <Text style={ getTextStyle(type) }>{ text }</Text>
+            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
             { icon }
           </View>
         );
       default:
-        return <Text style={ getTextStyle(type) }>{ text }</Text>;
+        return <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>;
       };
       
     }
@@ -61,11 +61,18 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
 
   const heightAnim = useRef(new Animated.Value(startHeight(size))).current;
   const paddingHorizAnim = useRef(new Animated.Value(32)).current;
+  const textSizeAnim = useRef(new Animated.Value(14)).current;
 
   const expand = (size) => {
     Animated.timing(heightAnim, {
       toValue: startHeight(size),
       duration: 150,
+      useNativeDriver: false
+    }).start();
+
+    Animated.timing(textSizeAnim, {
+      toValue: 14,
+      duration: 150, 
       useNativeDriver: false
     }).start();
 
@@ -85,6 +92,12 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       useNativeDriver: false
     }).start();
 
+    Animated.timing(textSizeAnim, {
+      toValue: 12,
+      duration: 150, 
+      useNativeDriver: false
+    }).start();
+
     if (size !== 'fullWidth') {
       Animated.timing(paddingHorizAnim, {
         toValue: 29,
@@ -96,18 +109,18 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
 
   return (
     <Animated.View style={[
-      styles.centered, 
-      styles[type], 
+      styles.centered,
+      styles[type],
       styles[size],
       size === 'small' ? styles.buttonSmall : styles.buttonReg,
-      { 
+      {
         height: heightAnim,
         paddingHorizontal: paddingHorizAnim
       }
     ]}>
       <Pressable 
-        style={styles.centered} 
-        onPress={ handlePress } 
+        style={styles.centered}
+        onPress={ handlePress }
         onPressIn={() => compact(size)}
         onPressOut={() => expand(size)}
       >
