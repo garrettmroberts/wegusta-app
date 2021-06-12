@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   primary: {
     backgroundColor: colors.primary
   },
-  error: {
+  secondary: {
     backgroundColor: colors.greyLight
   },
   tertiary: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   fullWidth: {
     height: 48,
-    width: constants.screenWidth,
+    width: constants.screenWidth - 32,
     paddingHorizontal: 24
   },
   large: {

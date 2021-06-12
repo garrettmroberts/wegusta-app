@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
-import { View, Text, Pressable, Animated } from 'react-native';
+import { View, Pressable, Animated } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
 import PropTypes from 'prop-types';
 
 import styles from './styles';
-import { fonts } from '../../config';
+import { fonts, colors } from '../../config';
 
 const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   const startHeight = (size) => {
@@ -20,11 +22,27 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   const getTextStyle = (type) => {
     if (type === 'primary' || type === 'destructive') {
       return [fonts.button, styles.text];
-    } else if (type === 'error' || type === 'tertiary') {
+    } else if (type === 'secondary' || type === 'tertiary') {
       return [fonts.button, styles.darkText, styles.text];
     } else {
       return [fonts.button, styles.grayText, styles.text];
     }
+  };
+
+  const iconGen = (icon, type) => {
+    let color;
+
+    if (type === 'primary') {
+      color = colors.white;
+    } else if (type === 'secondary'|| type === 'tertiary') {
+      color = colors.primary;
+    } else if (type === 'disabled') {
+      color = colors.grey;
+    } else {
+      color = colors.primary;
+    }
+
+    return <Ionicons name={icon} size={24} color={ color } />;
   };
 
   const formatContent = (icon, iconPlacement, text, type ) => {
@@ -33,7 +51,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       case 'left':
         return (
           <View style={styles.contentWrapper}>
-            { icon }
+            { iconGen(icon, type) }
             <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
           </View>
         );
@@ -41,15 +59,15 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
-            { icon }
+            { iconGen(icon, type) }
           </View>
         );
       case 'both':
         return (
           <View style={styles.contentWrapper}>
-            { icon }
+            { iconGen(icon, type) }
             <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
-            { icon }
+            { iconGen(icon, type) }
           </View>
         );
       default:
@@ -143,9 +161,9 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
 };
 
 Button.propTypes = {
-  type: PropTypes.string.isRequired, // primary, error, tertiary, disabled, destructive
+  type: PropTypes.string.isRequired, // primary, secondary, tertiary, disabled, destructive
   size: PropTypes.string.isRequired, // fullWidth, large, medium, small
-  icon: PropTypes.element, // icon element.  Preferably sized around 30
+  icon: PropTypes.string.isRequired,
   iconPlacement: PropTypes.string, // left, right, both, none
   text: PropTypes.string,
   handlePress: PropTypes.func

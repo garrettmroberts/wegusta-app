@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import PropTypes from 'prop-types';
@@ -41,7 +41,7 @@ const IconButton = ({ color, size, icon, handlePress }) => {
 };
 
 IconButton.propTypes = {
-  color: PropTypes.string.isRequired, // primary, error
+  color: PropTypes.string.isRequired, // primary, secondary
   size: PropTypes.string.isRequired, // large, medium, small, xsmall
   handlePress: PropTypes.func,
   icon: PropTypes.string.isRequired
