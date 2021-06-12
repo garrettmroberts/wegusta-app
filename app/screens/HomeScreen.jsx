@@ -20,9 +20,9 @@ const HomeScreen = () => {
       <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
       <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon={addPersonIcon} />
 
-      <SocialButton icon="facebook" handlePress={handlePress} />
-      {/* <DecisionButton decision="like" />
-      <DecisionButton decision="dislike" />  */}
+      {/* <SocialButton icon="facebook" handlePress={handlePress} />
+      <DecisionButton decision="like" />
+      <DecisionButton decision="dislike" /> 
       <OverlayButton dark={true} overlay="more" />
       <OverlayButton dark={false} overlay="search" />
       <OverlayButton dark={true} overlay="close" />
@@ -31,7 +31,7 @@ const HomeScreen = () => {
       <IconButton size="large" color="primary" icon="person-add" handlePress={handlePress} />
       <IconButton size="medium" color="primary" icon="person-add" handlePress={handlePress} />
       <IconButton size="small" color="error" icon="person-add" handlePress={handlePress} />
-      <IconButton size="xsmall" color="error" icon="person-add" handlePress={handlePress} />
+      <IconButton size="xsmall" color="error" icon="person-add" handlePress={handlePress} /> */}
     </View>
   );
 };

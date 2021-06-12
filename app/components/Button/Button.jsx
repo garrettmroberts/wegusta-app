@@ -64,15 +64,15 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
 
   const expand = (size) => {
     Animated.timing(heightAnim, {
-      toValue: startHeight(size) + 3,
-      duration: 300,
+      toValue: startHeight(size),
+      duration: 150,
       useNativeDriver: false
     }).start();
 
     if (size !== 'fullWidth') {
       Animated.timing(paddingHorizAnim, {
-        toValue: 35,
-        duration: 300,
+        toValue: 32,
+        duration: 150,
         useNativeDriver: false
       }).start();
     }
@@ -80,15 +80,15 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   
   const compact = (size) => {
     Animated.timing(heightAnim, {
-      toValue: startHeight(size),
-      duration: 300,
+      toValue: startHeight(size) - 3,
+      duration: 150,
       useNativeDriver: false
     }).start();
 
     if (size !== 'fullWidth') {
       Animated.timing(paddingHorizAnim, {
-        toValue: 32,
-        duration: 300,
+        toValue: 29,
+        duration: 150,
         useNativeDriver: false
       }).start();
     }
@@ -108,8 +108,8 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       <Pressable 
         style={styles.centered} 
         onPress={ handlePress } 
-        onPressIn={() => expand(size)}
-        onPressOut={() => compact(size)}
+        onPressIn={() => compact(size)}
+        onPressOut={() => expand(size)}
       >
         { formatContent(icon, iconPlacement, text, type )}
       </Pressable>
