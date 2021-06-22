@@ -8,7 +8,7 @@ const fonts = {
     fontStyle: 'normal',
     lineHeight: 32,
     letterSpacing: 0,
-    color: colors.black
+    color: colors.primary
   },
 
   h2: {
@@ -18,7 +18,7 @@ const fonts = {
     fontStyle: 'normal',
     lineHeight: 24,
     letterSpacing: 0,
-    color: colors.black
+    color: colors.primary
   },
 
   body: {
@@ -49,7 +49,7 @@ const fonts = {
     lineHeight: 24,
     letterSpacing: 0,
     textAlign: 'center',
-    color: colors.black
+    color: colors.primary
   },
 
   link: {

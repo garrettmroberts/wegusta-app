@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: colors.black,
+    shadowColor: colors.primary,
     shadowOffset: {
       width: 0,
       height: 3

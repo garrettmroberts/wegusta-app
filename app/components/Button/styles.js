@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   darkText: {
-    color: colors.black
+    color: colors.primary
   },
   grayText: {
     color: colors.grey

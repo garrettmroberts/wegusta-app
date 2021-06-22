@@ -8,8 +8,7 @@ const colors = {
   warning: '#FFC857',
   error: '#FF004D',
 
-  black: '#1C262D',
-
+  // For use in facebook icon only
   facebookBlue: '#0B7FFB'
 };
 
