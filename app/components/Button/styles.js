@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, constants, fonts } from '../../config';
+import { colors, constants } from '../../config';
 
 const styles = StyleSheet.create({
   centered: {
@@ -54,16 +54,16 @@ const styles = StyleSheet.create({
   },
   text: {
     marginHorizontal: 10,
-    fontWeight: fonts.buttonReg.fontWeight,
-    lineHeight: fonts.buttonReg.lineHeight,
-    alignSelf: 'center',
-    fontSize: 14
+    alignSelf: 'center'
   },
   darkText: {
     color: colors.primary
   },
   grayText: {
     color: colors.grey
+  },
+  lightText: {
+    color: colors.white
   }
 });
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 
 import PropTypes from 'prop-types';
 
@@ -9,20 +8,26 @@ import { fonts, colors } from '../../config';
 import buildIcon from '../../utils/buildIcon';
 
 const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
-  const getTextStyle = (type) => {
+  const getTextStyle = (type, size) => {
+    let classlist = [styles.text];
+
+    classlist.push(size === 'small' ? fonts.buttonSmall : fonts.buttonReg);
     if (type === 'primary' || type === 'destructive') {
-      return [fonts.button, styles.text];
+      classlist.push(styles.text, styles.lightText);
     } else if (type === 'secondary' || type === 'tertiary') {
-      return [fonts.button, styles.darkText, styles.text];
+      classlist.push(fonts.buttonReg, styles.darkText);
     } else {
-      return [fonts.button, styles.grayText, styles.text];
-    }
+      classlist.push(fonts.buttonReg, styles.grayText);
+    };
+
+    console.log(classlist);
+    return classlist;
   };
 
   const iconGen = (icon, type) => {
     let color;
 
-    if (type === 'primary') {
+    if (type === 'primary' || type === 'destructive') {
       color = colors.white;
     } else if (type === 'secondary'|| type === 'tertiary') {
       color = colors.primary;
@@ -42,13 +47,13 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { iconGen(icon, type) }
-            <Text style={getTextStyle(type)}>{ text }</Text>
+            <Text style={getTextStyle(type, size)}>{ text }</Text>
           </View>
         );
       case 'right':
         return (
           <View style={styles.contentWrapper}>
-            <Text style={ getTextStyle(type) }>{ text }</Text>
+            <Text style={ getTextStyle(type, size) }>{ text }</Text>
             { iconGen(icon, type) }
           </View>
         );
@@ -56,12 +61,12 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { iconGen(icon, type) }
-            <Text style={ getTextStyle(type) }>{ text }</Text>
+            <Text style={ getTextStyle(type, size) }>{ text }</Text>
             { iconGen(icon, type) }
           </View>
         );
       default:
-        return <Text style={ getTextStyle(type) }>{ text }</Text>;
+        return <Text style={ getTextStyle(type, size) }>{ text }</Text>;
       };
       
     }
