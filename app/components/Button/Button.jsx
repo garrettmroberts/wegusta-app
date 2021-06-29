@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 import { fonts, colors } from '../../config';
+import buildIcon from '../../utils/buildIcon';
 
 const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
   const getTextStyle = (type) => {
@@ -31,7 +32,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       color = colors.primary;
     }
 
-    return <Ionicons name={icon} size={24} color={ color } />;
+    return buildIcon({name: icon, color: color, size: 24});
   };
 
   const formatContent = (icon, iconPlacement, text, type ) => {

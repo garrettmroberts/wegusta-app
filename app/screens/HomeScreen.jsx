@@ -74,8 +74,6 @@ const HomeScreen = () => {
             <Button type="destructive" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
           </View>
         </View>
-        <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon="person-add" />
-        <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon="person-add" />
 
         <SocialButton icon="facebook" handlePress={handlePress} />
         <DecisionButton decision="like" />
