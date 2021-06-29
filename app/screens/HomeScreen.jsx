@@ -5,6 +5,7 @@ import { colors } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput } from '../components';
+import buildIcon from '../utils/buildIcon';
 
 const handlePress = () => { console.log('pressed'); };
 const HomeScreen = () => {
@@ -48,6 +49,25 @@ const HomeScreen = () => {
             </View>
           </View>
         </View>
+
+        <View>
+          <Text style={styles.header}>Icons</Text>
+          <View style={styles.section}>
+            {buildIcon({name: 'md-search', size: 24, color: colors.primary})}
+            {buildIcon({name: 'md-notifications-outline', size: 24, color: colors.primary})}
+            {buildIcon({name: 'fast-food', size: 24, color: colors.primary})}
+            {buildIcon({name: 'chevron-forward', size: 24, color: colors.primary})}
+            {buildIcon({name: 'chevron-back', size: 24, color: colors.primary})}
+            {buildIcon({name: 'checkbox', size: 24, color: colors.primary})}
+            {buildIcon({name: 'checkmark-circle', size: 24, color: colors.primary})}
+            {buildIcon({name: 'md-person-add', size: 24, color: colors.primary})}
+            {buildIcon({name: 'heart', size: 24, color: colors.primary})}
+            {buildIcon({name: 'close', size: 24, color: colors.primary})}
+            {buildIcon({name: 'md-refresh', size: 24, color: colors.primary})}
+            {buildIcon({name: 'star', size: 24, color: colors.primary})}
+            {buildIcon({name: 'star-half', size: 24, color: colors.primary})}
+          </View>
+        </ View>
 
         <View>
           <Text style={styles.header}>Buttons</Text>
