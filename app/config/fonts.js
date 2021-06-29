@@ -1,93 +1,90 @@
 import { colors } from './colors';
 
 const fonts = {
-  h1: {
+  displayBold: {
+    fontFamily: 'Avenir',
+    fontSize: 32,
+    lineHeight: 40,
+    fontWeight: '900'
+  },
+  h1Bold: {
     fontFamily: 'Avenir',
     fontSize: 24,
     fontWeight: '900',
-    fontStyle: 'normal',
-    lineHeight: 32,
-    letterSpacing: 0,
-    color: colors.primary
+    lineHeight: 32
   },
-
-  h2: {
+  h1Reg: {
+    fontFamily: 'Avenir',
+    fontSize: 24,
+    fontWeight: '500',
+    lineHeight: 32
+  },
+  h2Bold: {
+    fontFamily: 'Avenir',
+    fontSize: 18,
+    fontWeight: '900',
+    lineHeight: 24
+  },
+  h2Reg: {
     fontFamily: 'Avenir',
     fontSize: 18,
     fontWeight: '500',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    letterSpacing: 0,
-    color: colors.primary
+    lineHeight: 24
+  },
+  bodyBold: {
+    fontFamily: 'Avenir',
+    fontSize: 14,
+    fontWeight: '800',
+    lineHeight: 24
+  },
+  bodyReg: {
+    fontFamily: 'Avenir',
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 24
+  },
+  buttonReg: {
+    fontFamily: 'Avenir',
+    fontSize: 16,
+    fontWeight: '800',
+    lineHeight: 24
   },
 
-  body: {
+  buttonSmall: {
     fontFamily: 'Avenir',
     fontSize: 14,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 16,
-    letterSpacing: 0
+    fontWeight: '800',
+    lineHeight: 24
   },
-
-  button: {
+  inputLabel: {
     fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: '900',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: colors.white
+    fontSize: 12,
+    fontWeight: '800',
+    lineHeight: 16
   },
-
-  greyLight: {
+  inputValue: {
     fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: '900',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: colors.primary
+    fontSize: 18,
+    fontWeight: '400',
+    lineHeight: 24
   },
-
-  link: {
-    fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: '900',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: colors.dark
-  },
-  inputPlaceholder: {
-    fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 20,
-    letterSpacing: 0,
-    color: colors.grey
-  },
-  inputDisabled: {
-    fontFamily: 'Avenir',
-    fontSize: 14,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 20,
-    letterSpacing: 0,
-    color: colors.greyLight
-  },
-  meta: {
+  metaBold: {
     fontFamily: 'Avenir',
     fontSize: 10,
-    fontWeight: 'normal',
-    fontStyle: 'normal',
-    lineHeight: 12,
-    letterSpacing: 0,
-    color: colors.grey
+    fontWeight: '900',
+    lineHeight: 16
+  },
+  metaReg: {
+    fontFamily: 'Avenir',
+    fontSize: 10,
+    fontWeight: '400',
+    lineHeight: 16
+  },
+  textDark: {
+    color: colors.primary
+  },
+  textLight: {
+    color: colors.white
   }
 };
 

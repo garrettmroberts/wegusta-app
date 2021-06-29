@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginHorizontal: 10,
-    fontWeight: fonts.button.fontWeight,
-    lineHeight: fonts.button.lineHeight,
+    fontWeight: fonts.buttonReg.fontWeight,
+    lineHeight: fonts.buttonReg.lineHeight,
     alignSelf: 'center',
     fontSize: 14
   },
