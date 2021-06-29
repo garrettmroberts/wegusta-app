@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   buttonSmall: {
-    borderRadius: 12
+    borderRadius: 8
   },
   buttonReg: {
-    borderRadius: 8
+    borderRadius: 12
   },
   primary: {
     backgroundColor: colors.primary
@@ -41,19 +41,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24
   },
   large: {
-    height: 48
+    height: 48,
+    paddingHorizontal: 32
   },
   medium: {
-    height: 40
+    height: 40,
+    paddingHorizontal: 32
   },
   small: {
-    height: 32
+    height: 32,
+    paddingHorizontal: 32
   },
   text: {
     marginHorizontal: 10,
     fontWeight: fonts.button.fontWeight,
     lineHeight: fonts.button.lineHeight,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontSize: 14
   },
   darkText: {
     color: colors.primary

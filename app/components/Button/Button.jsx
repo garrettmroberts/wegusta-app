@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { View, Pressable, Animated } from 'react-native';
+import React from 'react';
+import { Text, View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import PropTypes from 'prop-types';
@@ -8,17 +8,6 @@ import styles from './styles';
 import { fonts, colors } from '../../config';
 
 const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
-  const startHeight = (size) => {
-    switch(size) {
-    case 'small':
-      return 32;
-    case 'medium':
-      return 40;
-    default:
-      return 48;
-    }
-  };
-
   const getTextStyle = (type) => {
     if (type === 'primary' || type === 'destructive') {
       return [fonts.button, styles.text];
@@ -52,13 +41,13 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { iconGen(icon, type) }
-            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
+            <Text style={getTextStyle(type)}>{ text }</Text>
           </View>
         );
       case 'right':
         return (
           <View style={styles.contentWrapper}>
-            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
+            <Text style={ getTextStyle(type) }>{ text }</Text>
             { iconGen(icon, type) }
           </View>
         );
@@ -66,78 +55,26 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
         return (
           <View style={styles.contentWrapper}>
             { iconGen(icon, type) }
-            <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>
+            <Text style={ getTextStyle(type) }>{ text }</Text>
             { iconGen(icon, type) }
           </View>
         );
       default:
-        return <Animated.Text style={[getTextStyle(type), { fontSize: textSizeAnim}]}>{ text }</Animated.Text>;
+        return <Text style={ getTextStyle(type) }>{ text }</Text>;
       };
       
     }
   };
 
-  const heightAnim = useRef(new Animated.Value(startHeight(size))).current;
-  const paddingHorizAnim = useRef(new Animated.Value(32)).current;
-  const textSizeAnim = useRef(new Animated.Value(14)).current;
-
-  const expand = (size) => {
-    Animated.timing(heightAnim, {
-      toValue: startHeight(size),
-      duration: 150,
-      useNativeDriver: false
-    }).start();
-
-    Animated.timing(textSizeAnim, {
-      toValue: 14,
-      duration: 150, 
-      useNativeDriver: false
-    }).start();
-
-    if (size !== 'fullWidth') {
-      Animated.timing(paddingHorizAnim, {
-        toValue: 32,
-        duration: 150,
-        useNativeDriver: false
-      }).start();
-    }
-  };
-  
-  const compact = (size) => {
-    Animated.timing(heightAnim, {
-      toValue: startHeight(size) - 3,
-      duration: 150,
-      useNativeDriver: false
-    }).start();
-
-    Animated.timing(textSizeAnim, {
-      toValue: 12,
-      duration: 150, 
-      useNativeDriver: false
-    }).start();
-
-    if (size !== 'fullWidth') {
-      Animated.timing(paddingHorizAnim, {
-        toValue: 29,
-        duration: 150,
-        useNativeDriver: false
-      }).start();
-    }
-  };
-
   const buttonMain = (
-    <Animated.View style={[
+    <View style={[
       styles.centered,
       styles[type],
       styles[size],
-      size === 'small' ? styles.buttonSmall : styles.buttonReg,
-      {
-        height: heightAnim,
-        paddingHorizontal: paddingHorizAnim
-      }
+      size === 'small' ? styles.buttonSmall : styles.buttonReg
     ]}>
       { formatContent(icon, iconPlacement, text, type )}
-    </Animated.View>
+    </View>
   );
 
   const wrappedButton = (type) => {
@@ -147,9 +84,10 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       return (
         <Pressable
           onPress={ handlePress }
-          onPressIn={() => compact(size)}
-          onPressOut={() => expand(size)}
-          style={[styles.centered]}
+          style={({ pressed }) => [
+            styles.centered,
+            { opacity: pressed ? 0.8 : 1 }
+          ]}
         >
           { buttonMain }
         </Pressable>

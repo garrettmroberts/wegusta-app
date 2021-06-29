@@ -48,8 +48,32 @@ const HomeScreen = () => {
             </View>
           </View>
         </View>
-        <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" handlePress={handlePress} icon="person-add" />
-        <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" handlePress={handlePress} icon="person-add" />
+
+        <View>
+          <Text style={styles.header}>Buttons</Text>
+          <View style={styles.section}>
+            <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
+            <Button type="primary" size="large" iconPlacement="right" text="Codename LLC" icon="person-add" />
+            <Button type="primary" size="medium" iconPlacement="none" text="Codename LLC" icon="person-add" />
+            <Button type="primary" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
+            <Button type="secondary" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
+            <Button type="secondary" size="large" iconPlacement="right" text="Codename LLC" icon="person-add" />
+            <Button type="secondary" size="medium" iconPlacement="none" text="Codename LLC" icon="person-add" />
+            <Button type="secondary" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
+            <Button type="tertiary" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
+            <Button type="tertiary" size="large" iconPlacement="right" text="Codename LLC" icon="person-add" />
+            <Button type="tertiary" size="medium" iconPlacement="none" text="Codename LLC" icon="person-add" />
+            <Button type="tertiary" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
+            <Button type="disabled" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
+            <Button type="disabled" size="large" iconPlacement="right" text="Codename LLC" icon="person-add" />
+            <Button type="disabled" size="medium" iconPlacement="none" text="Codename LLC" icon="person-add" />
+            <Button type="disabled" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
+            <Button type="destructive" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
+            <Button type="destructive" size="large" iconPlacement="right" text="Codename LLC" icon="person-add" />
+            <Button type="destructive" size="medium" iconPlacement="none" text="Codename LLC" icon="person-add" />
+            <Button type="destructive" size="small" iconPlacement="both" text="Codename LLC" icon="person-add" />
+          </View>
+        </View>
         <Button type="disabled" size="medium" iconPlacement="both" text="Codename LLC" handlePress={handlePress} icon="person-add" />
         <Button type="destructive" size="small" text="Codename LLC" handlePress={handlePress} icon="person-add" />
 
@@ -88,6 +112,7 @@ const styles = StyleSheet.create({
   },
   section: {
     flexDirection: 'row',
+    justifyContent: 'center',
     flexWrap: 'wrap',
     marginBottom: 15
 
