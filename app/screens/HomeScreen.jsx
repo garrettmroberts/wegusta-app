@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { View, FlatList, ScrollView, Text, StyleSheet } from 'react-native';
 import { useStoreContext } from '../utils/Context';
@@ -17,7 +18,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View>
+        <View style={styles.wide}>
           <Text style={styles.header}>Colors</Text>
           <View style={styles.section}>
             <View style={[styles.colorSquare, { backgroundColor: colors.primary }]} >
@@ -50,7 +51,7 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <View>
+        <View style={styles.wide}>
           <Text style={styles.header}>Icons</Text>
           <View style={styles.section}>
             {buildIcon({name: 'md-search', size: 24, color: colors.primary})}
@@ -69,7 +70,7 @@ const HomeScreen = () => {
           </View>
         </ View>
 
-        <View>
+        <View style={styles.wide}>
           <Text style={styles.header}>Buttons</Text>
           <View style={styles.section}>
             <Button type="primary" size="fullWidth" iconPlacement="left" text="Codename LLC" icon="person-add" />
@@ -95,9 +96,15 @@ const HomeScreen = () => {
           </View>
         </View>
 
+        <View style={styles.wide} >
+          <Text style={styles.header}>Decision Buttons</Text>
+          <View style={styles.section}>
+            <DecisionButton decision="like" />
+            <DecisionButton decision="dislike" />
+          </View>
+        </View>
+
         <SocialButton icon="facebook" handlePress={handlePress} />
-        <DecisionButton decision="like" />
-        <DecisionButton decision="dislike" />
         <OverlayButton dark={true} overlay="more" />
         <OverlayButton dark={false} overlay="search" />
         <OverlayButton dark={true} overlay="close" />
@@ -139,6 +146,9 @@ const styles = StyleSheet.create({
     height: 70,
     width: 70,
     margin: 2
+  },
+  wide: {
+    width: '100%'
   }
 });
 

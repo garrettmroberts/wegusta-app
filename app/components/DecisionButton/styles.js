@@ -18,11 +18,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 7
-  },
-  icon: {
-    height: 32,
-    width: 32,
-    resizeMode: 'contain'
+  }, icon: {
+    position: 'relative',
+    top: 2
   }
 });
 
