@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, FlatList, ScrollView, Text, StyleSheet } from 'react-native';
 import { useStoreContext } from '../utils/Context';
-import { colors } from '../config';
+import { colors, fonts } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput } from '../components';
@@ -48,6 +48,26 @@ const HomeScreen = () => {
             <View style={[styles.colorSquare, { backgroundColor: colors.facebookBlue }]} >
               <Text>facebookBlue</Text>
             </View>
+          </View>
+        </View>
+
+        <View style={styles.wide}>
+          <Text style={styles.header}>Fonts</Text>
+          <View style={styles.section}>
+            <Text style={fonts.displayBold}>Display Bold</Text>
+            <Text style={fonts.h1Bold}>H1 Bold</Text>
+            <Text style={fonts.h1Reg}>H1 Regular</Text>
+            <Text style={fonts.h2Bold}>H2 Bold</Text>
+            <Text style={fonts.h2Reg}>H2 Regular</Text>
+            <Text style={fonts.bodyBold}>Body Bold</Text>
+            <Text style={fonts.bodyReg}>Body Regular</Text>
+            <Text style={fonts.buttonReg}>Button Regular</Text>
+            <Text style={fonts.buttonSmall}>Button Small</Text>
+            <Text style={fonts.inputLabel}>Inout Label</Text>
+            <Text style={fonts.inputValue}>Input Value</Text>
+            <Text style={fonts.metaBold}>Meta Bold</Text>
+            <Text style={fonts.metaReg}>Meta Regular</Text>
+
           </View>
         </View>
 
