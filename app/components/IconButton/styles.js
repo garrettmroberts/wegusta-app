@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   primary: {
     backgroundColor: colors.primary
   },
-  error: {
+  secondary: {
     backgroundColor: colors.greyLight
   }
 });

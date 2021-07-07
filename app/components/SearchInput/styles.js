@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     height: 48,
     width: constants.screenWidth - 48,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingRight: 15
   },
   input: {
     fontSize: 18,
@@ -17,6 +18,9 @@ const styles = StyleSheet.create({
   icon:{
     marginLeft: 22,
     marginRight: 10
+  },
+  invisible: {
+    display: 'none'
   }
 });
 

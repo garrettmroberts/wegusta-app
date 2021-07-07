@@ -124,16 +124,49 @@ const HomeScreen = () => {
           </View>
         </View>
 
-        <SocialButton icon="facebook" handlePress={handlePress} />
-        <OverlayButton dark={true} overlay="more" />
-        <OverlayButton dark={false} overlay="search" />
-        <OverlayButton dark={true} overlay="close" />
-        <SearchInput placeholder='Search' />
-        <SearchInput placeholder='Search' disabled={true} />
-        <IconButton size="large" color="primary" icon="person-add" handlePress={handlePress} />
-        <IconButton size="medium" color="primary" icon="person-add" handlePress={handlePress} />
-        <IconButton size="small" color="error" icon="person-add" handlePress={handlePress} />
-        <IconButton size="xsmall" color="error" icon="person-add" handlePress={handlePress} />
+        <View style={styles.wide} >
+          <Text style={styles.header}>Social Buttons</Text>
+          <View style={styles.section}>
+            <SocialButton icon="facebook" handlePress={handlePress} />
+            <SocialButton icon="google" handlePress={handlePress} />
+            <SocialButton icon="apple" handlePress={handlePress} />
+            <SocialButton icon="email" handlePress={handlePress} />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Overlay Buttons</Text>
+          <View style={styles.section}>
+            <OverlayButton dark={true} overlay="more" />
+            <OverlayButton dark={true} overlay="search" />
+            <OverlayButton dark={true} overlay="close" />
+            <OverlayButton overlay="more" />
+            <OverlayButton overlay="search" />
+            <OverlayButton overlay="close" />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Search Buttons</Text>
+          <View style={styles.section}>
+            <SearchInput placeholder='Search' />
+            <SearchInput placeholder='Search' disabled={true} />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Icon Buttons</Text>
+          <View style={styles.section}>
+            <IconButton size="large" color="primary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="medium" color="primary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="small" color="primary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="xsmall" color="primary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="large" color="secondary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="medium" color="secondary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="small" color="secondary" icon="person-add" handlePress={handlePress} />
+            <IconButton size="xsmall" color="secondary" icon="person-add" handlePress={handlePress} />
+          </View>
+        </View>
       </ScrollView>
     </View>
   );

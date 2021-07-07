@@ -19,8 +19,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
     } else {
       classlist.push(fonts.buttonReg, styles.grayText);
     };
-
-    console.log(classlist);
+    
     return classlist;
   };
 

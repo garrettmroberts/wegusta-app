@@ -30,7 +30,7 @@ const SocialButton = ({ icon, handlePress }) => {
 };
 
 SocialButton.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired, // 'facebook', 'google', 'apple', 'email'
   handlePress: PropTypes.func
 };
 
