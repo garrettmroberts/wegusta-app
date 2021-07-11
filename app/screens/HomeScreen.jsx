@@ -5,7 +5,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors, fonts } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput } from '../components';
+import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
 import buildIcon from '../utils/buildIcon';
 
 const handlePress = () => { console.log('pressed'); };
@@ -165,6 +165,13 @@ const HomeScreen = () => {
             <IconButton size="medium" color="secondary" icon="person-add" handlePress={handlePress} />
             <IconButton size="small" color="secondary" icon="person-add" handlePress={handlePress} />
             <IconButton size="xsmall" color="secondary" icon="person-add" handlePress={handlePress} />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Toast</Text>
+          <View style={styles.section}>
+            <Toast description="Description" iconLeft="md-person-add" />
           </View>
         </View>
       </ScrollView>
