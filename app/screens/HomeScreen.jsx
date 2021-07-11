@@ -5,7 +5,7 @@ import { useStoreContext } from '../utils/Context';
 import { colors, fonts } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
+import { Avatar, Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
 import buildIcon from '../utils/buildIcon';
 
 const handlePress = () => { console.log('pressed'); };
@@ -172,6 +172,33 @@ const HomeScreen = () => {
           <Text style={styles.header}>Toast</Text>
           <View style={styles.section}>
             <Toast description="Description" iconLeft="md-person-add" />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Avatars</Text>
+          <View style={styles.section}>
+            <Avatar size="large" />
+            <Avatar size="medium" />
+            <Avatar size="small" />
+            <Avatar size="xsmall" />
+            <Avatar size="large" accessory="checkmark"/>
+            <Avatar size="medium" accessory="checkmark"/>
+            <Avatar size="small" accessory="checkmark"/>
+            <Avatar size="large" avatarStyle="letter" letter="A" />
+            <Avatar size="medium" avatarStyle="letter" letter="A" />
+            <Avatar size="small" avatarStyle="letter" letter="A" />
+            <Avatar size="xsmall" avatarStyle="letter" letter="A" />
+            <Avatar size="large" avatarStyle="letter" letter="A" accessory="checkmark" />
+            <Avatar size="medium" avatarStyle="letter" letter="A" accessory="checkmark" />
+            <Avatar size="small" avatarStyle="letter" letter="A" accessory="checkmark" />
+            <Avatar size="large" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} />
+            <Avatar size="medium" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} />
+            <Avatar size="small" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} />
+            <Avatar size="xsmall" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} />
+            <Avatar size="large" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
+            <Avatar size="medium" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
+            <Avatar size="small" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
           </View>
         </View>
       </ScrollView>
