@@ -27,6 +27,10 @@ const styles = StyleSheet.create({
     height: 24,
     width: 24
   },
+  navSized: {
+    height: 32,
+    width: 32
+  },
   accessory: {
     position: 'absolute',
     backgroundColor: colors.success,

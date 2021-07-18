@@ -5,7 +5,8 @@ import { useStoreContext } from '../utils/Context';
 import { colors, fonts } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { Avatar, Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
+import { Button, SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
+import Avatar from '../components/Avatar/Avatar';
 import buildIcon from '../utils/buildIcon';
 
 const handlePress = () => { console.log('pressed'); };

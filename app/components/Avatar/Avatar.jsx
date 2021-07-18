@@ -17,6 +17,8 @@ const Avatar = ({ size, avatarStyle, accessory, letter, image, onPress }) => {
       return buildIcon({ name: 'md-person-add', size: 21, color: colors.white });
     case 'xsmall':
       return buildIcon({ name: 'md-person-add', size: 12, color: colors.white });
+    case 'navSized':
+      return buildIcon({ name: 'md-person-add', size: 18, color: colors.white });
     }
   };
 
@@ -51,7 +53,7 @@ const Avatar = ({ size, avatarStyle, accessory, letter, image, onPress }) => {
 };
 
 Avatar.propTypes = {
-  size: PropTypes.string.isRequired, // large, medium, small, xsmall
+  size: PropTypes.string.isRequired, // large, medium, small, xsmall, navSized
   avatarStyle: PropTypes.string, // image, letter
   letter: PropTypes.string, // Only required if avatarStyle === 'letter'
   image: PropTypes.object, // Only required if avatarStyle === 'image'.  Check react-native Image docs for example
@@ -59,4 +61,4 @@ Avatar.propTypes = {
   onPress: PropTypes.func
 };
 
-export { Avatar };
+export default Avatar;
