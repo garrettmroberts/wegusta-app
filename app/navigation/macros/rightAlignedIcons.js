@@ -8,11 +8,11 @@ import buildIcon from '../../utils/buildIcon';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-const HomeScreenHeaderRight = () => {
+const rightAlignedIcons = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.navHeader} >
+    <View style={styles.rightIconsWrapper} >
       { buildIcon({
         name: 'notifications-outline',
         color: colors.black,
@@ -27,4 +27,4 @@ const HomeScreenHeaderRight = () => {
   );
 };
 
-export default HomeScreenHeaderRight;
+export default rightAlignedIcons;

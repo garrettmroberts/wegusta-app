@@ -1,10 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
-import HomeScreenHeaderRight from '../screens/HomeScreen/HomeScreenHeaderRight';
 import ComponentsDemo from '../screens/ComponentsDemo';
 import { colors } from '../config';
+import navOptions from './options';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
@@ -13,15 +14,7 @@ const StackNavigator = () => {
       <Stack.Screen
         name="Home" 
         component={HomeScreen} 
-        options={{ 
-          title: 'Welcome',
-          headerRight: HomeScreenHeaderRight,
-          headerTitleAlign: 'left',
-          headerTintColor: colors.primary,
-          headerTitleStyle: {
-            fontWeight: 'bold'
-          }
-        }} 
+        options={navOptions.leftAlignWithIcons}
       />
       <Stack.Screen 
         name="ComponentsDemo"
