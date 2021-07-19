@@ -1,22 +1,18 @@
 import { colors } from '../config';
-import rightAlignedIcons from './macros/rightAlignedIcons';
+import RightAlignedIcons from './macros/RightAlignedIcons';
+import Title from './macros/Title';
 
 const navOptions = {
   leftAlignWithIcons: { 
     title: 'Welcome',
-    headerRight: rightAlignedIcons,
+    headerRight: RightAlignedIcons,
     headerTitleAlign: 'left',
-    headerTintColor: colors.primary,
-    headerTitleStyle: {
-      fontWeight: 'bold'
-    }
+    headerTitle: Title
   },
   centerAlign: {
-    headerTintColor: colors.primary,
-    headerTitleStyle: {
-      fontWeight: 'bold'
-    },
-    headerBackTitleVisible: false
+    headerBackTitleVisible: false,
+    headerTitle: Title,
+    headerTintColor: colors.primary
   }
 };
 
