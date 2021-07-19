@@ -19,6 +19,7 @@ const StackNavigator = () => {
       <Stack.Screen 
         name="ComponentsDemo"
         component={ComponentsDemo}
+        options={navOptions.centerAlign}
       />
     </Stack.Navigator>
   );

@@ -10,6 +10,13 @@ const navOptions = {
     headerTitleStyle: {
       fontWeight: 'bold'
     }
+  },
+  centerAlign: {
+    headerTintColor: colors.primary,
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    },
+    headerBackTitleVisible: false
   }
 };
 
