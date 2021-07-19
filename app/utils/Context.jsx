@@ -1,7 +1,8 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 const initialState = {
-  text: 'Foodie.io'
+  text: 'codename',
+  unreadNotifications: true
 };
 
 const StoreContext = createContext([initialState, function() {}]);
@@ -9,6 +10,11 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type){
+  case 'clearNotifications':
+    return {
+      ...state,
+      unreadNotifications: false
+    };
   default:
     console.log('STATE in reducer: ', state);
     return state;
