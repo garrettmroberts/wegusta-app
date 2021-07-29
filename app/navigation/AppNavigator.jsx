@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ComponentsDemo from '../screens/ComponentsDemo';
-import { colors } from '../config';
+import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 import navOptions from './options';
 
 const Stack = createStackNavigator();
@@ -20,6 +20,11 @@ const StackNavigator = () => {
         name="ComponentsDemo"
         component={ComponentsDemo}
         options={navOptions.centerAlign}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={NotificationScreen}
+        options={navOptions.leftAlignNoIcons}
       />
     </Stack.Navigator>
   );
