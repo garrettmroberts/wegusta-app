@@ -232,6 +232,7 @@ const HomeScreen = () => {
               ]}
               unread={true}
               lastUpdated={new Date()}
+              handlePress={handlePress}
             />
           </View>
         </View>

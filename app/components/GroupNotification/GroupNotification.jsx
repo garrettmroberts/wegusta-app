@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Avatar from '../Avatar/Avatar';
@@ -7,7 +7,7 @@ import styles from './styles';
 import buildIcon from '../../utils/buildIcon';
 import { colors } from '../../config';
 
-const GroupNotification = ({ users, unread, lastUpdated }) => {
+const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
   const wrapperClass = (unread) => {
     if (unread) {
       return styles.unreadWrapper;
@@ -95,7 +95,7 @@ const GroupNotification = ({ users, unread, lastUpdated }) => {
   };
 
   return (
-    <View style={[styles.groupNotifications, wrapperClass(unread)]}>
+    <Pressable style={[styles.groupNotifications, wrapperClass(unread)]} onPress={handlePress}>
       <View style={[styles.avatarWrapper, avatarWrapperClass(users)]}>
         { generateAvatars(users) }
       </View>
@@ -106,14 +106,15 @@ const GroupNotification = ({ users, unread, lastUpdated }) => {
       <View style={styles.aside}>
         { buildIcon({name: 'chevron-forward', color: colors.grey, size: 20}) }
       </View>
-    </View>
+    </Pressable>
   );
 };
 
 GroupNotification.propTypes = {
   users: PropTypes.array.isRequired,
   unread: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.instanceOf(Date)
+  lastUpdated: PropTypes.instanceOf(Date).isRequired,
+  handlePress: PropTypes.func
 };
 
 export default GroupNotification;
