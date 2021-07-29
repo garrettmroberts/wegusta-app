@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
     ...fonts.bodyBold
   },
   names: {
-    ...fonts.bodyBold
+    ...fonts.bodyBold,
+    overflow: 'hidden'
   },
   lastUpdatedText: {
     ...fonts.metaReg,

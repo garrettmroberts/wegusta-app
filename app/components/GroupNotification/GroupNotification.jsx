@@ -61,16 +61,24 @@ const GroupNotification = ({ users, unread, lastUpdated }) => {
   };
 
   const generateNames = (users) => {
-    const names = [];
+    let names = '';
     if (users.length === 1) {
-      names.push(users[0].firstName.concat(' ', users[0].lastName));
+      names += users[0].firstName.concat(' ', users[0].lastName);
     } else {
-      users.forEach(user => {
-        names.push(user.firstName);
+      users.forEach((user, idx) => {
+        user.firstName.split('').forEach(char => {
+          names.length <= 22 ? names += char : '';
+        });
+
+        if (names.length <= 22 && idx !== users.length - 1) {
+          names += ', ';
+        } else if (names.length >= 22 && idx !== users.length) {
+          names += '...';
+        }
       });
     }
 
-    return <Text style={styles.names}>{names.join(', ')}</Text>;
+    return <Text style={styles.names}>{names}</Text>;
   };
 
   const generateAccessory = (unread, lastUpdated) => {

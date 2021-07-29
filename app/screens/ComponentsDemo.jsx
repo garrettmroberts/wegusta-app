@@ -211,9 +211,9 @@ const HomeScreen = () => {
           <View style={styles.section}>
             <GroupNotification 
               users={[
-                {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' },
-                {letter: 'A', firstName: 'Julio', lastName: 'Alvares'},
-                {letter: 'J', firstName: 'Julio', lastName: 'Alvares'}
+                {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaronxxxxx', lastName: 'Coleman' },
+                {letter: 'A', firstName: 'Juliosss', lastName: 'Alvares'},
+                {letter: 'J', firstName: 'Juliosssssssssssssssss', lastName: 'Alvares'}
               ]}
               unread={true}
               lastUpdated={new Date()}
