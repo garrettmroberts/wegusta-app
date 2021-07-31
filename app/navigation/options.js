@@ -9,6 +9,11 @@ const navOptions = {
     headerTitleAlign: 'left',
     headerTitle: Title
   },
+  leftAlignNoIcons: {
+    headerTitle: '',
+    headerBackTitle: 'Notifications',
+    headerTintColor: colors.primary
+  },
   centerAlign: {
     headerBackTitleVisible: false,
     headerTitle: Title,

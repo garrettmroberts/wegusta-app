@@ -8,6 +8,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import { SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
 import Avatar from '../components/Avatar/Avatar';
 import Button from '../components/Button/Button';
+import GroupNotification from '../components/GroupNotification/GroupNotification';
 
 import buildIcon from '../utils/buildIcon';
 
@@ -202,6 +203,37 @@ const HomeScreen = () => {
             <Avatar size="large" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
             <Avatar size="medium" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
             <Avatar size="small" avatarStyle="image" image={{ uri: 'https://picsum.photos/200' }} accessory="checkmark" />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Group Notification</Text>
+          <View style={styles.section}>
+            <GroupNotification 
+              users={[
+                {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaronxxxxx', lastName: 'Coleman' },
+                {letter: 'A', firstName: 'Juliosss', lastName: 'Alvares'},
+                {letter: 'J', firstName: 'Juliosssssssssssssssss', lastName: 'Alvares'}
+              ]}
+              unread={true}
+              lastUpdated={new Date()}
+            />
+            <GroupNotification 
+              users={[
+                {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' },
+                {letter: 'A', firstName: 'Julio', lastName: 'Alvares'}
+              ]}
+              unread={false}
+              lastUpdated={new Date()}
+            />
+            <GroupNotification 
+              users={[
+                {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' }
+              ]}
+              unread={true}
+              lastUpdated={new Date()}
+              handlePress={handlePress}
+            />
           </View>
         </View>
       </ScrollView>
