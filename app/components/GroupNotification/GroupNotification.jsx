@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Avatar from '../Avatar/Avatar';
 import styles from './styles';
 import buildIcon from '../../utils/buildIcon';
+import formatNumber from '../../utils/formatNumber';
 import { colors } from '../../config';
 
 const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
@@ -90,7 +91,9 @@ const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
         </View>
       );
     } else {
-      return <Text style={styles.lastUpdatedText}>{lastUpdated.toLocaleString('default', { month: 'long', day: 'numeric' }) }</Text>;
+      const month = lastUpdated.toLocaleString('default', { month: 'long' });
+      const date = formatNumber(lastUpdated.getDate());
+      return <Text style={styles.lastUpdatedText}>{`${month} ${date}`}</Text>;
     };
   };
 
