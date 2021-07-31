@@ -26,7 +26,7 @@ const RightAlignedIcons = () => {
         color: colors.black,
         size: 32,
         onPress: () => {
-          navigation.navigate('ComponentsDemo');
+          navigation.navigate('Notifications');
           dispatch({type: 'clearNotifications'});
         }
       })}
