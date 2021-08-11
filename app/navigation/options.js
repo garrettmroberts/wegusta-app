@@ -17,7 +17,10 @@ const navOptions = {
   centerAlign: {
     headerBackTitleVisible: false,
     headerTitle: Title,
-    headerTintColor: colors.primary
+    headerTintColor: colors.primary,
+    headerStyle: {
+      shadowColor: 'transparent'
+    } 
   }
 };
 

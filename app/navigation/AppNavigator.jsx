@@ -24,7 +24,7 @@ const StackNavigator = () => {
       <Stack.Screen
         name="Notifications"
         component={NotificationScreen}
-        options={navOptions.leftAlignNoIcons}
+        options={navOptions.centerAlign}
       />
     </Stack.Navigator>
   );
