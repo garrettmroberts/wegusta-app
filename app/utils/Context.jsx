@@ -1,8 +1,59 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 const initialState = {
-  text: 'codename',
-  unreadNotifications: true
+  unreadNotifications: true,
+  notifications: [
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Sophia', lastName: 'Coleman' },
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Jax', lastName: 'Coleman' },
+        {letter: 'A', firstName: 'ReallyLongName', lastName: 'Alvares'},
+        {letter: 'J', firstName: 'Julio', lastName: 'Alvares'}
+      ],
+      unread: true,
+      lastUpdated: new Date()
+    },
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' }
+      ],
+      unread: true,
+      lastUpdated: new Date()
+    },
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' },
+        {letter: 'A', firstName: 'Julio', lastName: 'Alvares'}
+      ],
+      unread: true,
+      lastUpdated: new Date()
+    },
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' },
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Rodrigo', lastName: 'Coleman' },
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Guadalupe', lastName: 'Coleman' },
+        {letter: 'A', firstName: 'Julio', lastName: 'Alvares'}
+      ],
+      unread: false,
+      lastUpdated: new Date()
+    },
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' },
+        {letter: 'A', firstName: 'Julio', lastName: 'Alvares'}
+      ],
+      unread: false,
+      lastUpdated: new Date()
+    },
+    {
+      users: [
+        {image: { uri: 'https://picsum.photos/200' }, firstName: 'Aaron', lastName: 'Coleman' }
+      ],
+      unread: false,
+      lastUpdated: new Date()
+    }
+  ]
 };
 
 const StoreContext = createContext([initialState, function() {}]);

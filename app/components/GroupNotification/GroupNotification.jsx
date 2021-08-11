@@ -8,7 +8,7 @@ import buildIcon from '../../utils/buildIcon';
 import formatNumber from '../../utils/formatNumber';
 import { colors } from '../../config';
 
-const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
+const GroupNotification = ({ users, unread, lastUpdated, onPress }) => {
   const wrapperClass = (unread) => {
     if (unread) {
       return styles.unreadWrapper;
@@ -66,17 +66,18 @@ const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
     if (users.length === 1) {
       names += users[0].firstName.concat(' ', users[0].lastName);
     } else {
-      users.forEach((user, idx) => {
-        user.firstName.split('').forEach(char => {
+      for (let i = 0; i < users.length; i++) {
+        users[i].firstName.split('').forEach(char => {
           names.length <= 22 ? names += char : '';
         });
 
-        if (names.length <= 22 && idx !== users.length - 1) {
+        if (names.length <= 22 && i !== users.length - 1) {
           names += ', ';
-        } else if (names.length >= 22 && idx !== users.length) {
+        } else if (names.length >= 22 && i !== users.length) {
           names += '...';
+          break;
         }
-      });
+      }
     }
 
     return <Text style={styles.names}>{names}</Text>;
@@ -98,7 +99,7 @@ const GroupNotification = ({ users, unread, lastUpdated, handlePress }) => {
   };
 
   return (
-    <Pressable style={[styles.groupNotifications, wrapperClass(unread)]} onPress={handlePress}>
+    <Pressable style={[styles.groupNotifications, wrapperClass(unread)]} onPress={onPress}>
       <View style={[styles.avatarWrapper, avatarWrapperClass(users)]}>
         { generateAvatars(users) }
       </View>
@@ -117,7 +118,7 @@ GroupNotification.propTypes = {
   users: PropTypes.array.isRequired,
   unread: PropTypes.bool.isRequired,
   lastUpdated: PropTypes.instanceOf(Date).isRequired,
-  handlePress: PropTypes.func
+  onPress: PropTypes.func
 };
 
 export default GroupNotification;
