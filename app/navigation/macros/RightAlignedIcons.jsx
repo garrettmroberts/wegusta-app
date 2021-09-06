@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 import Avatar from '../../components/Avatar/Avatar';
@@ -15,7 +15,10 @@ const RightAlignedIcons = () => {
 
   const renderNotification = () => {
     if (state.unreadNotifications) {
-      return <View style={styles.notification} />;
+      return <Pressable style={styles.notification} onPress={() => {
+        navigation.navigate('Notifications');
+        dispatch({type: 'clearNotifications'});
+      }} />;
     }
   };
 

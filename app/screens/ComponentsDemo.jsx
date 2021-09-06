@@ -8,6 +8,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import { SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
 import Avatar from '../components/Avatar/Avatar';
 import Button from '../components/Button/Button';
+import Control from '../components/Control/Control';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
 
 import buildIcon from '../utils/buildIcon';
@@ -234,6 +235,15 @@ const HomeScreen = () => {
               lastUpdated={new Date()}
               handlePress={handlePress}
             />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Controls</Text>
+          <View style={styles.section}>
+            <Control type="toggle"/>
+            <Control type="toggle" selected={true} />
+            <Control type="toggle" disabled={true} selected={true} />
           </View>
         </View>
       </ScrollView>

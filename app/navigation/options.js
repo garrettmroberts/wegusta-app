@@ -1,4 +1,5 @@
 import { colors } from '../config';
+import RightAlignedIcon from './macros/rightAlignedIcon';
 import RightAlignedIcons from './macros/RightAlignedIcons';
 import Title from './macros/Title';
 
