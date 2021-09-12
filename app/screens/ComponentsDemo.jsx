@@ -9,8 +9,9 @@ import { SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, T
 import Avatar from '../components/Avatar/Avatar';
 import Button from '../components/Button/Button';
 import Checkbox from '../components/Checkbox/Checkbox';
-import Switch from '../components/Switch/Switch';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
+import InviteUserRow from '../components/InviteUserRow/InviteUserRow';
+import Switch from '../components/Switch/Switch';
 
 import buildIcon from '../utils/buildIcon';
 
@@ -262,6 +263,15 @@ const HomeScreen = () => {
             <Checkbox currentState="disabled" darkMode={true} />
           </View>
         </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Invite User Ros</Text>
+          <View style={styles.section}>
+            <InviteUserRow name="Jimothy Airbender" isSelected={true} avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
+            <InviteUserRow name="Jimothy Airbender" avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
+
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -273,7 +283,6 @@ const styles = StyleSheet.create({
     color: colors.white,
     fontWeight: '700'
   },
-  // eslint-disable-next-line react-native/no-color-literals
   scrollContainer: {
     alignItems: 'center',
     justifyContent: 'center'
