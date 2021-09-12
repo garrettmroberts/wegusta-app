@@ -1,3 +1,5 @@
+// This file will no longer be necessary when ComponentsDemo.jsx no longer exists
+
 export * from './Avatar/Avatar';
 export * from './Button/Button';
 export * from './IconButton/IconButton';

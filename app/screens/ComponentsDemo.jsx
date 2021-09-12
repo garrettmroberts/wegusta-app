@@ -8,6 +8,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 import { SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
 import Avatar from '../components/Avatar/Avatar';
 import Button from '../components/Button/Button';
+import Checkbox from '../components/Checkbox/Checkbox';
 import Switch from '../components/Switch/Switch';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
 
@@ -239,11 +240,26 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.wide} >
-          <Text style={styles.header}>Controls</Text>
+          <Text style={styles.header}>Switch</Text>
           <View style={styles.section}>
             <Switch />
             <Switch selected={true} />
             <Switch disabled={true} selected={true} />
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Checkbox</Text>
+          <View style={styles.section}>
+            <Checkbox currentState="unchecked" />
+            <Checkbox currentState="partial" />
+            <Checkbox currentState="checked" />
+            <Checkbox currentState="disabled" />
+
+            <Checkbox currentState="unchecked" darkMode={true} />
+            <Checkbox currentState="partial" darkMode={true} />
+            <Checkbox currentState="checked" darkMode={true} />
+            <Checkbox currentState="disabled" darkMode={true} />
           </View>
         </View>
       </ScrollView>
