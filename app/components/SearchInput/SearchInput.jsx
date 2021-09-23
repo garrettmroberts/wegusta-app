@@ -21,9 +21,11 @@ const SearchInput = ({ placeholder, disabled }) => {
   };
 
   const handleChangeText = value => {
+    const iconState = value.length > 0 ? 'flex' : 'none';
     setState({
       ...state,
-      inputText: value
+      inputText: value,
+      clearIconDisplayStyle: iconState
     });
   };
 
