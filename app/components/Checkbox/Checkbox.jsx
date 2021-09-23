@@ -6,13 +6,13 @@ import styles from './styles';
 import { colors } from '../../config';
 import buildIcon from '../../utils/buildIcon';
 
-const Checkbox = ({ currentState, darkMode, handlePress }) => {
+const Checkbox = ({ currentState, handlePress }) => {
   const [state, setState] = useState(currentState);
 
-  const PressableStyles = (state, darkMode) => {
+  const PressableStyles = (state) => {
     const style = [styles.box];
     
-    if (darkMode) {
+    if (state === 'partial' || state === 'checked') {
       style.push(styles.darkBox);
     } else {
       style.push(styles.lightBox);
@@ -25,8 +25,8 @@ const Checkbox = ({ currentState, darkMode, handlePress }) => {
     return style;
   };
 
-  const innerElement = (state, darkMode) => {
-    const iconColor = darkMode ? colors.white : colors.primary;
+  const innerElement = (state) => {
+    const iconColor = state === 'partial' || state === 'checked' ? colors.white : colors.primary;
 
     let icon;
     
@@ -68,15 +68,14 @@ const Checkbox = ({ currentState, darkMode, handlePress }) => {
   };
   
   return (
-    <Pressable style={PressableStyles(state, darkMode)} onPress={handlePress || vanillaHandlePress} >
-      { innerElement(state, darkMode) }
+    <Pressable style={PressableStyles(state)} onPress={handlePress || vanillaHandlePress} >
+      { innerElement(state) }
     </Pressable>
   );
 };
 
 Checkbox.propTypes = {
   currentState: PropTypes.string.isRequired, // unchecked, partial, checked, disabled
-  darkMode: PropTypes.bool,
   handlePress: PropTypes.func
 };
 
