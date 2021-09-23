@@ -50,7 +50,7 @@ const SearchInput = ({ placeholder, disabled }) => {
               returnKeyType='go'
               onFocus={handleFocus}
             />
-            <Pressable onPress={handleClear}>
+            <Pressable style={styles.clearButton} onPress={handleClear}>
               <Ionicons name="close" size={20} color={colors.greyDark} style={{ display: state.clearIconDisplayStyle }} />
             </Pressable>
           </View>
@@ -81,4 +81,4 @@ SearchInput.propTypes = {
   disabled: PropTypes.bool
 };
 
-export { SearchInput };
+export default SearchInput;

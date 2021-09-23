@@ -21,6 +21,12 @@ const styles = StyleSheet.create({
   },
   invisible: {
     display: 'none'
+  },
+  clearButton: {
+    height: 48,
+    paddingLeft: 12,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
