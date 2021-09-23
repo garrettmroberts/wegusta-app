@@ -261,7 +261,7 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.wide} >
-          <Text style={styles.header}>Invite User Ros</Text>
+          <Text style={styles.header}>Invite User Rows</Text>
           <View style={styles.section}>
             <InviteUserRow name="Jimothy Airbender" isSelected={true} avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
             <InviteUserRow name="Jimothy Airbender" avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
@@ -292,7 +292,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexWrap: 'wrap',
     marginBottom: 15
-
   },
   colorSquare: {
     height: 70,
