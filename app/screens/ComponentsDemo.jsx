@@ -5,12 +5,13 @@ import { useStoreContext } from '../utils/Context';
 import { colors, fonts } from '../config';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
-import { SocialButton, IconButton, DecisionButton, OverlayButton, SearchInput, Toast } from '../components';
+import { SocialButton, IconButton, DecisionButton, OverlayButton, Toast } from '../components';
 import Avatar from '../components/Avatar/Avatar';
 import Button from '../components/Button/Button';
 import Checkbox from '../components/Checkbox/Checkbox';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
 import InviteUserRow from '../components/InviteUserRow/InviteUserRow';
+import SearchInput from '../components/SearchInput/SearchInput';
 import Switch from '../components/Switch/Switch';
 
 import buildIcon from '../utils/buildIcon';
@@ -256,11 +257,6 @@ const HomeScreen = () => {
             <Checkbox currentState="partial" />
             <Checkbox currentState="checked" />
             <Checkbox currentState="disabled" />
-
-            <Checkbox currentState="unchecked" darkMode={true} />
-            <Checkbox currentState="partial" darkMode={true} />
-            <Checkbox currentState="checked" darkMode={true} />
-            <Checkbox currentState="disabled" darkMode={true} />
           </View>
         </View>
 
@@ -269,7 +265,6 @@ const HomeScreen = () => {
           <View style={styles.section}>
             <InviteUserRow name="Jimothy Airbender" isSelected={true} avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
             <InviteUserRow name="Jimothy Airbender" avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
-
           </View>
         </View>
       </ScrollView>

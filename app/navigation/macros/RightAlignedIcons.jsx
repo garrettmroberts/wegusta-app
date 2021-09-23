@@ -37,6 +37,7 @@ const RightAlignedIcons = () => {
       <View style={styles.navIconGap} />
       <Avatar
         size='navSized'
+        onPress={() => navigation.navigate('Invite')}
       />
     </View>
   );

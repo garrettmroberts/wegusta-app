@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ComponentsDemo from '../screens/ComponentsDemo';
+import InviteScreen from '../screens/InviteScreen/InviteScreen';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 import navOptions from './options';
 
@@ -25,6 +26,11 @@ const StackNavigator = () => {
         name="Notifications"
         component={NotificationScreen}
         options={navOptions.centerAlign}
+      />
+      <Stack.Screen
+        name="Invite"
+        component={InviteScreen}
+        options={navOptions.backAndForwardNavigation}
       />
     </Stack.Navigator>
   );

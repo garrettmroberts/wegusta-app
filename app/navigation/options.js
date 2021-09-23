@@ -1,7 +1,9 @@
 import { colors } from '../config';
+import { InviteLeft, InviteRight } from './macros/inviteMacros';
 import RightAlignedIcon from './macros/rightAlignedIcon';
 import RightAlignedIcons from './macros/RightAlignedIcons';
 import Title from './macros/Title';
+import { fonts } from '../config';
 
 const navOptions = {
   leftAlignWithIcons: { 
@@ -22,6 +24,12 @@ const navOptions = {
     headerStyle: {
       shadowColor: 'transparent'
     } 
+  },
+  backAndForwardNavigation: {
+    headerTitle: '',
+    headerTintColor: colors.primary,
+    headerLeft: InviteLeft,
+    headerRight: InviteRight
   }
 };
 
