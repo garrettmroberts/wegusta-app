@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
 import { colors } from '../../config';
 
-const SearchInput = ({ placeholder, disabled }) => {
+const SearchInput = ({ placeholder, disabled, handleSearch }) => {
 
   const [state, setState] = useState({
     inputText: '',
@@ -21,6 +21,7 @@ const SearchInput = ({ placeholder, disabled }) => {
   };
 
   const handleChangeText = value => {
+    handleSearch(value);
     const iconState = value.length > 0 ? 'flex' : 'none';
     setState({
       ...state,
@@ -80,7 +81,8 @@ const SearchInput = ({ placeholder, disabled }) => {
 
 SearchInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  handleSearch: PropTypes.func
 };
 
 export default SearchInput;

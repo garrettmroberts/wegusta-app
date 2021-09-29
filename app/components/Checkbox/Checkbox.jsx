@@ -66,9 +66,19 @@ const Checkbox = ({ currentState, handlePress }) => {
       setState('unchecked');
     }
   };
+
+  const multipleHandlers = () => {
+    if (typeof handlePress !== 'undefined') {
+      vanillaHandlePress();
+      handlePress();
+    } else {
+      vanillaHandlePress();
+    }
+    
+  };
   
   return (
-    <Pressable style={PressableStyles(state)} onPress={handlePress || vanillaHandlePress} >
+    <Pressable style={PressableStyles(state)} onPress={multipleHandlers} >
       { innerElement(state) }
     </Pressable>
   );

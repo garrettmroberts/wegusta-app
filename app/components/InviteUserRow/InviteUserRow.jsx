@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 import styles from './styles';
 
-const InviteUserRow = ({ name, avatarStyles, isSelected }) => {
+const InviteUserRow = ({ name, avatarStyles, isSelected, handlePress }) => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.flexRow}>
@@ -18,7 +18,7 @@ const InviteUserRow = ({ name, avatarStyles, isSelected }) => {
         })}
         <Text style={styles.text}>{ name }</Text>
       </View>
-      {Checkbox({currentState: isSelected ? 'checked' : 'unchecked', darkMode: true})}
+      {Checkbox({currentState: isSelected ? 'checked' : 'unchecked', handlePress})}
     </View>
   );
 };
@@ -30,7 +30,8 @@ InviteUserRow.propTypes = {
     letter: PropTypes.string, // Only required if avatarStyle === 'letter'
     image: PropTypes.object // Only required if avatarStyle === 'image'.  Check react-native Image docs for example
   }),
-  isSelected: PropTypes.bool
+  isSelected: PropTypes.bool,
+  handlePress: PropTypes.func
 };
 
 export default InviteUserRow;
