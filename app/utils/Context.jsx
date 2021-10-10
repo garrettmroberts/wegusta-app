@@ -53,7 +53,10 @@ const initialState = {
       unread: false,
       lastUpdated: new Date()
     }
-  ]
+  ],
+  pendingWorkflow: {
+    selectedUsers: []
+  }
 };
 
 const StoreContext = createContext([initialState, function() {}]);
@@ -65,6 +68,13 @@ const reducer = (state, action) => {
     return {
       ...state,
       unreadNotifications: false
+    };
+  case 'updatePendingWorkflowSelectedUsers':
+    return {
+      ...state,
+      pendingWorkflow: {
+        selectedUsers: action.payload
+      }
     };
   default:
     console.log('STATE in reducer: ', state);

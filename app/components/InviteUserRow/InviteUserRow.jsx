@@ -30,7 +30,10 @@ InviteUserRow.propTypes = {
     letter: PropTypes.string, // Only required if avatarStyle === 'letter'
     image: PropTypes.object // Only required if avatarStyle === 'image'.  Check react-native Image docs for example
   }),
-  isSelected: PropTypes.bool,
+  isSelected: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func
+  ]),
   handlePress: PropTypes.func
 };
 

@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import styles from './styles';
 import { colors } from '../../config';
 
-const SearchInput = ({ placeholder, disabled, handleSearch }) => {
+const SearchInput = ({ placeholder, disabled, handleSearch, handleClear }) => {
 
   const [state, setState] = useState({
     inputText: '',
@@ -30,11 +30,13 @@ const SearchInput = ({ placeholder, disabled, handleSearch }) => {
     });
   };
 
-  const handleClear = () => {
+  const handleClearInput = () => {
     setState({
       clearIconDisplayStyle: 'none',
       inputText: ''
     });
+
+    handleClear();
   };
 
   const searchbar = () => {
@@ -53,7 +55,7 @@ const SearchInput = ({ placeholder, disabled, handleSearch }) => {
               returnKeyType='go'
               onFocus={handleFocus}
             />
-            <Pressable style={styles.clearButton} onPress={handleClear}>
+            <Pressable style={styles.clearButton} onPress={handleClearInput}>
               <Ionicons name="close" size={20} color={colors.greyDark} style={{ display: state.clearIconDisplayStyle }} />
             </Pressable>
           </View>
@@ -82,7 +84,8 @@ const SearchInput = ({ placeholder, disabled, handleSearch }) => {
 SearchInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  handleSearch: PropTypes.func
+  handleSearch: PropTypes.func,
+  handleClear: PropTypes.func
 };
 
 export default SearchInput;
