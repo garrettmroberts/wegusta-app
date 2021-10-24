@@ -6,12 +6,23 @@ const styles = StyleSheet.create({
     width: constants.screenWidth,
     alignItems: 'center'
   },
-  nextBtn: {
+  buttons: {
     position: 'absolute',
-    bottom: 50
+    flexDirection: 'row',
+    bottom: 50,
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    backgroundColor: colors.white
+  },
+  leftButton: {
+    width: constants.screenWidth * 0.4
+  },
+  rightButton: {
+    width: constants.screenWidth * 0.5
   },
   wrapper: {
-    height: constants.viewHeight
+    height: constants.viewHeight,
+    backgroundColor: colors.white
   },
   spacer: {
     height: 70

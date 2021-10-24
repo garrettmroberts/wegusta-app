@@ -6,6 +6,7 @@ import Button from '../../components/Button/Button';
 import InviteUserRow from '../../components/InviteUserRow/InviteUserRow';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import { useStoreContext } from '../../utils/Context';
+import { colors } from '../../config';
 import styles from './styles';
 
 import sampleUsers from '../../temp/sampleUsers';
@@ -119,8 +120,9 @@ const InviteScreen = () => {
         { generateUsersRows(state.visibleUsers) }
         <View style={styles.spacer} />
       </ScrollView>
-      <View style={[styles.centered, styles.nextBtn]}>
-        <Button type='primary' size='fullWidth' icon="null" iconPlacement='none' text='Continue' handlePress={handleSubmit} />
+      <View style={[styles.centered, styles.buttons]}>
+        <Button type='tertiary' size='medium' icon='null' iconPlacement='none' text='Skip' style={styles.leftButton} handlePress={handleSubmit} />
+        <Button type='primary' size='medium' icon='md-person-add' iconPlacement='left' text='Send Invites' style={styles.rightButton} handlePress={handleSubmit} />
       </View>
     </SafeAreaView>
   );

@@ -7,7 +7,7 @@ import styles from './styles';
 import { fonts, colors } from '../../config';
 import buildIcon from '../../utils/buildIcon';
 
-const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
+const Button = ({ type, size, icon, iconPlacement, text, style, handlePress }) => {
   const getTextStyle = (type, size) => {
     let classlist = [styles.text];
 
@@ -76,6 +76,7 @@ const Button = ({ type, size, icon, iconPlacement, text, handlePress }) => {
       styles.centered,
       styles[type],
       styles[size],
+      style,
       size === 'small' ? styles.buttonSmall : styles.buttonReg
     ]}>
       { formatContent(icon, iconPlacement, text, type )}
@@ -109,6 +110,7 @@ Button.propTypes = {
   icon: PropTypes.string.isRequired,
   iconPlacement: PropTypes.string, // left, right, both, none
   text: PropTypes.string,
+  style: PropTypes.object,
   handlePress: PropTypes.func
 
 };

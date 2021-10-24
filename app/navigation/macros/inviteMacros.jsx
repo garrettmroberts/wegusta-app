@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import buildIcon from '../../utils/buildIcon';
 import { constants, colors, fonts } from '../../config';
 
-const InviteLeft = () => {
+const InviteNav = () => {
   const navigation = useNavigation();
   
   const handlePress = () => {
@@ -24,19 +24,6 @@ const InviteLeft = () => {
   );
 };
 
-const InviteRight = () => {
-  // TODO: Link to next page in workflow process
-  const handlePress = () => {
-    console.log('This function will be implemented later.');
-  };
-
-  return (
-    <Pressable onPress={handlePress}>
-      <Text style={styles.rightText}>Skip</Text>
-    </Pressable>
-  );
-};
-
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
@@ -46,11 +33,7 @@ const styles = StyleSheet.create({
   text: {
     marginLeft: 10,
     ...fonts.h2Bold
-  },
-  rightText: {
-    marginRight: constants.viewPadding,
-    ...fonts.bodyBold
   }
 });
 
-export { InviteLeft, InviteRight };
+export default InviteNav ;
