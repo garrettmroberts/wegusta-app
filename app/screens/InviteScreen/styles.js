@@ -9,9 +9,11 @@ const styles = StyleSheet.create({
   buttons: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 50,
     justifyContent: 'space-between',
     paddingHorizontal: 20,
+    bottom: 0,
+    paddingBottom: 50,
+    paddingTop:15,
     backgroundColor: colors.white
   },
   leftButton: {
