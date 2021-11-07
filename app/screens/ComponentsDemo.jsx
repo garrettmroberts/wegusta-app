@@ -7,6 +7,7 @@ import { Feather, Ionicons } from '@expo/vector-icons';
 
 import { SocialButton, IconButton, DecisionButton, OverlayButton, Toast } from '../components';
 import Avatar from '../components/Avatar/Avatar';
+import AvatarArray from '../components/AvatarArray/AvatarArray';
 import Button from '../components/Button/Button';
 import Checkbox from '../components/Checkbox/Checkbox';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
@@ -15,6 +16,8 @@ import SearchInput from '../components/SearchInput/SearchInput';
 import Switch from '../components/Switch/Switch';
 
 import buildIcon from '../utils/buildIcon';
+
+import sampleUsers from '../temp/sampleUsers';
 
 const handlePress = () => { console.log('pressed'); };
 const HomeScreen = () => {
@@ -265,6 +268,14 @@ const HomeScreen = () => {
           <View style={styles.section}>
             <InviteUserRow name="Jimothy Airbender" isSelected={true} avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
             <InviteUserRow name="Jimothy Airbender" avatarStyles={{ avatarStyle: 'letter', letter: 'J'}}/>
+          </View>
+        </View>
+
+        <View style={styles.wide} >
+          <Text style={styles.header}>Avatar Array</Text>
+          <View style={styles.section}>
+            <AvatarArray avatars={sampleUsers.slice(0,5)} />
+            <AvatarArray avatars={sampleUsers} />
           </View>
         </View>
       </ScrollView>

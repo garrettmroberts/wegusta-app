@@ -113,7 +113,7 @@ const InviteScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <View style={styles.centered}>
+      <View style={[styles.centered, styles.bottomMargin]}>
         <SearchInput placeholder='Search' handleSearch={handleSearch} handleClear={handleClear} />
       </View>
       <ScrollView>

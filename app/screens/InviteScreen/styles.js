@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   },
   spacer: {
     height: 70
+  },
+  bottomMargin: {
+    marginBottom: 8
   }
 });
 
