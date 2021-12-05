@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, constants } from '../../config';
+import { colors, constants, fonts } from '../../config';
 
 const styles = StyleSheet.create({
   slider: {
@@ -9,6 +9,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: constants.screenWidth - constants.viewPadding * 2
+  },
+  title: {
+    ...fonts.bodyBold,
+    color: colors.greyDark,
+    marginLeft: 3
+  },
+  text: {
+    ...fonts.bodyReg,
+    marginLeft: 4
   }
 });
 

@@ -283,7 +283,7 @@ const HomeScreen = () => {
         <View style={styles.wide}>
           <Text style={styles.header}>Slider</Text>
           <View style={styles.section}>
-            <Slider units={'miles'} />
+            <Slider title={'distance'} units={'miles'} />
           </View>
         </View>
       </ScrollView>
