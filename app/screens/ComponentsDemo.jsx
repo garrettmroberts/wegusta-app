@@ -13,6 +13,7 @@ import Checkbox from '../components/Checkbox/Checkbox';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
 import InviteUserRow from '../components/InviteUserRow/InviteUserRow';
 import SearchInput from '../components/SearchInput/SearchInput';
+import Slider from '../components/Slider/Slider';
 import Switch from '../components/Switch/Switch';
 
 import buildIcon from '../utils/buildIcon';
@@ -276,6 +277,13 @@ const HomeScreen = () => {
           <View style={styles.section}>
             <AvatarArray avatars={sampleUsers.slice(0,5)} />
             <AvatarArray avatars={sampleUsers} />
+          </View>
+        </View>
+
+        <View style={styles.wide}>
+          <Text style={styles.header}>Slider</Text>
+          <View style={styles.section}>
+            <Slider units={'miles'} />
           </View>
         </View>
       </ScrollView>
