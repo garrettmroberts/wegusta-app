@@ -6,7 +6,11 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import ComponentsDemo from '../screens/ComponentsDemo';
 import InviteScreen from '../screens/InviteScreen/InviteScreen';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
+import FilterScreen from '../screens/FilterScreen/FilterScreen';
 import navOptions from './options';
+
+import Title from './macros/Title';
+import { Text } from 'react-native';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
@@ -31,6 +35,15 @@ const StackNavigator = () => {
         name="Invite"
         component={InviteScreen}
         options={navOptions.backAndForwardNavigation}
+      />
+      <Stack.Screen 
+        name="Filter"
+        component={FilterScreen}
+        options={{
+          // eslint-disable-next-line react/display-name
+          headerTitle: () => <Title><Text>How Far Away?</Text></Title>,
+          ...navOptions.centerAlign
+        }}
       />
     </Stack.Navigator>
   );

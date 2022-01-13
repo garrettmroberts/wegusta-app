@@ -108,7 +108,7 @@ const InviteScreen = () => {
       payload: resArr
     });
     
-    navigation.navigate('Home');
+    navigation.navigate('Filter');
   };
 
   return (

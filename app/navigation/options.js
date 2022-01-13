@@ -1,7 +1,8 @@
 import { colors } from '../config';
 import { InviteLeft, InviteRight } from './macros/inviteMacros';
-import RightAlignedIcon from './macros/rightAlignedIcon';
 import RightAlignedIcons from './macros/RightAlignedIcons';
+import filterScreenHeader from './macros/rightAlignedIcon';
+
 import Title from './macros/Title';
 import { fonts } from '../config';
 
@@ -19,7 +20,6 @@ const navOptions = {
   },
   centerAlign: {
     headerBackTitleVisible: false,
-    headerTitle: Title,
     headerTintColor: colors.primary,
     headerStyle: {
       shadowColor: 'transparent'
