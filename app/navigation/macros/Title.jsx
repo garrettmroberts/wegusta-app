@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 import { colors } from '../../config';
 
-const Title = ({ children }) => {;
-  return <Text style={styles.header}>{ children }</Text>;
+const Title = ({ headerText }) => {;
+  return <Text style={styles.header}>{ headerText }</Text>;
 };
 
 Title.propTypes = {
-  children: PropTypes.string.isRequired
+  headerText: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

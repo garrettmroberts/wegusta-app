@@ -41,7 +41,7 @@ const StackNavigator = () => {
         component={FilterScreen}
         options={{
           // eslint-disable-next-line react/display-name
-          headerTitle: () => <Title><Text>How Far Away?</Text></Title>,
+          headerTitle: () => <Title headerText='How far away?' />,
           ...navOptions.centerAlign
         }}
       />
