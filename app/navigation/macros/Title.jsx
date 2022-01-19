@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { colors } from '../../config';
 
-const Title = ({ headerText }) => {;
+const Title = ({ headerText }) => {
   return <Text style={styles.header}>{ headerText }</Text>;
 };
 

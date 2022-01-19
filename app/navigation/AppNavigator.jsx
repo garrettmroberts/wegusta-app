@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,6 +8,7 @@ import ComponentsDemo from '../screens/ComponentsDemo';
 import InviteScreen from '../screens/InviteScreen/InviteScreen';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 import FilterScreen from '../screens/FilterScreen/FilterScreen';
+import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
 import navOptions from './options';
 
 import Title from './macros/Title';
@@ -40,8 +42,15 @@ const StackNavigator = () => {
         name="Filter"
         component={FilterScreen}
         options={{
-          // eslint-disable-next-line react/display-name
           headerTitle: () => <Title headerText='How far away?' />,
+          ...navOptions.centerAlign
+        }}
+      />
+      <Stack.Screen
+        name="PreferenceSelector"
+        component={PreferenceSelectorScreen}
+        options={{
+          headerTitle: () => <Title headerText='What looks good?' />,
           ...navOptions.centerAlign
         }}
       />
