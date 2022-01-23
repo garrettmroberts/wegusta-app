@@ -76,18 +76,28 @@ const InviteScreen = () => {
     return state.selectedUserIds.includes(id);
   };
 
-  // TODO: Build handler for image type avatar styles
   const generateUsersRows = users => {
     const userSelectionElements = [];
     users.forEach((user) => {
-      const userElement = <InviteUserRow
-        name={user.name} 
-        avatarStyles={{ avatarStyle: user.avatarStyle, letter: user.letter }} 
-        handlePress={() => selectUser(user.id)} 
-        key={'user-' + user.id}
-        isSelected={handleSelection(user.id)}
-      />;
-      userSelectionElements.push(userElement);
+      if (user.avatarStyle === 'letter') {
+        const userElement = <InviteUserRow
+          name={user.name} 
+          avatarStyles={{ avatarStyle: user.avatarStyle, letter: user.letter }} 
+          handlePress={() => selectUser(user.id)} 
+          key={'user-' + user.id}
+          isSelected={handleSelection(user.id)}
+        />;
+        userSelectionElements.push(userElement);
+      } else {
+        const userElement = <InviteUserRow
+          name={user.name} 
+          avatarStyles={{ avatarStyle: user.avatarStyle, image: user.image }} 
+          handlePress={() => selectUser(user.id)} 
+          key={'user-' + user.id}
+          isSelected={handleSelection(user.id)}
+        />;
+        userSelectionElements.push(userElement);
+      }
     });
 
     return userSelectionElements;
@@ -122,7 +132,7 @@ const InviteScreen = () => {
       </ScrollView>
       <View style={[styles.centered, styles.buttons]}>
         <Button type='tertiary' size='medium' icon='null' iconPlacement='none' text='Skip' style={styles.leftButton} handlePress={handleSubmit} />
-        <Button type='primary' size='medium' icon='md-person-add' iconPlacement='left' text='Send Invites' style={styles.rightButton} handlePress={handleSubmit} />
+        <Button type={state.selectedUserIds > 0 ? 'primary' : 'disabled'} size='medium' icon='md-person-add' iconPlacement='left' text='Send Invites' style={styles.rightButton} handlePress={handleSubmit} />
       </View>
     </SafeAreaView>
   );

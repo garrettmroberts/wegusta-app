@@ -7,20 +7,20 @@ const sampleUsers = [
   },
   {
     name: 'Alicis Shipley',
-    avatarStyle: 'letter',
-    letter: 'A',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 2
   },
   {
     name: 'Brendan Frasier',
-    avatarStyle: 'letter',
-    letter: 'B',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 3
   },
   {
     name: 'Airbender Jimothy',
-    avatarStyle: 'letter',
-    letter:' A',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 4
   },
   {
@@ -31,26 +31,26 @@ const sampleUsers = [
   },
   {
     name: 'Eva Lee',
-    avatarStyle: 'letter',
-    letter: 'E',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 6
   },
   {
     name: 'Blue Clue',
-    avatarStyle: 'letter',
-    letter: 'B',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 7
   },
   {
     name: 'Nikita Alamo',
-    avatarStyle: 'letter',
-    letter: 'A',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 8
   },
   {
     name: 'Jocelyn Riveras',
-    avatarStyle: 'letter',
-    letter: 'J',
+    avatarStyle: 'image',
+    image: { uri: 'https://picsum.photos/200' },
     id: 9
   },
   {
