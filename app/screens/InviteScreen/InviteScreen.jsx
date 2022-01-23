@@ -132,7 +132,7 @@ const InviteScreen = () => {
       </ScrollView>
       <View style={[styles.centered, styles.buttons]}>
         <Button type='tertiary' size='medium' icon='null' iconPlacement='none' text='Skip' style={styles.leftButton} handlePress={handleSubmit} />
-        <Button type={state.selectedUserIds > 0 ? 'primary' : 'disabled'} size='medium' icon='md-person-add' iconPlacement='left' text='Send Invites' style={styles.rightButton} handlePress={handleSubmit} />
+        <Button type={state.selectedUserIds.length > 0 ? 'primary' : 'disabled'} size='medium' icon='md-person-add' iconPlacement='left' text='Send Invites' style={styles.rightButton} handlePress={handleSubmit} />
       </View>
     </SafeAreaView>
   );
