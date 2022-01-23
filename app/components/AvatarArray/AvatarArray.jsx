@@ -27,13 +27,11 @@ const AvatarArray = ({ avatars }) => {
             letter={avatar.letter}
             key={idx} 
             style={!isLong && idx < avatars.length - 1 ? styles.regMargin : styles.smallMargin}
-            // style={styles.regMargin}
           />
         );
       };
     });
 
-    console.log(res);
     return res;
   };
 
@@ -63,7 +61,7 @@ const AvatarArray = ({ avatars }) => {
 };
 
 AvatarArray.propTypes = {
-  avatars: PropTypes.array
+  avatars: PropTypes.array.isRequired
 };
 
 export default AvatarArray;

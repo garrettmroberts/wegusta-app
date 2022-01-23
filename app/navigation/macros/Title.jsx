@@ -15,7 +15,7 @@ Title.propTypes = {
 const styles = StyleSheet.create({
   header: {
     marginHorizontal: 24,
-    fontSize: 18,
+    fontSize: 24,
     fontFamily: 'Avenir',
     fontWeight: '900',
     lineHeight: 32,
