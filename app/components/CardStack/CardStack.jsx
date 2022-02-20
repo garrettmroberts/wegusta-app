@@ -88,22 +88,11 @@ export default class CardStack extends React.Component {
             key={i}
             style={[
               this.rotateAndTranslate,
-              {
-                height: constants.screenHeight - 300,
-                width: constants.screenWidth,
-                padding: 10,
-                position: 'absolute'
-              }
+              styles.card
             ]}
           >
             <Image
-              style={{
-                flex: 1,
-                height: null,
-                width: null,
-                resizeMode: 'cover',
-                borderRadius: 20
-              }}
+              style={styles.image}
               source={item.uri}
             />
           </Animated.View>
@@ -114,21 +103,13 @@ export default class CardStack extends React.Component {
             key={i}
             style={[{
               opacity: this.nextCardOpacity,
-              transform: [{ scale: this.nextCardScale }],
-              height: constants.screenHeight - 300,
-              width: constants.screenWidth,
-              padding: 10,
-              position: 'absolute'
-            }]}
+              transform: [{ scale: this.nextCardScale }]
+            },
+            styles.card
+            ]}
           >
             <Image
-              style={{
-                flex: 1,
-                height: null,
-                width: null,
-                resizeMode: 'cover',
-                borderRadius: 20
-              }}
+              style={styles.image}
               source={item.uri}
             />
           </Animated.View>
