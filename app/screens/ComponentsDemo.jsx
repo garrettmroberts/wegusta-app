@@ -34,7 +34,7 @@ const HomeScreen = () => {
         <View style={styles.wide}>
           <Text style={styles.header}>Large Card</Text>
           <View style={styles.section}>
-            <LargeCard image={{source: '../../assets/burger.png'}} title='Hop' description='Some example text is placed here to show what this component will look like fully built out.' rating={3.5} distance='5 miles away' timeOpen='open till 9PM' cost='$$' />
+            <LargeCard image={require('../assets/burger.png')} title='Hop' description='Some example text is placed here to show what this component will look like fully built out.' rating={3.5} distance='5 miles away' timeOpen='open till 9PM' cost='$$' onPress={handlePress} />
           </View>
         </View>
 
