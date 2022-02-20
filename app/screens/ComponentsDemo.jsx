@@ -12,6 +12,7 @@ import Button from '../components/Button/Button';
 import Checkbox from '../components/Checkbox/Checkbox';
 import GroupNotification from '../components/GroupNotification/GroupNotification';
 import InviteUserRow from '../components/InviteUserRow/InviteUserRow';
+import LargeCard from '../components/LargeCard/LargeCard';
 import SearchInput from '../components/SearchInput/SearchInput';
 import Slider from '../components/Slider/Slider';
 import Switch from '../components/Switch/Switch';
@@ -30,6 +31,13 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.wide}>
+          <Text style={styles.header}>Large Card</Text>
+          <View style={styles.section}>
+            <LargeCard image={{source: '../../assets/burger.png'}} title='Hop' description='Some example text is placed here to show what this component will look like fully built out.' rating={3.5} distance='5 miles away' timeOpen='open till 9PM' cost='$$' />
+          </View>
+        </View>
+
         <View style={styles.wide}>
           <Text style={styles.header}>Colors</Text>
           <View style={styles.section}>
