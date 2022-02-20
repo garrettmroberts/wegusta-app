@@ -5,6 +5,7 @@ import { useStoreContext } from '../../utils/Context';
 import PropTypes from 'prop-types';
 import sampleUsers from '../../temp/sampleUsers';
 import styles from './styles';
+import CardStack from '../../components/CardStack/CardStack';
 
 const PreferenceSelectorScreen = () => {
   const [context, dispatch] = useStoreContext();
@@ -26,7 +27,8 @@ const PreferenceSelectorScreen = () => {
       <View style={styles.avatarArrayWrapper}>
         <AvatarArray avatars={state.avatars} />
       </View>
-      <Image source={require('../../assets/burger.png')} style={styles.image} />
+      {/* <Image source={require('../../assets/burger.png')} style={styles.image} /> */}
+      <CardStack />
     </View>
   );
 };

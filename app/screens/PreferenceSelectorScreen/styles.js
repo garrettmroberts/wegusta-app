@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
   screenWrapper: {
     backgroundColor: colors.white,
     height: constants.screenHeight,
-    width: constants.screenWidth,
-    alignItems: 'center'
+    width: constants.screenWidth
   },
   avatarArrayWrapper: {
     marginVertical: 16,
