@@ -81,7 +81,10 @@ const fonts = {
     lineHeight: 16
   },
   textDark: {
-    color: colors.primary
+    color: colors.black
+  },
+  textGreyDark: {
+    color: colors.greyDark
   },
   textLight: {
     color: colors.white

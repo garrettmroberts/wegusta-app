@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Avenir',
     fontWeight: '900',
     lineHeight: 32,
-    color: colors.primary
+    color: colors.black
   }
 });
 

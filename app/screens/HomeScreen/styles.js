@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
     ...fonts.displayBold,
     ...fonts.textDark
   },
+  secondaryHeader: {
+    ...fonts.displayBold,
+    ...fonts.textGreyDark
+  },
   subtext: {
     ...fonts.h2Reg,
     ...fonts.textDark,

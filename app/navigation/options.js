@@ -11,7 +11,7 @@ const navOptions = {
     title: 'Welcome',
     headerRight: RightAlignedIcons,
     headerTitleAlign: 'left',
-    headerTitle: Title
+    headerTitle: Title({headerText: 'Welcome'})
   },
   leftAlignNoIcons: {
     headerTitle: '',
