@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, constants, fonts } from '../../config';
+import { constants } from '../../config';
 
 const styles = StyleSheet.create({
   card: {
@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     width: constants.screenWidth,
     padding: 10,
     position: 'absolute'
-  }, image: {
+  }, 
+  image: {
     flex: 1,
     height: null,
     width: null,
