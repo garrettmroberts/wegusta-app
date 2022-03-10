@@ -12,7 +12,7 @@ import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/Prefer
 import navOptions from './options';
 
 import Title from './macros/Title';
-import { Text } from 'react-native';
+import { colors } from '../config/index';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {

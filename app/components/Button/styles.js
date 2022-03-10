@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.error
   },
   fullWidth: {
-    height: 48,
+    height: 56,
     width: constants.screenWidth - 32,
     paddingHorizontal: 24
   },
