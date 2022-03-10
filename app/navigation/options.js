@@ -1,10 +1,7 @@
 import { colors } from '../config';
-import { InviteLeft, InviteRight } from './macros/inviteMacros';
 import RightAlignedIcons from './macros/RightAlignedIcons';
-import filterScreenHeader from './macros/rightAlignedIcon';
 
 import Title from './macros/Title';
-import { fonts } from '../config';
 
 const navOptions = {
   leftAlignWithIcons: { 
@@ -26,10 +23,12 @@ const navOptions = {
     } 
   },
   backAndForwardNavigation: {
-    headerTitle: '',
-    headerTintColor: colors.primary,
-    headerLeft: InviteLeft,
-    headerRight: InviteRight
+    headerTitle: Title({headerText: 'Who is joining?'}),
+    headerTintColor: colors.black,
+    headerBackTitleVisible: false,
+    headerStyle: {
+      shadowColor: 'transparent'
+    }
   }
 };
 

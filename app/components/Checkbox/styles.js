@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   lightBox: {
-    backgroundColor:colors.greyLight,
+    backgroundColor: colors.white,
     borderColor: colors.grey
   },
   darkBox: {

@@ -3,9 +3,9 @@ import { colors, constants } from '../../config';
 
 const styles = StyleSheet.create({
   inputWrapper: {
-    borderRadius: 200,
+    borderRadius: 20,
     backgroundColor: colors.greyLight,
-    height: 48,
+    height: 56,
     width: constants.screenWidth - 48,
     flexDirection: 'row',
     alignItems: 'center',

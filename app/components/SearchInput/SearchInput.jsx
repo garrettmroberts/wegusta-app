@@ -44,7 +44,7 @@ const SearchInput = ({ placeholder, disabled, handleSearch, handleClear }) => {
       return (
         <Pressable>
           <View style={styles.inputWrapper} >
-            <Ionicons name="search" size={19.5} color={colors.greyDark} style={styles.icon} />
+            <Ionicons name="search" size={23} color={colors.greyDark} style={styles.icon} />
             <TextInput 
               placeholder={placeholder}
               placeholderTextColor={colors.greyDark}
