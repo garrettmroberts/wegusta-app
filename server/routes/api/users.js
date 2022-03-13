@@ -5,4 +5,9 @@ router
   .route('/')
   .get(userController.findAll)
 
+router
+  .route('/create')
+  .post(userController.createUser)
+
+
 module.exports = router;
