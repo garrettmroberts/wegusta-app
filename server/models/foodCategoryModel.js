@@ -4,9 +4,12 @@ const Schema = mongoose.Schema;
 
 const foodCategorySchema = new Schema(
   {
-    category: {
+    name: {
       type: String,
       required: true
+    },
+    label: {
+      type: String
     }
   }, {
     timestamps: true
