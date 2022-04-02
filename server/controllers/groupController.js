@@ -24,7 +24,7 @@ module.exports = {
 
   addUser: (req, res) => {
     db.Group.findByIdAndUpdate(req.params.groupId,
-      { "$push": { "users": req.params.userId } },
+      { "$push": { "users": { _id: req.params.userId }}},
       { "new": true, "upsert": true })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(400).json(err));
