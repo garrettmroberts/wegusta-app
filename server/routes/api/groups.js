@@ -13,7 +13,6 @@ router
   .route('/:groupId/adduser/:userId')
   .put(groupController.addUser)
 
-
 router
   .route('/create')
   .post(groupController.createGroup)

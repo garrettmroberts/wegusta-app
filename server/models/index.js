@@ -1,4 +1,5 @@
 module.exports = {
-  User: require('./userModel'),
-  Group: require('./groupModel')
+  FoodCategory: require('./foodCategoryModel'),
+  Group: require('./groupModel'),
+  User: require('./userModel')
 };
