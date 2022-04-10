@@ -9,15 +9,20 @@ import InviteScreen from '../screens/InviteScreen/InviteScreen';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 import FilterScreen from '../screens/FilterScreen/FilterScreen';
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
+import SignInScreen from '../screens/SignInScreen/SignInScreen';
 import navOptions from './options';
 
 import Title from './macros/Title';
-import { colors } from '../config/index';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen 
+        name="SignIn"
+        component={SignInScreen}
+        options={navOptions.signInScreen}
+      />
       <Stack.Screen
         name="Home" 
         component={HomeScreen} 

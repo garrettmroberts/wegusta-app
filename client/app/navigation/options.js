@@ -8,7 +8,8 @@ const navOptions = {
     title: 'Welcome',
     headerRight: RightAlignedIcons,
     headerTitleAlign: 'left',
-    headerTitle: Title({headerText: 'Welcome'})
+    headerTitle: Title({headerText: 'Welcome'}),
+    headerLeft: () => {}
   },
   leftAlignNoIcons: {
     headerTitle: '',
@@ -29,6 +30,9 @@ const navOptions = {
     headerStyle: {
       shadowColor: 'transparent'
     }
+  },
+  signInScreen: {
+    headerShown: false
   }
 };
 
