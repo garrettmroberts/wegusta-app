@@ -87,7 +87,6 @@ const HomeScreen = () => {
             <Text style={fonts.inputValue}>Input Value</Text>
             <Text style={fonts.metaBold}>Meta Bold</Text>
             <Text style={fonts.metaReg}>Meta Regular</Text>
-
           </View>
         </View>
 

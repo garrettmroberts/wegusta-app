@@ -3,77 +3,91 @@ import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-nativ
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
 import firebase from '../../config/firebase';
 import Button from '../../components/Button/Button';
+import { fonts } from '../../config';
+import styles from './styles';
 
 const SignInScreen = ({ navigation }) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [code, setCode] = useState('');
-  const [verificationId, setVerificationId] = useState(null);
-  const [isButtonEnabled, setIsButtonEnabled] = useState(false);
+  const [state, changeState] = useState({
+    phoneNumber: '',
+    code: '',
+    verificationId: null,
+    isButtonEnabled: false
+  })
+
   const recaptchaVerifier = useRef(null);
 
-  const verifyInput = () => {
-    console.log(phoneNumber);
-    return false;
-  }
-
-  const formatInput = () => {
-    if (!phoneNumber.toString().includes('+')) {
-      setPhoneNumber('+1' + phoneNumber)
-    }
-  }
-
   const sendVerification = () => {
+    let formattedPhoneNumber = '';
+    if (!state.phoneNumber.toString().includes('+')) {
+      formattedPhoneNumber =  '+1' + state.phoneNumber
+    }
     const phoneProvider = new firebase.auth.PhoneAuthProvider();
     phoneProvider
-      .verifyPhoneNumber(phoneNumber, recaptchaVerifier.current)
-      .then(setVerificationId);
-  };
+      .verifyPhoneNumber(formattedPhoneNumber, recaptchaVerifier.current)
+      .then(res => {
+        try {
+          changeState({
+            ...state,
+            verificationId: res,
+            phoneNumber: formattedPhoneNumber
+          })
+        } catch (err) {
 
-  const confirmCode = () => {
-    const credential = firebase.auth.PhoneAuthProvider.credential(
-      verificationId,
-      code
-    );
-    firebase
-      .auth()
-      .signInWithCredential(credential)
-      .then((result) => {
-        console.log(result);
-        handlePress();
+        }
       });
   };
 
-  const handlePress = () => {
-    navigation.navigate('Home');
-  };
+  // const confirmCode = () => {
+  //   const credential = firebase.auth.PhoneAuthProvider.credential(
+  //     state.verificationId,
+  //     state.code
+  //   );
+  //   firebase
+  //     .auth()
+  //     .signInWithCredential(credential)
+  //     .then((result) => {
+  //       console.log(result);
+  //       handlePress();
+  //     });
+  // };
 
-  const renderButton = () => {
-    const type = verifyInput ? 'primary' : 'disabled'
-    return <Button type={type} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
-  }
+  // const handlePress = () => {
+  //   navigation.navigate('Home');
+  // };
 
-  const handleChangeText = e => {
-    setPhoneNumber(e);
-    e.length >= 10 ? setIsButtonEnabled(true) : setIsButtonEnabled(false);
+  const handleChangeText = input => {
+    const isButtonEnabled =  input.length >= 10;
+    changeState({
+      ...state,
+      phoneNumber: input,
+      isButtonEnabled: isButtonEnabled
+    })
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.wrapper}>
+      <Text style={fonts.h1Bold}>Enter your phone #</Text>
       <TextInput
         placeholder="Phone Number"
         onChangeText={handleChangeText}
         keyboardType="phone-pad"
         autoCompleteType="tel"
+        style={styles.input}
       />
-      <Button type={isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
-      <TextInput
+      <Button type={state.isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
+      {/* <TextInput
         placeholder="Confirmation Code"
-        onChangeText={setCode}
+        onChangeText={res => {
+          changeState({
+            ...state,
+            code: res
+          })
+        }}
         keyboardType="number-pad"
       />
       <TouchableOpacity onPress={confirmCode}>
         <Text>Send Verification</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={firebase.app().options}

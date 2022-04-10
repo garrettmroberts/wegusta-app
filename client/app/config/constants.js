@@ -8,6 +8,7 @@ const constants = {
   footerHeight: footerHeight,
   viewHeight: Dimensions.get('window').height - headerHeight,
   viewPadding: 24,
+  viewPaddingSmall: 16,
   defaultSpacer: 10,
   screenHeight: Dimensions.get('window').height,
   screenWidth: Dimensions.get('window').width,
