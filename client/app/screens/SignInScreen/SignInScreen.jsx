@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha';
+import { Toast } from '../../components';
+import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
 import firebase from '../../config/firebase';
 import Button from '../../components/Button/Button';
 import { fonts } from '../../config';
@@ -16,25 +17,24 @@ const SignInScreen = ({ navigation }) => {
 
   const recaptchaVerifier = useRef(null);
 
-  const sendVerification = () => {
+  const sendVerification = async () => {
     let formattedPhoneNumber = '';
     if (!state.phoneNumber.toString().includes('+')) {
       formattedPhoneNumber =  '+1' + state.phoneNumber
     }
-    const phoneProvider = new firebase.auth.PhoneAuthProvider();
-    phoneProvider
-      .verifyPhoneNumber(formattedPhoneNumber, recaptchaVerifier.current)
-      .then(res => {
-        try {
-          changeState({
-            ...state,
-            verificationId: res,
-            phoneNumber: formattedPhoneNumber
-          })
-        } catch (err) {
 
-        }
-      });
+    try {
+      const phoneProvider = new firebase.auth.PhoneAuthProvider();
+      const verificationId = await phoneProvider.verifyPhoneNumber(formattedPhoneNumber, recaptchaVerifier.current)
+      changeState({
+        ...state,
+        verificationId: verificationId,
+        phoneNumber: formattedPhoneNumber
+      })
+      console.log(state)
+    } catch (err) {
+      console.log('ERROR', state);
+    }
   };
 
   // const confirmCode = () => {
@@ -56,7 +56,7 @@ const SignInScreen = ({ navigation }) => {
   // };
 
   const handleChangeText = input => {
-    const isButtonEnabled =  input.length >= 10;
+    const isButtonEnabled = input.length >= 10;
     changeState({
       ...state,
       phoneNumber: input,
@@ -66,6 +66,7 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
+      {/* <Toast description='Something went wrong.  Try again.'/> */}
       <Text style={fonts.h1Bold}>Enter your phone #</Text>
       <TextInput
         placeholder="Phone Number"
@@ -91,6 +92,7 @@ const SignInScreen = ({ navigation }) => {
       <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={firebase.app().options}
+        attemptInvisibleVerification={true}
       />
     </SafeAreaView>
   );
