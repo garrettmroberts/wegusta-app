@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     paddingHorizontal: 12,
     marginVertical: 12
+  },
+  toast: {
+    position: 'absolute',
+    top: constants.headerHeight
+  },
+  toastInvisible: {
+    display: 'none'
   }
 });
 

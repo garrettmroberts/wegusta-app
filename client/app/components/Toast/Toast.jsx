@@ -6,9 +6,9 @@ import buildIcon from '../../utils/buildIcon';
 import { colors, fonts } from '../../config';
 import styles from './styles';
 
-const Toast = ({ description, iconLeft, onPress }) => {
+const Toast = ({ description, iconLeft, onPress, style }) => {
   return (
-    <Pressable style={styles.wrapper} onPress={onPress}>
+    <Pressable style={{...styles.wrapper, ...style}} onPress={onPress}>
       <View style={styles.flexRow}>
         { buildIcon({ name: iconLeft, size: 22.5, color: colors.white }) }
         <Text style={[fonts.bodyReg, fonts.textLight, styles.text]}>{ description }</Text>
@@ -21,7 +21,8 @@ const Toast = ({ description, iconLeft, onPress }) => {
 Toast.propTypes = {
   description: PropTypes.string.isRequired,
   iconLeft: PropTypes.string.isRequired, // String name of icon
-  onPress: PropTypes.func
+  onPress: PropTypes.func,
+  style: PropTypes.object
 };
 
 export { Toast };

@@ -4,6 +4,7 @@ import { Toast } from '../../components';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
 import firebase from '../../config/firebase';
 import Button from '../../components/Button/Button';
+import { useStoreContext } from '../../utils/Context';
 import { fonts } from '../../config';
 import styles from './styles';
 
@@ -12,8 +13,11 @@ const SignInScreen = ({ navigation }) => {
     phoneNumber: '',
     code: '',
     verificationId: null,
-    isButtonEnabled: false
+    isButtonEnabled: false,
+    isToastVisible: false
   })
+
+  const [context, dispatch] = useStoreContext();
 
   const recaptchaVerifier = useRef(null);
 
@@ -31,11 +35,22 @@ const SignInScreen = ({ navigation }) => {
         verificationId: verificationId,
         phoneNumber: formattedPhoneNumber
       })
-      console.log(state)
+      dispatch({type: 'saveVerificationId', payload: verificationId});
     } catch (err) {
+      changeState({
+        ...state,
+        isToastVisible: true
+      })
       console.log('ERROR', state);
     }
   };
+
+  const handleToastClose = () => {
+    changeState({
+      ...state,
+      isToastVisible: false
+    })
+  }
 
   // const confirmCode = () => {
   //   const credential = firebase.auth.PhoneAuthProvider.credential(
@@ -66,7 +81,7 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      {/* <Toast description='Something went wrong.  Try again.'/> */}
+      <Toast description='Something went wrong.  Try again.' style={state.isToastVisible ? styles.toast : styles.toastInvisible} onPress={handleToastClose} />
       <Text style={fonts.h1Bold}>Enter your phone #</Text>
       <TextInput
         placeholder="Phone Number"
