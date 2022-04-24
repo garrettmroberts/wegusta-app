@@ -23,7 +23,7 @@ const SignInScreen = ({ navigation }) => {
   const recaptchaVerifier = useRef(null);
 
   const sendVerification = async () => {
-    let formattedPhoneNumber = '';
+    let formattedPhoneNumber = state.phoneNumber;
     if (!state.phoneNumber.toString().includes('+')) {
       formattedPhoneNumber =  '+1' + state.phoneNumber
     }
@@ -46,6 +46,7 @@ const SignInScreen = ({ navigation }) => {
   };
 
   const handleToastClose = () => {
+    console.log('closing toast')
     changeState({
       ...state,
       isToastVisible: false

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   toast: {
     position: 'absolute',
-    top: constants.headerHeight
+    top: 0
   },
   visible: {
     display: 'flex'
