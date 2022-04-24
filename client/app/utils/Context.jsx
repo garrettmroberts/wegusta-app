@@ -77,11 +77,6 @@ const reducer = (state, action) => {
         selectedUsers: action.payload
       }
     };
-  case 'saveVerificationId':
-    return {
-      ...state,
-      verificationId: action.payload
-    }
   default:
     console.log('STATE in reducer: ', state);
     return state;

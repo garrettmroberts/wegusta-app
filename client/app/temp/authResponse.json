@@ -1,0 +1,43 @@
+{
+  "additionalUserInfo": {
+    "isNewUser": false,
+    "providerId": "phone"
+  },
+  "credential": null,
+  "operationType": "signIn",
+  "user": {
+    "apiKey": "AIzaSyCUV3Zwd6QX2IYK9u2siFoOEfd8JsmafzQ",
+    "appName": "[DEFAULT]",
+    "authDomain": "wegusta-app.firebaseapp.com",
+    "createdAt": "1649623013723",
+    "displayName": null,
+    "email": null,
+    "emailVerified": false,
+    "isAnonymous": false,
+    "lastLoginAt": "1650820789671",
+    "multiFactor": {
+      "enrolledFactors": []
+    },
+    "phoneNumber": "+15555555555",
+    "photoURL": null,
+    "providerData": [
+      {
+        "displayName": null,
+        "email": null,
+        "phoneNumber": "+15555555555",
+        "photoURL": null,
+        "providerId": "phone",
+        "uid": "+15555555555"
+      }
+    ],
+    "redirectEventId": null,
+    "stsTokenManager": {
+      "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImM2NzNkM2M5NDdhZWIxOGI2NGU1OGUzZWRlMzI1NWZiZjU3NTI4NWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vd2VndXN0YS1hcHAiLCJhdWQiOiJ3ZWd1c3RhLWFwcCIsImF1dGhfdGltZSI6MTY1MDgyMDc4OSwidXNlcl9pZCI6ImcxTGprTjBMS3hkWW5Pblg1SXJHY0Nkd0lBUDIiLCJzdWIiOiJnMUxqa04wTEt4ZFluT25YNUlyR2NDZHdJQVAyIiwiaWF0IjoxNjUwODIwNzg5LCJleHAiOjE2NTA4MjQzODksInBob25lX251bWJlciI6IisxNTU1NTU1NTU1NSIsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsicGhvbmUiOlsiKzE1NTU1NTU1NTU1Il19LCJzaWduX2luX3Byb3ZpZGVyIjoicGhvbmUifX0.FeJorHbUuJCro25b2X0H9FPEIy9JuPhMCtFgsm_iB49K9JV7zwqilhJXPzOoMKhp3hDoeSprxJ_TGkoFdWzN_Q2BtCuTdoLs5vhEDImTRCsyXcw56l50z1BYrnrLZ_bgcTKWBhhJWWvhTwDFniwrEgUllfmWtZpFMVa2xUrXRr9ZZbBbsuV4YpunrB06lEku4r3egtprUc4i2MvYbjQSOVo-SiKOuKT9awfJ52xLQySu2SaqCtXI9FjjM6gkMBHz6vy1cUSha0RPQqIEXof_AEYotEDQjzrcfFCu4sMUTvrN3ylSnbOpAIFvZvKSa5SU3N2Y0RKlxLl5bwKijO4lvw",
+      "apiKey": "AIzaSyCUV3Zwd6QX2IYK9u2siFoOEfd8JsmafzQ",
+      "expirationTime": 1650824389762,
+      "refreshToken": "AIwUaOlZAQ_1h6xWOkD-o7OQMp4RHMIBG8u4iVDcWCXHOOz0jAVKAvpCCWhPQFvoOAzEEhetyOU-qoofNBf4M3IDJvSRjDR6Fphv2L5CoZRnruBi_esHJB_-7yaTcfOvPEZNEa3H7NMksQBAjTS1zBrAtdVLeyXMc_8uPBgfJ02zQ_nVtehgxeHd0-rMSiViVFHetO8Oiy59"
+    },
+    "tenantId": null,
+    "uid": "g1LjkN0LKxdYnOnX5IrGcCdwIAP2"
+  }
+}

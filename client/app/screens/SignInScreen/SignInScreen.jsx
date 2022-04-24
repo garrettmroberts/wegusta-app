@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {KeyboardAvoidingView, SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import { Toast } from '../../components';
 import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
 import firebase from '../../config/firebase';
@@ -14,7 +14,8 @@ const SignInScreen = ({ navigation }) => {
     code: '',
     verificationId: null,
     isButtonEnabled: false,
-    isToastVisible: false
+    isToastVisible: false,
+    signinStage: 1
   })
 
   const [context, dispatch] = useStoreContext();
@@ -33,15 +34,14 @@ const SignInScreen = ({ navigation }) => {
       changeState({
         ...state,
         verificationId: verificationId,
-        phoneNumber: formattedPhoneNumber
+        phoneNumber: formattedPhoneNumber,
+        signinStage: 2
       })
-      dispatch({type: 'saveVerificationId', payload: verificationId});
     } catch (err) {
       changeState({
         ...state,
         isToastVisible: true
       })
-      console.log('ERROR', state);
     }
   };
 
@@ -52,23 +52,23 @@ const SignInScreen = ({ navigation }) => {
     })
   }
 
-  // const confirmCode = () => {
-  //   const credential = firebase.auth.PhoneAuthProvider.credential(
-  //     state.verificationId,
-  //     state.code
-  //   );
-  //   firebase
-  //     .auth()
-  //     .signInWithCredential(credential)
-  //     .then((result) => {
-  //       console.log(result);
-  //       handlePress();
-  //     });
-  // };
+  const confirmCode = () => {
+    const credential = firebase.auth.PhoneAuthProvider.credential(
+      state.verificationId,
+      state.code
+    );
+    firebase
+      .auth()
+      .signInWithCredential(credential)
+      .then((result) => {
+        console.log(result);
+        handlePress();
+      });
+  };
 
-  // const handlePress = () => {
-  //   navigation.navigate('Home');
-  // };
+  const handlePress = () => {
+    navigation.navigate('Home');
+  };
 
   const handleChangeText = input => {
     const isButtonEnabled = input.length >= 10;
@@ -80,35 +80,51 @@ const SignInScreen = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <Toast description='Something went wrong.  Try again.' style={state.isToastVisible ? styles.toast : styles.toastInvisible} onPress={handleToastClose} />
-      <Text style={fonts.h1Bold}>Enter your phone #</Text>
-      <TextInput
-        placeholder="Phone Number"
-        onChangeText={handleChangeText}
-        keyboardType="phone-pad"
-        autoCompleteType="tel"
-        style={styles.input}
-      />
-      <Button type={state.isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
-      {/* <TextInput
-        placeholder="Confirmation Code"
-        onChangeText={res => {
-          changeState({
-            ...state,
-            code: res
-          })
-        }}
-        keyboardType="number-pad"
-      />
-      <TouchableOpacity onPress={confirmCode}>
-        <Text>Send Verification</Text>
-      </TouchableOpacity> */}
-      <FirebaseRecaptchaVerifierModal
-        ref={recaptchaVerifier}
-        firebaseConfig={firebase.app().options}
-        attemptInvisibleVerification={true}
-      />
+    <SafeAreaView style={styles.safeAreaView}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.wrapper}
+      >
+        <Toast description='Something went wrong.  Try again.' style={state.isToastVisible ? styles.toast : styles.invisible} onPress={handleToastClose} />
+        <View style={[styles.inputBlockWrapper, state.signinStage === 1 ? styles.visible : styles.invisible]}>
+          <Text style={styles.text}>Enter your phone #</Text>
+          <TextInput
+            placeholder="+1 555-123-4567"
+            onChangeText={handleChangeText}
+            keyboardType="phone-pad"
+            autoCompleteType="tel"
+            style={styles.input}
+          />
+          <View>
+            <Text style={styles.termsAndConditions}>
+              By continuing you agree to Wegusta LLC’s Terms of Use and 
+              confirm that you have read Wegusta LLC’s Privacy Policy. 
+            </Text>
+            <Button type={state.isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
+          </View>
+        </View>
+        <View style={state.signinStage === 2 ? styles.visible : styles.invisible}>
+          <TextInput
+            placeholder="Confirmation Code"
+            keyboardType="number-pad"
+            onChangeText={res => {
+              changeState({
+                ...state,
+                code: res
+              })
+            }}
+            style={styles.input}
+          />
+          <TouchableOpacity onPress={confirmCode}>
+            <Text>Send Verification</Text>
+          </TouchableOpacity>
+        </View>
+        <FirebaseRecaptchaVerifierModal
+          ref={recaptchaVerifier}
+          firebaseConfig={firebase.app().options}
+          attemptInvisibleVerification={true}
+        />
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
