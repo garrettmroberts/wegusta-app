@@ -45,6 +45,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flex: 1
+  },
+  inputBlockWrapper2: {
+    justifyContent: 'center',
+    flex: 1
+  },
+  h2Reg: {
+    ...fonts.h2Reg,
+    textAlign: 'center',
+    marginBottom: 40
+  },
+  helperText: {
+    ...fonts.bodyReg,
+    textAlign: 'center'
+  },
+  bold: {
+    ...fonts.bodyBold
+  },
+  signinStage2ButtonPlacement: {
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 1
   }
 });
 

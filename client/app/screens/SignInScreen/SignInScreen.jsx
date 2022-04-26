@@ -36,12 +36,12 @@ const SignInScreen = ({ navigation }) => {
         verificationId: verificationId,
         phoneNumber: formattedPhoneNumber,
         signinStage: 2
-      })
+      });
     } catch (err) {
       changeState({
         ...state,
         isToastVisible: true
-      })
+      });
     }
   };
 
@@ -52,18 +52,23 @@ const SignInScreen = ({ navigation }) => {
     })
   }
 
-  const confirmCode = () => {
-    const credential = firebase.auth.PhoneAuthProvider.credential(
-      state.verificationId,
-      state.code
-    );
-    firebase
-      .auth()
-      .signInWithCredential(credential)
-      .then((result) => {
-        console.log(result);
-        handlePress();
+  const confirmCode = async () => {
+    try {
+      const credential = firebase.auth.PhoneAuthProvider.credential(
+        state.verificationId,
+        state.code
+      );
+      const result = await firebase
+        .auth()
+        .signInWithCredential(credential);
+      handlePress();
+    } catch(err) {
+      console.log('youch');
+      changeState({
+        ...state,
+        isToastVisible: true
       });
+    }
   };
 
   const handlePress = () => {
@@ -103,7 +108,8 @@ const SignInScreen = ({ navigation }) => {
             <Button type={state.isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
           </View>
         </View>
-        <View style={state.signinStage === 2 ? styles.visible : styles.invisible}>
+        <View style={[styles.inputBlockWrapper2, state.signinStage === 2 ? styles.visible : styles.invisible]}>
+          <Text style={styles.h2Reg}>Enter the code we just text you</Text>
           <TextInput
             placeholder="Confirmation Code"
             keyboardType="number-pad"
@@ -115,9 +121,10 @@ const SignInScreen = ({ navigation }) => {
             }}
             style={styles.input}
           />
-          <TouchableOpacity onPress={confirmCode}>
-            <Text>Send Verification</Text>
-          </TouchableOpacity>
+          <Text style={styles.helperText}>Didn’t recive a code? <Text style={styles.bold}>Try Resending</Text></Text>
+          <View style={styles.signinStage2ButtonPlacement}>
+            <Button type='primary' size='fullWidth' iconPlacement='none' text='Continue' icon='person-add' handlePress={confirmCode}/>
+          </View>
         </View>
         <FirebaseRecaptchaVerifierModal
           ref={recaptchaVerifier}
