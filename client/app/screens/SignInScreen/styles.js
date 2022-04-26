@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   },
   toast: {
     position: 'absolute',
+    zIndex: 1,
     top: 0
   },
   visible: {

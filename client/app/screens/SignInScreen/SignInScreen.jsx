@@ -46,7 +46,6 @@ const SignInScreen = ({ navigation }) => {
   };
 
   const handleToastClose = () => {
-    console.log('closing toast')
     changeState({
       ...state,
       isToastVisible: false
