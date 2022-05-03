@@ -5,7 +5,6 @@ import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-fi
 import firebase from '../../config/firebase';
 import Button from '../../components/Button/Button';
 import { useStoreContext } from '../../utils/Context';
-import { fonts } from '../../config';
 import styles from './styles';
 
 const SignInScreen = ({ navigation }) => {
@@ -62,8 +61,8 @@ const SignInScreen = ({ navigation }) => {
         .auth()
         .signInWithCredential(credential);
       handlePress();
+      dispatch({type: 'signIn', payLoad: result.user.stsTokenManager.accessToken})
     } catch(err) {
-      console.log('youch');
       changeState({
         ...state,
         isToastVisible: true
