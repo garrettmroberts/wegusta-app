@@ -7,14 +7,13 @@ import Button from '../../components/Button/Button';
 import { useStoreContext } from '../../utils/Context';
 import styles from './styles';
 
-const SignInScreen = ({ navigation }) => {
+const SignInScreen1 = ({ navigation }) => {
   const [state, changeState] = useState({
     phoneNumber: '',
     code: '',
     verificationId: null,
     isButtonEnabled: false,
-    isToastVisible: false,
-    signinStage: 1
+    isToastVisible: false
   })
 
   const [context, dispatch] = useStoreContext();
@@ -33,9 +32,9 @@ const SignInScreen = ({ navigation }) => {
       changeState({
         ...state,
         verificationId: verificationId,
-        phoneNumber: formattedPhoneNumber,
-        signinStage: 2
+        phoneNumber: formattedPhoneNumber
       });
+      navigation.navigate('SignIn2', {verificationId: verificationId, phoneNumber: formattedPhoneNumber});
     } catch (err) {
       changeState({
         ...state,
@@ -50,29 +49,6 @@ const SignInScreen = ({ navigation }) => {
       isToastVisible: false
     })
   }
-
-  const confirmCode = async () => {
-    try {
-      const credential = firebase.auth.PhoneAuthProvider.credential(
-        state.verificationId,
-        state.code
-      );
-      const result = await firebase
-        .auth()
-        .signInWithCredential(credential);
-      handlePress();
-      dispatch({type: 'signIn', payLoad: result.user.stsTokenManager.accessToken})
-    } catch(err) {
-      changeState({
-        ...state,
-        isToastVisible: true
-      });
-    }
-  };
-
-  const handlePress = () => {
-    navigation.navigate('Home');
-  };
 
   const handleChangeText = input => {
     const isButtonEnabled = input.length >= 10;
@@ -90,7 +66,7 @@ const SignInScreen = ({ navigation }) => {
         style={styles.wrapper}
       >
         <Toast description='Something went wrong.  Try again.' style={state.isToastVisible ? styles.toast : styles.invisible} onPress={handleToastClose} />
-        <View style={[styles.inputBlockWrapper, state.signinStage === 1 ? styles.visible : styles.invisible]}>
+        <View style={styles.inputBlockWrapper}>
           <Text style={styles.text}>Enter your phone #</Text>
           <TextInput
             placeholder="+1 555-123-4567"
@@ -107,24 +83,6 @@ const SignInScreen = ({ navigation }) => {
             <Button type={state.isButtonEnabled ? 'primary' : 'disabled'} size='fullWidth' iconPlacement='none' text='Send Verification' icon='person-add' handlePress={sendVerification}/>
           </View>
         </View>
-        <View style={[styles.inputBlockWrapper2, state.signinStage === 2 ? styles.visible : styles.invisible]}>
-          <Text style={styles.h2Reg}>Enter the code we just text you</Text>
-          <TextInput
-            placeholder="Confirmation Code"
-            keyboardType="number-pad"
-            onChangeText={res => {
-              changeState({
-                ...state,
-                code: res
-              })
-            }}
-            style={styles.input}
-          />
-          <Text style={styles.helperText}>Didn’t recive a code? <Text style={styles.bold}>Try Resending</Text></Text>
-          <View style={styles.signinStage2ButtonPlacement}>
-            <Button type='primary' size='fullWidth' iconPlacement='none' text='Continue' icon='person-add' handlePress={confirmCode}/>
-          </View>
-        </View>
         <FirebaseRecaptchaVerifierModal
           ref={recaptchaVerifier}
           firebaseConfig={firebase.app().options}
@@ -136,4 +94,4 @@ const SignInScreen = ({ navigation }) => {
 }
 
 
-export default SignInScreen;
+export default SignInScreen1;

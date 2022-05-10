@@ -9,7 +9,8 @@ import InviteScreen from '../screens/InviteScreen/InviteScreen';
 import NotificationScreen from '../screens/NotificationScreen/NotificationScreen';
 import FilterScreen from '../screens/FilterScreen/FilterScreen';
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
-import SignInScreen from '../screens/SignInScreen/SignInScreen';
+import SignInScreen1 from '../screens/SignInScreen1/SignInScreen1';
+import SignInScreen2 from '../screens/SignInScreen2/SignInScreen2';
 import navOptions from './options';
 
 import Title from './macros/Title';
@@ -19,8 +20,13 @@ const StackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen 
-        name="SignIn"
-        component={SignInScreen}
+        name="SignIn1"
+        component={SignInScreen1}
+        options={navOptions.signInScreen}
+      />
+      <Stack.Screen
+        name="SignIn2"
+        component={SignInScreen2}
         options={navOptions.signInScreen}
       />
       <Stack.Screen

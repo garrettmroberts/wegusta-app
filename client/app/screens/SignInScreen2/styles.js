@@ -42,11 +42,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   inputBlockWrapper: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flex: 1
-  },
-  inputBlockWrapper2: {
     justifyContent: 'center',
     flex: 1
   },
