@@ -1,7 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
-import {KeyboardAvoidingView, SafeAreaView, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import React, { useState } from 'react';
+import {KeyboardAvoidingView, SafeAreaView, Text, TextInput, View} from 'react-native';
 import { Toast } from '../../components';
-import { FirebaseRecaptchaVerifierModal, FirebaseRecaptchaBanner } from 'expo-firebase-recaptcha';
 import firebase from '../../config/firebase';
 import Button from '../../components/Button/Button';
 import { useStoreContext } from '../../utils/Context';
@@ -32,7 +31,7 @@ const SignInScreen2 = ({ navigation, route }) => {
         .auth()
         .signInWithCredential(credential);
       dispatch({type: 'signIn', payLoad: result})
-      navigation.navigate('Home');
+      navigation.navigate('SignIn3', { phoneNumber: route.params.phoneNumber});
     } catch(err) {
       console.log(err);
       
@@ -41,10 +40,6 @@ const SignInScreen2 = ({ navigation, route }) => {
         isToastVisible: true
       });
     }
-  };
-
-  const handlePress = () => {
-    navigation.navigate('Home');
   };
 
   return (
