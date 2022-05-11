@@ -15,49 +15,26 @@ const styles = StyleSheet.create({
     ...fonts.h1Bold,
     marginTop: 50
   },
-  input: {
-    backgroundColor: colors.grey,
+  inputWrapper: {
+    backgroundColor: colors.greyLight,
     width: constants.screenWidth - (constants.viewPaddingSmall * 2),
     height: 56,
     borderRadius: 10,
-    paddingHorizontal: 12,
-    marginVertical: 12
+    paddingHorizontal: 20,
+    paddingVertical: 6,
+    marginBottom: 16
   },
-  toast: {
-    position: 'absolute',
-    zIndex: 1,
-    top: 0
+  inputLabel: {
+    ...fonts.inputLabel
   },
-  visible: {
-    display: 'flex'
-  },
-  invisible: {
-    display: 'none'
-  },
-  termsAndConditions: {
-    ...fonts.bodyReg,
-    marginHorizontal: 30,
-    lineHeight: 16,
-    marginBottom: 16,
-    textAlign: 'center'
+  input: {
+    ...fonts.h2Reg
   },
   inputBlockWrapper: {
     justifyContent: 'center',
     flex: 1
   },
-  h2Reg: {
-    ...fonts.h2Reg,
-    textAlign: 'center',
-    marginBottom: 40
-  },
-  helperText: {
-    ...fonts.bodyReg,
-    textAlign: 'center'
-  },
-  bold: {
-    ...fonts.bodyBold
-  },
-  signinStage2ButtonPlacement: {
+  buttonPlacement: {
     position: 'absolute',
     bottom: 0,
     zIndex: 1
