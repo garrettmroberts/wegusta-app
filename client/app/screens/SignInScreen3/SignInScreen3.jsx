@@ -8,14 +8,29 @@ import styles from './styles';
 const SignInScreen3 = ({ navigation, route }) => {
   const [state, changeState] = useState({
     name: '',
-    phoneNumber: route.params.phoneNumber
+    phoneNumber: route.params.phoneNumber,
+    submissionButtonStatus: 'disabled'
   })
 
   const [context, dispatch] = useStoreContext();
 
-  const handlePress = () => {
-    navigation.navigate('Home');
-  };
+  const submitForm = () => {
+    navigation.navigate('Home')
+  }
+
+  useEffect(() => {
+    if (state.name.length >= 5 && state.phoneNumber.length >= 10 && state.phoneNumber.length <=12) {
+      changeState({
+        ...state,
+        submissionButtonStatus: 'primary'
+      })
+    } else {
+      changeState({
+        ...state,
+        submissionButtonStatus: 'disabled'
+      })
+    }
+  }, [state.name, state.phoneNumber])
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
@@ -49,7 +64,7 @@ const SignInScreen3 = ({ navigation, route }) => {
             style={styles.input}/>
           </View>
           <View style={styles.buttonPlacement}>
-            <Button type='primary' size='fullWidth' iconPlacement='none' text='Continue' icon='person-add' />
+            <Button type={state.submissionButtonStatus} size='fullWidth' iconPlacement='none' text='Continue' icon='person-add' handlePress={submitForm} />
           </View>
         </View>
       </KeyboardAvoidingView>
