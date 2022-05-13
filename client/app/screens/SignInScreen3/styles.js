@@ -3,7 +3,8 @@ import { colors, constants, fonts } from '../../config';
 
 const styles = StyleSheet.create({
   safeAreaView: {
-    flex: 1
+    flex: 1,
+    backgroundColor: colors.white
   },
   wrapper: {
     height: constants.screenHeight,

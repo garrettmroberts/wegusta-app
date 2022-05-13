@@ -15,7 +15,7 @@ const SignInScreen3 = ({ navigation, route }) => {
   const [context, dispatch] = useStoreContext();
 
   const submitForm = () => {
-    navigation.navigate('Home')
+    navigation.navigate('SignIn4')
   }
 
   useEffect(() => {
