@@ -3,16 +3,17 @@ import React from 'react';
 import { Context } from './app/utils/Context';
 import Navigator from './app/navigation/AppNavigator';
 import { StatusBar } from 'expo-status-bar';
-import StorybookUIRoot from './storybook';
+import StorybookUI from './storybook'
+import {LOAD_STORYBOOK} from '@env'
 
 const App = () => {
   return (
     <Context>
       <Navigator />
       <StatusBar style="auto" />
-      <StorybookUIRoot />
     </Context>
   );
 };
 
-export default App;
+// export default App;
+export default LOAD_STORYBOOK === 'true' ? StorybookUI : App;
