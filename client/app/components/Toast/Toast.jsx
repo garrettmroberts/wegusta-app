@@ -18,11 +18,4 @@ const Toast = ({ description, iconLeft, onPress, style }) => {
   );
 };
 
-Toast.propTypes = {
-  description: PropTypes.string.isRequired,
-  iconLeft: PropTypes.string, // String name of icon
-  onPress: PropTypes.func,
-  style: PropTypes.object
-};
-
 export { Toast };
