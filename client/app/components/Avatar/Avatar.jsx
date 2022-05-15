@@ -6,7 +6,7 @@ import styles from './styles';
 import buildIcon from '../../utils/buildIcon';
 import { colors } from '../../config';
 
-const Avatar = ({ size, avatarStyle, accessory, letter, image, onPress, style }) => {
+const Avatar = ({ size, avatarStyle, accessory, letter, image, onPress, style, backgroundColor }) => {
   const formatIcon = (size) => {
     switch (size) {
     case 'large':
@@ -44,7 +44,7 @@ const Avatar = ({ size, avatarStyle, accessory, letter, image, onPress, style })
 
   return (
     <Pressable onPress={onPress} style={[styles[size], style ]}>
-      <View style={[styles.wrapper, styles[size]]}>
+      <View style={[styles.wrapper, styles[size], {backgroundColor: backgroundColor || colors.grey}]}>
         { setContent(avatarStyle, size, letter, image) }
       </View>
       { accesorize(accessory, size) }
@@ -59,7 +59,8 @@ Avatar.propTypes = {
   image: PropTypes.object, // Only required if avatarStyle === 'image'.  Check react-native Image docs for example
   accessory: PropTypes.string, // checkmark
   onPress: PropTypes.func,
-  style: PropTypes.object // Optional extra styles.  Applied to main wrapper.
+  style: PropTypes.object, // Optional extra styles.  Applied to main wrapper.
+  backgroundColor: PropTypes.string
 };
 
 export default Avatar;
