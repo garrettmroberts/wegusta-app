@@ -17,18 +17,15 @@ const SignInScreen4 = ({ navigation, route }) => {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.wrapper}
       >        
-        <View>
           <Avatar size="large" avatarStyle="letter" letter="A" />
           <View style={styles.colorSelectionWrapper}>
             <View style={[styles.colorSelection, styles.grey]} />
             <View style={[styles.colorSelection, styles.tertiary]} />
-            <View style={[styles.colorSelection, styles.danger]} />
+            <View style={[styles.colorSelection, styles.error]} />
             <View style={[styles.colorSelection, styles.accent]} />
             <View style={[styles.colorSelection, styles.primary]} />
             <View style={[styles.colorSelection, styles.secondary]} />
-
           </View>
-        </View>
         <View style={styles.buttonPlacement}>
           <Button type='primary' size='fullWidth' iconPlacement='none' text='Create Profile' icon='person-add' handlePress={submitForm} />
         </View>

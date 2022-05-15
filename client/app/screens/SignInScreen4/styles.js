@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     height: constants.screenHeight,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     flex: 1
   },
@@ -18,12 +18,18 @@ const styles = StyleSheet.create({
     zIndex: 1
   },
   colorSelectionWrapper: {
-    width: constants.screenWidth
+    width: constants.screenWidth,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 32
   },
   colorSelection: {
     height: 72,
     borderRadius: 12,
-    margin: 8
+    margin: 8,
+    width: 100,
+    maxWidth: 104
   },
   grey: {
     backgroundColor: colors.grey
@@ -31,8 +37,17 @@ const styles = StyleSheet.create({
   tertiary: {
     backgroundColor: colors.tertiary
   },
-  danger: {
-    backgroundColor: colors.danger
+  error: {
+    backgroundColor: colors.error
+  },
+  accent: {
+    backgroundColor: colors.accent
+  },
+  primary: {
+    backgroundColor: colors.primary
+  },
+  secondary: {
+    backgroundColor: colors.secondary
   }
 });
 
