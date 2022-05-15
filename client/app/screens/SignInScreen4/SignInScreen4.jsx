@@ -18,10 +18,7 @@ const SignInScreen4 = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.wrapper}
-      >        
+      <View style={styles.wrapper}>        
           <Avatar size="large" avatarStyle="letter" letter="A" backgroundColor={avatarColorState.backgroundColor}/>
           <View style={styles.colorSelectionWrapper}>
             <Pressable onPress={() => {handlePress(styles.grey)}}>
@@ -46,7 +43,7 @@ const SignInScreen4 = ({ navigation, route }) => {
         <View style={styles.buttonPlacement}>
           <Button type='primary' size='fullWidth' iconPlacement='none' text='Create Profile' icon='person-add' handlePress={submitForm} />
         </View>
-      </KeyboardAvoidingView>
+      </View>
     </SafeAreaView>
   );
 }

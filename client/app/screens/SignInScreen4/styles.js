@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     height: constants.screenHeight,
-    // justifyContent: 'center',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
+    marginTop: 36
   },
   buttonPlacement: {
     position: 'absolute',

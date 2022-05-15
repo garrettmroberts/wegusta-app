@@ -33,6 +33,11 @@ const navOptions = {
   },
   signInScreen: {
     headerShown: false
+  },
+  signInScreen4: {
+    headerTitle: 'Create Profile',
+    headerTintColor: colors.black,
+    headerBackTitleVisible: false
   }
 };
 

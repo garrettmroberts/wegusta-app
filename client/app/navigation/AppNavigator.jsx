@@ -39,7 +39,7 @@ const StackNavigator = () => {
       <Stack.Screen 
         name="SignIn4"
         component={SignInScreen4}
-        options={navOptions.signInScreen}
+        options={navOptions.signInScreen4}
       />
       <Stack.Screen
         name="Home" 
