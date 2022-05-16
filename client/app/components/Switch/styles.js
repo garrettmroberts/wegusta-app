@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { colors, constants } from '../../config';
+import { StyleSheet } from 'react-native'
+import { colors, constants } from '../../config'
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({})
 
-export default styles;
+export default styles

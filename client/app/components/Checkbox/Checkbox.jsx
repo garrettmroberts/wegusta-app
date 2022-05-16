@@ -1,92 +1,94 @@
-import React, { useState } from 'react';
-import { Pressable } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import { Pressable } from 'react-native'
+import PropTypes from 'prop-types'
 
-import styles from './styles';
-import { colors } from '../../config';
-import buildIcon from '../../utils/buildIcon';
+import styles from './styles'
+import { colors } from '../../config'
+import buildIcon from '../../utils/buildIcon'
 
 const Checkbox = ({ currentState, handlePress }) => {
-  const [state, setState] = useState(currentState);
+    const [state, setState] = useState(currentState)
 
-  const PressableStyles = (state) => {
-    const style = [styles.box];
-    
-    if (state === 'partial' || state === 'checked') {
-      style.push(styles.darkBox);
-    } else {
-      style.push(styles.lightBox);
+    const PressableStyles = state => {
+        const style = [styles.box]
+
+        if (state === 'partial' || state === 'checked') {
+            style.push(styles.darkBox)
+        } else {
+            style.push(styles.lightBox)
+        }
+
+        if (state === 'disabled') {
+            style.push(styles.disabledBox)
+        }
+
+        return style
     }
 
-    if (state === 'disabled') {
-      style.push(styles.disabledBox);
+    const innerElement = state => {
+        const iconColor =
+            state === 'partial' || state === 'checked'
+                ? colors.white
+                : colors.primary
+
+        let icon
+
+        switch (state) {
+            case 'unchecked':
+                break
+            case 'partial':
+                icon = buildIcon({
+                    name: 'minus',
+                    color: iconColor,
+                    size: 20,
+                })
+                break
+            case 'checked':
+                icon = buildIcon({
+                    name: 'checkmark',
+                    color: iconColor,
+                    size: 20,
+                })
+                break
+            case 'disabled':
+                icon = buildIcon({
+                    name: 'checkmark',
+                    color: colors.grey,
+                    size: 20,
+                })
+                break
+        }
+
+        return icon
     }
 
-    return style;
-  };
-
-  const innerElement = (state) => {
-    const iconColor = state === 'partial' || state === 'checked' ? colors.white : colors.primary;
-
-    let icon;
-    
-    switch (state) {
-    case 'unchecked':
-      break;
-    case 'partial':
-      icon = buildIcon({
-        name: 'minus',
-        color: iconColor,
-        size: 20
-      });
-      break;
-    case 'checked':
-      icon = buildIcon({
-        name: 'checkmark',
-        color: iconColor,
-        size: 20
-      });
-      break;
-    case 'disabled':
-      icon = buildIcon({
-        name: 'checkmark',
-        color: colors.grey,
-        size: 20
-      });
-      break;
+    const vanillaHandlePress = () => {
+        if (state === 'unchecked') {
+            setState('checked')
+        } else if (state === 'checked') {
+            setState('unchecked')
+        }
     }
 
-    return icon;
-  };
-
-  const vanillaHandlePress = () => {
-    if (state === 'unchecked') {
-      setState('checked');
-    } else if (state === 'checked') {
-      setState('unchecked');
+    const multipleHandlers = () => {
+        if (typeof handlePress !== 'undefined') {
+            vanillaHandlePress()
+            handlePress()
+        } else {
+            vanillaHandlePress()
+        }
     }
-  };
 
-  const multipleHandlers = () => {
-    if (typeof handlePress !== 'undefined') {
-      vanillaHandlePress();
-      handlePress();
-    } else {
-      vanillaHandlePress();
-    }
-    
-  };
-  
-  return (
-    <Pressable style={PressableStyles(state)} onPress={multipleHandlers} >
-      { innerElement(state) }
-    </Pressable>
-  );
-};
+    return (
+        <Pressable style={PressableStyles(state)} onPress={multipleHandlers}>
+            {innerElement(state)}
+        </Pressable>
+    )
+}
 
 Checkbox.propTypes = {
-  currentState: PropTypes.string.isRequired, // unchecked, partial, checked, disabled
-  handlePress: PropTypes.func
-};
+    currentState: PropTypes.string.isRequired, // unchecked, partial, checked, disabled
+    handlePress: PropTypes.func,
+}
 
-export default Checkbox;
+export default Checkbox
