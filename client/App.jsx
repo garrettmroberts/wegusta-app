@@ -7,12 +7,12 @@ import StorybookUI from './storybook'
 import { LOAD_STORYBOOK } from '@env'
 
 const App = () => {
-    return (
-        <Context>
-            <Navigator />
-            <StatusBar style="auto" />
-        </Context>
-    )
+  return (
+    <Context>
+      <Navigator />
+      <StatusBar style="auto" />
+    </Context>
+  )
 }
 
 // export default App;

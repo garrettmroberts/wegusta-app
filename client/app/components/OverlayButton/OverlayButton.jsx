@@ -5,72 +5,72 @@ import PropTypes from 'prop-types'
 import styles from './styles'
 
 const OverlayButton = ({ dark, overlay, handlePress }) => {
-    let buttonStyle = dark => (dark === true ? 'dark' : 'light')
+  let buttonStyle = dark => (dark === true ? 'dark' : 'light')
 
-    const icon = (dark, overlay) => {
-        if (overlay === 'more' && dark) {
-            return (
-                <Image
-                    source={require('../../assets/ellipsis.png')}
-                    style={styles.overlay}
-                />
-            )
-        } else if (overlay === 'more' && !dark) {
-            return (
-                <Image
-                    source={require('../../assets/ellipsis-dark.png')}
-                    style={styles.overlay}
-                />
-            )
-        } else if (overlay === 'search' && dark) {
-            return (
-                <Image
-                    source={require('../../assets/search-white.png')}
-                    style={styles.overlaySmall}
-                />
-            )
-        } else if (overlay === 'search' && !dark) {
-            return (
-                <Image
-                    source={require('../../assets/search.png')}
-                    style={styles.overlaySmall}
-                />
-            )
-        } else if (overlay === 'close' && dark) {
-            return (
-                <Image
-                    source={require('../../assets/x-white.png')}
-                    style={[styles.overlaySmall, styles.shiftLeft]}
-                />
-            )
-        } else {
-            return (
-                <Image
-                    source={require('../../assets/x-icon.png')}
-                    style={[styles.overlaySmall, styles.shiftLeft]}
-                />
-            )
-        }
+  const icon = (dark, overlay) => {
+    if (overlay === 'more' && dark) {
+      return (
+        <Image
+          source={require('../../assets/ellipsis.png')}
+          style={styles.overlay}
+        />
+      )
+    } else if (overlay === 'more' && !dark) {
+      return (
+        <Image
+          source={require('../../assets/ellipsis-dark.png')}
+          style={styles.overlay}
+        />
+      )
+    } else if (overlay === 'search' && dark) {
+      return (
+        <Image
+          source={require('../../assets/search-white.png')}
+          style={styles.overlaySmall}
+        />
+      )
+    } else if (overlay === 'search' && !dark) {
+      return (
+        <Image
+          source={require('../../assets/search.png')}
+          style={styles.overlaySmall}
+        />
+      )
+    } else if (overlay === 'close' && dark) {
+      return (
+        <Image
+          source={require('../../assets/x-white.png')}
+          style={[styles.overlaySmall, styles.shiftLeft]}
+        />
+      )
+    } else {
+      return (
+        <Image
+          source={require('../../assets/x-icon.png')}
+          style={[styles.overlaySmall, styles.shiftLeft]}
+        />
+      )
     }
+  }
 
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles[buttonStyle(dark)],
-                styles.icon,
-                { opacity: pressed ? 0.8 : 1 },
-            ]}
-            onPress={handlePress}
-        >
-            <View>{icon(dark, overlay)}</View>
-        </Pressable>
-    )
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        styles[buttonStyle(dark)],
+        styles.icon,
+        { opacity: pressed ? 0.8 : 1 },
+      ]}
+      onPress={handlePress}
+    >
+      <View>{icon(dark, overlay)}</View>
+    </Pressable>
+  )
 }
 
 OverlayButton.propTypes = {
-    dark: PropTypes.bool,
-    overlay: PropTypes.string.isRequired,
-    handlePress: PropTypes.func,
+  dark: PropTypes.bool,
+  overlay: PropTypes.string.isRequired,
+  handlePress: PropTypes.func,
 }
 
 export { OverlayButton }

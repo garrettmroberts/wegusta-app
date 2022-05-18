@@ -19,74 +19,74 @@ import Title from './macros/Title'
 
 const Stack = createStackNavigator()
 const StackNavigator = () => {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen
-                name="SignIn1"
-                component={SignInScreen1}
-                options={navOptions.signInScreen}
-            />
-            <Stack.Screen
-                name="SignIn2"
-                component={SignInScreen2}
-                options={navOptions.signInScreen}
-            />
-            <Stack.Screen
-                name="SignIn3"
-                component={SignInScreen3}
-                options={navOptions.signInScreen}
-            />
-            <Stack.Screen
-                name="SignIn4"
-                component={SignInScreen4}
-                options={navOptions.signInScreen4}
-            />
-            <Stack.Screen
-                name="Home"
-                component={HomeScreen}
-                options={navOptions.leftAlignWithIcons}
-            />
-            <Stack.Screen
-                name="ComponentsDemo"
-                component={ComponentsDemo}
-                options={navOptions.centerAlign}
-            />
-            <Stack.Screen
-                name="Notifications"
-                component={NotificationScreen}
-                options={navOptions.centerAlign}
-            />
-            <Stack.Screen
-                name="Invite"
-                component={InviteScreen}
-                options={navOptions.backAndForwardNavigation}
-            />
-            <Stack.Screen
-                name="Filter"
-                component={FilterScreen}
-                options={{
-                    headerTitle: () => <Title headerText="How far away?" />,
-                    ...navOptions.centerAlign,
-                }}
-            />
-            <Stack.Screen
-                name="PreferenceSelector"
-                component={PreferenceSelectorScreen}
-                options={{
-                    headerTitle: () => <Title headerText="What looks good?" />,
-                    ...navOptions.centerAlign,
-                }}
-            />
-        </Stack.Navigator>
-    )
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="SignIn1"
+        component={SignInScreen1}
+        options={navOptions.signInScreen}
+      />
+      <Stack.Screen
+        name="SignIn2"
+        component={SignInScreen2}
+        options={navOptions.signInScreen}
+      />
+      <Stack.Screen
+        name="SignIn3"
+        component={SignInScreen3}
+        options={navOptions.signInScreen}
+      />
+      <Stack.Screen
+        name="SignIn4"
+        component={SignInScreen4}
+        options={navOptions.signInScreen4}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={navOptions.leftAlignWithIcons}
+      />
+      <Stack.Screen
+        name="ComponentsDemo"
+        component={ComponentsDemo}
+        options={navOptions.centerAlign}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={NotificationScreen}
+        options={navOptions.centerAlign}
+      />
+      <Stack.Screen
+        name="Invite"
+        component={InviteScreen}
+        options={navOptions.backAndForwardNavigation}
+      />
+      <Stack.Screen
+        name="Filter"
+        component={FilterScreen}
+        options={{
+          headerTitle: () => <Title headerText="How far away?" />,
+          ...navOptions.centerAlign,
+        }}
+      />
+      <Stack.Screen
+        name="PreferenceSelector"
+        component={PreferenceSelectorScreen}
+        options={{
+          headerTitle: () => <Title headerText="What looks good?" />,
+          ...navOptions.centerAlign,
+        }}
+      />
+    </Stack.Navigator>
+  )
 }
 
 const Navigator = () => {
-    return (
-        <NavigationContainer>
-            <StackNavigator />
-        </NavigationContainer>
-    )
+  return (
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
+  )
 }
 
 export default Navigator

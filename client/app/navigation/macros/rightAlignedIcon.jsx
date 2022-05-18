@@ -8,28 +8,28 @@ import buildIcon from '../../utils/buildIcon'
 import { useNavigation } from '@react-navigation/native'
 
 const RightAlignedIcon = () => {
-    const navigation = useNavigation()
+  const navigation = useNavigation()
 
-    return (
-        <View style={styles.rightIconWrapper}>
-            {buildIcon({
-                name: 'settings-outline',
-                color: colors.black,
-                size: 32,
-                onPress: () => {
-                    navigation.navigate('ComponentsDemo')
-                },
-            })}
-        </View>
-    )
+  return (
+    <View style={styles.rightIconWrapper}>
+      {buildIcon({
+        name: 'settings-outline',
+        color: colors.black,
+        size: 32,
+        onPress: () => {
+          navigation.navigate('ComponentsDemo')
+        },
+      })}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-    rightIconWrapper: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginRight: 24,
-    },
+  rightIconWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 24,
+  },
 })
 
 export default RightAlignedIcon
