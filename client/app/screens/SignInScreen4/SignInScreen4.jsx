@@ -19,7 +19,9 @@ import styles from './styles'
 const SignInScreen4 = ({ navigation, route }) => {
   const [avatarColorState, setAvatarColorState] = useState(colors.grey)
 
-  const submitForm = () => {}
+  const submitForm = () => {
+    navigation.navigate('Home')
+  }
 
   const handlePress = color => {
     setAvatarColorState(color)

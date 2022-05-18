@@ -15,13 +15,23 @@ const styles = StyleSheet.create({
     ...fonts.h1Bold,
     marginTop: 50,
   },
-  input: {
+  textInputWrapper: {
     backgroundColor: colors.grey,
     width: constants.screenWidth - constants.viewPaddingSmall * 2,
     height: 56,
     borderRadius: 10,
     paddingHorizontal: 12,
     marginVertical: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    fontSize: 18,
+  },
+  inputPrepend: {
+    color: colors.greyDark,
+  },
+  input: {
+    marginLeft: 8,
+    width: 100,
   },
   toast: {
     position: 'absolute',

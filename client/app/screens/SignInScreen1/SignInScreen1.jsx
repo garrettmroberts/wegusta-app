@@ -87,14 +87,17 @@ const SignInScreen1 = ({ navigation }) => {
           onPress={handleToastClose}
         />
         <View style={styles.inputBlockWrapper}>
-          <Text style={styles.text}>Enter your phone #</Text>
-          <TextInput
-            placeholder="+1 555-123-4567"
-            onChangeText={handleChangeText}
-            keyboardType="phone-pad"
-            autoCompleteType="tel"
-            style={styles.input}
-          />
+          <Text style={styles.text}>Enter your phone # </Text>
+          <View style={styles.textInputWrapper}>
+            <Text style={styles.inputPrepend}>🇺🇸 +1</Text>
+            <TextInput
+              placeholder="555-123-4567"
+              onChangeText={handleChangeText}
+              keyboardType="phone-pad"
+              autoCompleteType="tel"
+              style={styles.input}
+            />
+          </View>
           <View>
             <Text style={styles.termsAndConditions}>
               By continuing you agree to Wegusta LLC’s Terms of Use and confirm
