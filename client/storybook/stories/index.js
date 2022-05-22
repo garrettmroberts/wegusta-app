@@ -1,2 +1,3 @@
 import './Welcome/Welcome.stories'
-import './Components/Toast.stories'
+import '../../app/components/Toast/Toast.stories'
+import '../../app/components/SocialButton/SocialButton.stories'
