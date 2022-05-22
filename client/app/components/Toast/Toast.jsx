@@ -10,7 +10,7 @@ const Toast = ({ description, iconLeft, onPress, style }) => {
   return (
     <Pressable style={{ ...styles.wrapper, ...style }} onPress={onPress}>
       <View style={styles.flexRow}>
-        {buildIcon({ name: iconLeft, size: 22.5, color: colors.white } )}
+        {buildIcon({ name: iconLeft, size: 22.5, color: colors.white })}
         <Text style={[fonts.bodyReg, fonts.textLight, styles.text]}>
           {description}
         </Text>
@@ -24,7 +24,7 @@ Toast.propTypes = {
   description: PropTypes.string.isRequired,
   iconLeft: PropTypes.string.isRequired, // name of the icon
   onPress: PropTypes.func,
-  style: PropTypes.object
+  style: PropTypes.object,
 }
 
-export default Toast;
+export default Toast

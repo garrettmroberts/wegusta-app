@@ -11,4 +11,3 @@ storiesOf('Toast', module)
   .add('default', () => (
     <Toast description="Description" iconLeft="md-person-add" />
   ))
-  

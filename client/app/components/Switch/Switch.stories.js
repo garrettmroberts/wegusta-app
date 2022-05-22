@@ -8,10 +8,5 @@ import { Text } from 'react-native'
 
 storiesOf('Switch', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-  .add('selected', () => (
-    <Switch selected={true} />
-  ))
-  .add('disabled', () => (
-    <Switch disabled={true} />
-  ))
-  
+  .add('selected', () => <Switch selected={true} />)
+  .add('disabled', () => <Switch disabled={true} />)

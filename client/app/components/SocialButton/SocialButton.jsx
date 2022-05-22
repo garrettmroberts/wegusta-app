@@ -62,4 +62,4 @@ SocialButton.propTypes = {
   handlePress: PropTypes.func,
 }
 
-export default SocialButton;
+export default SocialButton
