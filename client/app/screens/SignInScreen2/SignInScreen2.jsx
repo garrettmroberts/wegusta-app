@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native'
-import { Toast } from '../../components'
+import Toast from '../../components/Toast/Toast'
 import firebase from '../../config/firebase'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
