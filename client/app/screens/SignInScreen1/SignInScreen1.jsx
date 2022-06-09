@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { Toast } from '../../components'
+import Toast from '../../components/Toast/Toast'
 import {
   FirebaseRecaptchaVerifierModal,
   FirebaseRecaptchaBanner,
@@ -15,6 +15,7 @@ import {
 import firebase from '../../config/firebase'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
+import { PropTypes } from 'prop-types'
 import styles from './styles'
 
 const SignInScreen1 = ({ navigation }) => {
@@ -27,6 +28,7 @@ const SignInScreen1 = ({ navigation }) => {
   })
 
   const [context, dispatch] = useStoreContext()
+
 
   const recaptchaVerifier = useRef(null)
 
@@ -121,6 +123,10 @@ const SignInScreen1 = ({ navigation }) => {
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
+}
+
+SignInScreen1.propTypes = {
+  navigation: PropTypes.object
 }
 
 export default SignInScreen1
