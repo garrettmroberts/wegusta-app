@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native'
 import Toast from '../../components/Toast/Toast'
-import firebase from '../../config/firebase'
+import firebase from '../../utils/firebase'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
 import styles from './styles'

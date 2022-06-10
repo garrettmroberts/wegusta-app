@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
   KeyboardAvoidingView,
   SafeAreaView,
@@ -12,11 +12,12 @@ import {
   FirebaseRecaptchaVerifierModal,
   FirebaseRecaptchaBanner,
 } from 'expo-firebase-recaptcha'
-import firebase from '../../config/firebase'
+import firebase from '../../utils/firebase'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
 import { PropTypes } from 'prop-types'
 import styles from './styles'
+
 
 const SignInScreen1 = ({ navigation }) => {
   const [state, changeState] = useState({
@@ -29,6 +30,13 @@ const SignInScreen1 = ({ navigation }) => {
 
   const [context, dispatch] = useStoreContext()
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate('Home')
+      }
+    });
+  }, [])
 
   const recaptchaVerifier = useRef(null)
 
@@ -87,6 +95,7 @@ const SignInScreen1 = ({ navigation }) => {
           description="Something went wrong.  Try again."
           style={state.isToastVisible ? styles.toast : styles.invisible}
           onPress={handleToastClose}
+          iconLeft=''
         />
         <View style={styles.inputBlockWrapper}>
           <Text style={styles.text}>Enter your phone # </Text>
