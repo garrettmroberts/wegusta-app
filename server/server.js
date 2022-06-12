@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const path = require('path');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
@@ -15,6 +17,8 @@ const app = express();
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
