@@ -14,12 +14,23 @@ import Avatar from '../../components/Avatar/Avatar'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
 import { colors } from '../../config'
+import { PropTypes } from 'prop-types'
 import styles from './styles'
 
 const SignInScreen4 = ({ navigation, route }) => {
   const [avatarColorState, setAvatarColorState] = useState(colors.grey)
 
+  const [context, dispatch] = useStoreContext()
+
   const submitForm = () => {
+    dispatch({ type: 'signIn', payload: {
+      phoneNumber: route.params.phoneNumber,
+      userId: route.params.userId,
+      name: route.params.name,
+      color: avatarColorState.backgroundColor
+    } })
+
+    console.log(context)
     navigation.navigate('Home')
   }
 
@@ -93,6 +104,11 @@ const SignInScreen4 = ({ navigation, route }) => {
       </View>
     </SafeAreaView>
   )
+}
+
+SignInScreen4.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired
 }
 
 export default SignInScreen4

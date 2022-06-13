@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-raw-text */
 import React, { useState } from 'react'
 import {
   KeyboardAvoidingView,
@@ -9,7 +10,8 @@ import {
 import Toast from '../../components/Toast/Toast'
 import firebase from '../../utils/firebase'
 import Button from '../../components/Button/Button'
-import { useStoreContext } from '../../utils/Context'
+// import { useStoreContext } from '../../utils/Context'
+import { PropTypes } from 'prop-types'
 import styles from './styles'
 
 const SignInScreen2 = ({ navigation, route }) => {
@@ -18,7 +20,7 @@ const SignInScreen2 = ({ navigation, route }) => {
     isToastVisible: false,
   })
 
-  const [context, dispatch] = useStoreContext()
+  // const [context, dispatch] = useStoreContext()
 
   const handleToastClose = () => {
     changeState({
@@ -34,9 +36,11 @@ const SignInScreen2 = ({ navigation, route }) => {
         state.code
       )
       const result = await firebase.auth().signInWithCredential(credential)
-      dispatch({ type: 'signIn', payLoad: result })
+      // dispatch({ type: 'signIn', payLoad: result })
+      console.log(result.user.uid)
       navigation.navigate('SignIn3', {
-        phoneNumber: route.params.phoneNumber,
+        phoneNumber: result.user.phoneNumber,
+        userId: result.user.uid
       })
     } catch (err) {
       console.log(err)
@@ -89,6 +93,11 @@ const SignInScreen2 = ({ navigation, route }) => {
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
+}
+
+SignInScreen2.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired
 }
 
 export default SignInScreen2

@@ -9,12 +9,10 @@ import {
 } from 'react-native'
 import Toast from '../../components/Toast/Toast'
 import {
-  FirebaseRecaptchaVerifierModal,
-  FirebaseRecaptchaBanner,
+  FirebaseRecaptchaVerifierModal
 } from 'expo-firebase-recaptcha'
 import firebase from '../../utils/firebase'
 import Button from '../../components/Button/Button'
-import { useStoreContext } from '../../utils/Context'
 import { PropTypes } from 'prop-types'
 import styles from './styles'
 
@@ -28,7 +26,6 @@ const SignInScreen1 = ({ navigation }) => {
     isToastVisible: false,
   })
 
-  const [context, dispatch] = useStoreContext()
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {

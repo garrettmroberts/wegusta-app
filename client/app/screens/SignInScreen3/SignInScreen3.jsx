@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import firebase from '../../utils/firebase'
 import Button from '../../components/Button/Button'
-import { useStoreContext } from '../../utils/Context'
+// import { useStoreContext } from '../../utils/Context'
+import { PropTypes } from 'prop-types'
 import styles from './styles'
 
 const SignInScreen3 = ({ navigation, route }) => {
@@ -20,10 +20,14 @@ const SignInScreen3 = ({ navigation, route }) => {
     submissionButtonStatus: 'disabled',
   })
 
-  const [context, dispatch] = useStoreContext()
+  // const [context, dispatch] = useStoreContext()
 
   const submitForm = () => {
-    navigation.navigate('SignIn4')
+    navigation.navigate('SignIn4', {
+      phoneNumber: route.params.phoneNumber,
+      userId: route.params.userId,
+      name: state.name
+    })
   }
 
   useEffect(() => {
@@ -91,6 +95,11 @@ const SignInScreen3 = ({ navigation, route }) => {
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
+}
+
+SignInScreen3.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  route: PropTypes.object.isRequired
 }
 
 export default SignInScreen3
