@@ -13,6 +13,7 @@ import firebase from '../../utils/firebase'
 import Avatar from '../../components/Avatar/Avatar'
 import Button from '../../components/Button/Button'
 import { useStoreContext } from '../../utils/Context'
+import api from '../../utils/api'
 import { colors } from '../../config'
 import { PropTypes } from 'prop-types'
 import styles from './styles'
@@ -23,14 +24,16 @@ const SignInScreen4 = ({ navigation, route }) => {
   const [context, dispatch] = useStoreContext()
 
   const submitForm = () => {
-    dispatch({ type: 'signIn', payload: {
+    const reqBody = {
       phoneNumber: route.params.phoneNumber,
       userId: route.params.userId,
       name: route.params.name,
       color: avatarColorState.backgroundColor
-    } })
+    }
 
-    console.log(context)
+    dispatch({ type: 'signIn', payload: reqBody })
+
+    api.signUp(reqBody)
     navigation.navigate('Home')
   }
 
@@ -44,7 +47,7 @@ const SignInScreen4 = ({ navigation, route }) => {
         <Avatar
           size="large"
           avatarStyle="letter"
-          letter="A"
+          letter={route.params.name[0]}
           backgroundColor={avatarColorState.backgroundColor}
         />
         <View style={styles.colorSelectionWrapper}>
