@@ -6,14 +6,15 @@ router
   .get(userController.findAll)
 
 router
-  .route('/:phoneNumber')
+  .route('/:id')
+  .post(userController.createUser)
   .get(userController.findUser)
   .put(userController.updateUser)
   .delete(userController.deleteUser)
 
 router
   .route('/create')
-  .post(userController.createUser)
+  
 
 
 module.exports = router;
