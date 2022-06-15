@@ -37,7 +37,6 @@ const SignInScreen2 = ({ navigation, route }) => {
       )
       const result = await firebase.auth().signInWithCredential(credential)
       // dispatch({ type: 'signIn', payLoad: result })
-      console.log(result.user.uid)
       navigation.navigate('SignIn3', {
         phoneNumber: result.user.phoneNumber,
         userId: result.user.uid
@@ -62,6 +61,7 @@ const SignInScreen2 = ({ navigation, route }) => {
           description="The code you entered is incorrect. Try again."
           style={state.isToastVisible ? styles.toast : styles.invisible}
           onPress={handleToastClose}
+          iconLeft=''
         />
         <View style={styles.inputBlockWrapper}>
           <Text style={styles.h2Reg}>Enter the code we just text you</Text>

@@ -26,14 +26,13 @@ const SignInScreen4 = ({ navigation, route }) => {
   const submitForm = () => {
     const reqBody = {
       phoneNumber: route.params.phoneNumber,
-      userId: route.params.userId,
       name: route.params.name,
       color: avatarColorState.backgroundColor
     }
 
     dispatch({ type: 'signIn', payload: reqBody })
 
-    api.signUp(reqBody)
+    api.createUser(route.params.userId, reqBody)
     navigation.navigate('Home')
   }
 

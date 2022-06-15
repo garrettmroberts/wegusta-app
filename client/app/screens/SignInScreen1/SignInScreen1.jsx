@@ -27,13 +27,14 @@ const SignInScreen1 = ({ navigation }) => {
   })
 
 
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       navigation.navigate('Home')
-  //     }
-  //   });
-  // }, [])
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user)
+        navigation.navigate('Home')
+      }
+    });
+  }, [])
 
   const recaptchaVerifier = useRef(null)
 

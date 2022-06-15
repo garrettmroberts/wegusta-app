@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export default {
-  signUp: (body) => {
-    axios.post('http://0.0.0.0:8080/api/users/create', body)
+  createUser: (id, body) => {
+    axios.post(`http://0.0.0.0:8080/api/users/${id}`, body)
+  },
+  updateUser:  (id, body) => {
+    axios.put(`http://0.0.0.0:8080/api/users/${id}`, body)
   }
 }
