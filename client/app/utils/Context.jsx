@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useContext } from 'react'
 
 const initialState = {
   unreadNotifications: true,
-  // notifications: [
+  notifications: [
   //   {
   //     users: [
   //       {
@@ -93,7 +93,7 @@ const initialState = {
   //     unread: false,
   //     lastUpdated: new Date(),
   //   },
-  // ],
+  ],
   pendingWorkflow: {
     selectedUsers: [],
   },

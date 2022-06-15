@@ -26,16 +26,6 @@ const SignInScreen1 = ({ navigation }) => {
     isToastVisible: false,
   })
 
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log(user)
-        navigation.navigate('Home')
-      }
-    });
-  }, [])
-
   const recaptchaVerifier = useRef(null)
 
   const sendVerification = async () => {

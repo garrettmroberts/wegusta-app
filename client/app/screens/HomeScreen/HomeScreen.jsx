@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, ImageBackground, Text } from 'react-native'
 import { PropTypes } from 'prop-types'
+import { useStoreContext } from '../../utils/Context'
 
 import Button from '../../components/Button/Button'
 import styles from './styles'
@@ -10,6 +11,8 @@ const HomeScreen = ({ navigation }) => {
     navigation.navigate('Invite')
   }
 
+  const [context, dispatch] = useStoreContext();
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -17,6 +20,7 @@ const HomeScreen = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}
       >
+        {console.log(context)}
         <View style={styles.wrapper}>
           <Text style={styles.header}>We Like,</Text>
           <Text style={styles.secondaryHeader}>together</Text>

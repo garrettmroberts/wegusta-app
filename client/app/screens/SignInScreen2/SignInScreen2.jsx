@@ -42,8 +42,6 @@ const SignInScreen2 = ({ navigation, route }) => {
         userId: result.user.uid
       })
     } catch (err) {
-      console.log(err)
-
       changeState({
         ...state,
         isToastVisible: true,

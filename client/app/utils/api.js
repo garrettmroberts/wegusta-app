@@ -6,5 +6,8 @@ export default {
   },
   updateUser:  (id, body) => {
     axios.put(`http://0.0.0.0:8080/api/users/${id}`, body)
+  },
+  getUser: async (id) => {
+    return axios.get(`http://0.0.0.0:8080/api/users/${id}`)
   }
 }
