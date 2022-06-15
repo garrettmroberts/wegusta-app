@@ -57,7 +57,14 @@ module.exports = {
   updateUser: (req, res) => {
     db.collection('users').doc(req.params.phoneNumber).update(req.body)
     .then(dbResponse => {
-      res.status(200).json({dbResponse})
+      res.status(200).json({message: 'Fields updated successfully.'})
+    }).catch(err => res.status(400).json({ message: err.message }))
+  },
+
+  deleteUser: (req, res) => {
+    db.collection('users').doc(req.params.phoneNumber).delete()
+    .then(dbResponse => {
+      res.status(200).json({ message: 'User deleted successfully,'})
     }).catch(err => res.status(400).json({ message: err.message }))
   }
 };

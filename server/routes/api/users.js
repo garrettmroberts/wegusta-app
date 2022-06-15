@@ -9,6 +9,7 @@ router
   .route('/:phoneNumber')
   .get(userController.findUser)
   .put(userController.updateUser)
+  .delete(userController.deleteUser)
 
 router
   .route('/create')
