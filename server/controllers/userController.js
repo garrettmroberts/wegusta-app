@@ -20,7 +20,6 @@ module.exports = {
     .then(dbResponse => {
       const response = [];
       dbResponse.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
         const user = new User(
           doc.id,
           doc.data().authId,
@@ -28,10 +27,31 @@ module.exports = {
           doc.data().name,
           doc.data().phoneNumber
         );
-        console.log(user)
         response.push(user);
       });
       res.status(200).json(response)
     }).catch(err => res.status(400).json({ message: err.message }))
+  },
+
+  findUser: (req, res) => {
+    console.log(req.params.id);
+    db.collection('users').where('phoneNumber', '==', req.params.id).get()
+   .then(dbResponse => {
+      const response = [];
+      dbResponse.forEach(doc => {
+        const user = new User(
+          doc.id,
+          doc.data().authId,
+          doc.data().color,
+          doc.data().name,
+          doc.data().phoneNumber
+        );
+        response.push(user);
+      })
+      if (response.length === 0) {
+        res.status(400).json({ message: 'Phone number not associated with a known account'})
+      }
+      res.status(200).json(response[0])      
+   }).catch(err => res.status(400).json({ message: err.message }))
   }
 };

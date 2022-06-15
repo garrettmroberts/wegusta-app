@@ -6,6 +6,10 @@ router
   .get(userController.findAll)
 
 router
+  .route('/:id')
+  .get(userController.findUser)
+
+router
   .route('/create')
   .post(userController.createUser)
 
