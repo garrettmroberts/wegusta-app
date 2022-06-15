@@ -13,6 +13,7 @@ import SignInScreen1 from '../screens/SignInScreen1/SignInScreen1'
 import SignInScreen2 from '../screens/SignInScreen2/SignInScreen2'
 import SignInScreen3 from '../screens/SignInScreen3/SignInScreen3'
 import SignInScreen4 from '../screens/SignInScreen4/SignInScreen4'
+import SplashScreen from '../screens/SplashScreen/SplashScreen'
 import navOptions from './options'
 
 import Title from './macros/Title'
@@ -21,6 +22,11 @@ const Stack = createStackNavigator()
 const StackNavigator = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen
+        name="Splash"
+        options={{animationEnabled: false, header: () => null}}
+        component={SplashScreen}
+      />
       <Stack.Screen
         name="SignIn1"
         component={SignInScreen1}
