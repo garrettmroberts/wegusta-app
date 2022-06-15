@@ -6,8 +6,9 @@ router
   .get(userController.findAll)
 
 router
-  .route('/:id')
+  .route('/:phoneNumber')
   .get(userController.findUser)
+  .put(userController.updateUser)
 
 router
   .route('/create')

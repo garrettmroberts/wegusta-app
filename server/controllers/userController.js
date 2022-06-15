@@ -34,8 +34,7 @@ module.exports = {
   },
 
   findUser: (req, res) => {
-    console.log(req.params.id);
-    db.collection('users').where('phoneNumber', '==', req.params.id).get()
+    db.collection('users').where('phoneNumber', '==', req.params.phoneNumber).get()
    .then(dbResponse => {
       const response = [];
       dbResponse.forEach(doc => {
@@ -53,5 +52,12 @@ module.exports = {
       }
       res.status(200).json(response[0])      
    }).catch(err => res.status(400).json({ message: err.message }))
+  },
+
+  updateUser: (req, res) => {
+    db.collection('users').doc(req.params.phoneNumber).update(req.body)
+    .then(dbResponse => {
+      res.status(200).json({dbResponse})
+    }).catch(err => res.status(400).json({ message: err.message }))
   }
 };
