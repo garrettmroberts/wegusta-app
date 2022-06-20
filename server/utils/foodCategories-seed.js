@@ -23,7 +23,7 @@ db.collection('foodCategories').doc('burgers').set({
   ]
 })
 
-db.collection('foodCategories').add('cafe').set({
+db.collection('foodCategories').doc('cafe').set({
   displayName: 'cafe'
 })
 
@@ -43,7 +43,7 @@ db.collection('foodCategories').doc('chinese').set({
   ]
 })
 
-db.collection('foodCategories').add('carribean').set({
+db.collection('foodCategories').doc('carribean').set({
   displayName: 'carribean'
 })
 
@@ -56,7 +56,7 @@ db.collection('foodCategories').doc('deli').set({
   ]
 })
 
-db.collection('foodCategories').add('fast_food').set({
+db.collection('foodCategories').doc('fast_food').set({
   displayName: 'fast food'
 })
 
@@ -68,7 +68,7 @@ db.collection('foodCategories').doc('french').set({
   ]
 })
 
-db.collection('foodCategories').add('fusion').set({
+db.collection('foodCategories').doc('fusion').set({
   displayName: 'fusion'
 })
 
@@ -90,18 +90,72 @@ db.collection('foodCategories').doc('indian').set({
   ]
 })
 
-db.collection('foodCategories').add('japanese').set({
+db.collection('foodCategories').doc('japanese').set({
   displayName: 'japanese'
 })
 
-db.collection('foodCategories').add('korean').set({
+db.collection('foodCategories').doc('korean').set({
   displayName: 'korean'
 })
 
-db.collection('foodCategories').add('greek').set({
+db.collection('foodCategories').doc('greek').set({
   displayName: 'greek'
 })
 
-db.collection('foodCategories').add('mediterranean').set({
+db.collection('foodCategories').doc('mediterranean').set({
   displayName: 'mediterranean'
+})
+
+db.collection('foodCategories').doc('mexican').set({
+  displayName: 'mexican',
+  photos: [
+    'mexican-1'
+  ]
+})
+
+db.collection('foodCategories').doc('middle_eastern').set({
+  displayName: 'middle eastern'
+})
+
+db.collection('foodCategories').doc('pizza').set({
+  displayName: 'pizza',
+  photos: [
+    'pizza-1',
+    'pizza-2',
+    'pizza-3'
+  ]
+})
+
+db.collection('foodCategories').doc('seafood').set({
+  displayName: 'seafood'
+})
+
+db.collection('foodCategories').doc('steakhouse').set({
+  displayName: 'steakhouse',
+  photos: [
+    'steakhouse-1',
+    'steakhouse-2',
+    'steakhouse-3'
+  ]
+})
+
+db.collection('foodCategories').doc('sushi').set({
+  displayName: 'sushi',
+  photos: [
+    'sushi-1',
+    'sushi-2',
+    'sushi-3'
+  ]
+})
+
+db.collection('foodCategories').doc('thai').set({
+  displayName: 'thai'
+})
+
+db.collection('foodCategories').doc('vietnamese').set({
+  displayName: 'vietnamese'
+})
+
+db.collection('foodCategories').doc('wine_bar').set({
+  displayName: 'wine bar'
 })
