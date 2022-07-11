@@ -3,16 +3,16 @@ import { SafeAreaView } from 'react-native';
 import { Context } from './utils/Context'
 import Navigator from './navigation/AppNavigator'
 import { StyleSheet } from 'react-native';
+import Constants from 'expo-constants';
+import StorybookUI from './storybook'
 
-// export default function App() {
-//   return (
-//       <><Context>
-//       <Navigator />
-//     </Context><StatusBar /></>
-//   );
-// }
-
-export {default} from './storybook'; 
+const App = () => {
+  return (
+      <><Context>
+      <Navigator />
+    </Context><StatusBar /></>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -22,3 +22,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Constants.manifest?.extra?.loadStorybook === 'true' ?  StorybookUI : App
