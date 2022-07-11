@@ -1,23 +1,23 @@
-import React from 'react'
-import { Pressable, View } from 'react-native'
+import React from 'react';
+import { Pressable, View } from 'react-native';
 
-import styles from './styles'
-import { Ionicons } from '@expo/vector-icons'
-import Colors from '../../constants/Colors'
+import styles from './styles';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '../../constants/Colors';
 
 type Props = {
-  decision: 'like' | 'dislike',
-  handlePress?: () => {}
-}
+  decision: 'like' | 'dislike';
+  handlePress?: () => {};
+};
 
-const DecisionButton = ({ decision, handlePress}: Props) => {
+const DecisionButton = ({ decision, handlePress }: Props) => {
   const icon = (decision: 'like' | 'dislike') => {
     if (decision === 'like') {
-      return <Ionicons name='heart' size={50} color={Colors.error} />
+      return <Ionicons name="heart" size={50} color={Colors.error} />;
     } else {
-      return <Ionicons name='close' size={60} color={Colors.primary} />
+      return <Ionicons name="close" size={60} color={Colors.primary} />;
     }
-  }
+  };
 
   return (
     <Pressable
@@ -26,7 +26,7 @@ const DecisionButton = ({ decision, handlePress}: Props) => {
     >
       <View style={styles.icon}>{icon(decision)}</View>
     </Pressable>
-  )
-}
+  );
+};
 
-export default DecisionButton
+export default DecisionButton;

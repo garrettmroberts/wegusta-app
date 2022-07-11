@@ -5,12 +5,12 @@ import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import CenterView from './CenterView';
 
 storiesOf('Decision Button', module)
-  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('Like', () => (
-      <DecisionButton decision='like'  onPress={action('pressed like')}/>
+    <DecisionButton decision="like" onPress={action('pressed like')} />
   ))
   .add('Dislike', () => (
-    <DecisionButton decision='dislike' onPress={action('pressed dislike')}/>
+    <DecisionButton decision="dislike" onPress={action('pressed dislike')} />
   ));
 
 // import { text } from '@storybook/addon-knobs';

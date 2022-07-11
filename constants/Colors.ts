@@ -13,5 +13,5 @@ export default {
   accent: '#7A5CE5',
 
   // For use in facebook icon only
-  facebookBlue: '#0B7FFB',
-}
+  facebookBlue: '#0B7FFB'
+};
