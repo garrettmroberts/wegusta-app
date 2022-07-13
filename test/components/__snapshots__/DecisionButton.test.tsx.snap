@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DecisionButton /> renders a dislike button correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 90,
+        "display": "flex",
+        "elevation": 7,
+        "height": 80,
+        "justifyContent": "center",
+        "shadowColor": "#4667E8",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.29,
+        "shadowRadius": 4.65,
+        "width": 80,
+      },
+      Object {
+        "opacity": 1,
+      },
+    ]
+  }
+  testID="decision-button"
+>
+  <View
+    style={
+      Object {
+        "position": "relative",
+        "top": 2,
+      }
+    }
+  >
+    <View
+      color="#4667E8"
+      name="close"
+      size={60}
+    />
+  </View>
+</View>
+`;
+
+exports[`<DecisionButton /> renders a like button correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 90,
+        "display": "flex",
+        "elevation": 7,
+        "height": 80,
+        "justifyContent": "center",
+        "shadowColor": "#4667E8",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.29,
+        "shadowRadius": 4.65,
+        "width": 80,
+      },
+      Object {
+        "opacity": 1,
+      },
+    ]
+  }
+  testID="decision-button"
+>
+  <View
+    style={
+      Object {
+        "position": "relative",
+        "top": 2,
+      }
+    }
+  >
+    <View
+      color="#FF401A"
+      name="heart"
+      size={50}
+    />
+  </View>
+</View>
+`;

@@ -23,6 +23,7 @@ const DecisionButton = ({ decision, handlePress }: Props) => {
     <Pressable
       style={({ pressed }) => [styles.button, { opacity: pressed ? 0.8 : 1 }]}
       onPress={handlePress}
+      testID='decision-button'
     >
       <View style={styles.icon}>{icon(decision)}</View>
     </Pressable>
