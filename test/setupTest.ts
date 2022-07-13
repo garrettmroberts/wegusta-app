@@ -6,6 +6,6 @@ jest.mock('@expo/vector-icons', () => {
   const { View } = require('react-native');
   return {
     SimpleLineIcons: View,
-    Ionicons: View,
+    Ionicons: View
   };
 });

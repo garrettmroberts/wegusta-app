@@ -49,7 +49,7 @@ exports[`<DecisionButton /> renders a dislike button correctly 1`] = `
     }
   >
     <View
-      color="#4667E8"
+      color="#0A0A0A"
       name="close"
       size={60}
     />

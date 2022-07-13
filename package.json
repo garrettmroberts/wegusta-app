@@ -9,7 +9,11 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "format": "npx prettier --write .",
-    "test": "jest"
+    "test": "jest --watch",
+    "testFinal": "jest",
+    "updateSnapshots": "jest -u",
+    "coverage": "jest --coverage=true",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "~1.17.3",
@@ -42,6 +46,7 @@
     "@types/react-native": "~0.67.6",
     "@types/react-test-renderer": "^17.0.2",
     "babel-loader": "^8.2.5",
+    "husky": "^8.0.0",
     "prettier": "2.7.1",
     "react-test-renderer": "^17.0.2",
     "typescript": "~4.3.5"

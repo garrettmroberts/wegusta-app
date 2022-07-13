@@ -23,7 +23,7 @@ const DecisionButton = ({ decision, onPress }: Props) => {
     <Pressable
       style={({ pressed }) => [styles.button, { opacity: pressed ? 0.8 : 1 }]}
       onPress={onPress}
-      testID='decision-button'
+      testID="decision-button"
     >
       <View style={styles.icon}>{icon(decision)}</View>
     </Pressable>
