@@ -6,7 +6,7 @@ export default {
   grey: '#CFCFDB',
   greyLight: '#EDEEF2',
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#0A0A0A',
   success: '#00BC00',
   warning: '#FFC857',
   error: '#FF401A',

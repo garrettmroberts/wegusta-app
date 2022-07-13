@@ -12,18 +12,3 @@ storiesOf('Decision Button', module)
   .add('Dislike', () => (
     <DecisionButton decision="dislike" onPress={action('pressed dislike')} />
   ));
-
-// import { text } from '@storybook/addon-knobs';
-
-// storiesOf('Button', module)
-//   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-//   .add('with text', () => (
-//     <Button onPress={action('clicked-text')}>
-//       <Text>{text('Button text', 'Hello Button')}</Text>
-//     </Button>
-//   ))
-//   .add('with some emoji', () => (
-//     <Button onPress={action('clicked-emoji')}>
-//       <Text>😀 😎 👍 💯</Text>
-//     </Button>
-//   ));

@@ -7,22 +7,22 @@ import Colors from '../../constants/Colors';
 
 type Props = {
   decision: 'like' | 'dislike';
-  handlePress?: () => {};
+  onPress?: () => {};
 };
 
-const DecisionButton = ({ decision, handlePress }: Props) => {
+const DecisionButton = ({ decision, onPress }: Props) => {
   const icon = (decision: 'like' | 'dislike') => {
     if (decision === 'like') {
       return <Ionicons name="heart" size={50} color={Colors.error} />;
     } else {
-      return <Ionicons name="close" size={60} color={Colors.primary} />;
+      return <Ionicons name="close" size={60} color={Colors.black} />;
     }
   };
 
   return (
     <Pressable
       style={({ pressed }) => [styles.button, { opacity: pressed ? 0.8 : 1 }]}
-      onPress={handlePress}
+      onPress={onPress}
       testID='decision-button'
     >
       <View style={styles.icon}>{icon(decision)}</View>
