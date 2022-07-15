@@ -1,7 +1,7 @@
-import { Dimensions, Platform } from 'react-native'
+import { Dimensions, Platform } from 'react-native';
 
-let headerHeight = Platform.OS === 'ios' ? 66 : 46
-let footerHeight = 55
+let headerHeight = Platform.OS === 'ios' ? 66 : 46;
+let footerHeight = 55;
 
 export default {
   headerHeight: headerHeight,
@@ -12,5 +12,5 @@ export default {
   defaultSpacer: 10,
   screenHeight: Dimensions.get('window').height,
   screenWidth: Dimensions.get('window').width,
-  baseImageStyle: { flex: 1, width: undefined, height: undefined },
-}
+  baseImageStyle: { flex: 1, width: undefined, height: undefined }
+};

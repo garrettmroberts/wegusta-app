@@ -1,16 +1,16 @@
 import { ReactNode, useState } from 'react';
-import { useRef } from 'react'
-import { Animated, View, PanResponder } from 'react-native'
+import { useRef } from 'react';
+import { Animated, View, PanResponder } from 'react-native';
 
-import Sizes from '../../constants/Sizes'
+import Sizes from '../../constants/Sizes';
 
 type Props = {
   children?: ReactNode;
   onSwipe?: () => void;
-}
+};
 
-const SwipeableEntity= ({ children, onSwipe }: Props) => {
-  const [visible, setVisible] = useState(true)
+const SwipeableEntity = ({ children, onSwipe }: Props) => {
+  const [visible, setVisible] = useState(true);
   const pan = useRef(new Animated.ValueXY()).current;
 
   const panResponder = useRef(
@@ -24,50 +24,45 @@ const SwipeableEntity= ({ children, onSwipe }: Props) => {
           y: pan.y._value
         });
       },
-      onPanResponderMove: Animated.event(
-        [
-          null,
-          { dx: pan.x, dy: pan.y }
-        ],
-        {useNativeDriver: false}
-      ),
+      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
+        useNativeDriver: false
+      }),
       onPanResponderRelease: (evt, gestureState) => {
         // console.log(gestureState.dx)
         if (gestureState.dx < -120) {
           Animated.spring(pan, {
             toValue: {
               x: -Sizes.screenWidth - 100,
-              y: gestureState.dy,
+              y: gestureState.dy
             },
-            useNativeDriver: false,
+            useNativeDriver: false
           }).start(() => {
-              pan.setValue({ x: 0, y: 0 })
-          })
+            pan.setValue({ x: 0, y: 0 });
+          });
           if (onSwipe) onSwipe();
-          setTimeout(() => setVisible(false), 200)
+          setTimeout(() => setVisible(false), 200);
         } else if (gestureState.dx > 120) {
           Animated.spring(pan, {
             toValue: {
               x: Sizes.screenWidth + 100,
-              y: gestureState.dy,
+              y: gestureState.dy
             },
-            useNativeDriver: false,
+            useNativeDriver: false
           }).start(() => {
-              pan.setValue({ x: 0, y: 0 })
-          })
+            pan.setValue({ x: 0, y: 0 });
+          });
           if (onSwipe) onSwipe();
-          setTimeout(() => setVisible(false), 200)
+          setTimeout(() => setVisible(false), 200);
         } else {
           Animated.spring(pan, {
             toValue: { x: 0, y: 0 },
             friction: 4,
-            useNativeDriver: false,
-          }).start()
+            useNativeDriver: false
+          }).start();
         }
       }
     })
   ).current;
-
 
   // const panResponder = useRef(
   //   PanResponder.create({
@@ -120,15 +115,17 @@ const SwipeableEntity= ({ children, onSwipe }: Props) => {
   // ).current;
 
   return visible ? (
-  <Animated.View
-    style={{
-      transform: [{ translateX: pan.x }, { translateY: pan.y }]
-    }}
-    {...panResponder.panHandlers}
-  >
+    <Animated.View
+      style={{
+        transform: [{ translateX: pan.x }, { translateY: pan.y }]
+      }}
+      {...panResponder.panHandlers}
+    >
       {children}
-  </Animated.View>
-  ) : <View />
-}
+    </Animated.View>
+  ) : (
+    <View />
+  );
+};
 
 export default SwipeableEntity;
