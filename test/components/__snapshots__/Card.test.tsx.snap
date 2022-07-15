@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DecisionButton /> renders a remote image correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 1034,
+      "padding": 10,
+      "position": "absolute",
+      "width": 750,
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "borderRadius": 20,
+        "flex": 1,
+        "overflow": "hidden",
+        "resizeMode": "cover",
+      }
+    }
+  >
+    <Image
+      resizeMode="cover"
+      source={
+        Object {
+          "uri": "https://picsum.photos/200/300",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`<DecisionButton /> runs a local image correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 1034,
+      "padding": 10,
+      "position": "absolute",
+      "width": 750,
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "borderRadius": 20,
+        "flex": 1,
+        "overflow": "hidden",
+        "resizeMode": "cover",
+      }
+    }
+  >
+    <Image
+      resizeMode="cover"
+      source={1}
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+</View>
+`;

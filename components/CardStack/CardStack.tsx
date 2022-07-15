@@ -9,7 +9,11 @@ const CardStack = () => {
     // TODO: Handle preference state change
   };
 
-  const [state, setState] = useState([<Card />, <Card />, <Card />]);
+  const [state, setState] = useState([
+    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />,
+    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />,
+    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />
+  ]);
 
   return (
     <>
