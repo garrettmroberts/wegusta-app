@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<DecisionButton /> renders a remote image correctly 1`] = `
+exports[`<Card /> renders a remote image correctly 1`] = `
 <View
   style={
     Object {
@@ -50,7 +50,7 @@ exports[`<DecisionButton /> renders a remote image correctly 1`] = `
 </View>
 `;
 
-exports[`<DecisionButton /> runs a local image correctly 1`] = `
+exports[`<Card /> runs a local image correctly 1`] = `
 <View
   style={
     Object {

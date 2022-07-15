@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react-native';
+import { render } from '@testing-library/react-native';
 
 import Card from '../../components/Card/Card';
 
-describe('<DecisionButton />', () => {
+describe('<Card />', () => {
   it('runs a local image correctly', () => {
     const { toJSON } = render(
       <Card imageProps={require('../../assets/sample-image.jpeg')} />

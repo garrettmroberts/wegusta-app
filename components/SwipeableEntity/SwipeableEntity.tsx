@@ -6,10 +6,11 @@ import Sizes from '../../constants/Sizes';
 
 type Props = {
   children?: ReactNode;
-  onSwipe?: () => void;
+  onSwipeLeft?: () => void;
+  onSwipeRight?: () => void;
 };
 
-const SwipeableEntity = ({ children, onSwipe }: Props) => {
+const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
   const [visible, setVisible] = useState(true);
   const pan = useRef(new Animated.ValueXY()).current;
 
@@ -38,7 +39,7 @@ const SwipeableEntity = ({ children, onSwipe }: Props) => {
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
-          if (onSwipe) onSwipe();
+          if (onSwipeLeft) onSwipeLeft();
           setTimeout(() => setVisible(false), 200);
         } else if (gestureState.dx > 120) {
           Animated.spring(pan, {
@@ -50,7 +51,7 @@ const SwipeableEntity = ({ children, onSwipe }: Props) => {
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
-          if (onSwipe) onSwipe();
+          if (onSwipeRight) onSwipeRight();
           setTimeout(() => setVisible(false), 200);
         } else {
           Animated.spring(pan, {
