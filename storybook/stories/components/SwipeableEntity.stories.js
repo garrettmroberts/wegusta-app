@@ -4,6 +4,6 @@ import Card from '../../../components/Card/Card';
 
 storiesOf('SwipeableEntity', module).add('Default', () => (
   <SwipeableEntity>
-    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />
+    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />
   </SwipeableEntity>
 ));

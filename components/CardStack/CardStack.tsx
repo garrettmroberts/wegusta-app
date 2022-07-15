@@ -10,9 +10,9 @@ const CardStack = () => {
   };
 
   const [state, setState] = useState([
-    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />,
-    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />,
-    <Card imageProps={{uri: 'https://picsum.photos/200/300'}} />
+    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
+    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
+    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />
   ]);
 
   return (

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: Sizes.screenHeight - 300,
     width: Sizes.screenWidth,
     padding: 10,
-    position: 'absolute',
+    position: 'absolute'
   },
   image: {
     flex: 1,

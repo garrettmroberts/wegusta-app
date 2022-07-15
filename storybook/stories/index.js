@@ -5,4 +5,3 @@ import './components/SwipeableEntity.stories';
 
 // import './Button/Button.stories';
 // import './Welcome/Welcome.stories';
-

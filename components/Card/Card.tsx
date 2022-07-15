@@ -3,19 +3,19 @@ import { ImageBackground, ImageSourcePropType, View } from 'react-native';
 import styles from './styles';
 
 type Props = {
-  imageProps: ImageSourcePropType
-}
+  imageProps: ImageSourcePropType;
+};
 
 const Card = ({ imageProps }: Props) => {
   return (
     <View style={styles.card}>
-      <ImageBackground 
+      <ImageBackground
         resizeMode="cover"
         style={styles.image}
         source={imageProps}
       />
     </View>
-  )
+  );
 };
 
 export default Card;
