@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen';
+import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
 
 const Stack = createStackNavigator();
 const StackNavigator = () => {
@@ -11,6 +11,7 @@ const StackNavigator = () => {
       <Stack.Screen
         name="PreferenceSelector"
         component={PreferenceSelectorScreen}
+        options={{ title: 'What looks good?' }}
       />
     </Stack.Navigator>
   );

@@ -1,8 +1,9 @@
-import { ReactNode, useState } from 'react';
-import { View, Text } from 'react-native';
+import { useState } from 'react';
+import { View } from 'react-native';
 
 import Card from '../Card/Card';
 import SwipeableEntity from '../SwipeableEntity/SwipeableEntity';
+import styles from './styles';
 
 type Props = {
   cards: [typeof Card];
@@ -16,7 +17,7 @@ const CardStack = ({ cards }: Props) => {
   const [state, setState] = useState(cards);
 
   return (
-    <>
+    <View style={styles.wrapper}>
       {state.map((card, idx) => {
         return (
           <SwipeableEntity
@@ -24,11 +25,11 @@ const CardStack = ({ cards }: Props) => {
             onSwipeLeft={handleSwipe}
             onSwipeRight={handleSwipe}
           >
-            {card}
+            <View style={styles.cardPlacement}>{card}</View>
           </SwipeableEntity>
         );
       })}
-    </>
+    </View>
   );
 };
 

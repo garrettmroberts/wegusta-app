@@ -31,9 +31,8 @@ exports[`<SwipeableEntity /> renders correctly 1`] = `
   <View
     style={
       Object {
-        "height": 1034,
+        "height": 440,
         "padding": 10,
-        "position": "absolute",
         "width": 750,
       }
     }

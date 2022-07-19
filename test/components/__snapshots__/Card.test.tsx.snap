@@ -4,9 +4,8 @@ exports[`<Card /> renders a remote image correctly 1`] = `
 <View
   style={
     Object {
-      "height": 1034,
+      "height": 440,
       "padding": 10,
-      "position": "absolute",
       "width": 750,
     }
   }
@@ -54,9 +53,8 @@ exports[`<Card /> runs a local image correctly 1`] = `
 <View
   style={
     Object {
-      "height": 1034,
+      "height": 440,
       "padding": 10,
-      "position": "absolute",
       "width": 750,
     }
   }
