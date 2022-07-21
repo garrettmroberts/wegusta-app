@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getStorage } from "firebase/storage";
-import { getFirestore } from "firebase/firestore"
-import { getAuth } from "firebase/auth";
+import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 import Constants from 'expo-constants';
 
 const firebaseConfig = {
@@ -11,17 +11,13 @@ const firebaseConfig = {
   storageBucket: Constants.manifest?.extra?.storageBucket,
   messagingSenderId: Constants.manifest?.extra?.messagingSenderId,
   appId: Constants.manifest?.extra?.appId,
-  measurementId: Constants.manifest?.extra?.measurementId,
-}
+  measurementId: Constants.manifest?.extra?.measurementId
+};
 
-let app = initializeApp(firebaseConfig)
+let app = initializeApp(firebaseConfig);
 
 const storage = getStorage();
 const auth = getAuth();
 const firestore = getFirestore();
 
-export {
-  storage,
-  auth,
-  firestore
-}
+export { storage, auth, firestore };
