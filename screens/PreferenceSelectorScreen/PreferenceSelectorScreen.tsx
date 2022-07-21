@@ -4,8 +4,11 @@ import CardStack from '../../components/CardStack/CardStack';
 import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
+import { storage } from '../../config/firebase';
 
 const PreferenceSelectorScreen = () => {
+  // console.log(storage)
+
   const sampleCards = [
     <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
     <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
