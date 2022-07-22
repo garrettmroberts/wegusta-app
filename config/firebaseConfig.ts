@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import Constants from 'expo-constants';
 
-const firebaseConfig = {
+export default {
   apiKey: Constants.manifest?.extra?.apiKey,
   authDomain: Constants.manifest?.extra?.authDomain,
   projectId: Constants.manifest?.extra?.projectId,
@@ -14,10 +14,8 @@ const firebaseConfig = {
   measurementId: Constants.manifest?.extra?.measurementId
 };
 
-let app = initializeApp(firebaseConfig);
+// const storage = getStorage();
+// const auth = getAuth();
+// const firestore = getFirestore();
 
-const storage = getStorage();
-const auth = getAuth();
-const firestore = getFirestore();
-
-export { storage, auth, firestore };
+// export { storage, auth, firestore };

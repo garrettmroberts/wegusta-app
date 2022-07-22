@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
+import { ref, getStorage, getDownloadURL } from 'firebase/storage';
+
 import CardStack from '../../components/CardStack/CardStack';
 import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
-import { storage } from '../../config/firebase';
 
 const PreferenceSelectorScreen = () => {
-  // console.log(storage)
+  useEffect(() => {
+    // const storage = getStorage();
+    // getDownloadURL(ref(storage, 'gs://wegusta-app.appspot.com/foods/barbeque/barbeque-1.jpeg'))
+    // .then((url) => {
+    //   console.log(url);
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // });
+  }, []);
 
   const sampleCards = [
     <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,

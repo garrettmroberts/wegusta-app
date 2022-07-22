@@ -1,12 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native';
 import { Context } from './utils/Context';
 import Navigator from './navigation/AppNavigator';
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import StorybookUI from './storybook';
+import firebaseConfig from './config/firebaseConfig';
+import { initializeApp } from 'firebase/app';
 
 const App = () => {
+  initializeApp(firebaseConfig);
+
   return (
     <>
       <Context>
