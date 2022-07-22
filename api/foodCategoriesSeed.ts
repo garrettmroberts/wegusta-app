@@ -3,7 +3,7 @@ import { doc, getFirestore, setDoc } from 'firebase/firestore';
 const seedFoodCategories = async () => {
   const db = getFirestore();
 
-  await setDoc(doc(db, 'foodCategories', 'brewPub'), {
+  await setDoc(doc(db, 'foodCategories', 'brew_pub'), {
     displayName: 'brew pub',
     containsImages: false
   });
