@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { ref, getStorage, getDownloadURL } from 'firebase/storage';
 
@@ -7,10 +7,10 @@ import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 
-import useStoreContext from '../../hooks/useStoreContext';
+import { AppContext } from '../../utils/Context/Context';
 
 const PreferenceSelectorScreen = () => {
-  const [context, dispatch] = useStoreContext();
+  const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
     dispatch({});
     // const storage = getStorage();

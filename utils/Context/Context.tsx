@@ -1,15 +1,24 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 import reducer from './reducer';
-import initialState from './initialState';
+import initialState, { InitialStateType } from './initialState';
 
-const StoreContext = createContext([initialState, function () {}]);
-const { Provider } = StoreContext;
+const AppContext = createContext<{
+  state: InitialStateType;
+  dispatch: React.Dispatch<any>;
+}>({
+  state: initialState,
+  dispatch: () => null
+});
 
-const Context = ({ ...props }) => {
+const AppProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return <Provider value={[state, dispatch]} {...props} />;
+
+  return (
+    <AppContext.Provider value={{ state, dispatch }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
-export { StoreContext };
-export default Context;
+export { AppContext, AppProvider };

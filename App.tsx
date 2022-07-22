@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import Context from './utils/Context/Context';
+import { AppProvider } from './utils/Context/Context';
 import Navigator from './navigation/AppNavigator';
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
@@ -12,9 +12,9 @@ const App = () => {
 
   return (
     <>
-      <Context>
+      <AppProvider>
         <Navigator />
-      </Context>
+      </AppProvider>
       <StatusBar />
     </>
   );
