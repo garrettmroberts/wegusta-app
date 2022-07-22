@@ -7,8 +7,12 @@ import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 
+import { useStoreContext } from '../../utils/Context';
+
 const PreferenceSelectorScreen = () => {
+  const [context, dispatch] = useStoreContext();
   useEffect(() => {
+    dispatch({});
     // const storage = getStorage();
     // getDownloadURL(ref(storage, 'gs://wegusta-app.appspot.com/foods/barbeque/barbeque-1.jpeg'))
     // .then((url) => {
