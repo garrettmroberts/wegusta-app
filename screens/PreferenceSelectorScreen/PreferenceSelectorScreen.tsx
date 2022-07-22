@@ -7,7 +7,7 @@ import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 
-import { useStoreContext } from '../../utils/Context';
+import useStoreContext from '../../hooks/useStoreContext';
 
 const PreferenceSelectorScreen = () => {
   const [context, dispatch] = useStoreContext();

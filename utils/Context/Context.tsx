@@ -1,10 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 
 import reducer from './reducer';
-
-const initialState = {
-  images: []
-};
+import initialState from './initialState';
 
 const StoreContext = createContext([initialState, function () {}]);
 const { Provider } = StoreContext;
@@ -14,6 +11,5 @@ const Context = ({ ...props }) => {
   return <Provider value={[state, dispatch]} {...props} />;
 };
 
-const useStoreContext = () => useContext(StoreContext);
-
-export { Context, useStoreContext };
+export { StoreContext };
+export default Context;

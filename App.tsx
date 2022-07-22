@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Context } from './utils/Context';
+import Context from './utils/Context/Context';
 import Navigator from './navigation/AppNavigator';
 import { StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
