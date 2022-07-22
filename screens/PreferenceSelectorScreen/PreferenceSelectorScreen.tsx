@@ -16,44 +16,27 @@ import styles from './styles';
 import FirestoreAPI from '../../api/firestore';
 
 import { AppContext } from '../../utils/Context/Context';
+import StorageAPI from '../../api/storage';
 
 const PreferenceSelectorScreen = () => {
   const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
     const getFoods = async () => {
-      const res = await FirestoreAPI.getFoodCategoriesWithPictures();
-      console.log(res);
+      const res = await FirestoreAPI.getRandomImages();
+      const images = await StorageAPI.getImageUrls(
+        res.map(({ id, photo }) => photo)
+      );
+
+      dispatch({ type: 'addImages', payload: res });
+      dispatch({ type: 'setFormattedImages', payload: images });
     };
 
     getFoods();
-
-    // ADD IMAGES TO CONTEXT
-    // dispatch({type: 'addImages', payload: ['x', 'y', 'z']});
-    // const storage = getStorage();
-
-    // GET SELECTED IMAGES BY URL
-    // getDownloadURL(ref(storage, 'gs://wegusta-app.appspot.com/foods/barbeque/barbeque-1.jpeg'))
-    // .then((url) => {
-    //   console.log(url);
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // });
   }, []);
 
-  const sampleCards = [
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />,
-    <Card imageProps={{ uri: 'https://picsum.photos/200/300' }} />
-  ];
   return (
     <SafeAreaView style={styles.wrapper}>
-      <CardStack cards={sampleCards} />
+      <CardStack cards={state.formattedImages} />
       <View style={styles.decisionWrapper}>
         <DecisionButton decision="like" />
         <DecisionButton decision="dislike" />

@@ -6,7 +6,7 @@ import SwipeableEntity from '../SwipeableEntity/SwipeableEntity';
 import styles from './styles';
 
 type Props = {
-  cards: [typeof Card];
+  cards: any;
 };
 
 const CardStack = ({ cards }: Props) => {
@@ -14,18 +14,18 @@ const CardStack = ({ cards }: Props) => {
     // TODO: Handle preference state change
   };
 
-  const [state, setState] = useState(cards);
-
   return (
     <View style={styles.wrapper}>
-      {state.map((card, idx) => {
+      {cards.map((cardProps: any, idx: number) => {
         return (
           <SwipeableEntity
             key={`card-${idx}`}
             onSwipeLeft={handleSwipe}
             onSwipeRight={handleSwipe}
           >
-            <View style={styles.cardPlacement}>{card}</View>
+            <View style={styles.cardPlacement}>
+              <Card imageProps={cardProps} />
+            </View>
           </SwipeableEntity>
         );
       })}

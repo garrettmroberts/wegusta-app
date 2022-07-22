@@ -6,29 +6,46 @@ import {
   where
 } from 'firebase/firestore';
 import seedFoodCategories from './foodCategoriesSeed';
-import sampleFirestoreGetFoodCategoriesWithPicturesResponse from './sampleFirestoreGetFoodCategoriesWithPicturesResponse';
+import sampleGetRandomImagesResponse from './stubs/sampleGetRandomImagesResponse';
 
 const FirestoreAPI = {
-  getFoodCategories: async () => {},
-  getFoodCategoriesWithPictures: async () => {
-    // - Returns query from firestore ---------------------------
+  getRandomImages: async () => {
     // const db = getFirestore();
     // const foodsRef = collection(db, "foodCategories");
     // const foodsQuery = query(foodsRef, where("containsImages", "==", true));
     // const querySnapshot = await getDocs(foodsQuery);
 
-    // const res = [];
+    // type QueryResultType = {
+    //   id?: string,
+    //   photos?: string[]
+    // }
+
+    // const QueryResult: QueryResultType[] = [];
     // querySnapshot.forEach((doc) => {
-    //   res.push({
+    //   QueryResult.push({
     //     id: doc.id,
     //     ...doc.data()
     //   })
     // });
 
-    // return res;
-    // ------------------------------------------------------------
+    // const randomCategorySelection = [];
+    // for (let i = 0; i < 8; i++) {
+    //   let randInt = Math.floor(Math.random() * QueryResult.length);
+    //   randomCategorySelection.push(QueryResult[randInt]);
+    // }
 
-    return sampleFirestoreGetFoodCategoriesWithPicturesResponse;
+    // const res: { id: string; photo: string; }[] = [];
+    // randomCategorySelection.forEach((ele) => {
+    //   let randInt = Math.floor(Math.random() * ele.photos!.length);
+    //   res.push({
+    //     id: ele.id!,
+    //     photo: ele.photos![randInt]
+    //   })
+    // })
+    // console.log(res);
+    // return res;
+
+    return sampleGetRandomImagesResponse;
   }
 };
 
