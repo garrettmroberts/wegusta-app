@@ -5,30 +5,36 @@ import Card from '../Card/Card';
 import SwipeableEntity from '../SwipeableEntity/SwipeableEntity';
 import styles from './styles';
 
-type Props = {
-  cards: any;
+type CardStackProps = {
+  cards: {
+    category: string;
+    uri: string;
+  }[];
 };
 
-const CardStack = ({ cards }: Props) => {
+const CardStack = ({ cards }: CardStackProps) => {
   const handleSwipe = () => {
     // TODO: Handle preference state change
   };
 
   return (
     <View style={styles.wrapper}>
-      {cards.map((cardProps: any, idx: number) => {
-        return (
-          <SwipeableEntity
-            key={`card-${idx}`}
-            onSwipeLeft={handleSwipe}
-            onSwipeRight={handleSwipe}
-          >
-            <View style={styles.cardPlacement}>
-              <Card imageProps={cardProps} />
-            </View>
-          </SwipeableEntity>
-        );
-      })}
+      {cards
+        .slice(0)
+        .reverse()
+        .map((cardProps: any, idx: number) => {
+          return (
+            <SwipeableEntity
+              key={`card-${idx}`}
+              onSwipeLeft={handleSwipe}
+              onSwipeRight={handleSwipe}
+            >
+              <View style={styles.cardPlacement}>
+                <Card imageProps={cardProps} />
+              </View>
+            </SwipeableEntity>
+          );
+        })}
     </View>
   );
 };

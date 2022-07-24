@@ -4,18 +4,8 @@ import storage from './storage';
 const API = {
   getRandomImages: async () => {
     const firestoreResponse = await firestore.getRandomImages();
-    const images = await storage.getImageUrls(
-      firestoreResponse.map(({ id, photo }) => photo)
-    );
-    const res: any = [];
-    firestoreResponse.map((ele, idx) => {
-      res.push({
-        category: ele.id,
-        image: images[idx]
-      });
-    });
-
-    return res;
+    const images = await storage.getImageUrls(firestoreResponse);
+    return images;
   },
   firestore,
   storage

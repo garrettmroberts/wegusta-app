@@ -1,16 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
-import { ref, getStorage, getDownloadURL } from 'firebase/storage';
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  query,
-  where
-} from 'firebase/firestore';
-
 import CardStack from '../../components/CardStack/CardStack';
-import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 import { AppContext } from '../../utils/Context/Context';
@@ -22,7 +12,7 @@ const PreferenceSelectorScreen = () => {
     const getFoods = async () => {
       const images = await API.getRandomImages();
       dispatch({ type: 'addImages', payload: images });
-      // dispatch({})
+      dispatch({});
     };
 
     getFoods();
@@ -30,7 +20,7 @@ const PreferenceSelectorScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <CardStack cards={state.images.map(ele => ele.image)} />
+      <CardStack cards={state.images} />
       <View style={styles.decisionWrapper}>
         <DecisionButton decision="like" />
         <DecisionButton decision="dislike" />

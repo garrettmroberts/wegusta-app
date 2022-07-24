@@ -72,7 +72,11 @@ exports[`<Card /> runs a local image correctly 1`] = `
   >
     <Image
       resizeMode="cover"
-      source={1}
+      source={
+        Object {
+          "uri": undefined,
+        }
+      }
       style={
         Array [
           Object {

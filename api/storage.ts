@@ -1,14 +1,19 @@
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import sampleImageUrlsResponse from './stubs/sampleImageUrlsResponse';
 
+type GetImageUrlsArgType = {
+  category: string;
+  imageUrl: string;
+};
+
 export default {
-  getImageUrls: async (list: any) => {
+  getImageUrls: async (imageData: GetImageUrlsArgType[]) => {
     // const res: any = [];
     // const storage = getStorage();
 
-    // await Promise.all(list.map(async (item: any) => {
-    //   await getDownloadURL(ref(storage, item)).then(uri => {
-    //     res.push({uri})
+    // await Promise.all(imageData.map(async (item: any) => {
+    //   await getDownloadURL(ref(storage, item.imageUrl)).then(uri => {
+    //     res.push({category:item.category, uri})
     //   })
     // }))
     // return res;

@@ -7,7 +7,7 @@ type FormattedImageType = {
 };
 
 type ImageType = {
-  image: any;
+  uri: any;
   category: string | undefined;
 };
 

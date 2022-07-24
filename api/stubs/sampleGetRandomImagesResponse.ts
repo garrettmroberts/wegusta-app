@@ -1,34 +1,35 @@
 export default [
   {
-    id: 'sushi',
-    photo: 'gs://wegusta-app.appspot.com/foods/sushi/sushi-1.jpeg'
+    category: 'burgers',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/burgers/burgers-2.jpeg'
   },
   {
-    id: 'barbeque',
-    photo: 'gs://wegusta-app.appspot.com/foods/barbeque/barbeque-1.jpeg'
+    category: 'deli',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/deli/deli-1.jpeg'
   },
   {
-    id: 'indian',
-    photo: 'gs://wegusta-app.appspot.com/foods/indian/indian-2.jpeg'
+    category: 'french',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/french/french-1.jpeg'
   },
   {
-    id: 'chinese',
-    photo: 'gs://wegusta-app.appspot.com/foods/chinese/chinese-2.jpeg'
+    category: 'pizza',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/pizza/pizza-2.jpeg'
   },
   {
-    id: 'mexican',
-    photo: 'gs://wegusta-app.appspot.com/foods/mexican/mexican-1.jpeg'
+    category: 'chinese',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/chinese/chinese-2.jpeg'
   },
   {
-    id: 'barbeque',
-    photo: 'gs://wegusta-app.appspot.com/foods/barbeque/barbeque-1.jpeg'
+    category: 'steakhouse',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/steakhouse/steakhouse-2.jpeg'
   },
   {
-    id: 'deli',
-    photo: 'gs://wegusta-app.appspot.com/foods/deli/deli-1.jpeg'
+    category: 'cajun_creole',
+    imageUrl:
+      'gs://wegusta-app.appspot.com/foods/cajun_creole/cajun_creole-1.jpeg'
   },
   {
-    id: 'mexican',
-    photo: 'gs://wegusta-app.appspot.com/foods/mexican/mexican-1.jpeg'
+    category: 'sushi',
+    imageUrl: 'gs://wegusta-app.appspot.com/foods/sushi/sushi-2.jpeg'
   }
 ];
