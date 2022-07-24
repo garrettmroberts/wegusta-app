@@ -13,22 +13,16 @@ import CardStack from '../../components/CardStack/CardStack';
 import Card from '../../components/Card/Card';
 import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
-import FirestoreAPI from '../../api/firestore';
-
 import { AppContext } from '../../utils/Context/Context';
-import StorageAPI from '../../api/storage';
+import API from '../../api';
 
 const PreferenceSelectorScreen = () => {
   const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
     const getFoods = async () => {
-      const res = await FirestoreAPI.getRandomImages();
-      const images = await StorageAPI.getImageUrls(
-        res.map(({ id, photo }) => photo)
-      );
-
-      dispatch({ type: 'addImages', payload: res });
-      dispatch({ type: 'setFormattedImages', payload: images });
+      const images = await API.getRandomImages();
+      dispatch({ type: 'addImages', payload: images });
+      // dispatch({})
     };
 
     getFoods();
@@ -36,7 +30,7 @@ const PreferenceSelectorScreen = () => {
 
   return (
     <SafeAreaView style={styles.wrapper}>
-      <CardStack cards={state.formattedImages} />
+      <CardStack cards={state.images.map(ele => ele.image)} />
       <View style={styles.decisionWrapper}>
         <DecisionButton decision="like" />
         <DecisionButton decision="dislike" />

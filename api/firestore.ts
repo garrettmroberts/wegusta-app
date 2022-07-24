@@ -5,10 +5,9 @@ import {
   query,
   where
 } from 'firebase/firestore';
-import seedFoodCategories from './foodCategoriesSeed';
 import sampleGetRandomImagesResponse from './stubs/sampleGetRandomImagesResponse';
 
-const FirestoreAPI = {
+export default {
   getRandomImages: async () => {
     // const db = getFirestore();
     // const foodsRef = collection(db, "foodCategories");
@@ -48,5 +47,3 @@ const FirestoreAPI = {
     return sampleGetRandomImagesResponse;
   }
 };
-
-export default FirestoreAPI;

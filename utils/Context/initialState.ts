@@ -1,6 +1,5 @@
 type InitialStateType = {
   images: ImageType[];
-  formattedImages: FormattedImageType[];
 };
 
 type FormattedImageType = {
@@ -8,13 +7,12 @@ type FormattedImageType = {
 };
 
 type ImageType = {
-  id: string | undefined;
-  image: string | undefined;
+  image: any;
+  category: string | undefined;
 };
 
 const initialState: InitialStateType = {
-  images: [],
-  formattedImages: []
+  images: []
 };
 
 export { InitialStateType };

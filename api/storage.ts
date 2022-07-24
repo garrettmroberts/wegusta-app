@@ -1,7 +1,7 @@
 import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 import sampleImageUrlsResponse from './stubs/sampleImageUrlsResponse';
 
-const StorageAPI = {
+export default {
   getImageUrls: async (list: any) => {
     // const res: any = [];
     // const storage = getStorage();
@@ -16,5 +16,3 @@ const StorageAPI = {
     return sampleImageUrlsResponse;
   }
 };
-
-export default StorageAPI;
