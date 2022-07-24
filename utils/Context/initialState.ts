@@ -1,18 +1,17 @@
 type InitialStateType = {
-  images: ImageType[];
-};
-
-type FormattedImageType = {
-  uri: string;
-};
-
-type ImageType = {
-  uri: any;
-  category: string | undefined;
+  userPreferences: {
+    category: string;
+    isLiked: boolean;
+  }[];
+  images: {
+    uri: any;
+    category: string;
+  }[];
 };
 
 const initialState: InitialStateType = {
-  images: []
+  images: [],
+  userPreferences: []
 };
 
 export { InitialStateType };

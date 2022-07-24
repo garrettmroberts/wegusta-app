@@ -12,7 +12,6 @@ const PreferenceSelectorScreen = () => {
     const getFoods = async () => {
       const images = await API.getRandomImages();
       dispatch({ type: 'addImages', payload: images });
-      dispatch({});
     };
 
     getFoods();

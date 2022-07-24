@@ -39,8 +39,8 @@ const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
-          if (onSwipeLeft) onSwipeLeft();
           setTimeout(() => setVisible(false), 200);
+          if (onSwipeLeft) onSwipeLeft();
         } else if (gestureState.dx > 120) {
           Animated.spring(pan, {
             toValue: {
@@ -51,8 +51,8 @@ const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
-          if (onSwipeRight) onSwipeRight();
           setTimeout(() => setVisible(false), 200);
+          if (onSwipeRight) onSwipeRight();
         } else {
           Animated.spring(pan, {
             toValue: { x: 0, y: 0 },
