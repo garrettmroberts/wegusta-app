@@ -6,7 +6,7 @@ export default [
   {
     category: 'french',
     uri: 'https://firebasestorage.googleapis.com/v0/b/wegusta-app.appspot.com/o/foods%2Ffrench%2Ffrench-1.jpeg?alt=media&token=97d8644a-6c60-4939-912f-460c5f27ab65'
-  },
+  }
   // {
   //   category: 'sushi',
   //   uri: 'https://firebasestorage.googleapis.com/v0/b/wegusta-app.appspot.com/o/foods%2Fsushi%2Fsushi-2.jpeg?alt=media&token=9ffe9ddf-d866-4357-b434-b38192b720cc'

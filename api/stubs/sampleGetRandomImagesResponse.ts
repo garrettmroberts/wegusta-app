@@ -6,7 +6,7 @@ export default [
   {
     category: 'deli',
     imageUrl: 'gs://wegusta-app.appspot.com/foods/deli/deli-1.jpeg'
-  },
+  }
   // {
   //   category: 'french',
   //   imageUrl: 'gs://wegusta-app.appspot.com/foods/french/french-1.jpeg'
