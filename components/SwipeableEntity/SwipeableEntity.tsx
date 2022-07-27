@@ -8,9 +8,15 @@ type Props = {
   children?: ReactNode;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
+  onSwipe?: () => void;
 };
 
-const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
+const SwipeableEntity = ({
+  children,
+  onSwipeLeft,
+  onSwipeRight,
+  onSwipe
+}: Props) => {
   const [visible, setVisible] = useState(true);
   const pan = useRef(new Animated.ValueXY()).current;
 
@@ -41,6 +47,7 @@ const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
           });
           setTimeout(() => setVisible(false), 200);
           if (onSwipeLeft) onSwipeLeft();
+          if (onSwipe) onSwipe();
         } else if (gestureState.dx > 120) {
           Animated.spring(pan, {
             toValue: {
@@ -53,6 +60,7 @@ const SwipeableEntity = ({ children, onSwipeLeft, onSwipeRight }: Props) => {
           });
           setTimeout(() => setVisible(false), 200);
           if (onSwipeRight) onSwipeRight();
+          if (onSwipe) onSwipe();
         } else {
           Animated.spring(pan, {
             toValue: { x: 0, y: 0 },

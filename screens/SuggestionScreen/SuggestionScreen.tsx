@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ActivityIndicator, SafeAreaView, Text } from 'react-native';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 import styles from './styles';
 
@@ -10,8 +11,8 @@ const SuggestionScreen = () => {
     <SafeAreaView style={styles.container}>
       {isLoading ? (
         <>
-          <ActivityIndicator size="large" />
-          <Text>Generating Results</Text>
+          <LoadingSpinner />
+          <Text style={styles.loadingText}>Generating Results</Text>
         </>
       ) : (
         <Text>Reults go here</Text>

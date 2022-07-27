@@ -11,9 +11,10 @@ type CardStackProps = {
     category: string;
     uri: string;
   }[];
+  onStackEnd?: () => void;
 };
 
-const CardStack = ({ cards }: CardStackProps) => {
+const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
   const { state, dispatch } = useContext(AppContext);
 
   const handleSwipe = (category: string, isLiked: boolean) => {
@@ -25,7 +26,6 @@ const CardStack = ({ cards }: CardStackProps) => {
         }),
       201
     );
-    dispatch({});
   };
 
   return (
@@ -39,6 +39,7 @@ const CardStack = ({ cards }: CardStackProps) => {
               key={`card-${idx}`}
               onSwipeLeft={() => handleSwipe(cardProps.category, false)}
               onSwipeRight={() => handleSwipe(cardProps.category, true)}
+              onSwipe={idx === 0 ? onStackEnd : () => {}}
             >
               <View style={styles.cardPlacement}>
                 <Card imageProps={cardProps} />

@@ -5,9 +5,12 @@ import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 import { AppContext } from '../../utils/Context/Context';
 import API from '../../api';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
-const PreferenceSelectorScreen = () => {
+type Props = {
+  navigation: any;
+};
+
+const PreferenceSelectorScreen = ({ navigation }: Props) => {
   const { state, dispatch } = useContext(AppContext);
   useEffect(() => {
     const getFoods = async () => {
@@ -18,9 +21,13 @@ const PreferenceSelectorScreen = () => {
     getFoods();
   }, []);
 
+  const handleStackEnd = () => {
+    navigation.navigate('SuggestionScreen');
+  };
+
   return (
     <SafeAreaView style={styles.wrapper}>
-      <CardStack cards={state.images} />
+      <CardStack cards={state.images} onStackEnd={handleStackEnd} />
       <View style={styles.decisionWrapper}>
         <DecisionButton decision="like" />
         <DecisionButton decision="dislike" />
