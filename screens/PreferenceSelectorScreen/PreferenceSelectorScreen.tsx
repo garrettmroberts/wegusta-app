@@ -5,6 +5,7 @@ import DecisionButton from '../../components/DecisionButton/DecisionButton';
 import styles from './styles';
 import { AppContext } from '../../utils/Context/Context';
 import API from '../../api';
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 
 const PreferenceSelectorScreen = () => {
   const { state, dispatch } = useContext(AppContext);
