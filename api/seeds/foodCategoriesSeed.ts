@@ -3,6 +3,16 @@ import { doc, getFirestore, setDoc } from 'firebase/firestore';
 const seedFoodCategories = async () => {
   const db = getFirestore();
 
+  await setDoc(doc(db, 'foodCategories', 'asian'), {
+    displayName: 'asian',
+    containsImages: true,
+    photos: [
+      'gs://wegusta-app.appspot.com/foods/chinese/chinese-1.jpeg',
+      'gs://wegusta-app.appspot.com/foods/chinese/chinese-2.jpeg',
+      'gs://wegusta-app.appspot.com/foods/chinese/chinese-3.jpeg'
+    ]
+  });
+
   await setDoc(doc(db, 'foodCategories', 'brew_pub'), {
     displayName: 'brew pub',
     containsImages: false
@@ -33,29 +43,6 @@ const seedFoodCategories = async () => {
     containsImages: false
   });
 
-  await setDoc(doc(db, 'foodCategories', 'cajun_creole'), {
-    displayName: 'Cajun & Creole',
-    containsImages: true,
-    photos: [
-      'gs://wegusta-app.appspot.com/foods/cajun_creole/cajun_creole-1.jpeg'
-    ]
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'chinese'), {
-    displayName: 'chinese',
-    containsImages: true,
-    photos: [
-      'gs://wegusta-app.appspot.com/foods/chinese/chinese-1.jpeg',
-      'gs://wegusta-app.appspot.com/foods/chinese/chinese-2.jpeg',
-      'gs://wegusta-app.appspot.com/foods/chinese/chinese-3.jpeg'
-    ]
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'carribean'), {
-    displayName: 'carribean',
-    containsImages: false
-  });
-
   await setDoc(doc(db, 'foodCategories', 'deli'), {
     displayName: 'deli',
     containsImages: true,
@@ -66,20 +53,10 @@ const seedFoodCategories = async () => {
     ]
   });
 
-  await setDoc(doc(db, 'foodCategories', 'fast_food'), {
-    displayName: 'fast food',
-    containsImages: false
-  });
-
   await setDoc(doc(db, 'foodCategories', 'french'), {
     displayName: 'french',
     containsImages: true,
     photos: ['gs://wegusta-app.appspot.com/foods/french/french-1.jpeg']
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'fusion'), {
-    displayName: 'fusion',
-    containsImages: false
   });
 
   await setDoc(doc(db, 'foodCategories', 'indian'), {
@@ -102,21 +79,6 @@ const seedFoodCategories = async () => {
     ]
   });
 
-  await setDoc(doc(db, 'foodCategories', 'japanese'), {
-    displayName: 'japanese',
-    containsImages: false
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'korean'), {
-    displayName: 'korean',
-    containsImages: false
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'greek'), {
-    displayName: 'greek',
-    containsImages: false
-  });
-
   await setDoc(doc(db, 'foodCategories', 'mediterranean'), {
     displayName: 'mediterranean',
     containsImages: false
@@ -126,11 +88,6 @@ const seedFoodCategories = async () => {
     displayName: 'mexican',
     containsImages: true,
     photos: ['gs://wegusta-app.appspot.com/foods/mexican/mexican-1.jpeg']
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'middle_eastern'), {
-    displayName: 'middle eastern',
-    containsImages: false
   });
 
   await setDoc(doc(db, 'foodCategories', 'pizza'), {
@@ -168,18 +125,13 @@ const seedFoodCategories = async () => {
     ]
   });
 
+  await setDoc(doc(db, 'foodCategories', 'tapas'), {
+    displayName: 'tapas',
+    containsImages: false
+  });
+
   await setDoc(doc(db, 'foodCategories', 'thai'), {
     displayName: 'thai',
-    containsImages: false
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'vietnamese'), {
-    displayName: 'vietnamese',
-    containsImages: false
-  });
-
-  await setDoc(doc(db, 'foodCategories', 'wine_bar'), {
-    displayName: 'wine bar',
     containsImages: false
   });
 };
