@@ -8,8 +8,7 @@ const SuggestionScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {}, 1000);
-    setIsLoading(false);
+    setTimeout(() => {setIsLoading(false)}, 2000);
   }, []);
 
   return (
