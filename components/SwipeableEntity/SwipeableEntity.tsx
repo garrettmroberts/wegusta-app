@@ -1,24 +1,82 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useContext, useEffect, useState } from 'react';
 import { useRef } from 'react';
 import { Animated, View, PanResponder } from 'react-native';
 
 import Sizes from '../../constants/Sizes';
+import { AppContext } from '../../utils/Context/Context';
 
 type Props = {
-  children?: ReactNode;
+  children: ReactNode;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
   onSwipe?: () => void;
+  containsElement: any;
 };
 
 const SwipeableEntity = ({
   children,
   onSwipeLeft,
   onSwipeRight,
-  onSwipe
+  onSwipe,
+  containsElement
 }: Props) => {
+  const { state, dispatch } = useContext(AppContext);
   const [visible, setVisible] = useState(true);
   const pan = useRef(new Animated.ValueXY()).current;
+
+  useEffect(() => {
+    if (
+      state.nextAction.isSet &&
+      state.nextAction.isLiked &&
+      containsElement === state.nextAction.category
+    ) {
+      Animated.spring(pan, {
+        toValue: {
+          x: Sizes.screenWidth + 100,
+          y: 0
+        },
+        useNativeDriver: false
+      }).start(() => {
+        pan.setValue({ x: 0, y: 0 });
+      });
+      setTimeout(() => setVisible(false), 200);
+      setTimeout(() => {
+        dispatch({
+          type: 'updateUserPreferences',
+          payload: {
+            category: state.nextAction.category,
+            isLiked: state.nextAction.isLiked
+          }
+        });
+        dispatch({ type: 'resetNextAction' });
+      }, 201);
+    } else if (
+      state.nextAction.isSet &&
+      !state.nextAction.isLiked &&
+      containsElement === state.nextAction.category
+    ) {
+      Animated.spring(pan, {
+        toValue: {
+          x: -Sizes.screenWidth - 100,
+          y: 0
+        },
+        useNativeDriver: false
+      }).start(() => {
+        pan.setValue({ x: 0, y: 0 });
+      });
+      setTimeout(() => setVisible(false), 200);
+      setTimeout(() => {
+        dispatch({
+          type: 'updateUserPreferences',
+          payload: {
+            category: state.nextAction.category,
+            isLiked: state.nextAction.isLiked
+          }
+        });
+        dispatch({ type: 'resetNextAction' });
+      }, 201);
+    }
+  }, [state]);
 
   const panResponder = useRef(
     PanResponder.create({

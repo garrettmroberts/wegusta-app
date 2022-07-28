@@ -5,6 +5,20 @@ const reducer = (state: any, action: any) => {
         ...state,
         images: action.payload
       };
+    case 'setNextAction':
+      return {
+        ...state,
+        nextAction: {
+          isSet: action.payload.isSet,
+          category: action.payload.category,
+          isLiked: action.payload.isLiked
+        }
+      };
+    case 'resetNextAction':
+      return {
+        ...state,
+        nextAction: {}
+      };
     case 'updateUserPreferences':
       return {
         ...state,

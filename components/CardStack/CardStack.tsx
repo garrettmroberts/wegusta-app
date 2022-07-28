@@ -40,6 +40,7 @@ const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
               onSwipeLeft={() => handleSwipe(cardProps.category, false)}
               onSwipeRight={() => handleSwipe(cardProps.category, true)}
               onSwipe={idx === 0 ? onStackEnd : () => {}}
+              containsElement={cardProps.category}
             >
               <View style={styles.cardPlacement}>
                 <Card imageProps={cardProps} />

@@ -6,7 +6,7 @@ import Colors from '../../constants/Colors';
 
 type Props = {
   decision: 'like' | 'dislike';
-  onPress?: () => {};
+  onPress?: () => void;
 };
 
 const DecisionButton = ({ decision, onPress }: Props) => {

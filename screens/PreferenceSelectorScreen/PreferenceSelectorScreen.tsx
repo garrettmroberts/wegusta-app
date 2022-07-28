@@ -25,12 +25,26 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
     navigation.navigate('SuggestionScreen');
   };
 
+  const handleDecisionPress = (isLiked: boolean) => {
+    const category = state.images[0].category;
+    dispatch({
+      type: 'setNextAction',
+      payload: { isSet: true, category, isLiked }
+    });
+  };
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <CardStack cards={state.images} onStackEnd={handleStackEnd} />
       <View style={styles.decisionWrapper}>
-        <DecisionButton decision="like" />
-        <DecisionButton decision="dislike" />
+        <DecisionButton
+          decision="dislike"
+          onPress={() => handleDecisionPress(false)}
+        />
+        <DecisionButton
+          decision="like"
+          onPress={() => handleDecisionPress(true)}
+        />
       </View>
     </SafeAreaView>
   );
