@@ -21,6 +21,12 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
     getFoods();
   }, []);
 
+  useEffect(() => {
+    if (state.images.length === 0 && state.nextAction.isSet) {
+      handleStackEnd();
+    }
+  }, [state.images]);
+
   const handleStackEnd = () => {
     navigation.navigate('SuggestionScreen');
   };
