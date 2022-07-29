@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { ImageBackground, ImageSourcePropType, View } from 'react-native';
-import Colors from '../../constants/Colors';
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import {
+  Animated,
+  ImageBackground,
+  ImageSourcePropType,
+  View
+} from 'react-native';
 
 import styles from './styles';
 
@@ -13,25 +15,25 @@ type CardProps = {
 };
 
 const Card = ({ imageProps }: CardProps) => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const imageFadeIn = new Animated.Value(0);
 
-  const onLoadEnd = () => {
-    setIsLoading(false);
+  const handleImageLoad = () => {
+    Animated.timing(imageFadeIn, {
+      toValue: 1,
+      useNativeDriver: false
+    }).start();
   };
 
   return (
-    <View style={styles.card}>
-      <ImageBackground
-        resizeMode="cover"
-        style={styles.image}
-        source={{ uri: imageProps.uri }}
-        onLoadEnd={onLoadEnd}
-      />
-      {isLoading && (
-        <View style={styles.spinner}>
-          <LoadingSpinner />
-        </View>
-      )}
+    <View style={styles.cardContainer}>
+      <Animated.View style={[styles.card, { opacity: imageFadeIn }]}>
+        <ImageBackground
+          resizeMode="cover"
+          style={styles.image}
+          source={{ uri: imageProps.uri }}
+          onLoad={() => handleImageLoad()}
+        />
+      </Animated.View>
     </View>
   );
 };
