@@ -28,7 +28,9 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
   }, [state.images]);
 
   const handleStackEnd = () => {
-    navigation.navigate('SuggestionScreen');
+    setTimeout(() => {
+      navigation.navigate('SuggestionScreen');
+    }, 200);
   };
 
   const handleDecisionPress = (isLiked: boolean) => {

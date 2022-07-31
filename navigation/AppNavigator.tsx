@@ -1,5 +1,8 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  CardStyleInterpolators
+} from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
@@ -8,7 +11,16 @@ import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen';
 const Stack = createStackNavigator();
 const StackNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          shadowColor: 'transparent'
+        },
+        gestureEnabled: true,
+        headerMode: 'float',
+        cardStyleInterpolator: CardStyleInterpolators.forRevealFromBottomAndroid
+      }}
+    >
       <Stack.Screen
         name="PreferenceSelectorScreen"
         component={PreferenceSelectorScreen}
