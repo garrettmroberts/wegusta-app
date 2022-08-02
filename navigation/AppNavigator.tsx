@@ -29,7 +29,10 @@ const StackNavigator = () => {
       <Stack.Screen
         name="SuggestionScreen"
         component={SuggestionScreen}
-        options={{ title: 'Your match' }}
+        options={{
+          title: 'Your match',
+          headerLeft: () => null
+        }}
       />
     </Stack.Navigator>
   );
