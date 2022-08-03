@@ -11,7 +11,7 @@ const Fonts = {
   h1Bold: {
     fontFamily: 'Avenir',
     fontSize: 24,
-    fontWeight: '900',
+    fontWeight: '700',
     lineHeight: 32
   } as const,
   h1Reg: {
