@@ -2,11 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginVertical: 8
   },
   star: {
-    height: 24,
-    width: 24,
+    height: 14,
+    width: 14,
     marginHorizontal: 3
   }
 });
