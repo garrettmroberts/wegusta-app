@@ -9,6 +9,7 @@ type Props = {
   // closingTime: string, // TODO: Find date format from api
   dollarSign: '$' | '$$' | '$$$' | '$$$$' | '$$$$$';
   description: string;
+  onImageLoad?: () => void;
 };
 
 const ResultCard = ({
@@ -16,7 +17,8 @@ const ResultCard = ({
   rating,
   distance,
   dollarSign,
-  description
+  description,
+  onImageLoad
 }: Props) => {
   return (
     <View style={styles.card}>
@@ -25,6 +27,9 @@ const ResultCard = ({
           resizeMode="cover"
           source={{ uri: 'https://picsum.photos/200/300' }}
           style={styles.image}
+          onLoadEnd={() => {
+            if (onImageLoad) onImageLoad();
+          }}
         />
         <View style={[styles.overlayButton, styles.overlayButton1]} />
         <View style={[styles.overlayButton, styles.overlayButton2]} />

@@ -7,13 +7,14 @@ const overlayButtonWidth = 56;
 const overlayButtonPadding = 24;
 
 const styles = StyleSheet.create({
-  card: {},
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: 16,
+    overflow: 'hidden'
+  },
   image: {
     height: 300,
-    width: Sizes.screenWidth - Sizes.viewPaddingSmall * 2,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-    overflow: 'hidden'
+    width: Sizes.screenWidth - Sizes.viewPaddingSmall * 2
   },
   overlayButton: {
     height: 56,

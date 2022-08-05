@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import Colors from '../../constants/Colors';
 import Fonts from '../../constants/Fonts';
+import Sizes from '../../constants/Sizes';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,6 +9,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.white
+  },
+  absolute: {
+    position: 'absolute',
+    zIndex: 2,
+    width: Sizes.screenWidth,
+    height: Sizes.screenHeight
   },
   loadingText: {
     ...Fonts.h1Bold,
