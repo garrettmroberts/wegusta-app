@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
 import styles from './styles';
 import Colors from '../../constants/Colors';
@@ -9,6 +10,16 @@ import ResultCard from '../../components/ResultCard/ResultCard';
 
 const SuggestionScreen = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const query = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+    fetch(query)
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   const onImageLoad = () => {
     setIsLoading(false);
