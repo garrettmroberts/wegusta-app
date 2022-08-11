@@ -23,6 +23,7 @@ const SuggestionScreen = () => {
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
+      // TODO: Design error state
       console.log('Permission to access location was denied');
       return;
     }
@@ -31,21 +32,34 @@ const SuggestionScreen = () => {
     setLocation(location?.coords);
   };
 
+  const makeRestaurantDecision = async () => {
+    if (location) {
+      const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=mexicane&location=${location?.latitude}%2C${location?.longitude}&radius=10000&type=restaurant&opennow&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+      fetch(query)
+        .then(response => response.json())
+        .then(json => {
+          const placeId = json.results[0].place_id;
+          const query = `https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Copening_hours%2Cformatted_address%2Cgeometry&place_id=${placeId}&&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+          fetch(query)
+            .then(response => response.json())
+            .then(json => {
+              console.log(json.result);
+            });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      console.log(query);
+    }
+  };
+
+  useEffect(() => {
+    makeRestaurantDecision();
+  }, [location]);
+
   useEffect(() => {
     getLocation();
-    console.log(state);
-    const likedFoods = state.userPreferences.filter(ele => ele.isLiked);
-    const selectedFoodCategory =
-      likedFoods[Math.floor(Math.random() * likedFoods.length)].category;
-    // const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters?key=${Constants.manifest?.extra?.gMapsApiKey}`
-    const query = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&key=${Constants.manifest?.extra?.gMapsApiKey}`;
-    fetch(query)
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(err => {
-        console.log(err);
-      });
-  }, [state.userPreferences]);
+  }, []);
 
   const onImageLoad = () => {
     setIsLoading(false);
