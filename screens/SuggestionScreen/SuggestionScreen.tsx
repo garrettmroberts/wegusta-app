@@ -1,17 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
+import * as Location from 'expo-location';
 
 import styles from './styles';
 import Colors from '../../constants/Colors';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ResultCard from '../../components/ResultCard/ResultCard';
+import { AppContext } from '../../utils/Context/Context';
+
+type Coords = {
+  latitude: number;
+  longitude: number;
+};
 
 const SuggestionScreen = () => {
+  const { state, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [location, setLocation] = useState<Coords | undefined>(undefined);
+
+  const getLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== 'granted') {
+      console.log('Permission to access location was denied');
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location?.coords);
+  };
 
   useEffect(() => {
+    getLocation();
+    console.log(state);
+    const likedFoods = state.userPreferences.filter(ele => ele.isLiked);
+    const selectedFoodCategory =
+      likedFoods[Math.floor(Math.random() * likedFoods.length)].category;
+    // const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters?key=${Constants.manifest?.extra?.gMapsApiKey}`
     const query = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=restaurant&inputtype=textquery&key=${Constants.manifest?.extra?.gMapsApiKey}`;
     fetch(query)
       .then(response => response.json())
@@ -19,7 +45,7 @@ const SuggestionScreen = () => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [state.userPreferences]);
 
   const onImageLoad = () => {
     setIsLoading(false);
