@@ -19,6 +19,8 @@ const SuggestionScreen = () => {
   const { state, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState<Coords | undefined>(undefined);
+  const [recommendedRetaurantInfo, setRecommendedRestarurantInfo] =
+    useState(undefined);
 
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -34,22 +36,23 @@ const SuggestionScreen = () => {
 
   const makeRestaurantDecision = async () => {
     if (location) {
-      const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=mexicane&location=${location?.latitude}%2C${location?.longitude}&radius=10000&type=restaurant&opennow&key=${Constants.manifest?.extra?.gMapsApiKey}`;
-      fetch(query)
+      const query1 = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=mexicane&location=${location?.latitude}%2C${location?.longitude}&radius=10000&type=restaurant&opennow&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+      const restaurantsResponse = await fetch(query1)
         .then(response => response.json())
         .then(json => {
-          const placeId = json.results[0].place_id;
-          const query = `https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Copening_hours%2Cformatted_address%2Cgeometry&place_id=${placeId}&&key=${Constants.manifest?.extra?.gMapsApiKey}`;
-          fetch(query)
-            .then(response => response.json())
-            .then(json => {
-              console.log(json.result);
-            });
+          return json.results;
         })
         .catch(err => {
           console.log(err);
         });
-      console.log(query);
+
+      const placeId = restaurantsResponse[0].place_id;
+      const query2 = `https://maps.googleapis.com/maps/api/place/details/json?fields=name%2Crating%2Copening_hours%2Cformatted_address%2Cgeometry&place_id=${placeId}&&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+      const recommendedRetaurantInfo = await fetch(query2)
+        .then(response => response.json())
+        .then(json => {
+          setRecommendedRestarurantInfo(json.result);
+        });
     }
   };
 
