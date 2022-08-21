@@ -6,8 +6,9 @@ type Props = {
   title: string;
   rating: number;
   distance: number;
+  imageUrl: string;
   // closingTime: string, // TODO: Find date format from api
-  dollarSign: '$' | '$$' | '$$$' | '$$$$' | '$$$$$';
+  priceLevel: number; // 1-5
   description: string;
   onImageLoad?: () => void;
 };
@@ -16,7 +17,8 @@ const ResultCard = ({
   title,
   rating,
   distance,
-  dollarSign,
+  imageUrl,
+  priceLevel,
   description,
   onImageLoad
 }: Props) => {
@@ -25,7 +27,7 @@ const ResultCard = ({
       <View>
         <ImageBackground
           resizeMode="cover"
-          source={{ uri: 'https://picsum.photos/200/300' }}
+          source={{ uri: imageUrl }}
           style={styles.image}
           onLoadEnd={() => {
             if (onImageLoad) onImageLoad();
@@ -38,7 +40,7 @@ const ResultCard = ({
         <Text style={styles.titleText}>{title}</Text>
         <StarRating rating={rating} />
         <Text style={styles.description1}>
-          {distance} miles away, time till close, {dollarSign}
+          {distance} miles away, time till close, {'$'.repeat(priceLevel)}
         </Text>
         <Text style={styles.description2}>{description}</Text>
       </View>
