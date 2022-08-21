@@ -21,6 +21,7 @@ const SuggestionScreen = () => {
   const [location, setLocation] = useState<Coords | undefined>(undefined);
   const [recommendedRetaurantInfo, setRecommendedRestarurantInfo] =
     useState(undefined);
+  const [photoUrl, setPhotoUrl] = useState('');
 
   const getLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -58,7 +59,6 @@ const SuggestionScreen = () => {
 
   useEffect(() => {
     makeRestaurantDecision();
-    console.log(location);
   }, [location]);
 
   useEffect(() => {
@@ -66,7 +66,9 @@ const SuggestionScreen = () => {
   }, []);
 
   useEffect(() => {
-    console.log(recommendedRetaurantInfo?.photos[0]);
+    setPhotoUrl(
+      `https://maps.googleapis.com/maps/api/place/photo?photo_reference=${recommendedRetaurantInfo?.photos[0].photo_reference}&maxheight=600&maxhidth=800&key=${Constants.manifest?.extra?.gMapsApiKey}`
+    );
   }, [recommendedRetaurantInfo]);
 
   const onImageLoad = () => {
@@ -117,7 +119,7 @@ const SuggestionScreen = () => {
             location?.latitude,
             location?.longitude
           )}
-          imageUrl="https://picsum.photos/200/300"
+          imageUrl={photoUrl}
           priceLevel={recommendedRetaurantInfo?.price_level}
           // description="Sample descriptive info..."
           onImageLoad={onImageLoad}
