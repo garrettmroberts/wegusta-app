@@ -18,8 +18,4 @@ const value = object(label, defaultValue, groupId);
 
 storiesOf('Result Card', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-  .add('default', () => (
-    <ResultCard
-      {...value}
-    />
-  ));
+  .add('default', () => <ResultCard {...value} />);

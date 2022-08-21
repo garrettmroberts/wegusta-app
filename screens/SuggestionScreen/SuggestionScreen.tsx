@@ -67,28 +67,34 @@ const SuggestionScreen = () => {
 
   useEffect(() => {
     console.log(recommendedRetaurantInfo?.photos[0]);
-  }, [recommendedRetaurantInfo])
+  }, [recommendedRetaurantInfo]);
 
   const onImageLoad = () => {
     setIsLoading(false);
   };
 
-  const getDistanceFromLatLon = (lat1: number, lon1: number, lat2: number, lon2: number) => {
+  const getDistanceFromLatLon = (
+    lat1: number,
+    lon1: number,
+    lat2: number,
+    lon2: number
+  ) => {
     var R = 6371; // Radius of the earth in km
-    var dLat = deg2rad(lat2-lat1);  // deg2rad below
-    var dLon = deg2rad(lon2-lon1); 
-    var a = 
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-      Math.sin(dLon/2) * Math.sin(dLon/2)
-      ; 
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var dLat = deg2rad(lat2 - lat1); // deg2rad below
+    var dLon = deg2rad(lon2 - lon1);
+    var a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(deg2rad(lat1)) *
+        Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = R * c; // Distance in km
     return (d / 1.609).toFixed(2); // Distance in mi
-  }
-  
+  };
+
   function deg2rad(deg) {
-    return deg * (Math.PI/180)
+    return deg * (Math.PI / 180);
   }
 
   return (
@@ -105,8 +111,13 @@ const SuggestionScreen = () => {
         <ResultCard
           title={recommendedRetaurantInfo?.name}
           rating={recommendedRetaurantInfo?.rating}
-          distance={getDistanceFromLatLon(recommendedRetaurantInfo?.geometry?.location.lat, recommendedRetaurantInfo?.geometry?.location.lng, location?.latitude, location?.longitude)}
-          imageUrl='https://picsum.photos/200/300'
+          distance={getDistanceFromLatLon(
+            recommendedRetaurantInfo?.geometry?.location.lat,
+            recommendedRetaurantInfo?.geometry?.location.lng,
+            location?.latitude,
+            location?.longitude
+          )}
+          imageUrl="https://picsum.photos/200/300"
           priceLevel={recommendedRetaurantInfo?.price_level}
           // description="Sample descriptive info..."
           onImageLoad={onImageLoad}
