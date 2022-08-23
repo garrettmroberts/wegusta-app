@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { ActivityIndicator, SafeAreaView, Text, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  SafeAreaView,
+  Text,
+  View
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import * as Location from 'expo-location';
@@ -9,13 +15,18 @@ import Colors from '../../constants/Colors';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ResultCard from '../../components/ResultCard/ResultCard';
 import { AppContext } from '../../utils/Context/Context';
+import API from '../../api';
 
 type Coords = {
   latitude: number;
   longitude: number;
 };
 
-const SuggestionScreen = () => {
+type Props = {
+  navigation: any;
+};
+
+const SuggestionScreen = ({ navigation }: Props) => {
   const { state, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
   const [location, setLocation] = useState<Coords | undefined>(undefined);
@@ -114,6 +125,16 @@ const SuggestionScreen = () => {
     }
   };
 
+  const handleTryAgainPress = () => {
+    const refreshImagesAndRedirect = async () => {
+      const images = await API.getRandomImages();
+      dispatch({ type: 'addImages', payload: images });
+      navigation.navigate('PreferenceSelectorScreen');
+    };
+
+    refreshImagesAndRedirect();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {isLoading ? (
@@ -140,10 +161,10 @@ const SuggestionScreen = () => {
           // description="Sample descriptive info..."
           onImageLoad={onImageLoad}
         />
-        <View style={styles.tryAgainBlock}>
+        <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
           <Text style={styles.tryAgainText}>Try again</Text>
           <Ionicons name="refresh-outline" size={24} color={Colors.primary} />
-        </View>
+        </Pressable>
       </>
     </SafeAreaView>
   );
