@@ -99,6 +99,21 @@ const SuggestionScreen = () => {
     return deg * (Math.PI / 180);
   }
 
+  const getClosingTime = () => {
+    if (recommendedRetaurantInfo?.opening_hours?.weekday_text) {
+      const date = new Date().getDay();
+      const openHours = recommendedRetaurantInfo?.opening_hours?.weekday_text;
+      const lastDate = openHours.pop();
+      openHours.unshift(lastDate);
+      const currentDayOpenHours = openHours[date];
+      const closingTime =
+        currentDayOpenHours.split(' – ')[
+          currentDayOpenHours.split(' – ').length - 1
+        ];
+      return closingTime;
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {isLoading ? (
@@ -120,6 +135,7 @@ const SuggestionScreen = () => {
             location?.longitude
           )}
           imageUrl={photoUrl}
+          closingTime={getClosingTime()}
           priceLevel={recommendedRetaurantInfo?.price_level}
           // description="Sample descriptive info..."
           onImageLoad={onImageLoad}

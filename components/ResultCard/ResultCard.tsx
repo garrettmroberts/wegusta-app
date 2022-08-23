@@ -7,7 +7,7 @@ type Props = {
   rating: number;
   distance: number;
   imageUrl: string;
-  // closingTime: string, // TODO: Find date format from api
+  closingTime: string;
   priceLevel: number; // 1-5
   description: string;
   onImageLoad?: () => void;
@@ -18,6 +18,7 @@ const ResultCard = ({
   rating,
   distance,
   imageUrl,
+  closingTime,
   priceLevel,
   description,
   onImageLoad
@@ -40,7 +41,8 @@ const ResultCard = ({
         <Text style={styles.titleText}>{title}</Text>
         <StarRating rating={rating} />
         <Text style={styles.description1}>
-          {distance} miles away, time till close, {'$'.repeat(priceLevel)}
+          {distance} miles away, Open until {closingTime},{' '}
+          {'$'.repeat(priceLevel)}
         </Text>
         <Text style={styles.description2}>{description}</Text>
       </View>
