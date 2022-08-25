@@ -59,11 +59,20 @@ const SuggestionScreen = ({ navigation }: Props) => {
         });
 
       const placeId = restaurantsResponse[0].place_id;
-      const query2 = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&&key=${Constants.manifest?.extra?.gMapsApiKey}`;
+      const query2 = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=formatted_address,name,opening_hours,price_level,rating,photos,geometry&key=${Constants.manifest?.extra?.gMapsApiKey}`;
       const recommendedRetaurantInfo = await fetch(query2)
         .then(response => response.json())
         .then(json => {
-          setRecommendedRestarurantInfo(json.result);
+          const recommendedRestaurantInfo = {
+            address: json.result.formatted_address,
+            name: json.result.name,
+            openTimes: json.result.opening_hours.weekday_text,
+            priceLevel: json.result.price_level,
+            rating: json.result.rating,
+            photos: json.result.photos,
+            geometry: json.result.geometry
+          };
+          setRecommendedRestarurantInfo(recommendedRestaurantInfo);
         });
     }
   };
@@ -111,9 +120,9 @@ const SuggestionScreen = ({ navigation }: Props) => {
   }
 
   const getClosingTime = () => {
-    if (recommendedRetaurantInfo?.opening_hours?.weekday_text) {
+    if (recommendedRetaurantInfo?.openTimes) {
       const date = new Date().getDay();
-      const openHours = recommendedRetaurantInfo?.opening_hours?.weekday_text;
+      const openHours = recommendedRetaurantInfo?.openTimes;
       const lastDate = openHours.pop();
       openHours.unshift(lastDate);
       const currentDayOpenHours = openHours[date];
@@ -157,7 +166,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
           )}
           imageUrl={photoUrl}
           closingTime={getClosingTime()}
-          priceLevel={recommendedRetaurantInfo?.price_level}
+          priceLevel={recommendedRetaurantInfo?.priceLevel}
           // description="Sample descriptive info..."
           onImageLoad={onImageLoad}
         />
