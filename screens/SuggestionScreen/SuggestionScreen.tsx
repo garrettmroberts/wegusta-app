@@ -48,8 +48,12 @@ const SuggestionScreen = ({ navigation }: Props) => {
     setLocation(location?.coords);
   };
 
+  const generateRandomNumber = (max: number) => {
+    return Math.floor(Math.random() * max);
+  };
+
   const selectFoodCategory = () => {
-    const rand = Math.floor(Math.random() * state.userPreferences.length);
+    const rand = generateRandomNumber(state.userPreferences.length);
     const filteredPreferences = state.userPreferences.filter(
       preference => preference.isLiked
     );
@@ -69,7 +73,10 @@ const SuggestionScreen = ({ navigation }: Props) => {
         .then(response => response.json())
         .then(json => {
           if (json.status !== 'ZERO_RESULTS') {
-            finalResult = json.results[0].place_id;
+            const rand = generateRandomNumber(
+              json.results.length > 5 ? 5 : json.results.length
+            );
+            finalResult = json.results[rand].place_id;
             return;
           }
         });
