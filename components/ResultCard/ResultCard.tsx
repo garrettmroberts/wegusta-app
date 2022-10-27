@@ -1,4 +1,11 @@
-import { Linking, Platform, Pressable, Text, View, ImageBackground } from 'react-native';
+import {
+  Linking,
+  Platform,
+  Pressable,
+  Text,
+  View,
+  ImageBackground
+} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import StarRating from '../StarRating/StarRating';
 import styles from './styles';
@@ -27,7 +34,7 @@ const ResultCard = ({
   description,
   latitude,
   longitude,
-  onImageLoad,
+  onImageLoad
 }: Props) => {
   const openMap = () => {
     var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
@@ -46,8 +53,11 @@ const ResultCard = ({
             if (onImageLoad) onImageLoad();
           }}
         />
-        <Pressable style={[styles.overlayButton, styles.overlayButton1]} onPress={openMap}>
-          <MaterialIcons name='location-pin' size={30} color={Colors.primary} />
+        <Pressable
+          style={[styles.overlayButton, styles.overlayButton1]}
+          onPress={openMap}
+        >
+          <MaterialIcons name="location-pin" size={30} color={Colors.primary} />
         </Pressable>
         {/* <View style={[styles.overlayButton, styles.overlayButton2]} /> */}
       </View>
