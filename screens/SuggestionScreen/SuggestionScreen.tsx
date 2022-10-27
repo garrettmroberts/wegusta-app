@@ -50,61 +50,62 @@ const SuggestionScreen = ({ navigation }: Props) => {
 
   const selectFoodCategory = () => {
     const rand = Math.floor(Math.random() * state.userPreferences.length);
-    const filteredPreferences = state.userPreferences.filter(preference => preference.isLiked);
+    const filteredPreferences = state.userPreferences.filter(
+      preference => preference.isLiked
+    );
     if (filteredPreferences.length === 0) {
       setError(true);
       setIsLoading(false);
       return null;
     }
     return filteredPreferences[rand].category;
-  }
+  };
 
   const queryForRestaurant = async (category: string) => {
     let finalResult = null;
-    for(let i = 10000; i <= 30000; i += 10000) {
+    for (let i = 10000; i <= 30000; i += 10000) {
       const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${location?.latitude}%2C${location?.longitude}&radius=10000&type=restaurant&opennow&key=${Constants.manifest?.extra?.gMapsApiKey}`;
       const result = await fetch(query)
-      .then(response => response.json())
-      .then(json => {
-        if (json.status !== 'ZERO_RESULTS') {
-          finalResult = json.results[0].place_id;
-          return;
-        }
-      });
+        .then(response => response.json())
+        .then(json => {
+          if (json.status !== 'ZERO_RESULTS') {
+            finalResult = json.results[0].place_id;
+            return;
+          }
+        });
     }
     return finalResult;
-  }
+  };
 
   const queryForRestaurantDetails = async (placeId: string) => {
     const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=formatted_address,name,opening_hours,price_level,rating,photos,geometry&key=${Constants.manifest?.extra?.gMapsApiKey}`;
     await fetch(query)
-    .then(response => response.json())
-    .then(json => {
-      const recommendedRestaurantInfo = {
-        address: json.result.formatted_address,
-        name: json.result.name,
-        openTimes: json.result.opening_hours.weekday_text,
-        priceLevel: json.result.price_level,
-        rating: json.result.rating,
-        photos: json.result.photos,
-        geometry: json.result.geometry
-      };
-      setRecommendedRestarurantInfo(recommendedRestaurantInfo);
-    });
-
-  }
+      .then(response => response.json())
+      .then(json => {
+        const recommendedRestaurantInfo = {
+          address: json.result.formatted_address,
+          name: json.result.name,
+          openTimes: json.result.opening_hours.weekday_text,
+          priceLevel: json.result.price_level,
+          rating: json.result.rating,
+          photos: json.result.photos,
+          geometry: json.result.geometry
+        };
+        setRecommendedRestarurantInfo(recommendedRestaurantInfo);
+      });
+  };
 
   const makeRestaurantDecision = async () => {
     if (location) {
       const category = selectFoodCategory();
       if (category !== null) {
-          const restaurantId = await queryForRestaurant(category);
-          if (restaurantId) {
-            queryForRestaurantDetails(restaurantId)
-          } else {
-            setError(true);
-            setIsLoading(false);
-          }
+        const restaurantId = await queryForRestaurant(category);
+        if (restaurantId) {
+          queryForRestaurantDetails(restaurantId);
+        } else {
+          setError(true);
+          setIsLoading(false);
+        }
       }
     }
   };
@@ -189,7 +190,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
       {error ? (
         <>
           <Text>We couldn't find any results with the given criteria!</Text>
-          <Button title='Try again?' onPress={handleTryAgainPress}/>
+          <Button title="Try again?" onPress={handleTryAgainPress} />
         </>
       ) : (
         <>
