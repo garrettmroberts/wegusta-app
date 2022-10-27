@@ -1,6 +1,8 @@
-import { Text, View, ImageBackground } from 'react-native';
+import { Linking, Platform, Pressable, Text, View, ImageBackground } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import StarRating from '../StarRating/StarRating';
 import styles from './styles';
+import Colors from '../../constants/Colors';
 
 type Props = {
   title: string;
@@ -10,6 +12,8 @@ type Props = {
   closingTime: string;
   priceLevel: number; // 1-5
   description: string;
+  latitude: number;
+  longitude: number;
   onImageLoad?: () => void;
 };
 
@@ -21,8 +25,16 @@ const ResultCard = ({
   closingTime,
   priceLevel,
   description,
-  onImageLoad
+  latitude,
+  longitude,
+  onImageLoad,
 }: Props) => {
+  const openMap = () => {
+    var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
+    var url = scheme + `${latitude},${longitude}`;
+    Linking.openURL(url);
+  };
+
   return (
     <View style={styles.card}>
       <View style={styles.imageWrapper}>
@@ -34,7 +46,9 @@ const ResultCard = ({
             if (onImageLoad) onImageLoad();
           }}
         />
-        <View style={[styles.overlayButton, styles.overlayButton1]} />
+        <Pressable style={[styles.overlayButton, styles.overlayButton1]} onPress={openMap}>
+          <MaterialIcons name='location-pin' size={30} color={Colors.primary} />
+        </Pressable>
         {/* <View style={[styles.overlayButton, styles.overlayButton2]} /> */}
       </View>
       <View style={styles.textWrapper}>

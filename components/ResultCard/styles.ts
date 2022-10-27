@@ -34,7 +34,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     position: 'absolute',
     borderRadius: 16,
-    bottom: overlayButtonPadding
+    bottom: overlayButtonPadding,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   overlayButton1: {
     right: overlayButtonPadding

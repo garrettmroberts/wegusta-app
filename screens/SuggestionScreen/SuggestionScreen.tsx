@@ -5,7 +5,7 @@ import {
   Pressable,
   SafeAreaView,
   Text,
-  View
+  View,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -206,6 +206,8 @@ const SuggestionScreen = ({ navigation }: Props) => {
             imageUrl={photoUrl}
             closingTime={getClosingTime()}
             priceLevel={recommendedRestaurantInfo?.priceLevel}
+            latitude={recommendedRestaurantInfo?.geometry?.location?.lat}
+            longitude={recommendedRestaurantInfo?.geometry?.location?.lng}
             // description="Sample descriptive info..."
             onImageLoad={onImageLoad}
           />
