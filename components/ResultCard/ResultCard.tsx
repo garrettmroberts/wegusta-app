@@ -25,7 +25,7 @@ const ResultCard = ({
 }: Props) => {
   return (
     <View style={styles.card}>
-      <View>
+      <View style={styles.imageWrapper}>
         <ImageBackground
           resizeMode="cover"
           source={{ uri: imageUrl }}
@@ -34,8 +34,8 @@ const ResultCard = ({
             if (onImageLoad) onImageLoad();
           }}
         />
-        {/* <View style={[styles.overlayButton, styles.overlayButton1]} />
-        <View style={[styles.overlayButton, styles.overlayButton2]} /> */}
+        <View style={[styles.overlayButton, styles.overlayButton1]} />
+        {/* <View style={[styles.overlayButton, styles.overlayButton2]} /> */}
       </View>
       <View style={styles.textWrapper}>
         <Text style={styles.titleText}>{title}</Text>

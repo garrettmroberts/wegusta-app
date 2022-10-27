@@ -3,7 +3,8 @@ const reducer = (state: any, action: any) => {
     case 'addImages':
       return {
         ...state,
-        images: action.payload
+        images: action.payload,
+        userPreferences: []
       };
     case 'setNextAction':
       return {
