@@ -3,7 +3,8 @@ import 'dotenv/config';
 export default {
   name: 'wegusta-app',
   slug: 'wegusta-app',
-  version: '1.0.0',
+  privacy: 'unlisted',
+  version: '0.1.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'light',
@@ -17,7 +18,8 @@ export default {
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    supportsTablet: true
+    supportsTablet: true,
+    bundleIdentifier: 'wegusta.io'
   },
   android: {
     adaptiveIcon: {
@@ -37,6 +39,9 @@ export default {
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
     appId: process.env.APP_ID,
     measurementId: process.env.MEASUREMENT_ID,
-    gMapsApiKey: process.env.G_MAPS_API_KEY
+    gMapsApiKey: process.env.G_MAPS_API_KEY,
+    eas: {
+      projectId: '4e31667f-459c-4d57-9f4e-47bf4bed0c6d'
+    }
   }
 };

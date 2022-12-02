@@ -8,16 +8,19 @@ type GetImageUrlsArgType = {
 
 export default {
   getImageUrls: async (imageData: GetImageUrlsArgType[]) => {
-    // const res: any = [];
-    // const storage = getStorage();
+    const res: any = [];
+    const storage = getStorage();
 
-    // await Promise.all(imageData.map(async (item: any) => {
-    //   await getDownloadURL(ref(storage, item.imageUrl)).then(uri => {
-    //     res.push({category:item.category, uri})
-    //   })
-    // }))
-    // return res;
+    await Promise.all(
+      imageData.map(async (item: any) => {
+        await getDownloadURL(ref(storage, item.imageUrl)).then(uri => {
+          res.push({ category: item.category, uri });
+        });
+      })
+    );
+    return res;
 
-    return sampleImageUrlsResponse;
+    // For use in dev.  Comment out above code.
+    // return sampleImageUrlsResponse;
   }
 };
