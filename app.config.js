@@ -28,7 +28,7 @@ export default {
     }
   },
   web: {
-    favicon: './assets/favicon.png'
+    favicon: './assets/icon.png'
   },
   extra: {
     loadStorybook: process.env.LOAD_STORYBOOK,

@@ -19,38 +19,38 @@ type RandomImageResponseType = {
 
 export default {
   getRandomImages: async (): Promise<RandomImageResponseType[]> => {
-    const db = getFirestore();
-    const foodsRef = collection(db, 'foodCategories');
-    const foodsQuery = query(foodsRef, where('containsImages', '==', true));
-    const querySnapshot = await getDocs(foodsQuery);
+    // const db = getFirestore();
+    // const foodsRef = collection(db, 'foodCategories');
+    // const foodsQuery = query(foodsRef, where('containsImages', '==', true));
+    // const querySnapshot = await getDocs(foodsQuery);
 
-    const queryResult: QueryResultType[] = [];
-    querySnapshot.forEach(doc => {
-      queryResult.push({
-        id: doc.id,
-        ...doc.data()
-      });
-    });
+    // const queryResult: QueryResultType[] = [];
+    // querySnapshot.forEach(doc => {
+    //   queryResult.push({
+    //     id: doc.id,
+    //     ...doc.data()
+    //   });
+    // });
 
-    const randomCategorySelection = [];
-    for (let i = 0; i < 5; i++) {
-      let randInt = Math.floor(Math.random() * queryResult.length);
-      randomCategorySelection.push(queryResult[randInt]);
-      queryResult.splice(randInt, 1);
-    }
+    // const randomCategorySelection = [];
+    // for (let i = 0; i < 5; i++) {
+    //   let randInt = Math.floor(Math.random() * queryResult.length);
+    //   randomCategorySelection.push(queryResult[randInt]);
+    //   queryResult.splice(randInt, 1);
+    // }
 
-    const res: RandomImageResponseType[] = [];
-    randomCategorySelection.forEach(ele => {
-      let randInt = Math.floor(Math.random() * ele.photos!.length);
-      res.push({
-        category: ele.id!,
-        imageUrl: ele.photos![randInt]
-      });
-    });
+    // const res: RandomImageResponseType[] = [];
+    // randomCategorySelection.forEach(ele => {
+    //   let randInt = Math.floor(Math.random() * ele.photos!.length);
+    //   res.push({
+    //     category: ele.id!,
+    //     imageUrl: ele.photos![randInt]
+    //   });
+    // });
 
-    return res;
+    // return res;
 
     // For use in dev.  Comment out above code.
-    // return sampleGetRandomImagesResponse;
+    return sampleGetRandomImagesResponse;
   }
 };
