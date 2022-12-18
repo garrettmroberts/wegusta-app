@@ -12,7 +12,7 @@ type Props = {
 };
 
 const PreferenceSelectorScreen = ({ navigation }: Props) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,10 +25,10 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
   }, []);
 
   useEffect(() => {
-    if (state.images.length === 0 && state.nextAction.isSet) {
+    if (context.images.length === 0 && context.nextAction.isSet) {
       handleStackEnd();
     }
-  }, [state.images]);
+  }, [context.images]);
 
   const handleStackEnd = () => {
     setTimeout(() => {
@@ -37,7 +37,7 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
   };
 
   const handleDecisionPress = (isLiked: boolean) => {
-    const category = state.images[0].category;
+    const category = context.images[0].category;
     dispatch({
       type: 'setNextAction',
       payload: { isSet: true, category, isLiked }
@@ -46,10 +46,10 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
 
 
   useEffect(() => {
-    if (state.images.length > 0 && state.loadedImageCount === state.images.length) {
+    if (context.images.length > 0 && context.loadedImageCount === context.images.length) {
       setIsLoading(false);
     }
-  }, [state.loadedImageCount]);
+  }, [context.loadedImageCount]);
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -60,7 +60,7 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
           </View>
         </>
       ) : null}
-      <CardStack cards={state.images} onStackEnd={handleStackEnd} />
+      <CardStack cards={context.images} onStackEnd={handleStackEnd} />
       <View style={styles.decisionWrapper}>
         <DecisionButton
           decision="dislike"

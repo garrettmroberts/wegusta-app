@@ -8,18 +8,18 @@ type AppProviderProps = {
 }
 
 const AppContext = createContext<{
-  state: InitialStateType;
+  context: InitialStateType;
   dispatch: React.Dispatch<any>;
 }>({
-  state: initialState,
+  context: initialState,
   dispatch: () => null
 });
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [context, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <AppContext.Provider value={{ state, dispatch }}>
+    <AppContext.Provider value={{ context, dispatch }}>
       {children}
     </AppContext.Provider>
   );

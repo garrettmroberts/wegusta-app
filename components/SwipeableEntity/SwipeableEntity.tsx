@@ -20,15 +20,15 @@ const SwipeableEntity = ({
   onSwipe,
   containsElement
 }: Props) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext);
   const [visible, setVisible] = useState(true);
   const pan = useRef(new Animated.ValueXY()).current;
 
   useEffect(() => {
     if (
-      state.nextAction.isSet &&
-      state.nextAction.isLiked &&
-      containsElement === state.nextAction.category
+      context.nextAction.isSet &&
+      context.nextAction.isLiked &&
+      containsElement === context.nextAction.category
     ) {
       Animated.spring(pan, {
         toValue: {
@@ -44,16 +44,16 @@ const SwipeableEntity = ({
         dispatch({
           type: 'updateUserPreferences',
           payload: {
-            category: state.nextAction.category,
-            isLiked: state.nextAction.isLiked
+            category: context.nextAction.category,
+            isLiked: context.nextAction.isLiked
           }
         });
         dispatch({ type: 'resetNextAction' });
       }, 201);
     } else if (
-      state.nextAction.isSet &&
-      !state.nextAction.isLiked &&
-      containsElement === state.nextAction.category
+      context.nextAction.isSet &&
+      !context.nextAction.isLiked &&
+      containsElement === context.nextAction.category
     ) {
       Animated.spring(pan, {
         toValue: {
@@ -69,14 +69,14 @@ const SwipeableEntity = ({
         dispatch({
           type: 'updateUserPreferences',
           payload: {
-            category: state.nextAction.category,
-            isLiked: state.nextAction.isLiked
+            category: context.nextAction.category,
+            isLiked: context.nextAction.isLiked
           }
         });
         dispatch({ type: 'resetNextAction' });
       }, 201);
     }
-  }, [state]);
+  }, [context]);
 
   const panResponder = useRef(
     PanResponder.create({

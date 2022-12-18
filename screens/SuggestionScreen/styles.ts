@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
   absolute: {
     position: 'absolute',
-    zIndex: 2,
     width: Sizes.screenWidth,
     height: Sizes.screenHeight
   },
@@ -34,6 +33,59 @@ const styles = StyleSheet.create({
   },
   resultCardWrapper: {
     width: Sizes.screenWidth - (Sizes.viewPadding * 2)
+  },
+  fullScreenModal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    color: 'red'
+  },
+  locationServicesPlacement: {
+    bottom: 50,
+    paddingLeft: Sizes.viewPadding,
+  },
+  locationServicesIcon: {
+    borderRadius: 90,
+    backgroundColor: Colors.secondary + '10',
+    width: 74, 
+    height: 74,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
+    marginBottom: 24,
+  },
+  locationServicesHeader: {
+    ...Fonts.h2Bold,
+    alignSelf: 'flex-start',
+    marginBottom: 8
+  },
+  locationServicesSubheader: {
+    ...Fonts.bodyReg,
+    maxWidth: Sizes.screenWidth * 0.8,
+    alignSelf: 'flex-start',
+  },
+  locationServicesPrimaryButton: {
+    backgroundColor: Colors.primary,
+    marginTop: 'auto'
+  },
+  locationServicesPrimaryButtonText: {
+    color: Colors.white,
+    ...Fonts.buttonReg
+  },
+  locationServicesSecondaryButton: {
+    marginTop: 16
+  },
+  locationServicesSecondaryButtonText: {
+    color: Colors.primary,
+    ...Fonts.buttonReg
+  },
+  actionButton: {
+    alignItems: 'center',
+    paddingVertical: 16,
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
+    borderRadius: 16,
+    justifyContent: 'center',
+    marginLeft: Sizes.viewPadding
   }
 });
 
