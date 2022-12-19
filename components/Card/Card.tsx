@@ -6,18 +6,19 @@ import {
 } from 'react-native';
 import { useContext, useEffect } from 'react';
 import { AppContext } from '../../utils/Context/Context';
+import FoodImages from '../../utils/FoodImages';
 
 import styles from './styles';
 
 type CardProps = {
   imageProps: {
     category: string;
-    uri: string;
+    imageUri: any;
   };
 };
 
 const Card = ({ imageProps }: CardProps) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext);
   const imageFadeIn = new Animated.Value(0);
 
   const handleImageLoad = () => {
@@ -33,7 +34,7 @@ const Card = ({ imageProps }: CardProps) => {
         <ImageBackground
           resizeMode="cover"
           style={styles.image}
-          source={{ uri: imageProps.uri }}
+          source={FoodImages[imageProps.imageUri]}
           onLoad={() => handleImageLoad()}
           onLoadEnd={() => {
             dispatch({type: 'incrementLoadedImageCount'});

@@ -3,12 +3,12 @@ module.exports = {
   name: 'wegusta-test-app',
   slug: 'wegusta-test-app',
   privacy: 'unlisted',
-  version: '0.0.15',
+  version: '0.0.16',
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/images/icon.png',
   userInterfaceStyle: 'light',
   splash: {
-    image: './assets/icon.png',
+    image: './assets/images/icon.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff'
   },
@@ -22,12 +22,12 @@ module.exports = {
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
+      foregroundImage: './assets/images/adaptive-icon.png',
       backgroundColor: '#FFFFFF'
     }
   },
   web: {
-    favicon: './assets/icon.png'
+    favicon: './assets/images/icon.png'
   },
   extra: {
     loadStorybook: process.env.LOAD_STORYBOOK,

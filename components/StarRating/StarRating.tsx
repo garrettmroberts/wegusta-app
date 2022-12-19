@@ -12,7 +12,7 @@ const StarRating = ({ rating }: Props) => {
         if (idx < Math.floor(rating)) {
           return (
             <Image
-              source={require('../../assets/star.png')}
+              source={require('../../assets/images/star.png')}
               style={styles.star}
               key={`star-${idx}`}
             />
@@ -20,7 +20,7 @@ const StarRating = ({ rating }: Props) => {
         } else if (rating - idx <= 1 && idx < rating) {
           return (
             <Image
-              source={require('../../assets/star-half.png')}
+              source={require('../../assets/images/star-half.png')}
               style={styles.star}
               key={`star-${idx}`}
             />
@@ -28,7 +28,7 @@ const StarRating = ({ rating }: Props) => {
         } else {
           return (
             <Image
-              source={require('../../assets/star-empty.png')}
+              source={require('../../assets/images/star-empty.png')}
               style={styles.star}
               key={`star-${idx}`}
             />

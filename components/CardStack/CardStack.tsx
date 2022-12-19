@@ -15,7 +15,7 @@ type CardStackProps = {
 };
 
 const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
-  const { state, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext);
 
   const handleSwipe = (category: string, isLiked: boolean) => {
     setTimeout(

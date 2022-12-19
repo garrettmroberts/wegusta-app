@@ -113,13 +113,16 @@ const SuggestionScreen = ({ navigation }: Props) => {
   };
 
   const selectFoodCategory = () => {
-    const rand = generateRandomNumber(context.userPreferences.length);
     const filteredPreferences = context.userPreferences.filter(
       preference => preference.isLiked
     );
+
+    const rand = generateRandomNumber(filteredPreferences.length);
+
     if (filteredPreferences.length === 0) {
       return null;
     }
+
     return filteredPreferences[rand].category;
   };
 
