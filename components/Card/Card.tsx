@@ -13,7 +13,7 @@ import styles from './styles';
 type CardProps = {
   imageProps: {
     category: string;
-    imageUri: any;
+    imageName: any;
   };
 };
 
@@ -34,7 +34,7 @@ const Card = ({ imageProps }: CardProps) => {
         <ImageBackground
           resizeMode="cover"
           style={styles.image}
-          source={FoodImages[imageProps.imageUri]}
+          source={FoodImages[imageProps.imageName]}
           onLoad={() => handleImageLoad()}
           onLoadEnd={() => {
             dispatch({type: 'incrementLoadedImageCount'});
