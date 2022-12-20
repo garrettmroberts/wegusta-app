@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
 import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen';
+import LeftAlignedTitle from './LeftAlignedTitle';
+import RightAlignedIcon from './RightAlignedIcon';
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
@@ -18,14 +20,17 @@ const StackNavigator = () => {
       <Stack.Screen
         name="PreferenceSelectorScreen"
         component={PreferenceSelectorScreen}
-        options={{ title: 'What looks good?' }}
+        options={{
+          title: '',
+          headerLeft: () => LeftAlignedTitle({title: 'What looks good?'}),
+          headerRight: () => RightAlignedIcon({iconName: 'settings', onPress: () => {console.log('pressed')}}) }}
       />
       <Stack.Screen
         name="SuggestionScreen"
         component={SuggestionScreen}
         options={{
-          title: 'Your match',
-          headerLeft: () => null
+          title: '',
+          headerLeft: () => LeftAlignedTitle({title: 'Your Match!'}),
         }}
       />
     </Stack.Navigator>
