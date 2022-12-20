@@ -15,7 +15,6 @@ type Props = {
 const PreferenceSelectorScreen = ({ navigation }: Props) => {
   const { context, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [isOptionsModalVisible, setIsOptionsModalVisible] = useState(false);
 
   useEffect(() => {
     const getFoods = async () => {
@@ -73,7 +72,7 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
           onPress={() => handleDecisionPress(true)}
         />
       </View>
-      <FilterModal isVisible={isOptionsModalVisible} onClose={() => setIsOptionsModalVisible(false)}/>
+      <FilterModal isVisible={context.isOptionsModalVisible} onClose={() => dispatch({type: 'updateOptionsVisibility'})}/>
     </SafeAreaView>
   );
 };

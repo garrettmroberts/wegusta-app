@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
 import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen';
 import LeftAlignedTitle from './LeftAlignedTitle';
 import RightAlignedIcon from './RightAlignedIcon';
+import { AppContext } from '../utils/Context/Context';
 
 const Stack = createNativeStackNavigator();
 const StackNavigator = () => {
+  const { context, dispatch } = useContext(AppContext);
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -23,7 +26,10 @@ const StackNavigator = () => {
         options={{
           title: '',
           headerLeft: () => LeftAlignedTitle({title: 'What looks good?'}),
-          headerRight: () => RightAlignedIcon({iconName: 'settings', onPress: () => {console.log('pressed')}}) }}
+          headerRight: () => RightAlignedIcon({iconName: 'settings', onPress: () => {
+            console.log('updating visibility')
+            dispatch({type: 'updateOptionsVisibility'})
+          }}) }}
       />
       <Stack.Screen
         name="SuggestionScreen"

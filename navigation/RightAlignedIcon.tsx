@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import Colors from "../constants/Colors";
 import Fonts from "../constants/Fonts";

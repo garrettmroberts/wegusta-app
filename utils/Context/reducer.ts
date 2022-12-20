@@ -52,6 +52,12 @@ const reducer = (state: any, action: any) => {
         ...state,
         loadedImageCount: 0
       };
+    case 'updateOptionsVisibility': {
+      return {
+        ...state,
+        isOptionsModalVisible: !state.isOptionsModalVisible
+      }
+    }
     default:
       console.log('STATE: ', state);
       return state;
