@@ -6,6 +6,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import styles from './styles';
 import { AppContext } from '../../utils/Context/Context';
 import API from '../../api';
+import FilterModal from '../../components/FilterModal/FilterModal';
 
 type Props = {
   navigation: any;
@@ -14,6 +15,7 @@ type Props = {
 const PreferenceSelectorScreen = ({ navigation }: Props) => {
   const { context, dispatch } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [isOptionsModalVisible, setIsOptionsModalVisible] = useState(false);
 
   useEffect(() => {
     const getFoods = async () => {
@@ -71,6 +73,7 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
           onPress={() => handleDecisionPress(true)}
         />
       </View>
+      <FilterModal isVisible={isOptionsModalVisible} onClose={() => setIsOptionsModalVisible(false)}/>
     </SafeAreaView>
   );
 };
