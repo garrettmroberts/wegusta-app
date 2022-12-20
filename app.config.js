@@ -3,7 +3,7 @@ module.exports = {
   name: 'wegusta-test-app',
   slug: 'wegusta-test-app',
   privacy: 'unlisted',
-  version: '0.0.16',
+  version: '0.0.17',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   userInterfaceStyle: 'light',
