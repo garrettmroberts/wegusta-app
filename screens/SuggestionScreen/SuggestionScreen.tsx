@@ -152,7 +152,6 @@ const SuggestionScreen = ({ navigation }: Props) => {
                 lng: result.geometry.location.lng
               }
             };
-            setState({...state, recommendedRestaurantInfo});
             return recommendedRestaurantInfo;
           } else {
             setState({
@@ -164,49 +163,36 @@ const SuggestionScreen = ({ navigation }: Props) => {
     return recommendedRestaurantInfo;
   };
 
-  // const queryForOpeningHours = async (placeId: string) => {
-  //   // const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=formatted_address,name,opening_hours,price_level,rating,photos,geometry&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
-  //   const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=opening_hours&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
-  //   await fetch(query)
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       const date = new Date().getDay();
-  //       const openHours = json.result.opening_hours.weekday_text;
-  //       const lastDate = openHours.pop();
-  //       openHours.unshift(lastDate);
-  //       const currentDayOpenHours = openHours[date];
-  //       const closingTime =
-  //         currentDayOpenHours.split(' – ')[1];
-  //       console.log(closingTime);
-  //       setState({...state, recommendedRestaurantInfo: {
-  //         ...state.recommendedRestaurantInfo,
-  //         closingTime: json.result
-  //       }});
-  //     });
-  // };
-
-  // const getClosingTime = () => {
-  //   if (state?.recommendedRestaurantInfo?.openTimes) {
-  //     const date = new Date().getDay();
-  //     const openHours = recommendedRestaurantInfo?.openTimes;
-  //     const lastDate = openHours.pop();
-  //     openHours.unshift(lastDate);
-  //     const currentDayOpenHours = openHours[date];
-  //     const closingTime =
-  //       currentDayOpenHours.split(' – ')[
-  //         currentDayOpenHours.split(' – ').length - 1
-  //       ];
-  //     return closingTime;
-  //   }
-  // };
+  const queryForOpeningHours = async (placeId: string) => {
+    let res = '';
+    const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=opening_hours&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
+    await fetch(query)
+      .then(response => response.json())
+      .then(json => {
+        const date = new Date().getDay();
+        const openHours = json.result.opening_hours.weekday_text;
+        const lastDate = openHours.pop();
+        openHours.unshift(lastDate);
+        const currentDayOpenHours = openHours[date];
+        res = currentDayOpenHours.split(' – ')[1];
+      });
+      return res;
+  };
 
   const makeRestaurantDecision = async () => {
     const hasLocationAccess = await getLocationAccessStatus();
     if (hasLocationAccess) {
       const category = selectFoodCategory();
       if (category !== null) {
-        const { place_id } = await queryForRestaurant(category);
-        // await queryForOpeningHours(place_id);
+        const recommendedRestaurantInfo = await queryForRestaurant(category);
+        const closingTime = await queryForOpeningHours(recommendedRestaurantInfo.place_id);
+        setState({
+          ...state,
+          recommendedRestaurantInfo: {
+            ...recommendedRestaurantInfo,
+            closingTime
+          }
+        })
       } else {
         setState({...state, pageState: 'error'});
       }
@@ -215,7 +201,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
   // -------------------------------------------------------------------
 
   useEffect(() => {
-    if (state.recommendedRestaurantInfo?.place_id) {
+    if (state.recommendedRestaurantInfo?.place_id && state.recommendedRestaurantInfo?.closingTime) {
       setState({...state, pageState: 'success'})
     }
   }, [state.recommendedRestaurantInfo])
@@ -329,7 +315,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
                 state.location?.longitude
               )}
               imageUrl={state.recommendedRestaurantInfo?.photoUrl}
-              // closingTime={getClosingTime()}
+              closingTime={state.recommendedRestaurantInfo?.closingTime}
               priceLevel={state.recommendedRestaurantInfo?.priceLevel}
               latitude={state.recommendedRestaurantInfo?.location?.lat}
               longitude={state.recommendedRestaurantInfo?.location?.lng}

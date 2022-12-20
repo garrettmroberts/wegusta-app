@@ -12,7 +12,11 @@ const reducer = (state: any, action: any) => {
         images: action.payload,
         userPreferences: [],
         nextAction: {},
-        loadedImageCount: 0
+        loadedImageCount: 0,
+        filterOptions: {
+          isModalVisible: false,
+          filterDistance: 5
+        }
       };
     case 'setNextAction':
       return {

@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16
   },
   image: {
-    height: 300,
+    height: 450,
   },
   overlayButton: {
     height: 56,

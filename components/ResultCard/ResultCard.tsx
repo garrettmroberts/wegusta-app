@@ -65,7 +65,7 @@ const ResultCard = ({
         <Text style={styles.titleText}>{title}</Text>
         <StarRating rating={rating} />
         <Text style={styles.description1}>
-          {distance} miles away, Open until {closingTime},{' '}
+          {distance} miles away, Open till {closingTime},{' '}
           {'$'.repeat(priceLevel)}
         </Text>
         <Text style={styles.description2}>{description}</Text>
