@@ -12,6 +12,10 @@ type FilterModalType = {
 const FilterModal = ({isVisible, onClose}: FilterModalType) => {  
   const { context, dispatch } = useContext(AppContext);
 
+  const changeDistance = (value: number) => {
+    dispatch({type: 'updateFilterDistance', payload: value});
+  }
+
     return (
         <Modal
             animationType="slide"
@@ -24,7 +28,7 @@ const FilterModal = ({isVisible, onClose}: FilterModalType) => {
             <View style={styles.modal}>
                 <View style={styles.modalBody}>
                     <Text style={styles.header}>Filters</Text>
-                    <CustomSlider title='Distance' min={0} max={20} units='miles' />
+                    <CustomSlider title='Distance' min={0} max={20} units='miles' onChange={changeDistance} />
                     <View style={styles.buttonWrapper}>
                         <Pressable
                             onPress={() => {

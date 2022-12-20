@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   AppState,
-  Button,
   Linking,
   Modal,
   Pressable,
@@ -131,7 +129,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
 
   const queryForRestaurant = async (category: string) => {
     let recommendedRestaurantInfo = {};
-      const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${state.location?.latitude}%2C${state.location?.longitude}&radius=10000&type=restaurant&opennow&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
+      const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${state.location?.latitude}%2C${state.location?.longitude}&radius=${context.filterOptions.filterDistance * 1000}&type=restaurant&opennow&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
       const result = await fetch(query)
         .then(response => {
           return response.json();

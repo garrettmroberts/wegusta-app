@@ -11,16 +11,11 @@ type CustomSliderProps = {
     min: number,
     max: number,
     units: string,
-    onChange?: () => void,
-    onClear?: () => void
+    onChange: (value: number) => void,
 }
 
-const CustomSlider = ({ title, min, max, units, onChange, onClear }: CustomSliderProps) => {
+const CustomSlider = ({ title, min, max, units, onChange }: CustomSliderProps) => {
   const { context, dispatch } = useContext(AppContext);
-
-  const setValue = (input: number) => {
-    dispatch({type: 'updateFilterDistance', payload: input});
-  }
 
   return (
     <View>
@@ -31,7 +26,7 @@ const CustomSlider = ({ title, min, max, units, onChange, onClear }: CustomSlide
         style={styles.slider}
         minimumTrackTintColor={Colors.primary}
         maximumTrackTintColor={Colors.white}
-        onValueChange={(value) => setValue(value)}
+        onValueChange={(value) => onChange(value)}
         value={context.filterOptions.filterDistance}
         step={1}
       />
