@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   card: {
     height: 500,
-    width: Sizes.screenWidth - 20,
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
     justifyContent: 'center'
   },
   image: {

@@ -20,7 +20,7 @@ const DecisionButton = ({ decision, onPress }: Props) => {
 
   return (
     <Pressable
-      style={({ pressed }) => [styles.button, { opacity: pressed ? 0.8 : 1 }]}
+      style={({ pressed }) => [styles.button, decision === 'like' ? styles.like : styles.dislike, { opacity: pressed ? 0.8 : 1 }]}
       onPress={onPress}
       testID="decision-button"
     >

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: Sizes.screenWidth - Sizes.viewPadding,
     justifyContent: 'space-around',
-    marginTop: 16
+    marginTop: 42
   },
   loadingSpinnerPlacement: {
     flex: 1,
