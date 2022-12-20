@@ -7,11 +7,6 @@ type RandomImageResponseType = {
 
 
 const API = {
-  // getRandomImages: async () => {
-  //   const firestoreResponse = await firestore.getRandomImages();
-  //   const images = await storage.getImageUrls(firestoreResponse);
-  //   return images;
-  // },
   getRandomImages: async (): Promise<RandomImageResponseType[]> => {
     const filtered = foodCategories.filter(ele => ele.images.length > 0)
 

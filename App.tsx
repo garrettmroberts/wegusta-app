@@ -2,11 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { AppProvider } from './utils/Context/Context';
 import Navigator from './navigation/AppNavigator';
 import { StyleSheet } from 'react-native';
-import firebaseConfig from './config/firebaseConfig';
-import { initializeApp } from 'firebase/app';
 
 const App = () => {
-  initializeApp(firebaseConfig);
 
   return (
     <>

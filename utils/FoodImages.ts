@@ -1,4 +1,8 @@
-const FoodImages = {
+type FoodKeysType = {
+    [key: string]: any;
+  }
+
+const FoodImages: FoodKeysType = {
     barbeque1: require('../assets/images/foods/barbeque-1.jpeg'),
     barbeque2: require('../assets/images/foods/barbeque-2.jpeg'),
     barbeque3: require('../assets/images/foods/barbeque-3.jpeg'),

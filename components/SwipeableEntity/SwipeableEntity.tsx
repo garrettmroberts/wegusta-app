@@ -22,7 +22,7 @@ const SwipeableEntity = ({
 }: Props) => {
   const { context, dispatch } = useContext(AppContext);
   const [visible, setVisible] = useState(true);
-  const pan = useRef(new Animated.ValueXY()).current;
+  const pan = useRef<any>(new Animated.ValueXY()).current;
 
   useEffect(() => {
     if (
@@ -83,7 +83,6 @@ const SwipeableEntity = ({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
         pan.setOffset({
-          //@ts-ignore
           x: pan.x._value,
           //@ts-ignore
           y: pan.y._value
