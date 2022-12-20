@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
     ...Fonts.h1Bold,
     marginTop: 21
   },
+  errorText: {
+    ...Fonts.h2Bold
+  },
   tryAgainBlock: {
     position: 'absolute',
     bottom: 34,

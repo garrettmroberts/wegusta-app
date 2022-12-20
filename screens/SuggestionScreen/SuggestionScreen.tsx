@@ -59,7 +59,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
     needsLocationAccess: false
   });
 
-  //LOCATION SERVICES
+  // LOCATION SERVICES
   // -------------------------------------------------------------------
   // Returns locationAccessStatus, also requests permission if applicable.
   const getLocationAccessStatus = async () => {
@@ -108,6 +108,9 @@ const SuggestionScreen = ({ navigation }: Props) => {
 
   // -------------------------------------------------------------------
 
+
+  // RESTAURANT RECOMMENDATION SERVICES
+  // -------------------------------------------------------------------
   const generateRandomNumber = (max: number) => {
     return Math.floor(Math.random() * max);
   };
@@ -211,6 +214,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
       }
     }
   };
+  // -------------------------------------------------------------------
 
   useEffect(() => {
     if (state.recommendedRestaurantInfo?.place_id) {
@@ -306,7 +310,13 @@ const SuggestionScreen = ({ navigation }: Props) => {
         </View>
       ) : null}
       {(state.pageState === 'error') ? (
-        <Text>Error</Text>
+        <>
+          <Text style={styles.errorText}>No Results Found.</Text>
+          <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
+            <Text style={styles.tryAgainText}>Try again</Text>
+            <Ionicons name="refresh-outline" size={24} color={Colors.primary} />
+          </Pressable>
+        </>
       ) : null}
       {(state.pageState === 'success') ? (
         <>
