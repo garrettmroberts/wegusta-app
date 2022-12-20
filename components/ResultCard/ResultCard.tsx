@@ -38,7 +38,7 @@ const ResultCard = ({
 }: Props) => {
   const openMap = () => {
     var scheme = Platform.OS === 'ios' ? 'maps:0,0?q=' : 'geo:0,0?q=';
-    var url = scheme + encodeURI(title) + '@' + `${latitude},${longitude}`;
+    var url = scheme + encodeURIComponent(title) + '@' + `${latitude},${longitude}`;
     Linking.openURL(url);
   };
 
