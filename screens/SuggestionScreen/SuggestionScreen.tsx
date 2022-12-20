@@ -153,6 +153,11 @@ const SuggestionScreen = ({ navigation }: Props) => {
             };
             setState({...state, recommendedRestaurantInfo});
             return recommendedRestaurantInfo;
+          } else {
+            setState({
+              ...state,
+              pageState: 'error'
+            })
           }
         });
     return recommendedRestaurantInfo;
@@ -221,16 +226,6 @@ const SuggestionScreen = ({ navigation }: Props) => {
     attemptgetLocation()
   }, []);
 
-  // useEffect(() => {
-  //   setPhotoUrl(
-  //     `https://maps.googleapis.com/maps/api/place/photo?photo_reference=${recommendedRestaurantInfo?.photos[0].photo_reference}&maxheight=600&maxhidth=800&key=${Constants.expoConfig?.extra?.gMapsApiKey}`
-  //   );
-  // }, [recommendedRestaurantInfo]);
-
-  // const onImageLoad = () => {
-  //   setPageState('success');
-  // };
-
   const getDistanceFromLatLon = (
     lat1: number,
     lon1: number,
@@ -255,15 +250,16 @@ const SuggestionScreen = ({ navigation }: Props) => {
     return deg * (Math.PI / 180);
   }
 
-  // const handleTryAgainPress = () => {
-  //   const refreshImagesAndRedirect = async () => {
-  //     const images = await API.getRandomImages();
-  //     dispatch({ type: 'addImages', payload: images });
-  //     navigation.navigate('PreferenceSelectorScreen');
-  //   };
+  const handleTryAgainPress = () => {
+    const refreshImagesAndRedirect = async () => {
+      const images = await API.getRandomImages();
+      dispatch({ type: 'addImagesAndRefreshState', payload: images });
+      navigation.navigate('PreferenceSelectorScreen');
+    };
 
-  //   refreshImagesAndRedirect();
-  // };
+    refreshImagesAndRedirect();
+  };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -288,7 +284,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
               <Pressable style={styles.locationServicesCloseButton} onPress={() => {
                 setState({...state, needsLocationAccess: false, pageState: 'error'})
               }}>
-                <Text style={styles.locationServicesCloseButtonText}>X</Text>
+                <Ionicons name="close" size={16} color="black" />
               </Pressable>
               <View style={styles.locationServicesIcon}>
                 <Ionicons name="ios-location-sharp" size={36} color={Colors.secondary} />
@@ -333,10 +329,10 @@ const SuggestionScreen = ({ navigation }: Props) => {
               // onImageLoad={onImageLoad}
             />
           </View>
-          {/* <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
+          <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
             <Text style={styles.tryAgainText}>Try again</Text>
             <Ionicons name="refresh-outline" size={24} color={Colors.primary} />
-          </Pressable> */}
+          </Pressable>
         </>
       ) : null}
     </SafeAreaView>

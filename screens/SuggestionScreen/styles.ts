@@ -55,9 +55,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  locationServicesCloseButtonText: {
-    ...Fonts.buttonSmall
-  },
   locationServicesIcon: {
     borderRadius: 90,
     backgroundColor: Colors.secondary + '10',
@@ -87,7 +84,8 @@ const styles = StyleSheet.create({
     ...Fonts.buttonReg
   },
   locationServicesSecondaryButton: {
-    marginTop: 16
+    marginTop: 16,
+    marginBottom: 24
   },
   locationServicesSecondaryButtonText: {
     color: Colors.primary,

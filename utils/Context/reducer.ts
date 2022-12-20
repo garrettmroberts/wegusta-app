@@ -6,6 +6,14 @@ const reducer = (state: any, action: any) => {
         images: action.payload,
         userPreferences: []
       };
+    case 'addImagesAndRefreshState':
+      return {
+        ...state,
+        images: action.payload,
+        userPreferences: [],
+        nextAction: {},
+        loadedImageCount: 0
+      };
     case 'setNextAction':
       return {
         ...state,

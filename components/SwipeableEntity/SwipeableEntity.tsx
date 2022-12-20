@@ -84,7 +84,6 @@ const SwipeableEntity = ({
       onPanResponderGrant: () => {
         pan.setOffset({
           x: pan.x._value,
-          //@ts-ignore
           y: pan.y._value
         });
       },

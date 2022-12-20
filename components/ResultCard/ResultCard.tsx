@@ -37,8 +37,8 @@ const ResultCard = ({
   onImageLoad
 }: Props) => {
   const openMap = () => {
-    var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
-    var url = scheme + `${latitude},${longitude}`;
+    var scheme = Platform.OS === 'ios' ? 'maps:0,0?q=' : 'geo:0,0?q=';
+    var url = scheme + encodeURI(title) + '@' + `${latitude},${longitude}`;
     Linking.openURL(url);
   };
 
