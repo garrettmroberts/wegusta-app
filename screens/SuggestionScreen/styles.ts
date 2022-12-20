@@ -44,6 +44,20 @@ const styles = StyleSheet.create({
     bottom: 50,
     paddingLeft: Sizes.viewPadding,
   },
+  locationServicesCloseButton: {
+    position: 'absolute',
+    top: Sizes.headerHeight + 40,
+    left: Sizes.viewPadding,
+    borderRadius: 90,
+    backgroundColor: Colors.greyLight,
+    height: 25,
+    width: 25,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  locationServicesCloseButtonText: {
+    ...Fonts.buttonSmall
+  },
   locationServicesIcon: {
     borderRadius: 90,
     backgroundColor: Colors.secondary + '10',

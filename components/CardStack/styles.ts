@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 440
+    marginBottom: 500
   },
   cardPlacement: {
     position: 'absolute',

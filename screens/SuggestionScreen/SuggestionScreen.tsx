@@ -285,6 +285,11 @@ const SuggestionScreen = ({ navigation }: Props) => {
             setState({...state, pageState: 'loading'});
           }}>
             <View style={[styles.container, styles.absolute, styles.locationServicesPlacement]}>
+              <Pressable style={styles.locationServicesCloseButton} onPress={() => {
+                setState({...state, needsLocationAccess: false, pageState: 'error'})
+              }}>
+                <Text style={styles.locationServicesCloseButtonText}>X</Text>
+              </Pressable>
               <View style={styles.locationServicesIcon}>
                 <Ionicons name="ios-location-sharp" size={36} color={Colors.secondary} />
               </View>

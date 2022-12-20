@@ -5,12 +5,12 @@ import Sizes from '../../constants/Sizes';
 const styles = StyleSheet.create({
   cardContainer: {
     backgroundColor: Colors.white,
-    height: 440,
+    height: 500,
     borderRadius: 20,
     overflow: 'hidden'
   },
   card: {
-    height: 440,
+    height: 500,
     width: Sizes.screenWidth - 20,
     justifyContent: 'center'
   },
