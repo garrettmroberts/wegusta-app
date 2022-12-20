@@ -35,7 +35,7 @@ const SwipeableEntity = ({
           x: Sizes.screenWidth + 100,
           y: 0
         },
-        useNativeDriver: true
+        useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
       });
@@ -60,7 +60,7 @@ const SwipeableEntity = ({
           x: -Sizes.screenWidth - 100,
           y: 0
         },
-        useNativeDriver: true
+        useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
       });
@@ -88,7 +88,7 @@ const SwipeableEntity = ({
         });
       },
       onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
-        useNativeDriver: true
+        useNativeDriver: false
       }),
       onPanResponderRelease: (evt, gestureState) => {
         if (gestureState.dx < -120) {
@@ -97,7 +97,7 @@ const SwipeableEntity = ({
               x: -Sizes.screenWidth - 100,
               y: gestureState.dy
             },
-            useNativeDriver: true
+            useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
@@ -110,7 +110,7 @@ const SwipeableEntity = ({
               x: Sizes.screenWidth + 100,
               y: gestureState.dy
             },
-            useNativeDriver: true
+            useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
           });
@@ -121,7 +121,7 @@ const SwipeableEntity = ({
           Animated.spring(pan, {
             toValue: { x: 0, y: 0 },
             friction: 4,
-            useNativeDriver: true
+            useNativeDriver: false
           }).start();
         }
       }
