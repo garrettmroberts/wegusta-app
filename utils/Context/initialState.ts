@@ -13,7 +13,10 @@ type InitialStateType = {
     isLiked?: boolean;
   };
   loadedImageCount: number;
-  isOptionsModalVisible: boolean;
+  filterOptions: {
+    isModalVisible: boolean;
+    filterDistance: number;
+  }
 };
 
 const initialState: InitialStateType = {
@@ -21,7 +24,10 @@ const initialState: InitialStateType = {
   userPreferences: [],
   nextAction: {},
   loadedImageCount: 0,
-  isOptionsModalVisible: false
+  filterOptions: {
+    isModalVisible: false,
+    filterDistance: 5
+  }
 };
 
 export { InitialStateType };

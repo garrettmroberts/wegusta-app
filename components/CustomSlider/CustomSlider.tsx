@@ -1,39 +1,46 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Slider from '@react-native-community/slider'
 import { Text, View } from 'react-native'
-import PropTypes from 'prop-types'
 import Colors from '../../constants/Colors'
 
 import styles from './styles'
+import { AppContext } from '../../utils/Context/Context'
 
 type CustomSliderProps = {
     title: string,
     min: number,
     max: number,
-    units: string
+    units: string,
+    onChange?: () => void,
+    onClear?: () => void
 }
 
-const CustomSlider = ({ title, min, max, units }: CustomSliderProps) => {
-  const low = min || 0
-  const high = max || 20
+const CustomSlider = ({ title, min, max, units, onChange, onClear }: CustomSliderProps) => {
+  const { context, dispatch } = useContext(AppContext);
+
+  const setValue = (input: number) => {
+    dispatch({type: 'updateFilterDistance', payload: input});
+  }
 
   return (
     <View>
       <Text style={styles.title}>{title}</Text>
       <Slider
-        minimumValue={low}
-        maximumValue={high}
+        minimumValue={min}
+        maximumValue={max}
         style={styles.slider}
         minimumTrackTintColor={Colors.primary}
         maximumTrackTintColor={Colors.white}
-        value={5}
+        onValueChange={(value) => setValue(value)}
+        value={context.filterOptions.filterDistance}
+        step={1}
       />
       <View style={styles.labelWrapper}>
         <Text style={styles.text}>
-          {low} {units}
+          {min} {units}
         </Text>
         <Text style={styles.text}>
-          {high} {units}
+          {max} {units}
         </Text>
       </View>
     </View>

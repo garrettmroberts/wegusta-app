@@ -72,7 +72,7 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
           onPress={() => handleDecisionPress(true)}
         />
       </View>
-      <FilterModal isVisible={context.isOptionsModalVisible} onClose={() => dispatch({type: 'updateOptionsVisibility'})}/>
+      <FilterModal isVisible={context.filterOptions.isModalVisible} onClose={() => dispatch({type: 'updateOptionsVisibility'})}/>
     </SafeAreaView>
   );
 };

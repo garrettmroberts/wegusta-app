@@ -27,7 +27,6 @@ const StackNavigator = () => {
           title: '',
           headerLeft: () => LeftAlignedTitle({title: 'What looks good?'}),
           headerRight: () => RightAlignedIcon({iconName: 'settings', onPress: () => {
-            console.log('updating visibility')
             dispatch({type: 'updateOptionsVisibility'})
           }}) }}
       />

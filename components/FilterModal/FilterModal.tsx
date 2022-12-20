@@ -1,4 +1,6 @@
+import { useContext, useEffect } from 'react';
 import { Pressable, Text, View, Modal } from 'react-native';
+import { AppContext } from '../../utils/Context/Context';
 import CustomSlider from '../CustomSlider/CustomSlider';
 import styles from './styles';
 
@@ -7,7 +9,8 @@ type FilterModalType = {
     onClose: () => void
 }
 
-const FilterModal = ({isVisible, onClose}: FilterModalType) => {
+const FilterModal = ({isVisible, onClose}: FilterModalType) => {  
+  const { context, dispatch } = useContext(AppContext);
 
     return (
         <Modal
@@ -24,7 +27,10 @@ const FilterModal = ({isVisible, onClose}: FilterModalType) => {
                     <CustomSlider title='Distance' min={0} max={20} units='miles' />
                     <View style={styles.buttonWrapper}>
                         <Pressable
-                            onPress={() => onClose()}
+                            onPress={() => {
+                                onClose();
+                                dispatch({type: 'updateFilterDistance', payload: 5})
+                            }}
                         >
                             <Text style={styles.clearButton}>Clear all</Text>
                         </Pressable>

@@ -52,12 +52,22 @@ const reducer = (state: any, action: any) => {
         ...state,
         loadedImageCount: 0
       };
-    case 'updateOptionsVisibility': {
+    case 'updateOptionsVisibility': 
       return {
         ...state,
-        isOptionsModalVisible: !state.isOptionsModalVisible
-      }
-    }
+        filterOptions: {
+          ...state.filterOptions,
+          isModalVisible: !state.filterOptions.isModalVisible
+        }
+      };
+    case 'updateFilterDistance':
+      return {
+        ...state,
+        filterOptions: {
+          ...state.filterOptions,
+          filterDistance: action.payload
+        }
+      };
     default:
       console.log('STATE: ', state);
       return state;
