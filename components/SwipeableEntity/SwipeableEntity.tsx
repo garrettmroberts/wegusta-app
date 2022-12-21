@@ -32,6 +32,12 @@ const SwipeableEntity = ({
     extrapolate: 'clamp'
 })
 
+const limitPanYHeight = pan.y.interpolate({
+  inputRange: [-25, 0, 25],
+  outputRange: [-25, 0, 25],
+  extrapolate: 'clamp'
+})
+
   useEffect(() => {
     if (
       context.nextAction.isSet &&
@@ -145,7 +151,7 @@ const SwipeableEntity = ({
   return visible ? (
     <Animated.View
       style={{
-        transform: [{ translateX: pan.x }, { translateY: pan.y }, {rotate}]
+        transform: [{ translateX: pan.x }, { translateY: limitPanYHeight }, {rotate}]
       }}
       {...getPanHandlers()}
     >
