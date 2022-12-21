@@ -18,12 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     overflow: 'hidden'
-  },
-  spinner: {
-    position: 'absolute',
-    width: Sizes.screenWidth,
-    flex: 1,
-    alignItems: 'center'
   }
 });
 

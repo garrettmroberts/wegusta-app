@@ -1,9 +1,11 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
 import { useRef } from 'react';
-import { Animated, View, PanResponder } from 'react-native';
+import { Animated, Text, View, PanResponder } from 'react-native';
 
 import Sizes from '../../constants/Sizes';
 import { AppContext } from '../../utils/Context/Context';
+import styles from './styles';
+import Colors from '../../constants/Colors';
 
 type Props = {
   children: ReactNode;
@@ -11,6 +13,7 @@ type Props = {
   onSwipeRight?: () => void;
   onSwipe?: () => void;
   containsElement: any;
+  isActive: boolean
 };
 
 const SwipeableEntity = ({
@@ -18,11 +21,36 @@ const SwipeableEntity = ({
   onSwipeLeft,
   onSwipeRight,
   onSwipe,
-  containsElement
+  containsElement,
+  isActive
 }: Props) => {
   const { context, dispatch } = useContext(AppContext);
   const [visible, setVisible] = useState(true);
   const pan = useRef<any>(new Animated.ValueXY()).current;
+
+  const rotate = pan.x.interpolate({
+    inputRange: [-Sizes.screenWidth / 2, 0, Sizes.screenWidth / 2],
+    outputRange: ['-10deg', '0deg', '10deg'],
+    extrapolate: 'clamp'
+  })
+
+  const limitPanYHeight = pan.y.interpolate({
+    inputRange: [-25, 0, 25],
+    outputRange: [-25, 0, 25],
+    extrapolate: 'clamp'
+  })
+
+  const likeOpacity = pan.x.interpolate({
+    inputRange: [-50, 0, 50],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp'
+  })
+
+  const dislikeOpacity = pan.x.interpolate({
+    inputRange: [-50, 0, 50],
+    outputRange: [1, 0, 0],
+    extrapolate: 'clamp'
+  })
 
   useEffect(() => {
     if (
@@ -35,6 +63,7 @@ const SwipeableEntity = ({
           x: Sizes.screenWidth + 100,
           y: 0
         },
+        tension: 10,
         useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
@@ -60,6 +89,7 @@ const SwipeableEntity = ({
           x: -Sizes.screenWidth - 100,
           y: 0
         },
+        tension: 10,
         useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
@@ -76,7 +106,7 @@ const SwipeableEntity = ({
         dispatch({ type: 'resetNextAction' });
       }, 201);
     }
-  }, [context]);
+  }, [context.nextAction]);
 
   const panResponder = useRef(
     PanResponder.create({
@@ -97,6 +127,7 @@ const SwipeableEntity = ({
               x: -Sizes.screenWidth - 100,
               y: gestureState.dy
             },
+            tension: 10,
             useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
@@ -110,6 +141,7 @@ const SwipeableEntity = ({
               x: Sizes.screenWidth + 100,
               y: gestureState.dy
             },
+            tension: 10,
             useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
@@ -128,14 +160,26 @@ const SwipeableEntity = ({
     })
   ).current;
 
+  const getPanHandlers = () => {
+    if (isActive) {
+      return {...panResponder.panHandlers}
+    }
+  }
+
   return visible ? (
     <Animated.View
-      style={{
-        transform: [{ translateX: pan.x }, { translateY: pan.y }]
-      }}
-      {...panResponder.panHandlers}
+      style={[ styles.container, {
+        transform: [{ translateX: pan.x }, { translateY: limitPanYHeight }, {rotate}]
+      }]}
+      {...getPanHandlers()}
     >
       {children}
+      <Animated.View style={{opacity: likeOpacity}}>
+        <Text style={[styles.text, styles.likeText]}>LIKE</Text>
+      </Animated.View>
+      <Animated.View style={{opacity: dislikeOpacity}}>
+        <Text style={[styles.text, styles.dislikeText]}>DISLIKE</Text>
+      </Animated.View>
     </Animated.View>
   ) : (
     <View />

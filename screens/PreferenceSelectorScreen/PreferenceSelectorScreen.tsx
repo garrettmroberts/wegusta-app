@@ -61,17 +61,19 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
           </View>
         </>
       ) : null}
-      <CardStack cards={context.images} onStackEnd={handleStackEnd} />
-      <View style={styles.decisionWrapper}>
-        <DecisionButton
-          decision="dislike"
-          onPress={() => handleDecisionPress(false)}
-        />
-        <DecisionButton
-          decision="like"
-          onPress={() => handleDecisionPress(true)}
-        />
-      </View>
+      <View style={styles.buffer} />
+        <CardStack cards={context.images} onStackEnd={handleStackEnd} />
+        <View style={styles.decisionWrapper}>
+          <DecisionButton
+            decision="dislike"
+            onPress={() => handleDecisionPress(false)}
+          />
+          <DecisionButton
+            decision="like"
+            onPress={() => handleDecisionPress(true)}
+          />
+        </View>
+      {/* </View> */}
       <FilterModal isVisible={context.filterOptions.isModalVisible} onClose={() => {
         dispatch({type: 'updateOptionsVisibility'})
       }}/>

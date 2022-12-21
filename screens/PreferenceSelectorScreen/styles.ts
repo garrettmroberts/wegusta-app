@@ -10,11 +10,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: Colors.white
   },
+  buffer: {
+    height: 50,
+    marginBottom: 50
+  },
   decisionWrapper: {
     flexDirection: 'row',
     width: Sizes.screenWidth - Sizes.viewPadding,
     justifyContent: 'space-around',
-    marginTop: 42
+    marginTop: 20
   },
   loadingSpinnerPlacement: {
     flex: 1,
