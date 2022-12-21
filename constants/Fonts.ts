@@ -5,7 +5,6 @@ const Fonts = {
   displayBold: {
     fontFamily: 'Avenir',
     fontSize: 32,
-    lineHeight: 40,
     fontWeight: '900'
   } as const,
   h1Bold: {

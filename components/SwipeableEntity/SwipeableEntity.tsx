@@ -1,9 +1,11 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
 import { useRef } from 'react';
-import { Animated, View, PanResponder } from 'react-native';
+import { Animated, Text, View, PanResponder } from 'react-native';
 
 import Sizes from '../../constants/Sizes';
 import { AppContext } from '../../utils/Context/Context';
+import styles from './styles';
+import Colors from '../../constants/Colors';
 
 type Props = {
   children: ReactNode;
@@ -30,13 +32,25 @@ const SwipeableEntity = ({
     inputRange: [-Sizes.screenWidth / 2, 0, Sizes.screenWidth / 2],
     outputRange: ['-10deg', '0deg', '10deg'],
     extrapolate: 'clamp'
-})
+  })
 
-const limitPanYHeight = pan.y.interpolate({
-  inputRange: [-25, 0, 25],
-  outputRange: [-25, 0, 25],
-  extrapolate: 'clamp'
-})
+  const limitPanYHeight = pan.y.interpolate({
+    inputRange: [-25, 0, 25],
+    outputRange: [-25, 0, 25],
+    extrapolate: 'clamp'
+  })
+
+  const likeOpacity = pan.x.interpolate({
+    inputRange: [-50, 0, 50],
+    outputRange: [0, 0, 1],
+    extrapolate: 'clamp'
+  })
+
+  const dislikeOpacity = pan.x.interpolate({
+    inputRange: [-50, 0, 50],
+    outputRange: [1, 0, 0],
+    extrapolate: 'clamp'
+  })
 
   useEffect(() => {
     if (
@@ -150,12 +164,18 @@ const limitPanYHeight = pan.y.interpolate({
 
   return visible ? (
     <Animated.View
-      style={{
+      style={[ styles.container, {
         transform: [{ translateX: pan.x }, { translateY: limitPanYHeight }, {rotate}]
-      }}
+      }]}
       {...getPanHandlers()}
     >
       {children}
+      <Animated.View style={{opacity: likeOpacity}}>
+        <Text style={[styles.text, styles.likeText]}>LIKE</Text>
+      </Animated.View>
+      <Animated.View style={{opacity: dislikeOpacity}}>
+        <Text style={[styles.text, styles.dislikeText]}>DISLIKE</Text>
+      </Animated.View>
     </Animated.View>
   ) : (
     <View />
