@@ -11,6 +11,7 @@ type Props = {
   onSwipeRight?: () => void;
   onSwipe?: () => void;
   containsElement: any;
+  isActive: boolean
 };
 
 const SwipeableEntity = ({
@@ -18,7 +19,8 @@ const SwipeableEntity = ({
   onSwipeLeft,
   onSwipeRight,
   onSwipe,
-  containsElement
+  containsElement,
+  isActive
 }: Props) => {
   const { context, dispatch } = useContext(AppContext);
   const [visible, setVisible] = useState(true);
@@ -128,12 +130,18 @@ const SwipeableEntity = ({
     })
   ).current;
 
+  const getPanHandlers = () => {
+    if (isActive) {
+      return {...panResponder.panHandlers}
+    }
+  }
+
   return visible ? (
     <Animated.View
       style={{
         transform: [{ translateX: pan.x }, { translateY: pan.y }]
       }}
-      {...panResponder.panHandlers}
+      {...getPanHandlers()}
     >
       {children}
     </Animated.View>

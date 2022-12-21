@@ -41,9 +41,10 @@ const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
               onSwipeRight={() => handleSwipe(cardProps.category, true)}
               onSwipe={idx === 0 ? onStackEnd : () => {}}
               containsElement={cardProps.category}
+              isActive={idx === context.images.length - 1}
             >
-              <View style={styles.cardPlacement}>
-                <Card imageProps={cardProps} />
+              <View style={idx === context.images.length - 1 ? styles.cardPlacementTop : styles.cardPlacementBack}>
+                <Card imageProps={cardProps} isSmall={idx !== context.images.length - 1} />
               </View>
             </SwipeableEntity>
           );
