@@ -26,6 +26,12 @@ const SwipeableEntity = ({
   const [visible, setVisible] = useState(true);
   const pan = useRef<any>(new Animated.ValueXY()).current;
 
+  const rotate = pan.x.interpolate({
+    inputRange: [-Sizes.screenWidth / 2, 0, Sizes.screenWidth / 2],
+    outputRange: ['-10deg', '0deg', '10deg'],
+    extrapolate: 'clamp'
+})
+
   useEffect(() => {
     if (
       context.nextAction.isSet &&
@@ -139,7 +145,7 @@ const SwipeableEntity = ({
   return visible ? (
     <Animated.View
       style={{
-        transform: [{ translateX: pan.x }, { translateY: pan.y }]
+        transform: [{ translateX: pan.x }, { translateY: pan.y }, {rotate}]
       }}
       {...getPanHandlers()}
     >
