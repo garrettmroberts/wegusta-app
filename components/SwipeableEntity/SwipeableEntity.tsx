@@ -63,6 +63,7 @@ const SwipeableEntity = ({
           x: Sizes.screenWidth + 100,
           y: 0
         },
+        tension: 10,
         useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
@@ -88,6 +89,7 @@ const SwipeableEntity = ({
           x: -Sizes.screenWidth - 100,
           y: 0
         },
+        tension: 10,
         useNativeDriver: false
       }).start(() => {
         pan.setValue({ x: 0, y: 0 });
@@ -104,7 +106,7 @@ const SwipeableEntity = ({
         dispatch({ type: 'resetNextAction' });
       }, 201);
     }
-  }, [context]);
+  }, [context.nextAction]);
 
   const panResponder = useRef(
     PanResponder.create({
@@ -125,6 +127,7 @@ const SwipeableEntity = ({
               x: -Sizes.screenWidth - 100,
               y: gestureState.dy
             },
+            tension: 10,
             useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
@@ -138,6 +141,7 @@ const SwipeableEntity = ({
               x: Sizes.screenWidth + 100,
               y: gestureState.dy
             },
+            tension: 10,
             useNativeDriver: false
           }).start(() => {
             pan.setValue({ x: 0, y: 0 });
