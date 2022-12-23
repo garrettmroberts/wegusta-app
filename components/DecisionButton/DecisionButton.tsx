@@ -18,7 +18,7 @@ const DecisionButton = ({ decision, onPress }: Props) => {
         scaleAnim,
         {
           toValue: 0.95,
-          duration: 200,
+          duration: 50,
           useNativeDriver: true
         }            
      ).start();
@@ -29,7 +29,7 @@ const DecisionButton = ({ decision, onPress }: Props) => {
         scaleAnim,
         {
           toValue: 1,
-          duration: 200,
+          duration: 50,
           useNativeDriver: true
         }            
      ).start();

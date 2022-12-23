@@ -18,6 +18,7 @@ import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import ResultCard from '../../components/ResultCard/ResultCard';
 import { AppContext } from '../../utils/Context/Context';
 import API from '../../api';
+import { LocationAccuracy } from 'expo-location';
 
 type Coords = {
   latitude: number;
@@ -71,7 +72,9 @@ const SuggestionScreen = ({ navigation }: Props) => {
   const getLocationCoordinates = async () => {
     const hasLocationAccess = await getLocationAccessStatus();
     if (hasLocationAccess) {
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync({
+        accuracy: LocationAccuracy.Balanced
+      });
       setState({...state, location: location?.coords});
       return;
     } else {
