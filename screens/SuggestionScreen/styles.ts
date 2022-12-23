@@ -34,9 +34,6 @@ const styles = StyleSheet.create({
     marginRight: 12,
     ...Fonts.buttonReg
   },
-  resultCardWrapper: {
-    width: Sizes.screenWidth - (Sizes.viewPadding * 2)
-  },
   fullScreenModal: {
     justifyContent: 'center',
     alignItems: 'center',

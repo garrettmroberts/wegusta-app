@@ -304,25 +304,23 @@ const SuggestionScreen = ({ navigation }: Props) => {
       ) : null}
       {(state.pageState === 'success') ? (
         <>
-          <View style={styles.resultCardWrapper}>
-            <ResultCard
-              title={state.recommendedRestaurantInfo?.name}
-              rating={state.recommendedRestaurantInfo?.rating}
-              distance={getDistanceFromLatLon(
-                state.recommendedRestaurantInfo?.location?.lat,
-                state.recommendedRestaurantInfo?.location?.lng,
-                state.location?.latitude,
-                state.location?.longitude
-              )}
-              imageUrl={state.recommendedRestaurantInfo?.photoUrl}
-              closingTime={state.recommendedRestaurantInfo?.closingTime}
-              priceLevel={state.recommendedRestaurantInfo?.priceLevel}
-              latitude={state.recommendedRestaurantInfo?.location?.lat}
-              longitude={state.recommendedRestaurantInfo?.location?.lng}
-              // description="Sample descriptive info..."
-              // onImageLoad={onImageLoad}
-            />
-          </View>
+          <ResultCard
+            title={state.recommendedRestaurantInfo?.name}
+            rating={state.recommendedRestaurantInfo?.rating}
+            distance={getDistanceFromLatLon(
+              state.recommendedRestaurantInfo?.location?.lat,
+              state.recommendedRestaurantInfo?.location?.lng,
+              state.location?.latitude,
+              state.location?.longitude
+            )}
+            imageUrl={state.recommendedRestaurantInfo?.photoUrl}
+            closingTime={state.recommendedRestaurantInfo?.closingTime}
+            priceLevel={state.recommendedRestaurantInfo?.priceLevel}
+            latitude={state.recommendedRestaurantInfo?.location?.lat}
+            longitude={state.recommendedRestaurantInfo?.location?.lng}
+            // description="Sample descriptive info..."
+            // onImageLoad={onImageLoad}
+          />
           <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
             <Text style={styles.tryAgainText}>Try again</Text>
             <Ionicons name="refresh-outline" size={24} color={Colors.primary} />

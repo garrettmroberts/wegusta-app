@@ -11,6 +11,7 @@ export default {
   warning: '#FFC857',
   error: '#FF401A',
   accent: '#7A5CE5',
+  screenBackground: '#E5E5E5',
 
   // For use in facebook icon only
   facebookBlue: '#0B7FFB'

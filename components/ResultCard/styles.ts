@@ -7,25 +7,37 @@ const overlayButtonWidth = 56;
 const overlayButtonPadding = 24;
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: Colors.white,
-    borderRadius: 16,
-    shadowColor: Colors.primary,
+  cardShadow: {
+    shadowColor: Colors.black,
     shadowOffset: {
       width: 0,
-      height: 3
+      height: 12
     },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7
+    shadowOpacity: 0.2,
+    shadowRadius: 40,
+    elevation: 6,
+  },
+  card: {
+    backgroundColor: Colors.white,
+    flex: 1,
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
+    maxHeight: 600,
+    overflow: 'hidden',
+    borderRadius: 40
   },
   imageWrapper: {
-    overflow: 'hidden',
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    position: 'relative'
   },
   image: {
-    height: 450,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
   overlayButton: {
     height: 56,
@@ -44,13 +56,20 @@ const styles = StyleSheet.create({
     right: overlayButtonPadding * 2 + overlayButtonWidth
   },
   textWrapper: {
-    padding: 24
+    padding: 24,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: '#F5FCFF',
+    position: 'relative'
   },
   titleText: {
     ...Fonts.h1Bold
   },
   description1: {
-    ...Fonts.inputLabel
+    ...Fonts.inputLabel,
+    color: Colors.greyDark,
+    marginTop: 5
   },
   description2: {
     ...Fonts.bodyReg
