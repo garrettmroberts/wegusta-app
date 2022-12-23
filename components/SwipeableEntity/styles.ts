@@ -5,39 +5,31 @@ import Sizes from '../../constants/Sizes';
 
 export default StyleSheet.create({
   container: {
-    width: Sizes.screenWidth - Sizes.viewPadding * 2
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
     ...Fonts.displayBold,
-    position: 'absolute',
-    top: 50,
     borderWidth: 2,
     paddingHorizontal: 10
   },
+  center: {
+    position: 'absolute',
+    top: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   likeText: {
+    position: 'relative',
+    top: 50,
     color: Colors.success,
-    right: 50,
-    transform: [{rotate: '25deg'}],
     backgroundColor: `${Colors.success}25`,
     borderColor: Colors.success
   },
   dislikeText: {
     color: Colors.error,
-    left: 40,
-    transform: [{rotate: '-25deg'}],
     backgroundColor: `${Colors.error}25`,
     borderColor: Colors.error
-  },
-  icon: {
-    position: 'absolute',
-    top: 50
-  },
-  likeIcon: {
-    right: 50,
-    transform: [{rotate: '25deg'}],
-  },
-  dislikeIcon: {
-    left: 50,
-    transform: [{rotate: '-25deg'}]
-  },
+  }
 });

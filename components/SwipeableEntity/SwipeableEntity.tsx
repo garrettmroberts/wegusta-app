@@ -174,12 +174,14 @@ const SwipeableEntity = ({
       {...getPanHandlers()}
     >
       {children}
-      <Animated.View style={{opacity: likeOpacity}}>
-        <Text style={[styles.text, styles.likeText]}>LIKE</Text>
-      </Animated.View>
-      <Animated.View style={{opacity: dislikeOpacity}}>
-        <Text style={[styles.text, styles.dislikeText]}>DISLIKE</Text>
-      </Animated.View>
+      <View style={styles.center}>
+        <Animated.View style={{opacity: likeOpacity}}>
+          <Text style={[styles.text, styles.likeText]}>LIKE</Text>
+        </Animated.View>
+        <Animated.View style={{opacity: dislikeOpacity}}>
+          <Text style={[styles.text, styles.dislikeText]}>DISLIKE</Text>
+        </Animated.View>
+      </View>
     </Animated.View>
   ) : (
     <View />
