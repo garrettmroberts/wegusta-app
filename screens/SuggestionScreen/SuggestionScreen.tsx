@@ -107,9 +107,6 @@ const SuggestionScreen = ({ navigation }: Props) => {
     })
   }
 
-  // -------------------------------------------------------------------
-
-
   // RESTAURANT RECOMMENDATION SERVICES
   // -------------------------------------------------------------------
   const generateRandomNumber = (max: number) => {
@@ -201,8 +198,9 @@ const SuggestionScreen = ({ navigation }: Props) => {
       }
     }
   };
-  // -------------------------------------------------------------------
 
+  // EFFECT HOOKS
+  // -------------------------------------------------------------------
   useEffect(() => {
     if (state.recommendedRestaurantInfo?.place_id && state.recommendedRestaurantInfo?.closingTime) {
       setState({...state, pageState: 'success'})
@@ -210,7 +208,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
   }, [state.recommendedRestaurantInfo])
 
   useEffect(() => {
-    if (state.location) makeRestaurantDecision();
+    if (state.location && !state.recommendedRestaurantInfo.closingTime) makeRestaurantDecision();
   }, [state.location]);
 
   useEffect(() => {
