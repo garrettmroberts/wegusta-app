@@ -5,21 +5,22 @@ import Sizes from '../../constants/Sizes';
 
 const styles = StyleSheet.create({
   modal: {
-    position: 'absolute',
-    bottom: 0,
-    height: 350,
+    height: Sizes.screenHeight,
     width: Sizes.screenWidth,
-    backgroundColor: Colors.white,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   modalBody: {
     paddingHorizontal: Sizes.viewPadding,
     paddingBottom: 58,
     paddingTop: 44,
     flex: 1,
-    justifyContent: 'space-between'
+    backgroundColor: Colors.white,
+    justifyContent: 'space-between',
+    height: 320,
+    position: 'absolute',
+    bottom: 0
   },
   header: {
     ...Fonts.h1Bold

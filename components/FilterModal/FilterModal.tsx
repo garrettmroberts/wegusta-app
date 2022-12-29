@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { Pressable, Text, View, Modal } from 'react-native';
+import { Pressable, Text, View, Modal, TouchableOpacity } from 'react-native';
 import { AppContext } from '../../utils/Context/Context';
 import CustomSlider from '../CustomSlider/CustomSlider';
 import styles from './styles';
@@ -25,7 +25,7 @@ const FilterModal = ({isVisible, onClose}: FilterModalType) => {
                 onClose();
             }}
         >
-            <View style={styles.modal}>
+            <TouchableOpacity style={styles.modal} onPress={() => onClose()} activeOpacity={1}>
                 <View style={styles.modalBody}>
                     <Text style={styles.header}>Filters</Text>
                     <CustomSlider title='Distance' min={0} max={20} units='miles' onChange={changeDistance} />
@@ -47,7 +47,7 @@ const FilterModal = ({isVisible, onClose}: FilterModalType) => {
                         </Pressable>
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
         </Modal>
     )
 };
