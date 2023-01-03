@@ -38,11 +38,13 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
   }
 
   const handleDecisionPress = (isLiked: boolean) => {
-    const category = context.images[0].category
-    dispatch({
-      type: 'setNextAction',
-      payload: { isSet: true, category, isLiked }
-    })
+    if (context.images.length > 0) {
+      const category = context.images[0].category
+      dispatch({
+        type: 'setNextAction',
+        payload: { isSet: true, category, isLiked }
+      })
+    }
   }
 
 
