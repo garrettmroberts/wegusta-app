@@ -1,8 +1,5 @@
-import { useEffect } from "react";
-import { Image, Pressable, StyleSheet, View } from "react-native";
-import Colors from "../constants/Colors";
-import Fonts from "../constants/Fonts";
-import Icons from "../utils/Icons";
+import { Image, Pressable, StyleSheet } from 'react-native'
+import Icons from '../utils/Icons'
 
 
 
@@ -12,21 +9,21 @@ type RightAlignedIconProps = {
 }
 
 const RightAlignedIcon = ({ iconName, onPress }: RightAlignedIconProps) => {
-    return (
-        <Pressable onPress={() => onPress()}>
-            <Image
-                  source={Icons[iconName]}
-                  style={styles.icon}
-            />
-        </Pressable>
-    )
+  return (
+    <Pressable onPress={() => onPress()}>
+      <Image
+        source={Icons[iconName]}
+        style={styles.icon}
+      />
+    </Pressable>
+  )
 }
 
 const styles = StyleSheet.create({
-    icon: {
-        height: 21,
-        width: 21
-    }
-});
+  icon: {
+    height: 21,
+    width: 21
+  }
+})
 
-export default RightAlignedIcon;
+export default RightAlignedIcon

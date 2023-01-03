@@ -1,56 +1,56 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { View, SafeAreaView, Text } from 'react-native';
-import CardStack from '../../components/CardStack/CardStack';
-import DecisionButton from '../../components/DecisionButton/DecisionButton';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import styles from './styles';
-import { AppContext } from '../../utils/Context/Context';
-import API from '../../api';
-import FilterModal from '../../components/FilterModal/FilterModal';
+import React, { useContext, useEffect, useState } from 'react'
+import { View, SafeAreaView } from 'react-native'
+import CardStack from '../../components/CardStack/CardStack'
+import DecisionButton from '../../components/DecisionButton/DecisionButton'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
+import styles from './styles'
+import { AppContext } from '../../utils/Context/Context'
+import API from '../../api'
+import FilterModal from '../../components/FilterModal/FilterModal'
 
 type Props = {
   navigation: any;
 };
 
 const PreferenceSelectorScreen = ({ navigation }: Props) => {
-  const { context, dispatch } = useContext(AppContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const { context, dispatch } = useContext(AppContext)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getFoods = async () => {
-      const images = await API.getRandomImages();
-      dispatch({ type: 'addImages', payload: images });
-    };
+      const images = await API.getRandomImages()
+      dispatch({ type: 'addImages', payload: images })
+    }
 
-    getFoods();
-  }, []);
+    getFoods()
+  }, [])
 
   useEffect(() => {
     if (context.images.length === 0 && context.nextAction.isSet) {
-      handleStackEnd();
+      handleStackEnd()
     }
-  }, [context.images]);
+  }, [context.images])
 
   const handleStackEnd = () => {
     setTimeout(() => {
-      navigation.navigate('SuggestionScreen');
-    }, 200);
-  };
+      navigation.navigate('SuggestionScreen')
+    }, 200)
+  }
 
   const handleDecisionPress = (isLiked: boolean) => {
-    const category = context.images[0].category;
+    const category = context.images[0].category
     dispatch({
       type: 'setNextAction',
       payload: { isSet: true, category, isLiked }
-    });
-  };
+    })
+  }
 
 
   useEffect(() => {
     if (context.images.length > 0 && context.loadedImageCount === context.images.length) {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, [context.loadedImageCount]);
+  }, [context.loadedImageCount])
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -62,23 +62,23 @@ const PreferenceSelectorScreen = ({ navigation }: Props) => {
         </>
       ) : null}
       <View style={styles.buffer} />
-        <CardStack cards={context.images} onStackEnd={handleStackEnd} />
-        <View style={styles.decisionWrapper}>
-          <DecisionButton
-            decision="dislike"
-            onPress={() => handleDecisionPress(false)}
-          />
-          <DecisionButton
-            decision="like"
-            onPress={() => handleDecisionPress(true)}
-          />
-        </View>
+      <CardStack cards={context.images} onStackEnd={handleStackEnd} />
+      <View style={styles.decisionWrapper}>
+        <DecisionButton
+          decision="dislike"
+          onPress={() => handleDecisionPress(false)}
+        />
+        <DecisionButton
+          decision="like"
+          onPress={() => handleDecisionPress(true)}
+        />
+      </View>
       {/* </View> */}
       <FilterModal isVisible={context.filterOptions.isModalVisible} onClose={() => {
         dispatch({type: 'updateOptionsVisibility'})
       }}/>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default PreferenceSelectorScreen;
+export default PreferenceSelectorScreen

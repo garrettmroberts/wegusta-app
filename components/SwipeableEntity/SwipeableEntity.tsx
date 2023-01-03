@@ -1,11 +1,10 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { useRef } from 'react';
-import { Animated, Text, View, PanResponder } from 'react-native';
+import { ReactNode, useContext, useEffect, useState } from 'react'
+import { useRef } from 'react'
+import { Animated, Text, View, PanResponder } from 'react-native'
 
-import Sizes from '../../constants/Sizes';
-import { AppContext } from '../../utils/Context/Context';
-import styles from './styles';
-import Colors from '../../constants/Colors';
+import Sizes from '../../constants/Sizes'
+import { AppContext } from '../../utils/Context/Context'
+import styles from './styles'
 
 type Props = {
   children: ReactNode;
@@ -24,9 +23,9 @@ const SwipeableEntity = ({
   containsElement,
   isActive
 }: Props) => {
-  const { context, dispatch } = useContext(AppContext);
-  const [visible, setVisible] = useState(true);
-  const pan = useRef<any>(new Animated.ValueXY()).current;
+  const { context, dispatch } = useContext(AppContext)
+  const [visible, setVisible] = useState(true)
+  const pan = useRef<any>(new Animated.ValueXY()).current
 
   const rotate = pan.x.interpolate({
     inputRange: [-Sizes.screenWidth / 2, 0, Sizes.screenWidth / 2],
@@ -66,9 +65,9 @@ const SwipeableEntity = ({
         tension: 10,
         useNativeDriver: false
       }).start(() => {
-        pan.setValue({ x: 0, y: 0 });
-      });
-      setTimeout(() => setVisible(false), 200);
+        pan.setValue({ x: 0, y: 0 })
+      })
+      setTimeout(() => setVisible(false), 200)
       setTimeout(() => {
         dispatch({
           type: 'updateUserPreferences',
@@ -76,9 +75,9 @@ const SwipeableEntity = ({
             category: context.nextAction.category,
             isLiked: context.nextAction.isLiked
           }
-        });
-        dispatch({ type: 'resetNextAction' });
-      }, 201);
+        })
+        dispatch({ type: 'resetNextAction' })
+      }, 201)
     } else if (
       context.nextAction.isSet &&
       !context.nextAction.isLiked &&
@@ -92,9 +91,9 @@ const SwipeableEntity = ({
         tension: 10,
         useNativeDriver: false
       }).start(() => {
-        pan.setValue({ x: 0, y: 0 });
-      });
-      setTimeout(() => setVisible(false), 200);
+        pan.setValue({ x: 0, y: 0 })
+      })
+      setTimeout(() => setVisible(false), 200)
       setTimeout(() => {
         dispatch({
           type: 'updateUserPreferences',
@@ -102,11 +101,11 @@ const SwipeableEntity = ({
             category: context.nextAction.category,
             isLiked: context.nextAction.isLiked
           }
-        });
-        dispatch({ type: 'resetNextAction' });
-      }, 201);
+        })
+        dispatch({ type: 'resetNextAction' })
+      }, 201)
     }
-  }, [context.nextAction]);
+  }, [context.nextAction])
 
   const panResponder = useRef(
     PanResponder.create({
@@ -115,7 +114,7 @@ const SwipeableEntity = ({
         pan.setOffset({
           x: pan.x._value,
           y: pan.y._value
-        });
+        })
       },
       onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
         useNativeDriver: false
@@ -130,11 +129,11 @@ const SwipeableEntity = ({
             tension: 10,
             useNativeDriver: false
           }).start(() => {
-            pan.setValue({ x: 0, y: 0 });
-          });
-          setTimeout(() => setVisible(false), 200);
-          if (onSwipeLeft) onSwipeLeft();
-          if (onSwipe) onSwipe();
+            pan.setValue({ x: 0, y: 0 })
+          })
+          setTimeout(() => setVisible(false), 200)
+          if (onSwipeLeft) onSwipeLeft()
+          if (onSwipe) onSwipe()
         } else if (gestureState.dx > 120) {
           Animated.spring(pan, {
             toValue: {
@@ -144,21 +143,21 @@ const SwipeableEntity = ({
             tension: 10,
             useNativeDriver: false
           }).start(() => {
-            pan.setValue({ x: 0, y: 0 });
-          });
-          setTimeout(() => setVisible(false), 200);
-          if (onSwipeRight) onSwipeRight();
-          if (onSwipe) onSwipe();
+            pan.setValue({ x: 0, y: 0 })
+          })
+          setTimeout(() => setVisible(false), 200)
+          if (onSwipeRight) onSwipeRight()
+          if (onSwipe) onSwipe()
         } else {
           Animated.spring(pan, {
             toValue: { x: 0, y: 0 },
             friction: 4,
             useNativeDriver: false
-          }).start();
+          }).start()
         }
       }
     })
-  ).current;
+  ).current
 
   const getPanHandlers = () => {
     if (isActive) {
@@ -185,7 +184,7 @@ const SwipeableEntity = ({
     </Animated.View>
   ) : (
     <View />
-  );
-};
+  )
+}
 
-export default SwipeableEntity;
+export default SwipeableEntity

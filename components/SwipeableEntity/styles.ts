@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
-import Sizes from '../../constants/Sizes';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+import Fonts from '../../constants/Fonts'
+import Sizes from '../../constants/Sizes'
 
 export default StyleSheet.create({
   container: {
@@ -32,4 +32,4 @@ export default StyleSheet.create({
     backgroundColor: `${Colors.error}25`,
     borderColor: Colors.error
   }
-});
+})

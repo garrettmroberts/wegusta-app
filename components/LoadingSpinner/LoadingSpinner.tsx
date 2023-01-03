@@ -1,7 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { Animated, Easing } from 'react-native';
-import Colors from '../../constants/Colors';
-import styles from './styles';
+import { useRef } from 'react'
+import { Animated, Easing } from 'react-native'
+import styles from './styles'
 
 const LoadingSpinner = () => {
   const rotationDegree = useRef(new Animated.Value(0)).current
@@ -9,10 +8,10 @@ const LoadingSpinner = () => {
   Animated.loop(Animated.timing(
     rotationDegree,
     {
-        toValue: 360,
-        duration: 3000,
-        easing: Easing.linear,
-        useNativeDriver: true
+      toValue: 360,
+      duration: 3000,
+      easing: Easing.linear,
+      useNativeDriver: true
     }
   )).start()
 
@@ -27,7 +26,7 @@ const LoadingSpinner = () => {
         }]
       }]}
     />
-  );
-};
+  )
+}
 
-export default LoadingSpinner;
+export default LoadingSpinner

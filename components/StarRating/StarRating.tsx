@@ -1,5 +1,5 @@
-import { Image, View, Text } from 'react-native';
-import styles from './styles';
+import { Image, View } from 'react-native'
+import styles from './styles'
 
 type Props = {
   rating: number;
@@ -16,7 +16,7 @@ const StarRating = ({ rating }: Props) => {
               style={styles.star}
               key={`star-${idx}`}
             />
-          );
+          )
         } else if (rating - idx <= 1 && idx < rating) {
           return (
             <Image
@@ -24,7 +24,7 @@ const StarRating = ({ rating }: Props) => {
               style={styles.star}
               key={`star-${idx}`}
             />
-          );
+          )
         } else {
           return (
             <Image
@@ -32,11 +32,11 @@ const StarRating = ({ rating }: Props) => {
               style={styles.star}
               key={`star-${idx}`}
             />
-          );
+          )
         }
       })}
     </View>
-  );
-};
+  )
+}
 
-export default StarRating;
+export default StarRating

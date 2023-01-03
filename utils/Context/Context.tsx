@@ -1,7 +1,7 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer } from 'react'
 
-import reducer from './reducer';
-import initialState, { InitialStateType } from './initialState';
+import reducer from './reducer'
+import initialState, { InitialStateType } from './initialState'
 
 type AppProviderProps = {
   children: any;
@@ -13,16 +13,16 @@ const AppContext = createContext<{
 }>({
   context: initialState,
   dispatch: () => null
-});
+})
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  const [context, dispatch] = useReducer(reducer, initialState);
+  const [context, dispatch] = useReducer(reducer, initialState)
 
   return (
     <AppContext.Provider value={{ context, dispatch }}>
       {children}
     </AppContext.Provider>
-  );
-};
+  )
+}
 
-export { AppContext, AppProvider };
+export { AppContext, AppProvider }

@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen';
-import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen';
-import LeftAlignedTitle from './LeftAlignedTitle';
-import RightAlignedIcon from './RightAlignedIcon';
-import { AppContext } from '../utils/Context/Context';
+import React, { useContext } from 'react'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
+import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen'
+import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen'
+import LeftAlignedTitle from './LeftAlignedTitle'
+import RightAlignedIcon from './RightAlignedIcon'
+import { AppContext } from '../utils/Context/Context'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator()
 const StackNavigator = () => {
-  const { context, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext)
 
   return (
     <Stack.Navigator
@@ -39,15 +39,15 @@ const StackNavigator = () => {
         }}
       />
     </Stack.Navigator>
-  );
-};
+  )
+}
 
 const Navigator = () => {
   return (
     <NavigationContainer>
       <StackNavigator />
     </NavigationContainer>
-  );
-};
+  )
+}
 
-export default Navigator;
+export default Navigator

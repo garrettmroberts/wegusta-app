@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
-import { View } from 'react-native';
-import { AppContext } from '../../utils/Context/Context';
+import { useContext } from 'react'
+import { View } from 'react-native'
+import { AppContext } from '../../utils/Context/Context'
 
-import Card from '../Card/Card';
-import SwipeableEntity from '../SwipeableEntity/SwipeableEntity';
-import styles from './styles';
+import Card from '../Card/Card'
+import SwipeableEntity from '../SwipeableEntity/SwipeableEntity'
+import styles from './styles'
 
 type CardStackProps = {
   cards: {
@@ -15,7 +15,7 @@ type CardStackProps = {
 };
 
 const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
-  const { context, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext)
 
   const handleSwipe = (category: string, isLiked: boolean) => {
     setTimeout(
@@ -25,8 +25,8 @@ const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
           payload: { category, isLiked }
         }),
       201
-    );
-  };
+    )
+  }
 
   return (
     <View style={styles.wrapper}>
@@ -47,10 +47,10 @@ const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
                 <Card imageProps={cardProps} isSmall={idx !== context.images.length - 1} />
               </View>
             </SwipeableEntity>
-          );
+          )
         })}
     </View>
-  );
-};
+  )
+}
 
-export default CardStack;
+export default CardStack

@@ -1,5 +1,4 @@
-import React from 'react';
-import Colors from './Colors';
+import Colors from './Colors'
 
 const Fonts = {
   displayBold: {
@@ -89,6 +88,6 @@ const Fonts = {
   textLight: {
     color: Colors.white
   } as const
-} as const;
+} as const
 
-export default Fonts;
+export default Fonts

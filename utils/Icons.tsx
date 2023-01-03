@@ -3,7 +3,7 @@ type IconsType = {
   }
 
 const Icons: IconsType = {
-    settings: require('../assets/images/settings.png')
+  settings: require('../assets/images/settings.png')
 }
 
-export default Icons;
+export default Icons

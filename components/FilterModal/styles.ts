@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
-import Sizes from '../../constants/Sizes';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+import Fonts from '../../constants/Fonts'
+import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
   modal: {
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   continueButtonText: {
     color: Colors.white
   }
-});
+})
 
-export default styles;
+export default styles

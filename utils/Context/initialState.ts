@@ -28,7 +28,7 @@ const initialState: InitialStateType = {
     isModalVisible: false,
     filterDistance: 5
   }
-};
+}
 
-export { InitialStateType };
-export default initialState;
+export { InitialStateType }
+export default initialState

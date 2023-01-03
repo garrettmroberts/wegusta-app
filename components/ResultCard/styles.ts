@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
-import Sizes from '../../constants/Sizes';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+import Fonts from '../../constants/Fonts'
+import Sizes from '../../constants/Sizes'
 
-const overlayButtonWidth = 56;
-const overlayButtonPadding = 24;
+const overlayButtonWidth = 56
+const overlayButtonPadding = 24
 
 const styles = StyleSheet.create({
   cardShadow: {
@@ -74,6 +74,6 @@ const styles = StyleSheet.create({
   description2: {
     ...Fonts.bodyReg
   }
-});
+})
 
-export default styles;
+export default styles

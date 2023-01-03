@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react'
 import {
   AppState,
   Linking,
@@ -7,18 +7,18 @@ import {
   SafeAreaView,
   Text,
   View
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import Constants from 'expo-constants';
-import * as Location from 'expo-location';
+} from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import Constants from 'expo-constants'
+import * as Location from 'expo-location'
 
-import styles from './styles';
-import Colors from '../../constants/Colors';
-import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import ResultCard from '../../components/ResultCard/ResultCard';
-import { AppContext } from '../../utils/Context/Context';
-import API from '../../api';
-import { LocationAccuracy } from 'expo-location';
+import styles from './styles'
+import Colors from '../../constants/Colors'
+import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner'
+import ResultCard from '../../components/ResultCard/ResultCard'
+import { AppContext } from '../../utils/Context/Context'
+import API from '../../api'
+import { LocationAccuracy } from 'expo-location'
 
 type Coords = {
   latitude: number;
@@ -30,16 +30,16 @@ type Props = {
 };
 
 type RecommendedRestaurantInfo = {
-  place_id?: String,
-  name?: String,
-  rating?: String,
+  place_id?: string,
+  name?: string,
+  rating?: string,
   location?: {
-    lat?: String,
-    lng?: String
+    lat?: string,
+    lng?: string
   },
-  photoUrl?: String,
-  priceLevel?: String,
-  closingTime?: String
+  photoUrl?: string,
+  priceLevel?: string,
+  closingTime?: string
 }
 
 type SuggestionScreenState = {
@@ -50,142 +50,142 @@ type SuggestionScreenState = {
 }
 
 const SuggestionScreen = ({ navigation }: Props) => {
-  const { context, dispatch } = useContext(AppContext);
+  const { context, dispatch } = useContext(AppContext)
   const [state, setState] = useState<SuggestionScreenState>({
     pageState: 'loading', // loading, error, needsLocationAccess, success
     location: undefined,
     recommendedRestaurantInfo: {},
     needsLocationAccess: false
-  });
+  })
 
   // LOCATION SERVICES
   // -------------------------------------------------------------------
   // Returns locationAccessStatus, also requests permission if applicable.
   const getLocationAccessStatus = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status === 'denied') return false;
-    if (status === 'granted') return true;
+    const { status } = await Location.requestForegroundPermissionsAsync()
+    if (status === 'denied') return false
+    if (status === 'granted') return true
     console.error('ERROR: unexpected location status:', status)
-    return status;
+    return status
   }
 
   const getLocationCoordinates = async () => {
-    const hasLocationAccess = await getLocationAccessStatus();
+    const hasLocationAccess = await getLocationAccessStatus()
     if (hasLocationAccess) {
-      let location = await Location.getCurrentPositionAsync({
+      const location = await Location.getCurrentPositionAsync({
         accuracy: LocationAccuracy.Balanced
-      });
-      setState({...state, location: location?.coords});
-      return;
+      })
+      setState({...state, location: location?.coords})
+      return
     } else {
-      setState({...state, needsLocationAccess: true});
-    };
-  };
+      setState({...state, needsLocationAccess: true})
+    }
+  }
 
   const attemptgetLocation = async () => {
-    const hasLocationAccess = await getLocationAccessStatus();
+    const hasLocationAccess = await getLocationAccessStatus()
     if (!hasLocationAccess) {
       setState({...state, needsLocationAccess: true})
     } else {
-      getLocationCoordinates();
+      getLocationCoordinates()
     }
   }
 
   const getLocationAccessViaSettings = async () => {
-    await Linking.openURL('app-settings:');
-    const listener = AppState.addEventListener('change', (nextAppState) => {
+    await Linking.openURL('app-settings:')
+    AppState.addEventListener('change', (nextAppState) => {
       const executeNextStep = async () => {
         if (nextAppState === 'active') {
-          const isLocationAccessGranted = await getLocationAccessStatus();
+          const isLocationAccessGranted = await getLocationAccessStatus()
           if (isLocationAccessGranted) {
             setState({...state, needsLocationAccess: false})
           }
         }
       }
 
-      executeNextStep();
+      executeNextStep()
     })
   }
 
   // RESTAURANT RECOMMENDATION SERVICES
   // -------------------------------------------------------------------
   const generateRandomNumber = (max: number) => {
-    return Math.floor(Math.random() * max);
-  };
+    return Math.floor(Math.random() * max)
+  }
 
   const selectFoodCategory = () => {
     const filteredPreferences = context.userPreferences.filter(
       preference => preference.isLiked
-    );
+    )
 
-    const rand = generateRandomNumber(filteredPreferences.length);
+    const rand = generateRandomNumber(filteredPreferences.length)
 
     if (filteredPreferences.length === 0) {
-      return null;
+      return null
     }
 
-    return filteredPreferences[rand].category;
-  };
+    return filteredPreferences[rand].category
+  }
 
   const queryForRestaurant = async (category: string) => {
-    let recommendedRestaurantInfo = {};
-      const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${state.location?.latitude}%2C${state.location?.longitude}&radius=${context.filterOptions.filterDistance * 1000}&type=restaurant&opennow&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
-      const result = await fetch(query)
-        .then(response => {
-          return response.json();
-        })
-        .then(json => {
-          if (json.status !== 'ZERO_RESULTS') {
-            const rand = generateRandomNumber(
-              json.results.length > 5 ? 5 : json.results.length
-            );
-            const result = json.results[rand];
-            recommendedRestaurantInfo = {
-              place_id: result.place_id,
-              name: result.name,
-              openTimes: result.opening_hours,
-              priceLevel: result.price_level,
-              rating: result.rating,
-              photoUrl: `https://maps.googleapis.com/maps/api/place/photo?photo_reference=${result.photos[0].photo_reference}&maxheight=600&maxhidth=800&key=${Constants.expoConfig?.extra?.gMapsApiKey}`,
-              location: {
-                lat: result.geometry.location.lat,
-                lng: result.geometry.location.lng
-              }
-            };
-            return recommendedRestaurantInfo;
-          } else {
-            setState({
-              ...state,
-              pageState: 'error'
-            })
+    let recommendedRestaurantInfo = {}
+    const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${state.location?.latitude}%2C${state.location?.longitude}&radius=${context.filterOptions.filterDistance * 1000}&type=restaurant&opennow&key=${Constants.expoConfig?.extra?.gMapsApiKey}`
+    await fetch(query)
+      .then(response => {
+        return response.json()
+      })
+      .then(json => {
+        if (json.status !== 'ZERO_RESULTS') {
+          const rand = generateRandomNumber(
+            json.results.length > 5 ? 5 : json.results.length
+          )
+          const result = json.results[rand]
+          recommendedRestaurantInfo = {
+            place_id: result.place_id,
+            name: result.name,
+            openTimes: result.opening_hours,
+            priceLevel: result.price_level,
+            rating: result.rating,
+            photoUrl: `https://maps.googleapis.com/maps/api/place/photo?photo_reference=${result.photos[0].photo_reference}&maxheight=600&maxhidth=800&key=${Constants.expoConfig?.extra?.gMapsApiKey}`,
+            location: {
+              lat: result.geometry.location.lat,
+              lng: result.geometry.location.lng
+            }
           }
-        });
-    return recommendedRestaurantInfo;
-  };
+          return recommendedRestaurantInfo
+        } else {
+          setState({
+            ...state,
+            pageState: 'error'
+          })
+        }
+      })
+    return recommendedRestaurantInfo
+  }
 
   const queryForOpeningHours = async (placeId: string) => {
-    let res = '';
-    const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=opening_hours&key=${Constants.expoConfig?.extra?.gMapsApiKey}`;
+    let res = ''
+    const query = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=opening_hours&key=${Constants.expoConfig?.extra?.gMapsApiKey}`
     await fetch(query)
       .then(response => response.json())
       .then(json => {
-        const date = new Date().getDay();
-        const openHours = json.result.opening_hours.weekday_text;
-        const lastDate = openHours.pop();
-        openHours.unshift(lastDate);
-        const currentDayOpenHours = openHours[date];
-        res = currentDayOpenHours.split(' – ')[1];
-      });
-      return res;
-  };
+        const date = new Date().getDay()
+        const openHours = json.result.opening_hours.weekday_text
+        const lastDate = openHours.pop()
+        openHours.unshift(lastDate)
+        const currentDayOpenHours = openHours[date]
+        res = currentDayOpenHours.split(' – ')[1]
+      })
+    return res
+  }
 
   const makeRestaurantDecision = async () => {
-    const hasLocationAccess = await getLocationAccessStatus();
+    const hasLocationAccess = await getLocationAccessStatus()
     if (hasLocationAccess) {
-      const category = selectFoodCategory();
+      const category = selectFoodCategory()
       if (category !== null) {
-        const recommendedRestaurantInfo = await queryForRestaurant(category);
-        const closingTime = await queryForOpeningHours(recommendedRestaurantInfo.place_id);
+        const recommendedRestaurantInfo = await queryForRestaurant(category)
+        const closingTime = await queryForOpeningHours(recommendedRestaurantInfo.place_id)
         setState({
           ...state,
           recommendedRestaurantInfo: {
@@ -194,10 +194,10 @@ const SuggestionScreen = ({ navigation }: Props) => {
           }
         })
       } else {
-        setState({...state, pageState: 'error'});
+        setState({...state, pageState: 'error'})
       }
     }
-  };
+  }
 
   // EFFECT HOOKS
   // -------------------------------------------------------------------
@@ -208,12 +208,12 @@ const SuggestionScreen = ({ navigation }: Props) => {
   }, [state.recommendedRestaurantInfo])
 
   useEffect(() => {
-    if (state.location && !state.recommendedRestaurantInfo.closingTime) makeRestaurantDecision();
-  }, [state.location]);
+    if (state.location && !state.recommendedRestaurantInfo.closingTime) makeRestaurantDecision()
+  }, [state.location])
 
   useEffect(() => {
     attemptgetLocation()
-  }, []);
+  }, [])
 
   const getDistanceFromLatLon = (
     lat1: number,
@@ -221,33 +221,33 @@ const SuggestionScreen = ({ navigation }: Props) => {
     lat2: number,
     lon2: number
   ) => {
-    var R = 6371; // Radius of the earth in km
-    var dLat = deg2rad(lat2 - lat1); // deg2rad below
-    var dLon = deg2rad(lon2 - lon1);
-    var a =
+    const R = 6371 // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1) // deg2rad below
+    const dLon = deg2rad(lon2 - lon1)
+    const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(deg2rad(lat1)) *
         Math.cos(deg2rad(lat2)) *
         Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    var d = R * c; // Distance in km
-    return (d / 1.609).toFixed(2); // Distance in mi
-  };
+        Math.sin(dLon / 2)
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    const d = R * c // Distance in km
+    return (d / 1.609).toFixed(2) // Distance in mi
+  }
 
   function deg2rad(deg: number) {
-    return deg * (Math.PI / 180);
+    return deg * (Math.PI / 180)
   }
 
   const handleTryAgainPress = () => {
     const refreshImagesAndRedirect = async () => {
-      const images = await API.getRandomImages();
-      dispatch({ type: 'addImagesAndRefreshState', payload: images });
-      navigation.navigate('PreferenceSelectorScreen');
-    };
+      const images = await API.getRandomImages()
+      dispatch({ type: 'addImagesAndRefreshState', payload: images })
+      navigation.navigate('PreferenceSelectorScreen')
+    }
 
-    refreshImagesAndRedirect();
-  };
+    refreshImagesAndRedirect()
+  }
 
 
   return (
@@ -263,12 +263,12 @@ const SuggestionScreen = ({ navigation }: Props) => {
       {(state.needsLocationAccess) ? (
         <View style={styles.container}>
           <Modal 
-          animationType="slide"
-          transparent={true}
-          visible={state.needsLocationAccess}
-          onRequestClose={() => {
-            setState({...state, pageState: 'loading'});
-          }}>
+            animationType="slide"
+            transparent={true}
+            visible={state.needsLocationAccess}
+            onRequestClose={() => {
+              setState({...state, pageState: 'loading'})
+            }}>
             <View style={[styles.container, styles.absolute, styles.locationServicesPlacement]}>
               <Pressable style={styles.locationServicesCloseButton} onPress={() => {
                 setState({...state, needsLocationAccess: false, pageState: 'error'})
@@ -282,7 +282,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
               <Text style={styles.locationServicesSubheader}>We will need your location to provide you a better app experience.</Text>
             </View>
             <Pressable style={[styles.actionButton, styles.locationServicesPrimaryButton]} onPress={() => {
-              getLocationAccessViaSettings();
+              getLocationAccessViaSettings()
             }}>
               <Text style={styles.locationServicesPrimaryButtonText}>Enable</Text>
             </Pressable>
@@ -329,7 +329,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
         </>
       ) : null}
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default SuggestionScreen;
+export default SuggestionScreen

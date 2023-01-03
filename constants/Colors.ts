@@ -15,4 +15,4 @@ export default {
 
   // For use in facebook icon only
   facebookBlue: '#0B7FFB'
-};
+}

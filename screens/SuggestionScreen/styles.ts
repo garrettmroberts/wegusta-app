@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import Fonts from '../../constants/Fonts';
-import Sizes from '../../constants/Sizes';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+import Fonts from '../../constants/Fonts'
+import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
   container: {
@@ -99,6 +99,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: Sizes.viewPadding
   }
-});
+})
 
-export default styles;
+export default styles

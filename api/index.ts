@@ -1,4 +1,4 @@
-import foodCategories from './foodCategories';
+import foodCategories from './foodCategories'
 
 type RandomImageResponseType = {
   category: string;
@@ -10,24 +10,24 @@ const API = {
   getRandomImages: async (): Promise<RandomImageResponseType[]> => {
     const filtered = foodCategories.filter(ele => ele.images.length > 0)
 
-    const randomCategorySelection = [];
+    const randomCategorySelection = []
     for (let i = 0; i < 5; i++) {
-      let randInt = Math.floor(Math.random() * filtered.length);
-      randomCategorySelection.push(filtered[randInt]);
-      filtered.splice(randInt, 1);
+      const randInt = Math.floor(Math.random() * filtered.length)
+      randomCategorySelection.push(filtered[randInt])
+      filtered.splice(randInt, 1)
     }
 
-    const res: RandomImageResponseType[] = [];
+    const res: RandomImageResponseType[] = []
     randomCategorySelection.forEach(ele => {
-      let randInt = Math.floor(Math.random() * ele.images.length);
+      const randInt = Math.floor(Math.random() * ele.images.length)
       res.push({
         category: ele.value,
         imageName: ele.images[randInt]
-      });
-    });
+      })
+    })
 
-    return res;
+    return res
   }
-};
+}
 
-export default API;
+export default API

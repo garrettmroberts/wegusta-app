@@ -2,15 +2,13 @@ import {
   Animated,
   Easing,
   ImageBackground,
-  ImageSourcePropType,
   View
-} from 'react-native';
-import { useContext, useEffect, useRef } from 'react';
-import { AppContext } from '../../utils/Context/Context';
-import FoodImages from '../../utils/FoodImages';
+} from 'react-native'
+import { useContext, useEffect, useRef } from 'react'
+import { AppContext } from '../../utils/Context/Context'
+import FoodImages from '../../utils/FoodImages'
 
-import styles from './styles';
-import Sizes from '../../constants/Sizes';
+import styles from './styles'
 
 type CardProps = {
   imageProps: {
@@ -21,9 +19,9 @@ type CardProps = {
 };
 
 const Card = ({ imageProps, isSmall }: CardProps) => {
-  const { context, dispatch } = useContext(AppContext);
-  const scaleAnim = useRef(new Animated.Value(0.9)).current;
-  const translateYAnim = useRef(new Animated.Value(0)).current;
+  const { dispatch } = useContext(AppContext)
+  const scaleAnim = useRef(new Animated.Value(0.9)).current
+  const translateYAnim = useRef(new Animated.Value(0)).current
 
   const scaleUp = () => {
     Animated.timing(scaleAnim, {
@@ -31,8 +29,8 @@ const Card = ({ imageProps, isSmall }: CardProps) => {
       duration: 600,
       easing: Easing.bounce,
       useNativeDriver: true
-    }).start();
-  };
+    }).start()
+  }
 
   const translateYUp = () => {
     Animated.timing(translateYAnim, {
@@ -40,24 +38,24 @@ const Card = ({ imageProps, isSmall }: CardProps) => {
       duration: 50,
       easing: Easing.ease,
       useNativeDriver: true
-    }).start();
-  };
+    }).start()
+  }
 
   useEffect(() => {
     if (!isSmall) {
-        scaleUp();
-        translateYUp();
-    };
+      scaleUp()
+      translateYUp()
+    }
 
   }, [isSmall])
 
 
   return (
     <Animated.View style={[styles.cardContainer, 
-          {
-            transform: [{scale: scaleAnim}, {translateY: translateYAnim}, {perspective: 1000}],
-          }
-        ]}>
+      {
+        transform: [{scale: scaleAnim}, {translateY: translateYAnim}, {perspective: 1000}],
+      }
+    ]}>
       <View style={styles.card}>
         <ImageBackground
           resizeMode="cover"
@@ -65,12 +63,12 @@ const Card = ({ imageProps, isSmall }: CardProps) => {
           source={FoodImages[imageProps.imageName]}
           // onLoad={() => handleImageLoad()}
           onLoadEnd={() => {
-            dispatch({type: 'incrementLoadedImageCount'});
+            dispatch({type: 'incrementLoadedImageCount'})
           }}
         />
       </View>
     </Animated.View>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Slider from '@react-native-community/slider'
 import { Text, View } from 'react-native'
 import Colors from '../../constants/Colors'
@@ -15,7 +15,7 @@ type CustomSliderProps = {
 }
 
 const CustomSlider = ({ title, min, max, units, onChange }: CustomSliderProps) => {
-  const { context, dispatch } = useContext(AppContext);
+  const { context } = useContext(AppContext)
 
   return (
     <View>
@@ -42,4 +42,4 @@ const CustomSlider = ({ title, min, max, units, onChange }: CustomSliderProps) =
   )
 }
 
-export default CustomSlider;
+export default CustomSlider

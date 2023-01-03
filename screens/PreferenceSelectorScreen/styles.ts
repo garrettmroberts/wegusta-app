@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-import Colors from '../../constants/Colors';
-import Sizes from '../../constants/Sizes';
+import Colors from '../../constants/Colors'
+import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     width: Sizes.screenWidth,
     height: Sizes.screenHeight
   }
-});
+})
 
-export default styles;
+export default styles

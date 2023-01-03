@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
-import Sizes from '../../constants/Sizes';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
+import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
   cardContainer: {
@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     overflow: 'hidden'
   }
-});
+})
 
-export default styles;
+export default styles

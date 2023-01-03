@@ -5,11 +5,11 @@ import {
   Text,
   View,
   Image
-} from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import StarRating from '../StarRating/StarRating';
-import styles from './styles';
-import Colors from '../../constants/Colors';
+} from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'
+import StarRating from '../StarRating/StarRating'
+import styles from './styles'
+import Colors from '../../constants/Colors'
 
 type Props = {
   title: string;
@@ -37,10 +37,10 @@ const ResultCard = ({
   onImageLoad
 }: Props) => {
   const openMap = () => {
-    var scheme = Platform.OS === 'ios' ? 'maps:0,0?q=' : 'geo:0,0?q=';
-    var url = scheme + encodeURIComponent(title) + '@' + `${latitude},${longitude}`;
-    Linking.openURL(url);
-  };
+    const scheme = Platform.OS === 'ios' ? 'maps:0,0?q=' : 'geo:0,0?q='
+    const url = scheme + encodeURIComponent(title) + '@' + `${latitude},${longitude}`
+    Linking.openURL(url)
+  }
 
   return (
     <View style={styles.cardShadow}>
@@ -51,7 +51,7 @@ const ResultCard = ({
             source={{ uri: imageUrl }}
             style={styles.image}
             onLoadEnd={() => {
-              if (onImageLoad) onImageLoad();
+              if (onImageLoad) onImageLoad()
             }}
           />
           <Pressable
@@ -73,7 +73,7 @@ const ResultCard = ({
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default ResultCard;
+export default ResultCard

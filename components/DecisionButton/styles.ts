@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import Colors from '../../constants/Colors';
+import { StyleSheet } from 'react-native'
+import Colors from '../../constants/Colors'
 
 const styles = StyleSheet.create({
   button: {
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     top: 2
   }
-});
+})
 
-export default styles;
+export default styles
