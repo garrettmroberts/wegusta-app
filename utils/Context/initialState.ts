@@ -4,7 +4,7 @@ type InitialStateType = {
     isLiked: boolean;
   }[];
   images: {
-    uri: any;
+    imageName: string;
     category: string;
   }[];
   nextAction: {

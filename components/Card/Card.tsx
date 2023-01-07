@@ -13,7 +13,7 @@ import styles from './styles'
 type CardProps = {
   imageProps: {
     category: string;
-    imageName: any;
+    imageName: string;
   };
   isSmall: boolean;
 };

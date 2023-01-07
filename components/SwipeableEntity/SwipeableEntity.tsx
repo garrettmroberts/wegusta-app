@@ -11,7 +11,7 @@ type Props = {
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
   onSwipe?: () => void;
-  containsElement: any;
+  containsElement: string;
   isActive: boolean
 };
 
@@ -25,7 +25,7 @@ const SwipeableEntity = ({
 }: Props) => {
   const { context, dispatch } = useContext(AppContext)
   const [visible, setVisible] = useState(true)
-  const pan = useRef<any>(new Animated.ValueXY()).current
+  const pan = useRef<Animated.ValueXY>(new Animated.ValueXY()).current
 
   const rotate = pan.x.interpolate({
     inputRange: [-Sizes.screenWidth / 2, 0, Sizes.screenWidth / 2],
@@ -110,15 +110,12 @@ const SwipeableEntity = ({
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
-      onPanResponderGrant: () => {
-        pan.setOffset({
-          x: pan.x._value,
-          y: pan.y._value
-        })
+      onPanResponderMove: (e, gestureState) => {
+        Animated.event(
+          [null, { dx: pan.x, dy: pan.y }],
+          { useNativeDriver: false }
+        )(e, gestureState)
       },
-      onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
-        useNativeDriver: false
-      }),
       onPanResponderRelease: (evt, gestureState) => {
         if (gestureState.dx < -120) {
           Animated.spring(pan, {

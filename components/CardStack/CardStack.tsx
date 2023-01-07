@@ -7,12 +7,14 @@ import SwipeableEntity from '../SwipeableEntity/SwipeableEntity'
 import styles from './styles'
 
 type CardStackProps = {
-  cards: {
-    category: string;
-    uri: string;
-  }[];
+  cards: CardProps[];
   onStackEnd?: () => void;
 };
+
+type CardProps = {
+  category: string;
+  imageName: string;
+}
 
 const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
   const { context, dispatch } = useContext(AppContext)
@@ -33,7 +35,7 @@ const CardStack = ({ cards, onStackEnd }: CardStackProps) => {
       {cards
         .slice(0)
         .reverse()
-        .map((cardProps: any, idx: number) => {
+        .map((cardProps: CardProps, idx: number) => {
           return (
             <SwipeableEntity
               key={`card-${idx}`}

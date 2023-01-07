@@ -7,9 +7,11 @@ import styles from './styles'
 import { AppContext } from '../../utils/Context/Context'
 import API from '../../api'
 import FilterModal from '../../components/FilterModal/FilterModal'
+import {NavigationProp, ParamListBase} from '@react-navigation/native'
+
 
 type Props = {
-  navigation: any;
+  navigation: NavigationProp<ParamListBase>
 };
 
 const PreferenceSelectorScreen = ({ navigation }: Props) => {
