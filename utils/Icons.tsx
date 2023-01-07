@@ -1,5 +1,5 @@
 type IconsType = {
-    [key: string]: any;
+    [key: string]: typeof require;
   }
 
 const Icons: IconsType = {

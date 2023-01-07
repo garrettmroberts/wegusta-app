@@ -19,6 +19,7 @@ import ResultCard from '../../components/ResultCard/ResultCard'
 import { AppContext } from '../../utils/Context/Context'
 import API from '../../api'
 import { LocationAccuracy } from 'expo-location'
+import {NavigationProp, ParamListBase} from '@react-navigation/native'
 
 type Coords = {
   latitude: number;
@@ -26,7 +27,7 @@ type Coords = {
 };
 
 type Props = {
-  navigation: any;
+  navigation: NavigationProp<ParamListBase>;
 };
 
 type RecommendedRestaurantInfo = {

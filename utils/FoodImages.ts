@@ -1,5 +1,5 @@
 type FoodKeysType = {
-    [key: string]: any;
+    [key: string]: typeof require;
   }
 
 const FoodImages: FoodKeysType = {
