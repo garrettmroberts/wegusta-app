@@ -46,6 +46,11 @@ const reducer = (state: any, action: any) => {
         }
       ]
     }
+  case 'setUpdatedUserPreferences':
+    return {
+      ...state,
+      userPreferences: action.payload
+    }
   case 'incrementLoadedImageCount':
     return {
       ...state,

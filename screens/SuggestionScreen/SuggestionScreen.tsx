@@ -125,7 +125,17 @@ const SuggestionScreen = ({ navigation }: Props) => {
       return null
     }
 
-    return filteredPreferences[rand].category
+    const res = filteredPreferences[rand].category
+
+    console.log(res)
+
+    const updatedFilterPreferences = context.userPreferences.filter((ele) => {
+      return ele.category !== res
+    })
+
+    dispatch({type: 'setUpdatedUserPreferences', payload: updatedFilterPreferences})
+
+    return res
   }
 
   const queryForRestaurant = async (category: string) => {
@@ -155,10 +165,20 @@ const SuggestionScreen = ({ navigation }: Props) => {
           }
           return recommendedRestaurantInfo
         } else {
-          setState({
-            ...state,
-            pageState: 'error'
-          })
+          const filteredPreferences = context.userPreferences.filter(
+            preference => preference.isLiked
+          )
+          if (filteredPreferences.length > 0) {
+            const category = selectFoodCategory()
+            if (category !== null) {
+              queryForRestaurant(category)
+            }
+          } else {
+            setState({
+              ...state,
+              pageState: 'error'
+            })
+          }
         }
       })
     return recommendedRestaurantInfo

@@ -130,15 +130,14 @@ const foodCategories: Array<FoodCategory> = [
       'steakhouse3'
     ]
   },
-  // Google Maps API hates the sushi keyword for some reason.
-  // {
-  //     value: 'sushi',
-  //     images: [
-  //        "sushi1",
-  //        "sushi2",
-  //        "sushi3"
-  //     ]
-  // },
+  {
+    value: 'sushi',
+    images: [
+      'sushi1',
+      'sushi2',
+      'sushi3'
+    ]
+  },
   {
     value: 'tapas',
     images: []
