@@ -1,9 +1,10 @@
 import 'dotenv/config';
+
 module.exports = {
   name: 'wegusta-test-app',
   slug: 'wegusta-test-app',
   privacy: 'unlisted',
-  version: '0.0.20',
+  version: '0.0.21',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   userInterfaceStyle: 'light',
