@@ -1,6 +1,6 @@
 import { ReactNode, useContext, useEffect, useState } from 'react'
 import { useRef } from 'react'
-import { Animated, Text, View, PanResponder } from 'react-native'
+import { Animated, Image, Text, View, PanResponder } from 'react-native'
 
 import Sizes from '../../constants/Sizes'
 import { AppContext } from '../../utils/Context/Context'
@@ -171,11 +171,11 @@ const SwipeableEntity = ({
     >
       {children}
       <View style={styles.center}>
-        <Animated.View style={{opacity: likeOpacity}}>
-          <Text style={[styles.text, styles.likeText]}>LIKE</Text>
+        <Animated.View style={[styles.textWrapper, {opacity: likeOpacity}]}>
+          <Image source={require('../../assets/images/yum.png')} style={styles.text}  resizeMode={'contain'} />
         </Animated.View>
-        <Animated.View style={{opacity: dislikeOpacity}}>
-          <Text style={[styles.text, styles.dislikeText]}>DISLIKE</Text>
+        <Animated.View style={[styles.textWrapper, {opacity: dislikeOpacity}]}>
+          <Image source={require('../../assets/images/yuck.png')} style={styles.text}  resizeMode={'contain'} />
         </Animated.View>
       </View>
     </Animated.View>

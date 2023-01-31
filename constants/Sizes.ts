@@ -12,5 +12,6 @@ export default {
   defaultSpacer: 10,
   screenHeight: Dimensions.get('window').height,
   screenWidth: Dimensions.get('window').width,
-  baseImageStyle: { flex: 1, width: undefined, height: undefined }
+  baseImageStyle: { flex: 1, width: undefined, height: undefined },
+  cardHeight: 500
 }

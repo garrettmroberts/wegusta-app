@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginBottom: 500
+    marginBottom: Sizes.cardHeight
   },
   cardPlacementTop: {
     position: 'absolute',

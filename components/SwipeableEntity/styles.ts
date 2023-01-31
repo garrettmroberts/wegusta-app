@@ -7,29 +7,31 @@ export default StyleSheet.create({
   container: {
     width: Sizes.screenWidth - Sizes.viewPadding * 2,
     alignItems: 'center',
-    justifyContent: 'center'
-  },
-  text: {
-    ...Fonts.displayBold,
-    borderWidth: 2,
-    paddingHorizontal: 10
+    justifyContent: 'center',
   },
   center: {
     position: 'absolute',
-    top: 50,
+    // top: 150,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    flex: 1,
   },
-  likeText: {
-    position: 'relative',
-    top: 50,
-    color: Colors.success,
-    backgroundColor: `${Colors.success}25`,
-    borderColor: Colors.success
+  text: {
+    height: 103,
   },
-  dislikeText: {
-    color: Colors.error,
-    backgroundColor: `${Colors.error}25`,
-    borderColor: Colors.error
+  textWrapper: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: Sizes.cardHeight
   }
 })
