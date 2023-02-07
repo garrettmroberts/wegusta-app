@@ -28,7 +28,7 @@ const FilterModal = ({isVisible, onClose}: FilterModalType) => {
       <TouchableOpacity style={styles.modal} onPress={() => onClose()} activeOpacity={1}>
         <View style={styles.modalBody}>
           <Text style={styles.header}>Filters</Text>
-          <CustomSlider title='Distance' min={0} max={20} units='miles' onChange={changeDistance} />
+          <CustomSlider title='Distance' min={1} max={20} units='miles' onChange={changeDistance} />
           <View style={styles.buttonWrapper}>
             <Pressable
               onPress={() => {
