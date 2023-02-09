@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen'
+import SignupScreen from '../screens/SignupScreen/SignupScreen'
 import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen'
 import LeftAlignedTitle from './LeftAlignedTitle'
 import RightAlignedIcon from './RightAlignedIcon'
@@ -20,6 +21,10 @@ const StackNavigator = () => {
         headerShadowVisible: false
       }}
     >
+      <Stack.Screen 
+        name="SignupScreen"
+        component={SignupScreen}
+      />
       <Stack.Screen
         name="PreferenceSelectorScreen"
         component={PreferenceSelectorScreen}
