@@ -5,7 +5,7 @@ type buildIconArgs = {
   name: any,
   color: string,
   size: number,
-  onPress: () => void
+  onPress?: () => void
 }
 
 const buildIcon = ({ name, color, size, onPress }: buildIconArgs) => {
