@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   label: {
-    ...Fonts.inputLabel
+    ...Fonts.inputLabel,
+    marginLeft: 12
   },
   textInputWrapper: {
     backgroundColor: Colors.greyLight,
