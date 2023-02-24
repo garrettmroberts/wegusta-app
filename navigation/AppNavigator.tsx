@@ -2,11 +2,13 @@ import React, { useContext } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen'
-import SignupScreen from '../screens/SignupScreen/SignupScreen'
+import SignupScreen1 from '../screens/SignupScreens/SignupScreen1'
+import SignupScreen2 from '../screens/SignupScreens/SignupScreen2'
 import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen'
 import LeftAlignedTitle from './LeftAlignedTitle'
 import RightAlignedIcon from './RightAlignedIcon'
 import { AppContext } from '../utils/Context/Context'
+import Colors from '../constants/Colors'
 
 const Stack = createNativeStackNavigator()
 const StackNavigator = () => {
@@ -18,13 +20,22 @@ const StackNavigator = () => {
         gestureEnabled: true,
         headerBackButtonMenuEnabled: false,
         headerBackVisible: false,
-        headerShadowVisible: false
+        headerShadowVisible: false,
+        headerTintColor: Colors.black,
       }}
     >
       <Stack.Screen 
-        name="SignupScreen"
-        component={SignupScreen}
+        name="SignupScreen1"
+        component={SignupScreen1}
         options={{
+          title: ''
+        }}
+      />
+      <Stack.Screen 
+        name="SignupScreen2"
+        component={SignupScreen2}
+        options={{
+          headerBackVisible: true,
           title: ''
         }}
       />

@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState } from 'react'
 import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Image,
   SafeAreaView,
   Text,
   TextInput,
@@ -16,24 +15,18 @@ import Sizes from '../../constants/Sizes'
 import styles from './styles'
 
 
-const SignupScreen = () => {
+const SignupScreen2 = () => {
   const [state, changeState] = useState({
-    phoneNumber: '',
     code: '',
     verificationId: null,
-    isButtonEnabled: false,
-    isToastVisible: false,
+    isButtonEnabled: false
   })
 
   const handleChangeText = (input: string) => {
-    if (input.length === 3 && state.phoneNumber.split('').length < 3 ) {
-      input = input + ' '
-    }
-    const isButtonEnabled = input.length === 11
     changeState({
       ...state,
-      phoneNumber: input,
-      isButtonEnabled: isButtonEnabled,
+      code: input,
+      isButtonEnabled: input.length === 6,
     })
   }
 
@@ -47,27 +40,24 @@ const SignupScreen = () => {
         <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
           <View style={[styles.defaultFlex, styles.screenLayout]}>
             <View style={styles.headerTextWrap}>
-              <Text style={styles.headerText}>Welcome to</Text>
-              <Image source={require('../../assets/images/wegusta-text.png')} style={styles.wegustaTextImage}/>
+              <Text style={styles.headerText}>Enter verification code</Text>
             </View>
             <View style={styles.viewPadding}>
-              <Text style={styles.label}>Enter phone to get started</Text>
+              <Text style={styles.label}>Enter code</Text>
               <View style={styles.textInputWrapper}>
-                <Text>🇺🇸 +1</Text>
                 <TextInput
-                  placeholder="555 1234567"
+                  placeholder="******"
                   onChangeText={handleChangeText}
-                  keyboardType="phone-pad"
+                  secureTextEntry={true}
+                  keyboardType="number-pad"
                   style={styles.input}
-                  value={state.phoneNumber}
                 />
               </View>
+              <Text style={styles.helperText}>
+                Didn&apos;t receive a code? <Text style={styles.bold}>Resend code</Text>.
+              </Text>
             </View>
             <View style={styles.viewPaddingSmall}>
-              <Text style={styles.termsAndConditions}>
-                By continuing you agree to Wegusta LLC’s <Text style={styles.bold}>Terms of Use</Text> and confirm
-                that you have read Wegusta LLC’s <Text style={styles.bold}>Privacy Policy</Text>.
-              </Text>
               <Button
                 type={state.isButtonEnabled ? 'primary' : 'disabled'}
                 size="fullWidth"
@@ -81,4 +71,4 @@ const SignupScreen = () => {
   )
 }
 
-export default SignupScreen
+export default SignupScreen2

@@ -68,6 +68,12 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     marginBottom: 16,
     textAlign: 'center',
+  },
+  helperText: {
+    ...Fonts.metaReg,
+    marginHorizontal: 20,
+    lineHeight: 16,
+    marginTop: 8,
   }
 })
 
