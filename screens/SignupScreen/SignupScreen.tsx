@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -26,7 +26,10 @@ const SignupScreen = () => {
   })
 
   const handleChangeText = (input: string) => {
-    const isButtonEnabled = input.length >= 10
+    if (input.length === 3 && state.phoneNumber.split('').length < 3 ) {
+      input = input + ' '
+    }
+    const isButtonEnabled = input.length === 11
     changeState({
       ...state,
       phoneNumber: input,
@@ -56,6 +59,7 @@ const SignupScreen = () => {
                   onChangeText={handleChangeText}
                   keyboardType="phone-pad"
                   style={styles.input}
+                  value={state.phoneNumber}
                 />
               </View>
             </View>
