@@ -24,6 +24,9 @@ const StackNavigator = () => {
       <Stack.Screen 
         name="SignupScreen"
         component={SignupScreen}
+        options={{
+          title: ''
+        }}
       />
       <Stack.Screen
         name="PreferenceSelectorScreen"

@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import {
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
+  Image,
   SafeAreaView,
   Text,
   TextInput,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native'
 import Button from '../../components/Button/Button'
+import Sizes from '../../constants/Sizes'
 
 import styles from './styles'
 
@@ -31,36 +35,45 @@ const SignupScreen = () => {
   }
 
   return (
-    <SafeAreaView style={styles.safeAreaView}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.wrapper}
-      >
-        <View style={styles.inputBlockWrapper}>
-          <Text style={styles.text}>Enter your phone # </Text>
-          <View style={styles.textInputWrapper}>
-            <Text style={styles.inputPrepend}>🇺🇸 +1</Text>
-            <TextInput
-              placeholder="555-123-4567"
-              onChangeText={handleChangeText}
-              keyboardType="phone-pad"
-              style={styles.input}
-            />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={[styles.defaultFlex, styles.whiteBackground]}
+      keyboardVerticalOffset={Sizes.headerHeight + 40}
+    >
+      <SafeAreaView style={styles.defaultFlex}>
+        <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
+          <View style={[styles.defaultFlex, styles.screenLayout]}>
+            <View style={styles.headerTextWrap}>
+              <Text style={styles.headerText}>Welcome to</Text>
+              <Image source={require('../../assets/images/wegusta-text.png')} style={styles.wegustaTextImage}/>
+            </View>
+            <View style={styles.viewPadding}>
+              <Text style={styles.label}>Enter phone to get started</Text>
+              <View style={styles.textInputWrapper}>
+                <Text>🇺🇸 +1</Text>
+                <TextInput
+                  placeholder="555 1234567"
+                  onChangeText={handleChangeText}
+                  keyboardType="phone-pad"
+                  style={styles.input}
+                />
+              </View>
+            </View>
+            <View style={styles.viewPaddingSmall}>
+              <Text style={styles.termsAndConditions}>
+                By continuing you agree to Wegusta LLC’s <Text style={styles.bold}>Terms of Use</Text> and confirm
+                that you have read Wegusta LLC’s <Text style={styles.bold}>Privacy Policy</Text>.
+              </Text>
+              <Button
+                type={state.isButtonEnabled ? 'primary' : 'disabled'}
+                size="fullWidth"
+                text="Continue"
+              />
+            </View>
           </View>
-          <View>
-            <Text style={styles.termsAndConditions}>
-              By continuing you agree to Wegusta LLC’s Terms of Use and confirm
-              that you have read Wegusta LLC’s Privacy Policy.
-            </Text>
-            <Button
-              type={state.isButtonEnabled ? 'primary' : 'disabled'}
-              size="fullWidth"
-              text="Send Verification"
-            />
-          </View>
-        </View>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   )
 }
 

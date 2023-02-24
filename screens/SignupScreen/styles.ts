@@ -4,41 +4,15 @@ import Fonts from '../../constants/Fonts'
 import Sizes from '../../constants/Sizes'
 
 const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
+  // Reusable styles
+  defaultFlex: {
+    flex: 1
   },
-  wrapper: {
-    height: Sizes.screenHeight,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
+  viewPadding: {
+    paddingHorizontal: Sizes.viewPadding
   },
-  text: {
-    ...Fonts.h1Bold,
-    marginTop: 50,
-  },
-  textInputWrapper: {
-    backgroundColor: Colors.grey,
-    width: Sizes.screenWidth - Sizes.viewPaddingSmall * 2,
-    height: 56,
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    marginVertical: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    fontSize: 18,
-  },
-  inputPrepend: {
-    color: Colors.greyDark,
-  },
-  input: {
-    marginLeft: 8,
-    width: 100,
-  },
-  toast: {
-    position: 'absolute',
-    zIndex: 1,
-    top: 0,
+  viewPaddingSmall: {
+    paddingHorizontal: Sizes.viewPaddingSmall
   },
   visible: {
     display: 'flex',
@@ -46,30 +20,54 @@ const styles = StyleSheet.create({
   invisible: {
     display: 'none',
   },
+  whiteBackground: {
+    backgroundColor: Colors.white,
+  },
+  screenLayout: {
+    justifyContent: 'space-between',
+  },
+  bold: {
+    fontWeight: '800'
+  },
+  headerTextWrap: {
+    paddingHorizontal: Sizes.viewPadding
+  },
+  headerText: {
+    ...Fonts.h1Bold,
+  },
+  // Specific styles
+  wegustaTextImage: {
+    marginTop: 5,
+    width: 150,
+    resizeMode: 'contain'
+  },
+  label: {
+    ...Fonts.inputLabel
+  },
+  textInputWrapper: {
+    backgroundColor: Colors.greyLight,
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
+    height: 56,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    marginTop: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    fontSize: 18,
+  },
+  input: {
+    marginLeft: 8,
+    width: '100%',
+    alignSelf:'stretch'
+  },
   termsAndConditions: {
-    ...Fonts.bodyReg,
-    marginHorizontal: 30,
+    ...Fonts.metaReg,
+    marginHorizontal: 20,
     lineHeight: 16,
     marginBottom: 16,
     textAlign: 'center',
-  },
-  inputBlockWrapper: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flex: 1,
-  },
-  helperText: {
-    ...Fonts.bodyReg,
-    textAlign: 'center',
-  },
-  bold: {
-    ...Fonts.bodyBold,
-  },
-  signinStage2ButtonPlacement: {
-    position: 'absolute',
-    bottom: 0,
-    zIndex: 1,
-  },
+  }
 })
 
 export default styles

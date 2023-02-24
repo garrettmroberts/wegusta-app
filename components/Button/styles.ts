@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   buttonReg: {
-    borderRadius: 12,
+    borderRadius: 16,
   },
   primary: {
     backgroundColor: Colors.primary,
