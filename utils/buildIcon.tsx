@@ -8,6 +8,7 @@ type buildIconArgs = {
   onPress?: () => void
 }
 
+
 const buildIcon = ({ name, color, size, onPress }: buildIconArgs) => {
   if (['star', 'star-half'].includes(name)) {
     return (
