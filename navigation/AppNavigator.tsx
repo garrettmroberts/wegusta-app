@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import PreferenceSelectorScreen from '../screens/PreferenceSelectorScreen/PreferenceSelectorScreen'
 import SignupScreen1 from '../screens/SignupScreens/SignupScreen1'
 import SignupScreen2 from '../screens/SignupScreens/SignupScreen2'
+import SignupScreen3 from '../screens/SignupScreens/SignupScreen3'
 import SuggestionScreen from '../screens/SuggestionScreen/SuggestionScreen'
 import LeftAlignedTitle from './LeftAlignedTitle'
 import RightAlignedIcon from './RightAlignedIcon'
@@ -34,6 +35,14 @@ const StackNavigator = () => {
       <Stack.Screen 
         name="SignupScreen2"
         component={SignupScreen2}
+        options={{
+          headerBackVisible: true,
+          title: ''
+        }}
+      />
+      <Stack.Screen 
+        name="SignupScreen3"
+        component={SignupScreen3}
         options={{
           headerBackVisible: true,
           title: ''

@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native'
 import {NavigationProp, ParamListBase} from '@react-navigation/native'
+
 import Button from '../../components/Button/Button'
 import Sizes from '../../constants/Sizes'
 import styles from './styles'
@@ -19,8 +20,7 @@ type Props = {
 };
 
 
-
-const SignupScreen2 = ({ navigation }: Props) => {
+const SignupScreen3 = ({ navigation }: Props) => {
   const [state, changeState] = useState({
     code: '',
     verificationId: null,
@@ -45,7 +45,7 @@ const SignupScreen2 = ({ navigation }: Props) => {
         <TouchableWithoutFeedback onPress={() => {Keyboard.dismiss()}}>
           <View style={[styles.defaultFlex, styles.screenLayout]}>
             <View style={styles.headerTextWrap}>
-              <Text style={styles.headerText}>Enter verification code</Text>
+              <Text style={styles.headerText}>Create Profile</Text>
             </View>
             <View style={styles.viewPadding}>
               <Text style={styles.label}>Enter code</Text>
@@ -67,12 +67,6 @@ const SignupScreen2 = ({ navigation }: Props) => {
                 type={state.isButtonEnabled ? 'primary' : 'disabled'}
                 size="fullWidth"
                 text="Continue"
-                handlePress={() => {
-                  Keyboard.dismiss()
-                  setTimeout(() => {
-                    navigation.navigate('SignupScreen3')
-                  }, 10)
-                }}
               />
             </View>
           </View>
@@ -82,4 +76,4 @@ const SignupScreen2 = ({ navigation }: Props) => {
   )
 }
 
-export default SignupScreen2
+export default SignupScreen3
