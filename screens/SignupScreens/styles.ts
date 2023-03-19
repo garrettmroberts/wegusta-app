@@ -6,7 +6,7 @@ import Sizes from '../../constants/Sizes'
 const styles = StyleSheet.create({
   // Reusable styles
   defaultFlex: {
-    flex: 1
+    flex: 1,
   },
   viewPadding: {
     paddingHorizontal: Sizes.viewPadding
@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
   },
   screenLayout: {
     justifyContent: 'space-between',
+  },
+  screenLayoutAlt: {
+    justifyContent: 'flex-start',
   },
   bold: {
     fontWeight: '800'
@@ -45,6 +48,12 @@ const styles = StyleSheet.create({
     ...Fonts.inputLabel,
     marginLeft: 12
   },
+  labelAlt: {
+    ...Fonts.inputLabel,
+    marginTop: 8,
+    marginLeft: 9,
+    marginBottom: 2
+  },
   textInputWrapper: {
     backgroundColor: Colors.greyLight,
     width: Sizes.screenWidth - Sizes.viewPadding * 2,
@@ -55,6 +64,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    fontSize: 18,
+  },
+  textInputWrapperAlt: {
+    backgroundColor: Colors.greyLight,
+    width: Sizes.screenWidth - Sizes.viewPadding * 2,
+    height: 56,
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    marginTop: 8,
     fontSize: 18,
   },
   input: {
@@ -74,6 +92,52 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     lineHeight: 16,
     marginTop: 8,
+  },
+  avatarWrapper: {
+    marginBottom: 25,
+    marginTop: 27
+  },
+  verticalSpacer: {
+    height: 16
+  },
+  colorSelector: {
+    marginTop: 24
+  },
+  colorWrapper: {
+    marginTop: 17,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  colorBox: {
+    height: 72,
+    minWidth: 12,
+    flex: 1,
+    borderRadius: 12,
+    marginHorizontal: 8
+  },
+  greyLight: {
+    backgroundColor: Colors.greyLight
+  },
+  tertiary: {
+    backgroundColor: Colors.tertiary
+  },
+  error: {
+    backgroundColor: Colors.error
+  },
+  accent: {
+    backgroundColor: Colors.accent
+  },
+  primary: {
+    backgroundColor: Colors.primary
+  },
+  secondary: {
+    backgroundColor: Colors.secondary
+  },
+  fixedPositionBottomScreen: {
+    position: 'absolute',
+    bottom: 25,
+    marginHorizontal: Sizes.viewPaddingSmall
   }
 })
 
