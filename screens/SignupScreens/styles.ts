@@ -107,32 +107,46 @@ const styles = StyleSheet.create({
     marginTop: 17,
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+  },
+  colorBoxWrapper: {
+    height: 72,
+    minWidth: 12,
+    flex: 1,
+    borderRadius: 12,
   },
   colorBox: {
     height: 72,
     minWidth: 12,
     flex: 1,
     borderRadius: 12,
-    marginHorizontal: 8
+
   },
   greyLight: {
-    backgroundColor: Colors.greyLight
+    backgroundColor: Colors.greyLight,
+    marginRight: 8
   },
   tertiary: {
-    backgroundColor: Colors.tertiary
+    backgroundColor: Colors.tertiary,
+    marginLeft: 8,
+    marginRight: 8
   },
   error: {
-    backgroundColor: Colors.error
+    backgroundColor: Colors.error,
+    marginLeft: 8
   },
   accent: {
-    backgroundColor: Colors.accent
+    backgroundColor: Colors.accent,
+    marginRight: 8
   },
   primary: {
-    backgroundColor: Colors.primary
+    backgroundColor: Colors.primary,
+    marginLeft: 8,
+    marginRight: 8
   },
   secondary: {
-    backgroundColor: Colors.secondary
+    backgroundColor: Colors.secondary,
+    marginLeft: 8
   },
   fixedPositionBottomScreen: {
     position: 'absolute',
