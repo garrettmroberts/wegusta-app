@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import { useEffect, useState } from 'react'
 import {
   Keyboard,
@@ -11,11 +12,12 @@ import {
   View,
   Alert,
 } from 'react-native'
+import { Auth } from 'aws-amplify'
+import {NavigationProp, ParamListBase} from '@react-navigation/native'
+
+import Regex from '../../utils/regex'
 import Button from '../../components/Button/Button'
 import Sizes from '../../constants/Sizes'
-import {NavigationProp, ParamListBase} from '@react-navigation/native'
-import { Auth } from 'aws-amplify'
-
 import styles from './styles'
 
 type Props = {
@@ -32,8 +34,8 @@ const SigninScreen = ({ navigation }: Props) => {
   })
 
   useEffect(() => {
-    const isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(state.email)
-    const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(state.password)
+    const isEmailValid = Regex.email.test(state.email)
+    const isPasswordValid = Regex.password.test(state.password)
     if (isEmailValid && isPasswordValid) {
       setState({
         ...state,
@@ -61,7 +63,7 @@ const SigninScreen = ({ navigation }: Props) => {
         navigation.navigate('SignupScreen2')
       }, 10)
     } catch (e: any) {
-      Alert.alert('ERROR: ',e.message)
+      Alert.alert('ERROR', 'The username and/or password you entered is incorrect.  Try again.')
     }
     setState({
       ...state,
