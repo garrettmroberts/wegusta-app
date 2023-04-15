@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -23,35 +23,50 @@ type Props = {
 };
 
 
-const SignupScreen1 = ({ navigation }: Props) => {
-  const [state, changeState] = useState({
-    phoneNumber: '',
+const SigninScreen = ({ navigation }: Props) => {
+  const [state, setState] = useState({
+    email: '',
+    password: '',
     isButtonEnabled: false,
+    isLoggingIn: false
   })
 
-  const handleChangeText = (input: string) => {
-    if (input.length === 3 && state.phoneNumber.split('').length < 3 ) {
-      input = input + ' '
+  useEffect(() => {
+    const isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(state.email)
+    const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(state.password)
+    if (isEmailValid && isPasswordValid) {
+      setState({
+        ...state,
+        isButtonEnabled: true
+      })
+    } else {
+      setState({
+        ...state,
+        isButtonEnabled: false
+      })
     }
-    const isButtonEnabled = input.length === 11
-    changeState({
-      ...state,
-      phoneNumber: input,
-      isButtonEnabled: isButtonEnabled,
-    })
-  }
+  }, [state.email, state.password])
 
-  const OnSignupPressed = async (data: any) => {
+  const OnSigninPressed = async () => {
     try {
-      const response = await Auth.signIn('garrettmroberts@gmail.com', 'Password1!')
+      setState({
+        ...state,
+        isLoggingIn: true
+      })
+      const response = await Auth.signIn(state.email, state.password)
+      // const response = await Auth.signIn('garrettmroberts@gmail.com', 'Password1!')
       console.log(response)
       Keyboard.dismiss()
       setTimeout(() => {
         navigation.navigate('SignupScreen2')
       }, 10)
-    } catch (e) {
+    } catch (e: any) {
       Alert.alert('ERROR: ',e.message)
     }
+    setState({
+      ...state,
+      isLoggingIn: false
+    })
   }
 
   return (
@@ -68,17 +83,32 @@ const SignupScreen1 = ({ navigation }: Props) => {
               <Image source={require('../../assets/images/wegusta-text.png')} style={styles.wegustaTextImage}/>
             </View>
             <View style={styles.viewPadding}>
-              <Text style={styles.label}>Enter phone to get started</Text>
+              <Text style={[styles.headerText, styles.bottomSpacer]}>Sign In</Text>
+              <Text style={styles.label}>Email</Text>
               <View style={styles.textInputWrapper}>
-                <Text>🇺🇸 +1</Text>
                 <TextInput
-                  placeholder="555 1234567"
-                  onChangeText={handleChangeText}
-                  keyboardType="phone-pad"
+                  onChangeText={(input) => setState({
+                    ...state,
+                    email: input
+                  })}
                   style={styles.input}
-                  value={state.phoneNumber}
                 />
               </View>
+              <Text style={[styles.label, styles.topSpacer]}>Password</Text>
+              <View style={styles.textInputWrapper}>
+                <TextInput
+                  onChangeText={(input) => {
+                    setState({
+                      ...state,
+                      password: input
+                    })
+                  }}
+                  placeholder="******"
+                  secureTextEntry={true}
+                  style={styles.input}
+                />
+              </View>
+              <Text style={styles.helperText}>Password must be at least 8 characters long and contain a lowercase letter, uppercase letter, digit, and special character (@$!%*?&).</Text>
             </View>
             <View style={styles.viewPaddingSmall}>
               <Text style={styles.termsAndConditions}>
@@ -88,8 +118,8 @@ const SignupScreen1 = ({ navigation }: Props) => {
               <Button
                 type={state.isButtonEnabled ? 'primary' : 'disabled'}
                 size="fullWidth"
-                text="Continue"
-                handlePress={() => OnSignupPressed()}
+                text={state.isLoggingIn ? 'Logging in...' : 'Sign in'}
+                handlePress={() => OnSigninPressed()}
               />
             </View>
           </View>
@@ -99,4 +129,4 @@ const SignupScreen1 = ({ navigation }: Props) => {
   )
 }
 
-export default SignupScreen1
+export default SigninScreen

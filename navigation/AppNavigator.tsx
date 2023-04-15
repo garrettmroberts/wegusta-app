@@ -10,6 +10,7 @@ import LeftAlignedTitle from './LeftAlignedTitle'
 import RightAlignedIcon from './RightAlignedIcon'
 import { AppContext } from '../utils/Context/Context'
 import Colors from '../constants/Colors'
+import SigninScreen from '../screens/SignupScreens/SigninScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigator = () => {
@@ -25,6 +26,13 @@ const StackNavigator = () => {
         headerTintColor: Colors.black,
       }}
     >
+      <Stack.Screen
+        name='SigninScreen'
+        component={SigninScreen}
+        options={{
+          title: ''
+        }}
+      />
       <Stack.Screen 
         name="SignupScreen1"
         component={SignupScreen1}

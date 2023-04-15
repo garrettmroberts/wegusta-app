@@ -38,6 +38,12 @@ const styles = StyleSheet.create({
   headerText: {
     ...Fonts.h1Bold,
   },
+  topSpacer: {
+    marginTop: Sizes.defaultSpacer + 6
+  },
+  bottomSpacer: {
+    marginBottom: Sizes.defaultSpacer + 24
+  },
   // Specific styles
   wegustaTextImage: {
     marginTop: 5,

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wegusta-staging-185341-authRole",
+      "UnauthRoleArn": "arn:aws:iam::898484344951:role/amplify-wegusta-staging-185341-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::898484344951:role/amplify-wegusta-staging-185341-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-wegusta-staging-185341-deployment",
+      "UnauthRoleName": "amplify-wegusta-staging-185341-unauthRole",
+      "StackName": "amplify-wegusta-staging-185341",
+      "StackId": "arn:aws:cloudformation:us-east-1:898484344951:stack/amplify-wegusta-staging-185341/884a3870-c750-11ed-83e8-0e654f839f0f",
+      "AmplifyAppId": "dt6qfiobq12mj"
+    },
+    "categories": {
+      "auth": {
+        "wegusta": {}
+      }
+    }
+  }
+}
