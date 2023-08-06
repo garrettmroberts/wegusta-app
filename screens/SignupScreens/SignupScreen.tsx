@@ -12,12 +12,11 @@ import {
   View,
   Alert,
 } from 'react-native'
-import { Auth } from 'aws-amplify'
-import {NavigationProp, ParamListBase} from '@react-navigation/native'
-
-import Regex from '../../utils/regex'
 import Button from '../../components/Button/Button'
 import Sizes from '../../constants/Sizes'
+import {NavigationProp, ParamListBase} from '@react-navigation/native'
+import { Auth } from 'aws-amplify'
+
 import styles from './styles'
 
 type Props = {
@@ -25,17 +24,17 @@ type Props = {
 };
 
 
-const SigninScreen = ({ navigation }: Props) => {
+const SignupScreen = ({ navigation }: Props) => {
   const [state, setState] = useState({
     email: '',
     password: '',
     isButtonEnabled: false,
-    isLoggingIn: false
+    isLoading: false
   })
 
   useEffect(() => {
-    const isEmailValid = Regex.email.test(state.email)
-    const isPasswordValid = Regex.password.test(state.password)
+    const isEmailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(state.email)
+    const isPasswordValid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(state.password)
     if (isEmailValid && isPasswordValid) {
       setState({
         ...state,
@@ -49,25 +48,33 @@ const SigninScreen = ({ navigation }: Props) => {
     }
   }, [state.email, state.password])
 
-  const OnSigninPressed = async () => {
+  const OnSignupPressed = async () => {
     try {
       setState({
         ...state,
-        isLoggingIn: true
+        isLoading: true
       })
-      const response = await Auth.signIn(state.email, state.password)
-      // const response = await Auth.signIn('garrettmroberts@gmail.com', 'Password1!')
-      console.log(response)
+      const { user } = await Auth.signUp({
+        username: state.email,
+        password: state.password,
+        attributes: {
+          email: state.email
+        },
+        autoSignIn: { // optional - enables auto sign in after user is confirmed
+          enabled: true,
+        }
+      })
+      console.log(user)
       Keyboard.dismiss()
       setTimeout(() => {
         navigation.navigate('PreferenceSelectorScreen')
       }, 10)
-    } catch (e: any) {
-      Alert.alert('ERROR', 'The username and/or password you entered is incorrect.  Try again.')
+    } catch (error) {
+      console.log('error signing up:', error)
     }
     setState({
       ...state,
-      isLoggingIn: false
+      isLoading: false
     })
   }
 
@@ -85,7 +92,7 @@ const SigninScreen = ({ navigation }: Props) => {
               <Image source={require('../../assets/images/wegusta-text.png')} style={styles.wegustaTextImage}/>
             </View>
             <View style={styles.viewPadding}>
-              <Text style={[styles.headerText, styles.bottomSpacer]}>Sign In</Text>
+              <Text style={[styles.headerText, styles.bottomSpacer]}>Sign Up</Text>
               <Text style={styles.label}>Email</Text>
               <View style={styles.textInputWrapper}>
                 <TextInput
@@ -120,8 +127,8 @@ const SigninScreen = ({ navigation }: Props) => {
               <Button
                 type={state.isButtonEnabled ? 'primary' : 'disabled'}
                 size="fullWidth"
-                text={state.isLoggingIn ? 'Logging in...' : 'Sign in'}
-                handlePress={() => OnSigninPressed()}
+                text={state.isLoading ? 'Logging in...' : 'Sign Up'}
+                handlePress={() => OnSignupPressed()}
               />
             </View>
           </View>
@@ -131,4 +138,4 @@ const SigninScreen = ({ navigation }: Props) => {
   )
 }
 
-export default SigninScreen
+export default SignupScreen

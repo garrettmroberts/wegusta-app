@@ -43,7 +43,7 @@ const SignupScreen1 = ({ navigation }: Props) => {
 
   const OnSignupPressed = async (data: any) => {
     try {
-      const response = await Auth.signIn('garrettmroberts@gmail.com', 'Password1!')
+      const response = await Auth.signIn('garrettmroberts@gmail.com', 'Passord1!')
       console.log(response)
       Keyboard.dismiss()
       setTimeout(() => {
@@ -89,7 +89,7 @@ const SignupScreen1 = ({ navigation }: Props) => {
                 type={state.isButtonEnabled ? 'primary' : 'disabled'}
                 size="fullWidth"
                 text="Continue"
-                handlePress={() => OnSignupPressed()}
+                handlePress={() => OnSignupPressed({})}
               />
             </View>
           </View>
