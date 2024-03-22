@@ -40,7 +40,8 @@ type RecommendedRestaurantInfo = {
   },
   photoUrl?: string,
   priceLevel?: string,
-  closingTime?: string
+  closingTime?: string,
+  openTimes?: string
 }
 
 type SuggestionScreenState = {
@@ -127,8 +128,6 @@ const SuggestionScreen = ({ navigation }: Props) => {
 
     const res = filteredPreferences[rand].category
 
-    console.log(res)
-
     const updatedFilterPreferences = context.userPreferences.filter((ele) => {
       return ele.category !== res
     })
@@ -139,7 +138,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
   }
 
   const queryForRestaurant = async (category: string) => {
-    let recommendedRestaurantInfo = {}
+    let recommendedRestaurantInfo: RecommendedRestaurantInfo = {}
     const query = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=${category}&location=${state.location?.latitude}%2C${state.location?.longitude}&radius=${context.filterOptions.filterDistance * 1000}&type=restaurant&opennow&key=${Constants.expoConfig?.extra?.gMapsApiKey}`
     await fetch(query)
       .then(response => {
@@ -206,14 +205,16 @@ const SuggestionScreen = ({ navigation }: Props) => {
       const category = selectFoodCategory()
       if (category !== null) {
         const recommendedRestaurantInfo = await queryForRestaurant(category)
-        const closingTime = await queryForOpeningHours(recommendedRestaurantInfo.place_id)
-        setState({
-          ...state,
-          recommendedRestaurantInfo: {
-            ...recommendedRestaurantInfo,
-            closingTime
-          }
-        })
+        if (recommendedRestaurantInfo.place_id) {
+          const closingTime = await queryForOpeningHours(recommendedRestaurantInfo.place_id)
+          setState({
+            ...state,
+            recommendedRestaurantInfo: {
+              ...recommendedRestaurantInfo,
+              closingTime
+            }
+          })
+        }
       } else {
         setState({...state, pageState: 'error'})
       }
@@ -253,7 +254,7 @@ const SuggestionScreen = ({ navigation }: Props) => {
         Math.sin(dLon / 2)
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
     const d = R * c // Distance in km
-    return (d / 1.609).toFixed(2) // Distance in mi
+    return parseInt((d / 1.609).toFixed(2)) // Distance in mi
   }
 
   function deg2rad(deg: number) {
@@ -268,6 +269,43 @@ const SuggestionScreen = ({ navigation }: Props) => {
     }
 
     refreshImagesAndRedirect()
+  }
+
+  const renderResults = () => {
+    if (state.pageState === 'success' &&
+    state.recommendedRestaurantInfo.name &&
+    state.recommendedRestaurantInfo.rating &&
+    state.recommendedRestaurantInfo.photoUrl &&
+    state.recommendedRestaurantInfo.closingTime &&
+    state.recommendedRestaurantInfo.priceLevel &&
+    state.recommendedRestaurantInfo.location?.lat &&
+    state.recommendedRestaurantInfo.location?.lng &&
+    state.location?.latitude &&
+    state.location?.longitude) {
+      return (
+        <>
+          <ResultCard
+            title={state.recommendedRestaurantInfo?.name}
+            rating={parseInt(state.recommendedRestaurantInfo?.rating)}
+            distance={getDistanceFromLatLon(
+              parseInt(state.recommendedRestaurantInfo?.location?.lat),
+              parseInt(state.recommendedRestaurantInfo?.location?.lng),
+              state.location?.latitude,
+              state.location?.longitude
+            )}
+            imageUrl={state.recommendedRestaurantInfo?.photoUrl}
+            closingTime={state.recommendedRestaurantInfo?.closingTime}
+            priceLevel={parseInt(state.recommendedRestaurantInfo?.priceLevel)}
+            latitude={parseInt(state.recommendedRestaurantInfo?.location?.lat)}
+            longitude={parseInt(state.recommendedRestaurantInfo?.location?.lng)}
+          />
+          <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
+            <Text style={styles.tryAgainText}>Try again</Text>
+            <Ionicons name="refresh-outline" size={24} color={Colors.primary} />
+          </Pressable>
+        </>
+      )
+    }
   }
 
 
@@ -324,33 +362,10 @@ const SuggestionScreen = ({ navigation }: Props) => {
           </Pressable>
         </>
       ) : null}
-      {(state.pageState === 'success') ? (
-        <>
-          <ResultCard
-            title={state.recommendedRestaurantInfo?.name}
-            rating={state.recommendedRestaurantInfo?.rating}
-            distance={getDistanceFromLatLon(
-              state.recommendedRestaurantInfo?.location?.lat,
-              state.recommendedRestaurantInfo?.location?.lng,
-              state.location?.latitude,
-              state.location?.longitude
-            )}
-            imageUrl={state.recommendedRestaurantInfo?.photoUrl}
-            closingTime={state.recommendedRestaurantInfo?.closingTime}
-            priceLevel={state.recommendedRestaurantInfo?.priceLevel}
-            latitude={state.recommendedRestaurantInfo?.location?.lat}
-            longitude={state.recommendedRestaurantInfo?.location?.lng}
-            // description="Sample descriptive info..."
-            // onImageLoad={onImageLoad}
-          />
-          <Pressable style={styles.tryAgainBlock} onPress={handleTryAgainPress}>
-            <Text style={styles.tryAgainText}>Try again</Text>
-            <Ionicons name="refresh-outline" size={24} color={Colors.primary} />
-          </Pressable>
-        </>
-      ) : null}
+      {renderResults()}
     </SafeAreaView>
   )
 }
+
 
 export default SuggestionScreen

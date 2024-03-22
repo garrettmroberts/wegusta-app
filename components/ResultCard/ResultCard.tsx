@@ -18,7 +18,7 @@ type Props = {
   imageUrl: string;
   closingTime: string;
   priceLevel: number; // 1-5
-  description: string;
+  description?: string;
   latitude: number;
   longitude: number;
   onImageLoad?: () => void;
