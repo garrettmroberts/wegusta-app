@@ -2,7 +2,7 @@
 
 Are you ever indecisive about what you want to eat? WeGusta makes the choice easier by letting you choose cuisine types using a Tinder-like interface. Based on your input, it will recommend a highly rated local restaurant that fits your criteria!
 
-![Wegusta demo](https://github.com/garrettmroberts/wegusta-app/tree/main/assets/images/readme/demo-gif.gif)
+![Wegusta demo](https://github.com/garrettmroberts/wegusta-app/blob/main/assets/images/readme/demo-gif.gif)
 
 ## Built with
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
